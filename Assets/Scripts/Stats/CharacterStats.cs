@@ -75,14 +75,18 @@ public class CharacterStats : MonoBehaviour, IDamageable
     {
         foreach (KeyValuePair<string, string> property in _properties)
         {
-            getStat[property.Key].AddModifier(int.Parse(property.Value));
+            string[] values = property.Value.Split(',');
+            foreach (string value in values)
+            getStat[property.Key].AddModifier(int.Parse(value));
         }
     }
     public virtual void RemoveModifier(Dictionary<string, string> _properties)
     {
         foreach (KeyValuePair<string, string> property in _properties)
         {
-            getStat[property.Key].RemoveModifier(int.Parse(property.Value));
+            string[] values = property.Value.Split(',');
+            foreach (string value in values)
+                getStat[property.Key].RemoveModifier(int.Parse(value));
         }
     }
 }

@@ -23,7 +23,14 @@ public class AddItemButton : MonoBehaviour
             {
                 int idx = Random.Range(0, itemData.properties.Count);
                 var kvp = itemData.properties.ElementAt(idx);
-                properties[kvp.Key]=((int)Random.Range(float.Parse(kvp.Value)*.7f, float.Parse(kvp.Value)*1.3f)).ToString();
+                if (properties.ContainsKey(kvp.Key))
+                {
+                    properties[kvp.Key] += $",{(int)Random.Range(float.Parse(kvp.Value) * .7f, float.Parse(kvp.Value) * 1.3f)}";
+                }
+                else
+                {
+                    properties[kvp.Key] = ((int)Random.Range(float.Parse(kvp.Value) * .7f, float.Parse(kvp.Value) * 1.3f)).ToString();
+                }
             }    
         Inventory.Instance.AddItem(itemData.id, properties);
         }    
