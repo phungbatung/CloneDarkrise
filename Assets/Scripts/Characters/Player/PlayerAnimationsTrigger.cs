@@ -15,6 +15,11 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         player.stateMachine.currentState.TriggerCall();
     }
 
+    public void EndAnim()
+    {
+        player.anim.SetTrigger("endAnim");
+    }
+
     public void PrimaryAttack()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackPoint.position, player.attackRadius);

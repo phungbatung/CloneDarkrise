@@ -32,5 +32,8 @@ public class PlayerGroundedState : CharacterState
             stateMachine.ChangeState(player.attackState);
         if (InputManager.Instance.isDashKeyPress)
             stateMachine.ChangeState(player.dashState);
+
+        if (Input.GetKeyDown(KeyCode.E))
+            stateMachine.ChangeState(player.slashState);
     }
 }

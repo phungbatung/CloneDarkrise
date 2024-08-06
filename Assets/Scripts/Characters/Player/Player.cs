@@ -10,6 +10,7 @@ public class Player : Character
     public PlayerFallState fallState { get; private set; }
     public PlayerPrimaryAttack attackState { get; private set; }
     public PlayerDashState dashState { get; private set; }
+    public PlayerSlashState slashState { get; private set; }
 
     protected override void Awake()
     {
@@ -20,7 +21,7 @@ public class Player : Character
         fallState = new PlayerFallState(this, stateMachine, "jump");
         attackState = new PlayerPrimaryAttack(this, stateMachine, "attack");
         dashState = new PlayerDashState(this, stateMachine, "dash");
-
+        slashState = new PlayerSlashState(this, stateMachine, "slash");
         stateMachine.InitialState(idleState);
     }
 
