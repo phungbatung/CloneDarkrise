@@ -5,7 +5,7 @@ using UnityEngine;
 public class Constant
 {
     #region STATS
-    public const string ATTACK = "Attack";
+    public const string DAMAGE = "Attack";
     public const string ATTACK_SPEED="AttackSpeed";
     public const string ARMOR_PENETRATION = "ArmorPenetration";
     public const string CRITICAL_RATE = "CriticalRate";

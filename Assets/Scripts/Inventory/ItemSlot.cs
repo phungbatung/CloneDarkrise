@@ -144,10 +144,47 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnDrop(PointerEventData eventData)
     {
-        ItemSlot slot = eventData.pointerDrag.GetComponent<ItemSlot>();
-        if (slot != null)
+        ItemSlot toDropSlot = eventData.pointerDrag.GetComponent<ItemSlot>();
+        Inventory inventory = Inventory.Instance;
+
+        //Case: slot to drop is equipment slot
+        if (Inventory.Instance.equipmentSlots.Contains(this)) 
         {
-            SwapItemSlot(this, slot);
+            //Two equipped item are not the same type
+            if (inventory.equipmentSlots.Contains(toDropSlot))
+                return;
+            //Cannot drop none equipment to equipment slot
+            if (inventory.itemDatabase.itemDataDictionary[toDropSlot.itemId].type != ItemType.Equipment)
+                return;
+            //Cannot drop equipment other than the equipment type of this equipment slot
+            if (inventory.GetEquipmentTypeById(toDropSlot.itemId) != inventory.equipmentSlots.IndexOf(this))
+                return;
+            //Equip
+            inventory.EquipItem(toDropSlot);
+            return;
         }
+
+        //Case: slot to drop is inventory slot
+        //Check if to drop slot is from equipment slot
+        if (Inventory.Instance.equipmentSlots.Contains(toDropSlot))
+        {
+            //if slot to drop is empty then move item from equipment slot to this slot
+            if (itemId ==-1)
+            {
+                inventory.UnequipItem(toDropSlot, inventory.inventorySlots.IndexOf(this));
+                return;
+            }
+            //Cannot swap item from equipment slot to none equipment
+            if (inventory.itemDatabase.itemDataDictionary[itemId].type != ItemType.Equipment)
+                return;
+            //Cannot swap item from equipment slot to another equipment of different type
+            if (inventory.GetEquipmentTypeById(itemId) != inventory.GetEquipmentTypeById(toDropSlot.itemId))
+                return;
+            //Equip this item if it is equipment of the same type
+            inventory.EquipItem(this);
+            return;
+        }
+        //Swap two item from inventory
+        SwapItemSlot(this, toDropSlot);
     }
 }

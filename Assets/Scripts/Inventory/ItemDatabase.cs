@@ -54,7 +54,7 @@ public class ItemDatabase : ScriptableObject
             {
                 item = itemDataDictionary[int.Parse(data[0])];
                 if (data[1]!="0")
-                    item.properties[Constant.ATTACK] = data[1];
+                    item.properties[Constant.DAMAGE] = data[1];
                 if (data[2] != "0")
                     item.properties[Constant.ATTACK_SPEED] = data[2];
                 if (data[3] != "0")
