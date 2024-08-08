@@ -5,11 +5,12 @@ using UnityEngine.UI;
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using System;
+using Unity.Mathematics;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    [HideInInspector] public int itemId;
-    [HideInInspector] public int amount;
+    public int itemId;
+    public int amount;
 
 
     [SerializeField] private Image itemImage;
@@ -120,7 +121,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         if (eventData.dragging)
             return;
-        Debug.Log("click");
+        string s = "";
+        foreach (var property in properties)
+            s += property.Value + "\n";
+        Debug.Log(s);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -186,5 +190,32 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         }
         //Swap two item from inventory
         SwapItemSlot(this, toDropSlot);
+    }
+
+    public static int CompareByItemId(ItemSlot slot1, ItemSlot _itemSlot)
+    {
+        if (slot1.itemId == -1 && _itemSlot.itemId != -1) return 1;
+        if (slot1.itemId != -1 && _itemSlot.itemId == -1) return -1;
+        if (slot1.itemId == -1 && _itemSlot.itemId == -1) return 0;
+        ItemData item1 = Inventory.Instance.itemDatabase.itemDataDictionary[slot1.itemId];
+        ItemData item2 = Inventory.Instance.itemDatabase.itemDataDictionary[_itemSlot.itemId];
+        if (item1.type > item2.type) return 1;
+        if (item1.type<item2.type) return -1;
+        if (item1.quality<item2.quality) return 1;
+        if (item1.quality > item2.quality) return -1;
+        return 0;
+    }
+    public static int CompareByItemQuality(ItemSlot slot1, ItemSlot slot2)
+    {
+        if (slot1.itemId == -1 && slot2.itemId != -1) return 1;
+        if (slot1.itemId != -1 && slot2.itemId == -1) return -1;
+        if (slot1.itemId == -1 && slot2.itemId == -1) return 0;
+        ItemData item1 = Inventory.Instance.itemDatabase.itemDataDictionary[slot1.itemId];
+        ItemData item2 = Inventory.Instance.itemDatabase.itemDataDictionary[slot2.itemId];
+        if (item1.quality<item2.quality) return 1;
+        if (item1.quality > item2.quality) return -1;
+        if (item1.type > item2.type) return 1;
+        if (item1.type<item2.type) return -1;
+        return 0;
     }
 }
