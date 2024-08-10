@@ -28,13 +28,15 @@ public class PlayerGroundedState : CharacterState
             stateMachine.ChangeState(player.fallState);
         if (InputManager.Instance.isUpButtonPress)
             stateMachine.ChangeState(player.jumpState);
-        if (InputManager.Instance.isBaseAttackPress)
-            stateMachine.ChangeState(player.attackState);
         if (InputManager.Instance.isDashKeyPress)
             stateMachine.ChangeState(player.dashState);
+        if (InputManager.Instance.isBaseAttackPress)
+            SkillManager.Instance.baseAttack.Called();
         if (InputManager.Instance.isSkill1Press)
-            stateMachine.ChangeState(player.healState);
+            SkillManager.Instance.healWave.Called();
         if (InputManager.Instance.isSkill2Press)
-            stateMachine.ChangeState(player.slashState);
+            SkillManager.Instance.slash.Called();
+        if (InputManager.Instance.isSkill3Press)
+            SkillManager.Instance.lightCut.Called();
     }
 }

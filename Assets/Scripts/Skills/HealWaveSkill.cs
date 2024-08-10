@@ -8,7 +8,7 @@ public class HealWaveSkill : Skill
     [SerializeField] private int healthPercentToRegen;
     public override void Called()
     {
-        
+        player.stateMachine.ChangeState(player.healState);
     }
 
     public void Healing()

@@ -23,8 +23,4 @@ public class BaseAttack : Skill
             }
         }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attackPoint[0], attackRadius[0]);
-    }
 }

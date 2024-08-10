@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSlashState : CharacterState
+public class PlayerLightCutState : CharacterState
 {
     protected Player player;
-    public PlayerSlashState(Character _character, StateMachine _stateMachine, string _animBoolName) : base(_character, _stateMachine, _animBoolName)
+    public PlayerLightCutState(Character _character, StateMachine _stateMachine, string _animBoolName) : base(_character, _stateMachine, _animBoolName)
     {
         player = _character as Player;
     }
@@ -22,13 +22,14 @@ public class PlayerSlashState : CharacterState
 
     public override void Update()
     {
-        player.SetZeroVelocity();
         base.Update();
+        player.SetZeroVelocity();
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);
     }
+
     public override void StateEvent()
     {
-        SkillManager.Instance.slash.AttackSlash();
+        SkillManager.Instance.lightCut.Cut();
     }
 }

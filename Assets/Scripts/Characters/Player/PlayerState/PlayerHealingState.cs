@@ -24,6 +24,7 @@ public class PlayerHealingState : CharacterState
     public override void Update()
     {
         base.Update();
+        player.SetZeroVelocity();
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);
     }

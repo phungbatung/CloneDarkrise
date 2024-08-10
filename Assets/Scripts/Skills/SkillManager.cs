@@ -10,6 +10,7 @@ public class SkillManager : MonoBehaviour
     public BaseAttack baseAttack;
     public HealWaveSkill healWave;
     public Slash slash;
+    public LightCut lightCut;
 
     private void Awake()
     {
@@ -20,5 +21,6 @@ public class SkillManager : MonoBehaviour
         healWave = GetComponent<HealWaveSkill>();
         slash = GetComponent<Slash>();
         baseAttack = GetComponent<BaseAttack>();
+        lightCut = GetComponent<LightCut>();
     }
 }
