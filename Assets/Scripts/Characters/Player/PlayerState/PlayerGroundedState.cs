@@ -24,16 +24,17 @@ public class PlayerGroundedState : CharacterState
     public override void Update()
     {
         base.Update();
-        if (!player.Grounded())
+        if (!player.IsGrounded())
             stateMachine.ChangeState(player.fallState);
         if (InputManager.Instance.isUpButtonPress)
             stateMachine.ChangeState(player.jumpState);
-        if (InputManager.Instance.isSkill1Press)
+        if (InputManager.Instance.isBaseAttackPress)
             stateMachine.ChangeState(player.attackState);
         if (InputManager.Instance.isDashKeyPress)
             stateMachine.ChangeState(player.dashState);
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (InputManager.Instance.isSkill1Press)
+            stateMachine.ChangeState(player.healState);
+        if (InputManager.Instance.isSkill2Press)
             stateMachine.ChangeState(player.slashState);
     }
 }

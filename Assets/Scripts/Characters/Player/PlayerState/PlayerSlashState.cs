@@ -27,4 +27,8 @@ public class PlayerSlashState : CharacterState
         if (triggerCalled)
             stateMachine.ChangeState(player.idleState);
     }
+    public override void StateEvent()
+    {
+        SkillManager.Instance.slash.AttackSlash();
+    }
 }

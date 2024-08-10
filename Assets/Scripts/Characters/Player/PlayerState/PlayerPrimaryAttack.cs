@@ -12,7 +12,7 @@ public class PlayerPrimaryAttack : CharacterState
     protected float airLastTimeAttack=0;
     
     protected int groundComboCounter=0;
-    protected int groundComboStack=2;
+    protected int groundComboStack=3;
     protected float groundLastTimeAttack=0;
 
 
@@ -28,7 +28,7 @@ public class PlayerPrimaryAttack : CharacterState
         base.Enter();
         xInput = 0;
         player.SetZeroVelocity();
-        if (player.Grounded())
+        if (player.IsGrounded())
         {
             player.anim.SetBool("grounded", true);
             if (groundComboCounter >= groundComboStack || (Time.time - groundLastTimeAttack) > timeBreakCombo)
@@ -54,7 +54,7 @@ public class PlayerPrimaryAttack : CharacterState
     public override void Exit()
     {
         base.Exit();
-        if (player.Grounded())
+        if (player.IsGrounded())
             groundLastTimeAttack = Time.time;
         else
             airLastTimeAttack = Time.time;
@@ -65,9 +65,18 @@ public class PlayerPrimaryAttack : CharacterState
         base.Update();
         player.SetZeroVelocity();
         if (triggerCalled)
-            if (player.Grounded())
+            if (player.IsGrounded())
                 stateMachine.ChangeState(player.idleState);
             else
                 stateMachine.ChangeState(player.fallState);
+    }
+
+    public override void StateEvent()
+    {
+        if (player.IsGrounded())
+            SkillManager.Instance.baseAttack.Attack(groundComboCounter-1);
+        else
+            SkillManager.Instance.baseAttack.Attack(airComboCounter-1);
+            
     }
 }

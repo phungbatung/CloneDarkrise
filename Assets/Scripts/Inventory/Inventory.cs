@@ -1,12 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -28,7 +23,9 @@ public class Inventory : MonoBehaviour
         else
             Destroy(gameObject);
         inventorySlots = itemSlotsParent.GetComponentsInChildren<ItemSlot>().ToList();
+        inventorySlots.TrimExcess();
         equipmentSlots = equipmentSlotsParent.GetComponentsInChildren<ItemSlot>().ToList();
+        equipmentSlots.TrimExcess();
     }
     public void AddItem(int _itemId, Dictionary<string, string> properties = null)
     {
@@ -74,7 +71,7 @@ public class Inventory : MonoBehaviour
         if (slotToEquip.itemId != -1)
             PlayerManager.Instance.player.stats.RemoveModifier(slotToEquip.properties);
         ItemSlot.SwapItemSlot(_itemSlot, slotToEquip);
-        PlayerManager.Instance.player.stats.AddModifier(slotToEquip.properties);    
+        PlayerManager.Instance.player.stats.AddModifier(slotToEquip.properties);
     }
     public void UnequipItem(ItemSlot _itemSlot, int _indexToPutUnequipItem = -1)
     {
@@ -108,6 +105,17 @@ public class Inventory : MonoBehaviour
     {
         QuickSort(listItemSlot, 0, listItemSlot.Count - 1, ItemSlot.CompareByItemQuality);
     }
+    public void QuickSort(List<ItemSlot> listItemSlot, int low, int high, Func<ItemSlot, ItemSlot, int> Compare)
+    {
+        //Sort by swap value
+        if (low < high)
+        {
+            int pi = Partition(listItemSlot, low, high, Compare);
+            QuickSort(listItemSlot, low, pi - 1, Compare);
+            QuickSort(listItemSlot, pi + 1, high, Compare);
+
+        }
+    }
     public int Partition(List<ItemSlot> listItemSlot, int low, int high, Func<ItemSlot, ItemSlot, int> Compare)
     {
         ItemSlot pivot = listItemSlot[high];
@@ -115,7 +123,7 @@ public class Inventory : MonoBehaviour
 
         for (int j = low; j <= high - 1; j++)
         {
-            if (Compare(listItemSlot[j], pivot)<=0)
+            if (Compare(listItemSlot[j], pivot) <= 0)
             {
                 i++;
                 ItemSlot.SwapItemSlot(listItemSlot[i], listItemSlot[j]);
@@ -123,16 +131,6 @@ public class Inventory : MonoBehaviour
         }
         ItemSlot.SwapItemSlot(listItemSlot[i + 1], listItemSlot[high]);
         return (i + 1);
-    }
-    public void QuickSort(List<ItemSlot> listItemSlot, int low, int high, Func<ItemSlot, ItemSlot, int> Compare)
-    {
-        if (low < high)
-        {
-            int pi = Partition(listItemSlot, low, high, Compare);
-            QuickSort(listItemSlot, low, pi-1, Compare);
-            QuickSort(listItemSlot, pi+1, high, Compare);
-
-        }    
     }
     [ContextMenu("Fill up item database")]
     public void FillUpItemDataBase()

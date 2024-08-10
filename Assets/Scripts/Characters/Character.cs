@@ -39,7 +39,7 @@ public class Character : MonoBehaviour
     }
     protected virtual void Start()
     {
-        
+        stats.OnDied = OnDied;
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class Character : MonoBehaviour
         
     }
 
-    public virtual bool Grounded()
+    public virtual bool IsGrounded()
     {
         return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
     }
@@ -70,9 +70,14 @@ public class Character : MonoBehaviour
         rb.velocity = Vector2.zero; 
     }
 
-    protected virtual void OnDrawGizmos()
+    /*protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + new Vector3(0, -groundCheckDistance, 0));
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
-    }
+    }*/
+
+    protected virtual void OnDied()
+    {
+
+    }    
 }

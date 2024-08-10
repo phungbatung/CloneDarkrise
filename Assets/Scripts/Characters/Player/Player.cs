@@ -11,6 +11,7 @@ public class Player : Character
     public PlayerPrimaryAttack attackState { get; private set; }
     public PlayerDashState dashState { get; private set; }
     public PlayerSlashState slashState { get; private set; }
+    public PlayerHealingState healState { get; private set; }
 
     protected override void Awake()
     {
@@ -22,6 +23,7 @@ public class Player : Character
         attackState = new PlayerPrimaryAttack(this, stateMachine, "attack");
         dashState = new PlayerDashState(this, stateMachine, "dash");
         slashState = new PlayerSlashState(this, stateMachine, "slash");
+        healState = new PlayerHealingState(this, stateMachine, "healing");
         stateMachine.InitialState(idleState);
     }
 
@@ -33,7 +35,6 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
-        anim.SetFloat("yVelocity", rb.velocity.y);
         stateMachine.currentState.Update();
     }
 }

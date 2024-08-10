@@ -15,21 +15,8 @@ public class PlayerAnimationsTrigger : MonoBehaviour
         player.stateMachine.currentState.TriggerCall();
     }
 
-    public void EndAnim()
+    public void CallStateEvent()
     {
-        player.anim.SetTrigger("endAnim");
-    }
-
-    public void PrimaryAttack()
-    {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(player.attackPoint.position, player.attackRadius);
-        foreach (Collider2D collider in colliders)
-        {
-            IDamageable target = collider.GetComponent<IDamageable>();
-            if (target != null)
-            {
-                player.stats.DoDamage(target);
-            }
-        }
+        player.stateMachine.currentState.StateEvent();
     }
 }

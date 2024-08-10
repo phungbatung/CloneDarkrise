@@ -10,7 +10,7 @@ public class CharacterState
 
     public float xInput;
     public float yVelocity;
-    public bool triggerCalled;
+    public bool triggerCalled=false;
     public float stateTimer;
     public CharacterState (Character _character, StateMachine _stateMachine, string _animBoolName)
     {
@@ -35,5 +35,9 @@ public class CharacterState
         stateTimer -= Time.deltaTime;
     }
 
-    public void TriggerCall() => triggerCalled = true;
+    public virtual void TriggerCall() => triggerCalled = true;
+    public virtual void StateEvent()
+    {
+
+    }
 }

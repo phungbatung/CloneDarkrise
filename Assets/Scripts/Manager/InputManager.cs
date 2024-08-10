@@ -14,8 +14,14 @@ public class InputManager : MonoBehaviour
     public bool isDownButtonPress { get; private set; }
     public float verticalInput { get; private set; }
 
-    public bool isSkill1Press { get; private set; }
+    public bool isBaseAttackPress { get; private set; }
     public bool isDashKeyPress { get; private set; }
+
+    public bool isSkill1Press { get; private set; }
+    public bool isSkill2Press { get; private set; }
+    public bool isSkill3Press { get; private set; }
+    public bool isSkill4Press { get; private set; }
+    public bool isSkill5Press { get; private set; }
     void Start()
     {
         if (Instance == null)
@@ -86,13 +92,10 @@ public class InputManager : MonoBehaviour
 
     private void SkillInputCheck()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-            isSkill1Press = true;
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-            isSkill1Press = false;
-        if (Input.GetKey(KeyCode.LeftShift))
-            isDashKeyPress = true;
-        else
-            isDashKeyPress = false;
+        isBaseAttackPress = Input.GetKey(KeyCode.Mouse0);
+        isDashKeyPress = Input.GetKey(KeyCode.LeftShift);
+        isSkill1Press = Input.GetKey(KeyCode.J);
+        isSkill2Press = Input.GetKey(KeyCode.K);
+        isSkill3Press = Input.GetKey(KeyCode.L);
     }
 }

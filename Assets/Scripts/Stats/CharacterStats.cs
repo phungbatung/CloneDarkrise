@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour, IDamageable
 {
-    #region Stats
     public Stat damage;
     public Stat attackSpeed;
     public Stat armorPenetration;
@@ -22,15 +21,13 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public int currentHealth;
     public int currentMana;
-    #endregion
 
     public bool isImmortal;
 
-    #region Event
-    public Action OnHealthChange;
-    public Action OnManaChange;
-    public Action Die;
-    #endregion
+    public Action OnHealthChanged;
+    public Action OnManaChanged;
+    public Action OnDied;
+    
 
     //To get Stat by key of item property quickly
     protected Dictionary<string, Stat> getStat = new Dictionary<string, Stat>();
@@ -62,8 +59,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
         finalDamage -= finalArmor;
 
         currentHealth = currentHealth>finalDamage? (currentHealth-finalDamage) : 0;
-        if (currentHealth <= 0 && Die!=null)
-            Die();
+        if (currentHealth <= 0 && OnDied!=null)
+            OnDied();
     }
 
     public virtual void DoDamage(IDamageable target)
@@ -88,5 +85,13 @@ public class CharacterStats : MonoBehaviour, IDamageable
             foreach (string value in values)
                 getStat[property.Key].RemoveModifier(int.Parse(value));
         }
+    }
+
+    public virtual void Heal(int _Health, int _HealthPercent)
+    {
+        currentHealth += _Health;
+        currentHealth = currentHealth +  (int)Mathf.Floor(maxHealth.GetValue() * _HealthPercent * 1f / 100);
+        if (currentHealth >maxHealth.GetValue())
+            currentHealth= maxHealth.GetValue();
     }
 }

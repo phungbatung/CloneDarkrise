@@ -23,10 +23,11 @@ public class PlayerAirState : CharacterState
     public override void Update()
     {
         base.Update();
+        player.anim.SetFloat("yVelocity", player.rb.velocity.y);
         player.SetVelocity(xInput * 9f, player.rb.velocity.y);
-        if (InputManager.Instance.isSkill1Press)
-            stateMachine.ChangeState(player.attackState);
         if (InputManager.Instance.isDashKeyPress)
             stateMachine.ChangeState(player.dashState);
+        if (InputManager.Instance.isBaseAttackPress)
+            SkillManager.Instance.baseAttack.Called();
     }
 }

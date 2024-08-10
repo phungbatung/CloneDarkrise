@@ -50,6 +50,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (amount <= 0)
         {
             itemId = -1;
+            properties.Clear();
         }
         UpdateUI();
     }
@@ -57,10 +58,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         amount=0;
         itemId = -1;
-        if (amount <= 0)
-        {
-            itemId = -1;
-        }
+        properties.Clear();
         UpdateUI();
     }
     public bool IsEmpty()
@@ -90,9 +88,9 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         }
     }
 
-    //Swap value
     public static void SwapItemSlot(ItemSlot slot1, ItemSlot slot2)
     {
+        //Swap value
         int tempId = slot1.itemId;
         slot1.itemId = slot2.itemId;
         slot2.itemId = tempId;
