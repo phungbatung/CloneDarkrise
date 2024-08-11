@@ -97,5 +97,6 @@ public class InputManager : MonoBehaviour
         isSkill1Press = Input.GetKey(KeyCode.J);
         isSkill2Press = Input.GetKey(KeyCode.K);
         isSkill3Press = Input.GetKey(KeyCode.L);
+        isSkill4Press = Input.GetKey(KeyCode.U);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Skill : MonoBehaviour
 {
     protected Player player;
-    protected float cooldown;
+    [SerializeField] protected float cooldown;
     protected float cooldownTimer;
     protected virtual void Start()
     {

@@ -38,5 +38,7 @@ public class PlayerGroundedState : CharacterState
             SkillManager.Instance.slash.Called();
         if (InputManager.Instance.isSkill3Press)
             SkillManager.Instance.lightCut.Called();
+        if (InputManager.Instance.isSkill4Press)
+            SkillManager.Instance.wolfCall.Called();
     }
 }

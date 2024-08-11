@@ -13,6 +13,7 @@ public class Player : Character
     public PlayerSlashState slashState { get; private set; }
     public PlayerHealingState healState { get; private set; }
     public PlayerLightCutState lightCut { get; private set; }
+    public PlayerWolfCallState wolfCall { get; private set; }
 
     protected override void Awake()
     {
@@ -26,6 +27,7 @@ public class Player : Character
         slashState = new PlayerSlashState(this, stateMachine, "slash");
         healState = new PlayerHealingState(this, stateMachine, "healing");
         lightCut = new PlayerLightCutState(this, stateMachine, "lightCut");
+        wolfCall = new PlayerWolfCallState(this, stateMachine, "wolfCall");
         stateMachine.InitialState(idleState);
     }
 

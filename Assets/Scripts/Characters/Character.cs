@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    public float moveSpeed;
     public float facingDir;
     public float jumpForce;
 
     public float dashSpeed;
     public float dashDuration;
 
-    [Header("Ground check info")] 
+    [Header("Collision check info")] 
     [SerializeField] protected Transform groundCheck;
     [SerializeField] protected float groundCheckDistance;
     [SerializeField] protected LayerMask groundLayer;
+    [Space(10)]
+    [SerializeField] protected Transform wallCheck;
+    [SerializeField] protected float wallCheckDistance;
+    [SerializeField] protected LayerMask wallLayer;
 
     [Header("Attack info")]
     [SerializeField] public Transform attackPoint;
@@ -25,7 +28,6 @@ public class Character : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public CapsuleCollider2D cd { get; private set; }
     public CharacterStats stats { get; private set; }
-
     public StateMachine stateMachine { get; private set; }
     protected virtual void Awake()
     {
@@ -52,6 +54,10 @@ public class Character : MonoBehaviour
     {
         return Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
     }
+    public virtual bool IsWallDetected()
+    {
+        return Physics2D.Raycast(wallCheck.position, facingDir * Vector2.right, wallCheckDistance, wallLayer);
+    }
 
     public virtual void Flip()
     {
@@ -70,11 +76,12 @@ public class Character : MonoBehaviour
         rb.velocity = Vector2.zero; 
     }
 
-    /*protected virtual void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + new Vector3(0, -groundCheckDistance, 0));
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
-    }*/
+        Gizmos.DrawLine(wallCheck.position, wallCheck.position + new Vector3(facingDir*wallCheckDistance, 0, 0));
+        //Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+    }
 
     protected virtual void OnDied()
     {
