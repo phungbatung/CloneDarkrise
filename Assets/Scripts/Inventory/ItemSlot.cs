@@ -121,7 +121,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             return;
         string s = "";
         foreach (var property in properties)
-            s += property.Value + "\n";
+            s += $"{property.Key}: {property.Value}. ";
         Debug.Log(s);
     }
 

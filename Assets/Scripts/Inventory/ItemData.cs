@@ -8,10 +8,10 @@ public enum ItemType
     None=0,
     Equipment=1,
     Potion=2,
-    Buff=3,
-    Material=4,
-    SkillBook=5,
-    Gem=6
+    SkillBook=3,
+    Buff = 4,
+    MagicDust=5,
+    Material=6
 }
 public enum ItemQuality
 {
@@ -38,4 +38,13 @@ public class ItemData
     public int maxSize;
     public SerializableDictionary<string, string> properties = new SerializableDictionary<string, string>();
 }
+//Equipment type(c)
+//1 Sword
+//2 Shield
+//3 Gauntlet
+//4 Boots
+//5 ChestPlate
+//6 Pants
+//7 Helmet
+//8 Ring
 

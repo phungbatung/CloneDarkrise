@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Constant
 {
-    #region STATS
     public const string DAMAGE = "Attack";
     public const string ATTACK_SPEED="AttackSpeed";
     public const string ARMOR_PENETRATION = "ArmorPenetration";
@@ -12,12 +11,18 @@ public class Constant
     public const string CRITICAL_DAMAGE = "CriticalDamage";
 
 
-    public const string HEALTH = "MaxHealth";
+    public const string HEALTH = "Health";
     public const string HEALTH_REGEN = "HealthRegen";
     public const string ARMOR = "Armor";
 
-    public const string MANA = "MaxMana";
+    public const string MANA = "Mana";
     public const string MANA_REGEN = "ManaRegen";
     public const string MOVE_SPEED = "MoveSpeed";
-    #endregion
+
+    public const string HP = "HP";
+    public const string MP = "MP";
+    public const string COOLDOWN = "CoolDown";
+
+    public const string SKILL_POINT = "SkillPoint";
+
 }

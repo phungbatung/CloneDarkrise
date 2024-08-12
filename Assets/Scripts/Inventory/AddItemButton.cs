@@ -16,6 +16,7 @@ public class AddItemButton : MonoBehaviour
     {
         int index = Random.Range(0, Inventory.Instance.itemDatabase.itemsData.Count);
         ItemData itemData = Inventory.Instance.itemDatabase.itemsData[index];
+        Debug.Log(itemData.quality.GetHashCode());
         if (itemData.type == ItemType.Equipment)
         {
             Dictionary<string, string> properties = new Dictionary<string, string>();
@@ -26,10 +27,12 @@ public class AddItemButton : MonoBehaviour
                 if (properties.ContainsKey(kvp.Key))
                 {
                     properties[kvp.Key] += $",{(int)Random.Range(float.Parse(kvp.Value) * .7f, float.Parse(kvp.Value) * 1.3f)}";
+                    Debug.Log($"{kvp.Key} {properties[kvp.Key]}");
                 }
                 else
                 {
                     properties[kvp.Key] = ((int)Random.Range(float.Parse(kvp.Value) * .7f, float.Parse(kvp.Value) * 1.3f)).ToString();
+                    Debug.Log($"{kvp.Key} {properties[kvp.Key]}");
                 }
             }
             Inventory.Instance.AddItem(itemData.id, properties);
