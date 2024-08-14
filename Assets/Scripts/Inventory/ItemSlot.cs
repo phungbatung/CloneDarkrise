@@ -42,7 +42,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         amount ++;
         UpdateUI();
     }
-    public void RemoveItem(int _id, int _amount=1)
+    public void RemoveItem(int _amount=1)
     {
         amount -= _amount;
         if (amount <= 0)
@@ -54,7 +54,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         }
         UpdateUI();
     }
-    public void RemoveAll(int _id)
+    public void RemoveAll()
     {
         amount=0;
         itemId = -1;
@@ -106,23 +106,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         slot1.UpdateUI();
         slot2.UpdateUI();
     }
-    public void AddProperties(Dictionary<string, string> _properties)
-    {
-        properties = _properties;
-    }
-    public void RemoveProperties()
-    {
-        properties.Clear();
-    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.dragging)
             return;
-        string s = "";
-        foreach (var property in properties)
-            s += $"{property.Key}: {property.Value}. ";
-        Debug.Log(s);
+        if (itemId == -1)
+            return;
+        UI_Manager.Instance.itemInfo.SetItemInfo(this);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
