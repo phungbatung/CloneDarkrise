@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BtnClose : MonoBehaviour
 {
-    [SerializeField] private Button closeButton;
+    private Button closeButton;
     [SerializeField] private GameObject gameObjectToClose;
 
     private void Awake()

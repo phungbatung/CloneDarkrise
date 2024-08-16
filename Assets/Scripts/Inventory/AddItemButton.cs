@@ -7,12 +7,13 @@ using UnityEngine.UI;
 public class AddItemButton : MonoBehaviour
 {
     public Button btn;
+    public GameObject itemObjectPrefab;
     private void Awake()
     {
         btn = GetComponent<Button>();
-        btn.onClick.AddListener(AddItem);
+        btn.onClick.AddListener(SpawnItemObject);
     }
-    public void AddItem()
+    public void AddItemInventory()
     {
         int index = Random.Range(0, Inventory.Instance.itemDatabase.itemsData.Count);
         ItemData itemData = Inventory.Instance.itemDatabase.itemsData[index];
@@ -42,5 +43,11 @@ public class AddItemButton : MonoBehaviour
             Inventory.Instance.AddItem(itemData.id);
         }
 
+    }
+    public void SpawnItemObject()
+    {
+        int index = Random.Range(0, Inventory.Instance.itemDatabase.itemsData.Count);
+        GameObject itemGameObject = Instantiate(itemObjectPrefab);
+        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(Inventory.Instance.itemDatabase.itemsData[index].id, Vector2.zero);
     }
 }

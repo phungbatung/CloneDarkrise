@@ -23,17 +23,17 @@ public class ItemInfo : MonoBehaviour
     }
     public void SetItemInfo(ItemSlot _itemSlot)
     {
-        itemSlot = _itemSlot;
         gameObject.SetActive(true);
+        itemSlot = _itemSlot;
         ItemData item = Inventory.Instance.itemDatabase.itemDataDictionary[_itemSlot.itemId];
         itemIcon.sprite = item.icon;
         itemName.text = item.name;
         itemType.text = item.type.ToString();
         itemQuality.text = item.quality.ToString();
         string description = "";
-        if (item.type==ItemType.Equipment)
+        if (item.type == ItemType.Equipment)
         {
-            foreach(var property in _itemSlot.properties)
+            foreach (var property in _itemSlot.properties)
             {
                 string[] values = property.Value.Split(new char[] { ',' });
                 foreach (var value in values)
@@ -45,10 +45,10 @@ public class ItemInfo : MonoBehaviour
         else
             description = $"{item.description}\n";
         itemDescription.text = description;
-        float height = maxHeight;
-        if (content.sizeDelta.y < height)
-            height = content.sizeDelta.y;
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x, height);
+        //float height = maxHeight;
+        //if (content.sizeDelta.y < height)
+        //    height = content.sizeDelta.y;
+        //rect.sizeDelta = new Vector2(content.sizeDelta.x, height);
     }
     public void EquipCurrentItem()
     {
