@@ -38,6 +38,7 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cd = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<CharacterStats>();
+        Debug.Log("log1");
     }
     protected virtual void Start()
     {
