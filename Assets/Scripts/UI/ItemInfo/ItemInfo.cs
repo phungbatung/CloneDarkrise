@@ -25,7 +25,7 @@ public class ItemInfo : MonoBehaviour
     {
         gameObject.SetActive(true);
         itemSlot = _itemSlot;
-        ItemData item = Inventory.Instance.itemDatabase.itemDataDictionary[_itemSlot.itemId];
+        ItemData item = Inventory.Instance.itemsDict[_itemSlot.itemId];
         itemIcon.sprite = item.icon;
         itemName.text = item.name;
         itemType.text = item.type.ToString();

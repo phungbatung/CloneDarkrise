@@ -24,10 +24,10 @@ public class PlayerAirState : CharacterState
     {
         base.Update();
         player.anim.SetFloat("yVelocity", player.rb.velocity.y);
-        player.SetVelocity(xInput * 9f, player.rb.velocity.y);
-        if (InputManager.Instance.isDashKeyPress)
-            stateMachine.ChangeState(player.dashState);
-        if (InputManager.Instance.isBaseAttackPress)
+        player.SetVelocity(xInput * player.stats.moveSpeed.GetValue(), player.rb.velocity.y);
+        if (SkillManager.Instance.dash.CanBeUse())
+            SkillManager.Instance.dash.Called();
+        if (SkillManager.Instance.baseAttack.CanBeUse())
             SkillManager.Instance.baseAttack.Called();
     }
 }

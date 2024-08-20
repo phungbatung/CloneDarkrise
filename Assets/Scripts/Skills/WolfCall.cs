@@ -10,6 +10,7 @@ public class WolfCall : Skill
     [SerializeField] private Vector3 spawnPosition;
     public override void Called()
     {
+        base.Called();
         player.stateMachine.ChangeState(player.wolfCall);
     }
 

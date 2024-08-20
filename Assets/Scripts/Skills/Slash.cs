@@ -8,6 +8,7 @@ public class Slash : Skill
     [SerializeField] private float attackRadius;
     public override void Called()
     {
+        base.Called();
         player.stateMachine.ChangeState(player.slashState);
     }
 

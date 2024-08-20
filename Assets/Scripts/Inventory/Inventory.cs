@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
 
     public ItemDatabase itemDatabase;
+    public Dictionary<int, ItemData> itemsDict = new Dictionary<int, ItemData>();
 
     public Transform itemSlotsParent;
     public List<ItemSlot> inventorySlots;
@@ -26,6 +27,7 @@ public class Inventory : MonoBehaviour
         inventorySlots.TrimExcess();
         equipmentSlots = equipmentSlotsParent.GetComponentsInChildren<ItemSlot>().ToList();
         equipmentSlots.TrimExcess();
+        GenerateItemDataDictionary();
     }
     public void AddItem(int _itemId, Dictionary<string, string> properties = null)
     {
@@ -131,6 +133,13 @@ public class Inventory : MonoBehaviour
         }
         ItemSlot.SwapItemSlot(listItemSlot[i + 1], listItemSlot[high]);
         return (i + 1);
+    }
+    public void GenerateItemDataDictionary()
+    {
+        foreach (ItemData item in itemDatabase.itemsData)
+        {
+            itemsDict[item.id] = item;
+        }
     }
     [ContextMenu("Fill up item database")]
     public void FillUpItemDataBase()

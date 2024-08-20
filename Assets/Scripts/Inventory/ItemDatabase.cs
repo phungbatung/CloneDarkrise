@@ -1,27 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using static UnityEditor.Progress;
 
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Data/ItemDataBase")]
 public class ItemDatabase : ScriptableObject
 {
     public List<ItemData> itemsData;
-    public SerializableDictionary<int, ItemData> itemDataDictionary = new SerializableDictionary<int, ItemData>(); 
 
     public void FillUpDatabase()
     {
+        Dictionary<int, ItemData> itemDataDictionary = new Dictionary<int, ItemData>();
         itemsData.Clear();
-        itemDataDictionary.Clear();
-        FillUpGeneralData();
-        FillUpEquipmentProperties();
-        FillUpPotionProperties();
-        FillUpSkillBookProperties();
-        FillUpBuffProperties();
-        FillUpMagicDustProperties();
+        FillUpGeneralData(itemDataDictionary);
+        FillUpEquipmentProperties(itemDataDictionary);
+        FillUpPotionProperties(itemDataDictionary);
+        FillUpSkillBookProperties(itemDataDictionary);
+        FillUpBuffProperties(itemDataDictionary);
+        FillUpMagicDustProperties(itemDataDictionary);
     }
 
-    private void FillUpGeneralData()
+    private void FillUpGeneralData(Dictionary<int, ItemData> itemDataDictionary)
     {
         string[] paths = { "Rare", "Epic", "Legend" };
         List<Sprite> sprites = new List<Sprite>();
@@ -53,7 +51,7 @@ public class ItemDatabase : ScriptableObject
             }
         }
     }
-    private void FillUpEquipmentProperties()
+    private void FillUpEquipmentProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string equipmentsData = Resources.Load<TextAsset>("ItemDataBase\\EquipmentData").text;
         string[] listEquipmentData = equipmentsData.Split(new char[] { '\n' });
@@ -89,7 +87,7 @@ public class ItemDatabase : ScriptableObject
             }
         }
     }
-    private void FillUpPotionProperties()
+    private void FillUpPotionProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string potionsData = Resources.Load<TextAsset>("ItemDataBase\\PotionData").text;
         string[] listPotionData = potionsData.Split(new char[] { '\n' });
@@ -109,7 +107,7 @@ public class ItemDatabase : ScriptableObject
             }
         }
     }
-    private void FillUpSkillBookProperties()
+    private void FillUpSkillBookProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string skillBooksData = Resources.Load<TextAsset>("ItemDataBase\\SkillBookData").text;
         string[] listSkillBookData = skillBooksData.Split(new char[] { '\n' });
@@ -125,7 +123,7 @@ public class ItemDatabase : ScriptableObject
             }
         }
     }
-    private void FillUpBuffProperties()
+    private void FillUpBuffProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string buffsData = Resources.Load<TextAsset>("ItemDataBase\\BuffData").text;
         string[] listBuffData = buffsData.Split(new char[] { '\n' });
@@ -145,7 +143,7 @@ public class ItemDatabase : ScriptableObject
             }
         }
     }
-    private void FillUpMagicDustProperties() 
+    private void FillUpMagicDustProperties(Dictionary<int, ItemData> itemDataDictionary) 
     {
         string magicDustsData = Resources.Load<TextAsset>("ItemDataBase\\MagicDustData").text;
         string[] listMagicDustData = magicDustsData.Split(new char[] { '\n' });

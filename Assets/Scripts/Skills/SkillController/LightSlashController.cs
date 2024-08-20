@@ -23,7 +23,7 @@ public class LightSlashController : MonoBehaviour
     }
     public void Attack()
     {
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, size, 0);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + new Vector3(size.x/2, 0, 0), size, 0);
         foreach (Collider2D collider in colliders)
         {
             IDamageable target = collider.GetComponent<IDamageable>();

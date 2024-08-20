@@ -9,8 +9,8 @@ using Unity.Mathematics;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    public int itemId;
-    public int amount;
+    public int itemId { get; set; }
+    public int amount { get; set; }
 
 
     [SerializeField] private Image itemImage;
@@ -67,7 +67,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     }
     public bool CanBeAdded(int _addAmount = 1)
     {
-        return amount + _addAmount <= Inventory.Instance.itemDatabase.itemDataDictionary[itemId].maxSize;
+        return amount + _addAmount <= Inventory.Instance.itemsDict[itemId].maxSize;
     }
     public void UpdateUI()
     {
@@ -80,7 +80,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         else
         {
             itemImage.color = new Color(1, 1, 1, 1);
-            itemImage.sprite = Inventory.Instance.itemDatabase.itemDataDictionary[itemId].icon;
+            itemImage.sprite = Inventory.Instance.itemsDict[itemId].icon;
             if (amount <= 1)
                 amountText.text = "";
             else
@@ -147,7 +147,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             if (inventory.equipmentSlots.Contains(toDropSlot))
                 return;
             //Cannot drop none equipment to equipment slot
-            if (inventory.itemDatabase.itemDataDictionary[toDropSlot.itemId].type != ItemType.Equipment)
+            if (inventory.itemsDict[toDropSlot.itemId].type != ItemType.Equipment)
                 return;
             //Cannot drop equipment other than the equipment type of this equipment slot
             if (inventory.GetEquipmentTypeById(toDropSlot.itemId) != inventory.equipmentSlots.IndexOf(this))
@@ -168,7 +168,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 return;
             }
             //Cannot swap item from equipment slot to none equipment
-            if (inventory.itemDatabase.itemDataDictionary[itemId].type != ItemType.Equipment)
+            if (inventory.itemsDict[itemId].type != ItemType.Equipment)
                 return;
             //Cannot swap item from equipment slot to another equipment of different type
             if (inventory.GetEquipmentTypeById(itemId) != inventory.GetEquipmentTypeById(toDropSlot.itemId))
@@ -186,8 +186,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (slot1.itemId == -1 && _itemSlot.itemId != -1) return 1;
         if (slot1.itemId != -1 && _itemSlot.itemId == -1) return -1;
         if (slot1.itemId == -1 && _itemSlot.itemId == -1) return 0;
-        ItemData item1 = Inventory.Instance.itemDatabase.itemDataDictionary[slot1.itemId];
-        ItemData item2 = Inventory.Instance.itemDatabase.itemDataDictionary[_itemSlot.itemId];
+        ItemData item1 = Inventory.Instance.itemsDict[slot1.itemId];
+        ItemData item2 = Inventory.Instance.itemsDict[_itemSlot.itemId];
         if (item1.type > item2.type) return 1;
         if (item1.type<item2.type) return -1;
         if (item1.quality<item2.quality) return 1;
@@ -199,8 +199,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (slot1.itemId == -1 && slot2.itemId != -1) return 1;
         if (slot1.itemId != -1 && slot2.itemId == -1) return -1;
         if (slot1.itemId == -1 && slot2.itemId == -1) return 0;
-        ItemData item1 = Inventory.Instance.itemDatabase.itemDataDictionary[slot1.itemId];
-        ItemData item2 = Inventory.Instance.itemDatabase.itemDataDictionary[slot2.itemId];
+        ItemData item1 = Inventory.Instance.itemsDict[slot1.itemId];
+        ItemData item2 = Inventory.Instance.itemsDict[slot2.itemId];
         if (item1.quality<item2.quality) return 1;
         if (item1.quality > item2.quality) return -1;
         if (item1.type > item2.type) return 1;

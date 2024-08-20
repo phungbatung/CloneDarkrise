@@ -18,4 +18,5 @@ public class BtnClose : MonoBehaviour
     {
         gameObjectToClose.SetActive(false);
     }
+
 }

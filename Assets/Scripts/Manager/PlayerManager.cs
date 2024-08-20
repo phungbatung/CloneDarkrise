@@ -12,6 +12,5 @@ public class PlayerManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        Debug.Log("log3");
     }
 }

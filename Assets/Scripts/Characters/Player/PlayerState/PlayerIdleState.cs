@@ -21,8 +21,11 @@ public class PlayerIdleState : PlayerGroundedState
 
     public override void Update()
     {
-        base.Update();
         if (InputManager.Instance.horizontalInput != 0)
+        {
             stateMachine.ChangeState(player.moveState);
+            return;
+        }
+        base.Update();
     }
 }

@@ -32,10 +32,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: d3892676cc694ee48ad1373680a3208d, type: 3}
     - time: 0.41666666
       value: {fileID: 21300000, guid: 065688fc4b998f349a1345b1f98c8f10, type: 3}
-    - time: 0.5
-      value: {fileID: 21300000, guid: 4f1a9dc1ceef5f845bdbdaf868b3a729, type: 3}
-    - time: 0.5833333
-      value: {fileID: 21300000, guid: 7c58ed13d4a4596489090052c4d84111, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -64,14 +60,12 @@ AnimationClip:
     - {fileID: 21300000, guid: b6d41a74348015642aea7d08dcd94b13, type: 3}
     - {fileID: 21300000, guid: d3892676cc694ee48ad1373680a3208d, type: 3}
     - {fileID: 21300000, guid: 065688fc4b998f349a1345b1f98c8f10, type: 3}
-    - {fileID: 21300000, guid: 4f1a9dc1ceef5f845bdbdaf868b3a729, type: 3}
-    - {fileID: 21300000, guid: 7c58ed13d4a4596489090052c4d84111, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666666
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -98,7 +92,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5833333
+  - time: 0.41666666
     functionName: TriggerAnimation
     data: 
     objectReferenceParameter: {fileID: 0}

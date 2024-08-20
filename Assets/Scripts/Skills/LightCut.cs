@@ -11,6 +11,7 @@ public class LightCut : Skill
     [SerializeField] private Vector2 slashSize;
     public override void Called()
     {
+        base.Called();
         player.stateMachine.ChangeState(player.lightCut);
     }
 
