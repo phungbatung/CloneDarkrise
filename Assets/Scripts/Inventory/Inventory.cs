@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -8,15 +9,18 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
 
     public ItemDatabase itemDatabase;
+
     public Dictionary<int, ItemData> itemsDict = new Dictionary<int, ItemData>();
 
     public Transform itemSlotsParent;
-    public List<ItemSlot> inventorySlots;
+    public List<ItemSlot> inventorySlots { get; set; }
 
     public Transform equipmentSlotsParent;
-    public List<ItemSlot> equipmentSlots;
+    public List<ItemSlot> equipmentSlots { get; set; }
 
     public Transform moveItem;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,36 +31,38 @@ public class Inventory : MonoBehaviour
         inventorySlots.TrimExcess();
         equipmentSlots = equipmentSlotsParent.GetComponentsInChildren<ItemSlot>().ToList();
         equipmentSlots.TrimExcess();
+        //FillUpItemDataBase();
+        //tmp.text = itemDatabase.itemList.Count.ToString();
         GenerateItemDataDictionary();
     }
+
     public void AddItem(int _itemId, Dictionary<string, string> properties = null)
     {
-        //Try to add item to available slot
-        List<ItemSlot> slots = GetItemSlotByItemId(_itemId);
-        foreach (var slot in slots)
+        ItemSlot emptySlot = null;
+        foreach (ItemSlot slot in inventorySlots)
         {
-            if (slot.CanBeAdded())
+            if (_itemId == slot.itemId && slot.CanBeAdded())
             {
                 slot.AddItem(_itemId, properties);
                 return;
             }
+            if (slot.IsEmpty() && emptySlot == null)
+                emptySlot = slot;
         }
-        //Add item to first empty slot
-        foreach (ItemSlot slot in inventorySlots)
+        if (emptySlot!= null)
         {
-            if (slot.IsEmpty())
-            {
-                slot.AddItem(_itemId, 1, properties);
-                return;
-            }
+            emptySlot.AddItem(_itemId, properties);
+            return;
         }
 
         Debug.Log("Inventory is full.");
     }
+
     public void RemoveItem()
     {
 
     }
+
     public List<ItemSlot> GetItemSlotByItemId(int _itemId)
     {
         List<ItemSlot> listItem = new List<ItemSlot>();
@@ -67,6 +73,7 @@ public class Inventory : MonoBehaviour
         }
         return listItem;
     }
+
     public void EquipItem(ItemSlot _itemSlot)
     {
         ItemSlot slotToEquip = equipmentSlots[GetEquipmentTypeById(_itemSlot.itemId)];
@@ -75,6 +82,7 @@ public class Inventory : MonoBehaviour
         ItemSlot.SwapItemSlot(_itemSlot, slotToEquip);
         PlayerManager.Instance.player.stats.AddModifier(slotToEquip.properties);
     }
+
     public void UnequipItem(ItemSlot _itemSlot, int _indexToPutUnequipItem = -1)
     {
         int index;
@@ -87,7 +95,9 @@ public class Inventory : MonoBehaviour
         PlayerManager.Instance.player.stats.RemoveModifier(_itemSlot.properties);
         ItemSlot.SwapItemSlot(_itemSlot, inventorySlots[index]);
     }
+
     public int GetEquipmentTypeById(int _itemId) => (_itemId / 1000) % 10;
+
     public int GetFirstEmptySlotInInventory()
     {
         for (int i = 0; i < inventorySlots.Count; i++)
@@ -99,14 +109,17 @@ public class Inventory : MonoBehaviour
         }
         return -1;
     }
+
     public void SortItemByItemType(List<ItemSlot> listItemSlot)
     {
         QuickSort(listItemSlot, 0, listItemSlot.Count - 1, ItemSlot.CompareByItemId);
     }
+
     public void SortItemByItemQuality(List<ItemSlot> listItemSlot)
     {
         QuickSort(listItemSlot, 0, listItemSlot.Count - 1, ItemSlot.CompareByItemQuality);
     }
+
     public void QuickSort(List<ItemSlot> listItemSlot, int low, int high, Func<ItemSlot, ItemSlot, int> Compare)
     {
         //Sort by swap value
@@ -118,6 +131,7 @@ public class Inventory : MonoBehaviour
 
         }
     }
+
     public int Partition(List<ItemSlot> listItemSlot, int low, int high, Func<ItemSlot, ItemSlot, int> Compare)
     {
         ItemSlot pivot = listItemSlot[high];
@@ -134,13 +148,15 @@ public class Inventory : MonoBehaviour
         ItemSlot.SwapItemSlot(listItemSlot[i + 1], listItemSlot[high]);
         return (i + 1);
     }
+
     public void GenerateItemDataDictionary()
     {
-        foreach (ItemData item in itemDatabase.itemsData)
+        foreach (ItemData item in itemDatabase.itemList)
         {
             itemsDict[item.id] = item;
         }
     }
+
     [ContextMenu("Fill up item database")]
     public void FillUpItemDataBase()
     {

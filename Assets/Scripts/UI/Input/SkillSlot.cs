@@ -14,13 +14,6 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         textCoolDown = GetComponentInChildren<TextMeshProUGUI>();
     }
-    private void Update()
-    {
-        if (gameObject.name=="Dash")
-        {
-            Debug.Log(image.color.a);
-        }
-    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         isPressed = true;

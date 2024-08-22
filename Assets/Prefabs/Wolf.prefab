@@ -299,7 +299,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   moveSpeed:
-    baseValue: 7
+    baseValue: 3
     modifiers: 
   currentHealth: 0
   currentMana: 0
@@ -337,7 +337,6 @@ MonoBehaviour:
     m_Bits: 0
   player: {fileID: 0}
   maxDistanceToPlayer: 3
-  enemies: []
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

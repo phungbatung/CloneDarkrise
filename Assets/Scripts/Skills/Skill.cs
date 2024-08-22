@@ -19,7 +19,6 @@ public class Skill : MonoBehaviour
     protected virtual void Start()
     {
         player = PlayerManager.Instance.player;
-        Debug.Log($"{slot.name}: {slot.image.color.a}");
     }
     protected virtual void Update()
     {

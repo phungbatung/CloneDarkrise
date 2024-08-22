@@ -15,8 +15,8 @@ public class AddItemButton : MonoBehaviour
     }
     public void AddItemInventory()
     {
-        int index = Random.Range(0, Inventory.Instance.itemDatabase.itemsData.Count);
-        ItemData itemData = Inventory.Instance.itemDatabase.itemsData[index];
+        int index = Random.Range(0, Inventory.Instance.itemDatabase.itemList.Count);
+        ItemData itemData = Inventory.Instance.itemDatabase.itemList[index];
         Debug.Log(itemData.quality.GetHashCode());
         if (itemData.type == ItemType.Equipment)
         {
@@ -46,8 +46,8 @@ public class AddItemButton : MonoBehaviour
     }
     public void SpawnItemObject()
     {
-        int index = Random.Range(0, Inventory.Instance.itemDatabase.itemsData.Count);
+        int index = Random.Range(0, Inventory.Instance.itemDatabase.itemList.Count);
         GameObject itemGameObject = Instantiate(itemObjectPrefab);
-        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(Inventory.Instance.itemDatabase.itemsData[index].id, Vector2.zero);
+        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(Inventory.Instance.itemDatabase.itemList[index].id, Vector2.zero);
     }
 }

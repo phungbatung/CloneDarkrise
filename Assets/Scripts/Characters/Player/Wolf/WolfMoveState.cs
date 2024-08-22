@@ -14,6 +14,7 @@ public class WolfMoveState : CharacterState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("mvoe");
     }
 
     public override void Exit()

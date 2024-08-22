@@ -1,24 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Data/ItemDataBase")]
 public class ItemDatabase : ScriptableObject
 {
-    public List<ItemData> itemsData;
-
+    public List<ItemData> itemList = new List<ItemData>();
+  
     public void FillUpDatabase()
     {
-        Dictionary<int, ItemData> itemDataDictionary = new Dictionary<int, ItemData>();
-        itemsData.Clear();
-        FillUpGeneralData(itemDataDictionary);
-        FillUpEquipmentProperties(itemDataDictionary);
-        FillUpPotionProperties(itemDataDictionary);
-        FillUpSkillBookProperties(itemDataDictionary);
-        FillUpBuffProperties(itemDataDictionary);
-        FillUpMagicDustProperties(itemDataDictionary);
+        Dictionary<int, ItemData> itemDict = new Dictionary<int, ItemData>();
+        itemList.Clear();
+        FillUpGeneralData(itemDict); //fill common properties
+        FillUpEquipmentProperties(itemDict);
+        FillUpPotionProperties(itemDict);
+        FillUpSkillBookProperties(itemDict);
+        FillUpBuffProperties(itemDict);
+        FillUpMagicDustProperties(itemDict);
+        SaveAsset(this);
     }
-
+    void SaveAsset(Object @object)
+    {
+        EditorUtility.SetDirty(@object);
+        AssetDatabase.SaveAssets();
+    }
     private void FillUpGeneralData(Dictionary<int, ItemData> itemDataDictionary)
     {
         string[] paths = { "Rare", "Epic", "Legend" };
@@ -45,73 +51,63 @@ public class ItemDatabase : ScriptableObject
                 item.level = int.Parse(data[3]);
                 item.description = data[4];
                 item.maxSize = int.Parse(data[5]);
-                itemsData.Add(item);
+                itemList.Add(item);
                 itemDataDictionary[item.id] = item;
-                Debug.Log($"{itemDataDictionary[item.id].id}");
+                //Debug.Log($"{itemDataDictionary[item.id].id}");
             }
         }
     }
+
     private void FillUpEquipmentProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string equipmentsData = Resources.Load<TextAsset>("ItemDataBase\\EquipmentData").text;
         string[] listEquipmentData = equipmentsData.Split(new char[] { '\n' });
         ItemData item;
+        string[] propertiesName = { "", Constant.DAMAGE, Constant.ATTACK_SPEED, Constant.ARMOR_PENETRATION, 
+                                        Constant.CRITICAL_RATE, Constant.CRITICAL_DAMAGE, Constant.HEALTH, Constant.HEALTH_REGEN,
+                                        Constant.ARMOR, Constant.MANA, Constant.MANA_REGEN, Constant.MOVE_SPEED};
         for (int i = 1; i < listEquipmentData.Length; i++)
         {
             string[] data = listEquipmentData[i].Split(new char[] { ',', '\r' });
-            if (data[0] != "")
+            if (int.TryParse(data[0], out int _id))
             {
-                item = itemDataDictionary[int.Parse(data[0])];
-                if (data[1] != "0")
-                    item.properties[Constant.DAMAGE] = data[1];
-                if (data[2] != "0")
-                    item.properties[Constant.ATTACK_SPEED] = data[2];
-                if (data[3] != "0")
-                    item.properties[Constant.ARMOR_PENETRATION] = data[3];
-                if (data[4] != "0")
-                    item.properties[Constant.CRITICAL_RATE] = data[4];
-                if (data[5] != "0")
-                    item.properties[Constant.CRITICAL_DAMAGE] = data[5];
-                if (data[6] != "0")
-                    item.properties[Constant.HEALTH] = data[6];
-                if (data[7] != "0")
-                    item.properties[Constant.HEALTH_REGEN] = data[7];
-                if (data[8] != "0")
-                    item.properties[Constant.ARMOR] = data[8];
-                if (data[9] != "0")
-                    item.properties[Constant.MANA] = data[9];
-                if (data[10] != "0")
-                    item.properties[Constant.MANA_REGEN] = data[10];
-                if (data[11] != "0")
-                    item.properties[Constant.MOVE_SPEED] = data[11];
+                item = itemDataDictionary[_id];
+                for (int j = 1; j < data.Length; j++)
+                {
+                    if (data[j] != "0" && data[j].Length!=0)
+                        item.properties[propertiesName[j]] = data[j];
+                }
             }
         }
     }
+
     private void FillUpPotionProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string potionsData = Resources.Load<TextAsset>("ItemDataBase\\PotionData").text;
         string[] listPotionData = potionsData.Split(new char[] { '\n' });
         ItemData item;
+        string[] propertiesName = { "", Constant.HEALTH, Constant.MANA, Constant.COOLDOWN};
         for (int i=1; i<listPotionData.Length; i++)
         {
             string[] data = listPotionData[i].Split(new char[] { ',', '\r' });
-            if (data[0] != "")
+            if (int.TryParse(data[0], out int _id))
             {
-                item = itemDataDictionary[int.Parse(data[0])];
-                if (data[1] != "0")
-                    item.properties[Constant.HEALTH] = data[1];
-                if (data[2] != "0")
-                    item.properties[Constant.MANA] = data[2];
-                if (data[3] != "0")
-                    item.properties[Constant.COOLDOWN] = data[3];
+                item = itemDataDictionary[_id];
+                for (int j = 1; j < data.Length; j++)
+                {
+                    if (data[j] != "0" && data[j].Length != 0)
+                        item.properties[propertiesName[j]] = data[j];
+                }
             }
         }
     }
+
     private void FillUpSkillBookProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string skillBooksData = Resources.Load<TextAsset>("ItemDataBase\\SkillBookData").text;
         string[] listSkillBookData = skillBooksData.Split(new char[] { '\n' });
         ItemData item;
+        
         for (int i = 1; i < listSkillBookData.Length; i++)
         {
             string[] data = listSkillBookData[i].Split(new char[] { ',', '\r' });
@@ -123,42 +119,47 @@ public class ItemDatabase : ScriptableObject
             }
         }
     }
+
     private void FillUpBuffProperties(Dictionary<int, ItemData> itemDataDictionary)
     {
         string buffsData = Resources.Load<TextAsset>("ItemDataBase\\BuffData").text;
         string[] listBuffData = buffsData.Split(new char[] { '\n' });
         ItemData item;
+        string[] propertiesName = { "", Constant.HEALTH, Constant.MANA, Constant.COOLDOWN };
         for (int i = 1; i < listBuffData.Length; i++)
         {
             string[] data = listBuffData[i].Split(new char[] { ',', '\r' });
-            if (data[0] != "")
+            if (int.TryParse(data[0], out int _id))
             {
-                item = itemDataDictionary[int.Parse(data[0])];
-                if (data[1] != "0")
-                    item.properties[Constant.HEALTH] = data[1];
-                if (data[2] != "0")
-                    item.properties[Constant.MANA] = data[2];
-                if (data[3] != "0")
-                    item.properties[Constant.COOLDOWN] = data[3];
+                item = itemDataDictionary[_id];
+                for (int j = 1; j < data.Length; j++)
+                {
+                    if (data[j] != "0" && data[j].Length != 0)
+                        item.properties[propertiesName[j]] = data[j];
+                }
             }
         }
     }
+
     private void FillUpMagicDustProperties(Dictionary<int, ItemData> itemDataDictionary) 
     {
         string magicDustsData = Resources.Load<TextAsset>("ItemDataBase\\MagicDustData").text;
         string[] listMagicDustData = magicDustsData.Split(new char[] { '\n' });
         ItemData item;
+        string[] propertiesName = { "", Constant.DAMAGE, Constant.HEALTH };
         for (int i = 1; i < listMagicDustData.Length; i++)
         {
             string[] data = listMagicDustData[i].Split(new char[] { ',', '\r' });
-            if (data[0] != "")
+            if (int.TryParse(data[0], out int _id))
             {
-                item = itemDataDictionary[int.Parse(data[0])];
-                if (data[1] != "0")
-                    item.properties[Constant.DAMAGE] = data[1];
-                if (data[2] != "0")
-                    item.properties[Constant.HEALTH] = data[2];
+                item = itemDataDictionary[_id];
+                for (int j = 1; j < data.Length; j++)
+                {
+                    if (data[j] != "0" && data[j].Length != 0)
+                        item.properties[propertiesName[j]] = data[j];
+                }
             }
+
         }
     }
 
