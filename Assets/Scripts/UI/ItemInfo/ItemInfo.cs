@@ -10,6 +10,9 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private RectTransform content;
     [SerializeField] private float maxHeight;
 
+    [SerializeField] private BtnEquipItem equipButton;
+    [SerializeField] private BtnRemoveItem removeItem;
+
     private ItemSlot itemSlot;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
@@ -25,7 +28,7 @@ public class ItemInfo : MonoBehaviour
     {
         gameObject.SetActive(true);
         itemSlot = _itemSlot;
-        ItemData item = Inventory.Instance.itemsDict[_itemSlot.itemId];
+        ItemData item = Inventory.Instance.itemDict[_itemSlot.itemInventory.itemId];
         itemIcon.sprite = item.icon;
         itemName.text = item.name;
         itemType.text = item.type.ToString();
@@ -33,7 +36,7 @@ public class ItemInfo : MonoBehaviour
         string description = "";
         if (item.type == ItemType.Equipment)
         {
-            foreach (var property in _itemSlot.properties)
+            foreach (var property in _itemSlot.itemInventory.properties)
             {
                 string[] values = property.Value.Split(new char[] { ',' });
                 foreach (var value in values)
@@ -53,9 +56,20 @@ public class ItemInfo : MonoBehaviour
     public void EquipCurrentItem()
     {
         Inventory.Instance.EquipItem(itemSlot);
+        gameObject.SetActive(false);
     }
     public void RemoveItem()
     {
         itemSlot.RemoveAll();
+        gameObject.SetActive(false);
+    }
+    public void AssignPotionToSlot()
+    {
+        InputManager.Instance.potionSlot.AssignPotion(itemSlot.itemInventory.itemId);
+    }
+    public void UsePotion()
+    {
+        Inventory.Instance.UsePotion(itemSlot);
+        gameObject.SetActive(false);
     }
 }

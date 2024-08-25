@@ -49,11 +49,13 @@ public class PlayerPrimaryAttack : CharacterState
             player.anim.SetInteger("airCounter", airComboCounter);
             airComboCounter++; 
         }
+        player.anim.speed = player.stats.attackSpeed.GetValue() * 1.0f / player.stats.attackSpeed.BaseValue;
     }
 
     public override void Exit()
     {
         base.Exit();
+        player.anim.speed = 1;
         if (player.IsGrounded())
             groundLastTimeAttack = Time.time;
         else

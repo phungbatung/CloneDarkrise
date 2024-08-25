@@ -9,69 +9,27 @@ using Unity.Mathematics;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    public int itemId { get; set; }
-    public int amount { get; set; }
+    //public int itemId { get; set; }
+    //public int amount { get; set; }
 
+    //public Dictionary<string, string> properties;
+
+    public ItemInventory itemInventory;
 
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI amountText;
 
-    public Dictionary<string, string> properties;
     private void Awake()
     {
-        itemId = -1;
-        amount = 0;
-        properties = new Dictionary<string, string>();
+        //itemId = -1;
+        //amount = 0;
+        //properties = new Dictionary<string, string>();
+        itemInventory = new ItemInventory();
         UpdateUI();
-    }
-    public void AddItem(int _id, int _amount = 1, Dictionary<string, string> _properties = null)
-    {
-        if (itemId == -1)
-            itemId = _id;
-        if (_properties != null)
-            properties = _properties;
-        amount += _amount;
-        UpdateUI();
-    }
-    public void AddItem(int _id, Dictionary<string, string> _properties = null)
-    {
-        if (itemId == -1)
-            itemId = _id;
-        if (_properties != null)
-            properties = _properties;
-        amount ++;
-        UpdateUI();
-    }
-    public void RemoveItem(int _amount=1)
-    {
-        amount -= _amount;
-        if (amount <= 0)
-            itemId = -1;
-        if (amount <= 0)
-        {
-            itemId = -1;
-            properties.Clear();
-        }
-        UpdateUI();
-    }
-    public void RemoveAll()
-    {
-        amount=0;
-        itemId = -1;
-        properties.Clear();
-        UpdateUI();
-    }
-    public bool IsEmpty()
-    {
-        return itemId == -1;
-    }
-    public bool CanBeAdded(int _addAmount = 1)
-    {
-        return amount + _addAmount <= Inventory.Instance.itemsDict[itemId].maxSize;
     }
     public void UpdateUI()
     {
-        if (itemId == -1)
+        if (itemInventory.itemId == -1)
         {
             itemImage.color = new Color(1, 1, 1, 0);
             itemImage.sprite = null;
@@ -80,28 +38,47 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         else
         {
             itemImage.color = new Color(1, 1, 1, 1);
-            itemImage.sprite = Inventory.Instance.itemsDict[itemId].icon;
-            if (amount <= 1)
+            itemImage.sprite = Inventory.Instance.itemDict[itemInventory.itemId].icon;
+            if (itemInventory.amount <= 1)
                 amountText.text = "";
             else
-                amountText.text = amount.ToString();
+                amountText.text = itemInventory.amount.ToString();
         }
+    }
+    public void AddItem(int _id, int _amount = 1, Dictionary<string, string> _properties = null)
+    {
+        itemInventory.AddItem(_id, _amount, _properties);
+        UpdateUI();
+    }
+    public void AddItem(int _id, Dictionary<string, string> _properties = null)
+    {
+        itemInventory.AddItem(_id, _properties);
+        UpdateUI();
+    }
+    public void RemoveItem(int _amount=1)
+    {
+        itemInventory.RemoveItem(_amount);
+        UpdateUI();
+    }
+    public void RemoveAll()
+    {
+        itemInventory.RemoveAll();
+        UpdateUI();
+    }
+    public bool IsEmpty()
+    {
+        return itemInventory.IsEmpty();
+    }
+    public bool CanBeAdded(int _addAmount = 1)
+    {
+        return itemInventory.CanBeAdded(_addAmount);
     }
 
     public static void SwapItemSlot(ItemSlot slot1, ItemSlot slot2)
     {
-        //Swap value
-        int tempId = slot1.itemId;
-        slot1.itemId = slot2.itemId;
-        slot2.itemId = tempId;
-
-        int tempAmount = slot1.amount;
-        slot1.amount = slot2.amount;
-        slot2.amount = tempAmount;
-
-        Dictionary<string, string> tempProperties = slot1.properties;
-        slot1.properties = slot2.properties;
-        slot2.properties = tempProperties;
+        ItemInventory temp = slot1.itemInventory;
+        slot1.itemInventory = slot2.itemInventory;
+        slot2.itemInventory = temp;
 
         slot1.UpdateUI();
         slot2.UpdateUI();
@@ -111,7 +88,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         if (eventData.dragging)
             return;
-        if (itemId == -1)
+        if (itemInventory.itemId == -1)
             return;
         UI_Manager.Instance.itemInfo.SetItemInfo(this);
     }
@@ -147,10 +124,10 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             if (inventory.equipmentSlots.Contains(toDropSlot))
                 return;
             //Cannot drop none equipment to equipment slot
-            if (inventory.itemsDict[toDropSlot.itemId].type != ItemType.Equipment)
+            if (inventory.itemDict[toDropSlot.itemInventory.itemId].type != ItemType.Equipment)
                 return;
             //Cannot drop equipment other than the equipment type of this equipment slot
-            if (inventory.GetEquipmentTypeById(toDropSlot.itemId) != inventory.equipmentSlots.IndexOf(this))
+            if (inventory.GetEquipmentTypeById(toDropSlot.itemInventory.itemId) != inventory.equipmentSlots.IndexOf(this))
                 return;
             //Equip
             inventory.EquipItem(toDropSlot);
@@ -162,16 +139,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (Inventory.Instance.equipmentSlots.Contains(toDropSlot))
         {
             //if slot to drop is empty then move item from equipment slot to this slot
-            if (itemId ==-1)
+            if (itemInventory.itemId ==-1)
             {
                 inventory.UnequipItem(toDropSlot, inventory.inventorySlots.IndexOf(this));
                 return;
             }
             //Cannot swap item from equipment slot to none equipment
-            if (inventory.itemsDict[itemId].type != ItemType.Equipment)
+            if (inventory.itemDict[itemInventory.itemId].type != ItemType.Equipment)
                 return;
             //Cannot swap item from equipment slot to another equipment of different type
-            if (inventory.GetEquipmentTypeById(itemId) != inventory.GetEquipmentTypeById(toDropSlot.itemId))
+            if (inventory.GetEquipmentTypeById(itemInventory.itemId) != inventory.GetEquipmentTypeById(toDropSlot.itemInventory.itemId))
                 return;
             //Equip this item if it is equipment of the same type
             inventory.EquipItem(this);
@@ -181,30 +158,12 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         SwapItemSlot(this, toDropSlot);
     }
 
-    public static int CompareByItemId(ItemSlot slot1, ItemSlot _itemSlot)
+    public static int CompareByItemId(ItemSlot slot1, ItemSlot slot2)
     {
-        if (slot1.itemId == -1 && _itemSlot.itemId != -1) return 1;
-        if (slot1.itemId != -1 && _itemSlot.itemId == -1) return -1;
-        if (slot1.itemId == -1 && _itemSlot.itemId == -1) return 0;
-        ItemData item1 = Inventory.Instance.itemsDict[slot1.itemId];
-        ItemData item2 = Inventory.Instance.itemsDict[_itemSlot.itemId];
-        if (item1.type > item2.type) return 1;
-        if (item1.type<item2.type) return -1;
-        if (item1.quality<item2.quality) return 1;
-        if (item1.quality > item2.quality) return -1;
-        return 0;
+        return ItemInventory.CompareByItemId(slot1.itemInventory, slot2.itemInventory);
     }
     public static int CompareByItemQuality(ItemSlot slot1, ItemSlot slot2)
     {
-        if (slot1.itemId == -1 && slot2.itemId != -1) return 1;
-        if (slot1.itemId != -1 && slot2.itemId == -1) return -1;
-        if (slot1.itemId == -1 && slot2.itemId == -1) return 0;
-        ItemData item1 = Inventory.Instance.itemsDict[slot1.itemId];
-        ItemData item2 = Inventory.Instance.itemsDict[slot2.itemId];
-        if (item1.quality<item2.quality) return 1;
-        if (item1.quality > item2.quality) return -1;
-        if (item1.type > item2.type) return 1;
-        if (item1.type<item2.type) return -1;
-        return 0;
+        return ItemInventory.CompareByItemQuality(slot1.itemInventory, slot2.itemInventory);
     }
 }

@@ -8,10 +8,6 @@ public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance;
 
-    [SerializeField] private Transform skillSlotParent;
-    [SerializeField] private List<SkillSlot> skillSlots;
-
-    //Skill
     public Dash dash;
     public BaseAttack baseAttack;
     public Slash slash;
@@ -25,7 +21,7 @@ public class SkillManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        skillSlots = skillSlotParent.GetComponentsInChildren<SkillSlot>().ToList();
+        
         dash = GetComponent<Dash>();
         baseAttack = GetComponent<BaseAttack>();
         slash = GetComponent<Slash>();
@@ -33,15 +29,19 @@ public class SkillManager : MonoBehaviour
         lightCut = GetComponent<LightCut>();
         wolfCall = GetComponent<WolfCall>();
 
+    }
+    private void Start()
+    {
         DefaulAssignSlot();
+        
     }
     public void DefaulAssignSlot()
     {
-        dash.AssignToSlot(skillSlots[0]);
-        baseAttack.AssignToSlot(skillSlots[1]);
-        slash.AssignToSlot(skillSlots[2]);
-        healWave.AssignToSlot(skillSlots[3]);
-        lightCut.AssignToSlot(skillSlots[4]);
-        wolfCall.AssignToSlot(skillSlots[5]);
+        dash.AssignToSlot(InputManager.Instance.skillSlots[0]);
+        baseAttack.AssignToSlot(InputManager.Instance.skillSlots[1]);
+        slash.AssignToSlot(InputManager.Instance.skillSlots[2]);
+        healWave.AssignToSlot(InputManager.Instance.skillSlots[3]);
+        lightCut.AssignToSlot(InputManager.Instance.skillSlots[4]);
+        wolfCall.AssignToSlot(InputManager.Instance.skillSlots[5]);
     }
 }

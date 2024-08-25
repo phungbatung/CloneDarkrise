@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: itemDatabase
   m_EditorClassIdentifier: 
   itemList:
-  - id: 111001
+  - id: 110001
     name: Wooden sword
     icon: {fileID: 1469091165, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 121001
+  - id: 120001
     name: Wooden sword
     icon: {fileID: 664935969, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -79,7 +79,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 131001
+  - id: 130001
     name: Wooden sword
     icon: {fileID: 1407668916, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 111002
+  - id: 110002
     name: Iron sword
     icon: {fileID: -469375745, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -145,7 +145,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 121002
+  - id: 120002
     name: Iron sword
     icon: {fileID: 2067794519, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -178,7 +178,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 131002
+  - id: 130002
     name: Iron sword
     icon: {fileID: -2100445558, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -211,7 +211,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 112001
+  - id: 111001
     name: Wooden shield
     icon: {fileID: 129716259, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -244,7 +244,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 122001
+  - id: 121001
     name: Wooden shield
     icon: {fileID: 1144936285, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -277,7 +277,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 132001
+  - id: 131001
     name: Wooden shield
     icon: {fileID: -976650181, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -310,7 +310,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 112002
+  - id: 111002
     name: Iron shield
     icon: {fileID: 62196301, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -343,7 +343,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 122002
+  - id: 121002
     name: Iron shield
     icon: {fileID: 596800514, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -376,7 +376,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 132002
+  - id: 131002
     name: Iron shield
     icon: {fileID: -1240032733, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -409,7 +409,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 113001
+  - id: 112001
     name: Leather gauntlet
     icon: {fileID: -1003383938, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 123001
+  - id: 122001
     name: Leather gauntlet
     icon: {fileID: -861412668, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -475,7 +475,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 133001
+  - id: 132001
     name: Leather gauntlet
     icon: {fileID: 2132896822, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -508,7 +508,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 113002
+  - id: 112002
     name: Iron gauntlet
     icon: {fileID: 665594913, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -541,7 +541,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 123002
+  - id: 122002
     name: Iron gauntlet
     icon: {fileID: -853115715, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -574,7 +574,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 133002
+  - id: 132002
     name: Iron gauntlet
     icon: {fileID: -291419356, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -607,7 +607,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 114001
+  - id: 113001
     name: Leather boots
     icon: {fileID: -1908731272, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -640,7 +640,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 124001
+  - id: 123001
     name: Leather boots
     icon: {fileID: 823650173, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -673,7 +673,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 134001
+  - id: 133001
     name: Leather boots
     icon: {fileID: 1934327133, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -706,7 +706,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 114002
+  - id: 113002
     name: Iron boots
     icon: {fileID: -885064185, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -739,7 +739,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 124002
+  - id: 123002
     name: Iron boots
     icon: {fileID: -93218536, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -772,7 +772,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 134002
+  - id: 133002
     name: Iron boots
     icon: {fileID: 1960359432, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -805,7 +805,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 115001
+  - id: 114001
     name: Leather chestplate
     icon: {fileID: -1183799550, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -838,7 +838,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 125001
+  - id: 124001
     name: Leather chestplate
     icon: {fileID: 1724928255, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -871,7 +871,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 135001
+  - id: 134001
     name: Leather chestplate
     icon: {fileID: -647379937, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -904,7 +904,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 115002
+  - id: 114002
     name: Iron chestplate
     icon: {fileID: -533646718, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -937,7 +937,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 125002
+  - id: 124002
     name: Iron chestplate
     icon: {fileID: 1548243101, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -970,7 +970,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 135002
+  - id: 134002
     name: Iron chestplate
     icon: {fileID: 1758748048, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -1003,7 +1003,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 116001
+  - id: 115001
     name: Leather pants
     icon: {fileID: 257684570, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -1036,7 +1036,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 126001
+  - id: 125001
     name: Leather pants
     icon: {fileID: -1470041946, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -1069,7 +1069,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 136001
+  - id: 135001
     name: Leather pants
     icon: {fileID: 1388162471, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -1102,7 +1102,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 116002
+  - id: 115002
     name: Fabric pants
     icon: {fileID: -538220125, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -1135,7 +1135,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 126002
+  - id: 125002
     name: Fabric pants
     icon: {fileID: 603703264, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -1168,7 +1168,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 136002
+  - id: 135002
     name: Fabric pants
     icon: {fileID: -1336740714, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -1201,7 +1201,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 117001
+  - id: 116001
     name: Leather helmet
     icon: {fileID: 1200858779, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -1234,7 +1234,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 127001
+  - id: 126001
     name: Leather helmet
     icon: {fileID: 1312302007, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -1267,7 +1267,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 137001
+  - id: 136001
     name: Leather helmet
     icon: {fileID: 1727724725, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -1300,7 +1300,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 117002
+  - id: 116002
     name: Iron helmet
     icon: {fileID: 921952505, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -1333,7 +1333,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 127002
+  - id: 126002
     name: Iron helmet
     icon: {fileID: -784216183, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -1366,7 +1366,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 137002
+  - id: 136002
     name: Iron helmet
     icon: {fileID: 919533521, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5
@@ -1399,7 +1399,7 @@ MonoBehaviour:
       - 60
       - 15
       - 6
-  - id: 118001
+  - id: 117001
     name: Gold ring
     icon: {fileID: 919855721, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 1
@@ -1432,7 +1432,7 @@ MonoBehaviour:
       - 10
       - 5
       - 1
-  - id: 128001
+  - id: 127001
     name: Gold ring
     icon: {fileID: -1363998936, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 1
@@ -1465,7 +1465,7 @@ MonoBehaviour:
       - 20
       - 7
       - 2
-  - id: 138001
+  - id: 137001
     name: Gold ring
     icon: {fileID: 426708809, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 1
@@ -1498,7 +1498,7 @@ MonoBehaviour:
       - 30
       - 9
       - 3
-  - id: 118002
+  - id: 117002
     name: Diamond ring
     icon: {fileID: 76700248, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
     level: 5
@@ -1531,7 +1531,7 @@ MonoBehaviour:
       - 40
       - 11
       - 4
-  - id: 128002
+  - id: 127002
     name: Diamond ring
     icon: {fileID: -136212527, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
     level: 5
@@ -1564,7 +1564,7 @@ MonoBehaviour:
       - 50
       - 13
       - 5
-  - id: 138002
+  - id: 137002
     name: Diamond ring
     icon: {fileID: -146122985, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
     level: 5

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
 {
     public Image image;
     private TextMeshProUGUI textCoolDown;
@@ -14,7 +14,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         textCoolDown = GetComponentInChildren<TextMeshProUGUI>();
     }
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         isPressed = true;
     }

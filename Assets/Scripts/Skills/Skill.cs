@@ -44,7 +44,13 @@ public class Skill : MonoBehaviour
     {
         isAssigned = true;
         slot = _skillSlot;
-        slot.image.sprite = skillIcon;
+        UpdateSprite();
+    }
+
+    protected virtual void UpdateSprite()
+    {
+        if (skillIcon != null)
+            slot.image.sprite = skillIcon;
     }
 
     public virtual void UnassignSlot()

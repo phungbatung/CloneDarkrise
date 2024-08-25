@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
 
     public ItemDatabase itemDatabase;
 
-    public Dictionary<int, ItemData> itemsDict = new Dictionary<int, ItemData>();
+    public Dictionary<int, ItemData> itemDict = new Dictionary<int, ItemData>();
 
     public Transform itemSlotsParent;
     public List<ItemSlot> inventorySlots { get; set; }
@@ -37,13 +37,14 @@ public class Inventory : MonoBehaviour
     }
 
     public void AddItem(int _itemId, Dictionary<string, string> properties = null)
-    {
-        ItemSlot emptySlot = null;
+    {        ItemSlot emptySlot = null;
         foreach (ItemSlot slot in inventorySlots)
         {
-            if (_itemId == slot.itemId && slot.CanBeAdded())
+            if (_itemId == slot.itemInventory.itemId && slot.CanBeAdded())
             {
                 slot.AddItem(_itemId, properties);
+                if (_itemId == InputManager.Instance.potionSlot.itemId)
+                    InputManager.Instance.potionSlot.UpdateUI();
                 return;
             }
             if (slot.IsEmpty() && emptySlot == null)
@@ -52,6 +53,8 @@ public class Inventory : MonoBehaviour
         if (emptySlot!= null)
         {
             emptySlot.AddItem(_itemId, properties);
+            if (_itemId == InputManager.Instance.potionSlot.itemId)
+                InputManager.Instance.potionSlot.UpdateUI();
             return;
         }
 
@@ -63,24 +66,16 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public List<ItemSlot> GetItemSlotByItemId(int _itemId)
-    {
-        List<ItemSlot> listItem = new List<ItemSlot>();
-        foreach (ItemSlot item in inventorySlots)
-        {
-            if (_itemId == item.itemId)
-                listItem.Add(item);
-        }
-        return listItem;
-    }
-
+    #region Equipment
     public void EquipItem(ItemSlot _itemSlot)
     {
-        ItemSlot slotToEquip = equipmentSlots[GetEquipmentTypeById(_itemSlot.itemId)];
-        if (slotToEquip.itemId != -1)
-            PlayerManager.Instance.player.stats.RemoveModifier(slotToEquip.properties);
+        if (itemDict[_itemSlot.itemInventory.itemId].type != ItemType.Equipment)
+            return;
+        ItemSlot slotToEquip = equipmentSlots[GetEquipmentTypeById(_itemSlot.itemInventory.itemId)];
+        if (slotToEquip.itemInventory.itemId != -1)
+            PlayerManager.Instance.player.stats.RemoveModifier(slotToEquip.itemInventory.properties);
         ItemSlot.SwapItemSlot(_itemSlot, slotToEquip);
-        PlayerManager.Instance.player.stats.AddModifier(slotToEquip.properties);
+        PlayerManager.Instance.player.stats.AddModifier(slotToEquip.itemInventory.properties);
     }
 
     public void UnequipItem(ItemSlot _itemSlot, int _indexToPutUnequipItem = -1)
@@ -92,12 +87,30 @@ public class Inventory : MonoBehaviour
             index = GetFirstEmptySlotInInventory();
         if (index == -1)
             return;
-        PlayerManager.Instance.player.stats.RemoveModifier(_itemSlot.properties);
+        PlayerManager.Instance.player.stats.RemoveModifier(_itemSlot.itemInventory.properties);
         ItemSlot.SwapItemSlot(_itemSlot, inventorySlots[index]);
     }
 
     public int GetEquipmentTypeById(int _itemId) => (_itemId / 1000) % 10;
+    #endregion
 
+    #region Potion
+    public void UsePotion(ItemSlot _itemSlot)
+    {
+        PlayerManager.Instance.player.stats.UsePotion(_itemSlot.itemInventory.itemId);
+        _itemSlot.RemoveItem();
+    }
+    public List<ItemSlot> GetItemSlotById(int _itemId)
+    {
+        return inventorySlots.Where(i => i.itemInventory.itemId == _itemId).ToList();
+    }
+    public int GetTotalAmount(int _itemId)
+    {
+        return inventorySlots.Where(i => i.itemInventory.itemId == _itemId).Sum(i => i.itemInventory.amount);
+    }
+    #endregion
+
+    #region Sorting inventory
     public int GetFirstEmptySlotInInventory()
     {
         for (int i = 0; i < inventorySlots.Count; i++)
@@ -148,12 +161,14 @@ public class Inventory : MonoBehaviour
         ItemSlot.SwapItemSlot(listItemSlot[i + 1], listItemSlot[high]);
         return (i + 1);
     }
+    #endregion
 
+    #region Item database
     public void GenerateItemDataDictionary()
     {
         foreach (ItemData item in itemDatabase.itemList)
         {
-            itemsDict[item.id] = item;
+            itemDict[item.id] = item;
         }
     }
 
@@ -162,5 +177,6 @@ public class Inventory : MonoBehaviour
     {
         itemDatabase.FillUpDatabase();
     }
+    #endregion
 
 }

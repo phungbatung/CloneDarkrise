@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -13,11 +14,14 @@ public class InputManager : MonoBehaviour
     public bool isUpButtonPress { get; set; }
     public float verticalInput { get; set; }
 
-    public bool isBaseAttackPress { get; set; }
-    public bool isDashKeyPress { get; set; }
+    [SerializeField] private Transform skillSlotParent;
+    public List<SkillSlot> skillSlots;
 
-    void Start()
+    public PotionSlot potionSlot;
+
+    private void Awake()
     {
+        skillSlots = skillSlotParent.GetComponentsInChildren<SkillSlot>().ToList();
         if (Instance == null)
             Instance = this;
         else
@@ -34,28 +38,10 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputCheck();
         HorizontalInputCheck();
         VerticalInputCheck();
-        SkillInputCheck();
     }
 
-    private void InputCheck()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-            isLeftButtonPress = true;
-        if (Input.GetKeyUp(KeyCode.A))
-            isLeftButtonPress = false;
-        if (Input.GetKeyDown(KeyCode.D))
-            isRightButtonPress = true;
-        if (Input.GetKeyUp(KeyCode.D))
-            isRightButtonPress = false;
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
-            isUpButtonPress = true;
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space))
-            isUpButtonPress = false;
-
-    }
     private void HorizontalInputCheck()
     {
         if (!isLeftButtonPress && !isRightButtonPress)
@@ -69,10 +55,5 @@ public class InputManager : MonoBehaviour
     private void VerticalInputCheck()
     {
         verticalInput = isUpButtonPress ? 1 : 0;
-    }
-
-    private void SkillInputCheck()
-    {
-        
     }
 }

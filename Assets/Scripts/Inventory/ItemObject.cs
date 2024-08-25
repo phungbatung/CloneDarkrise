@@ -20,7 +20,7 @@ public class ItemObject : MonoBehaviour
     public void SetUpItem(int _itemId, Vector3 _dropPosition)
     {
         itemId = _itemId;
-        ItemData itemData = Inventory.Instance.itemsDict[_itemId];
+        ItemData itemData = Inventory.Instance.itemDict[_itemId];
         if (itemData.type == ItemType.Equipment)
         {
             for (int i = 1; i <= itemData.quality.GetHashCode(); i++)

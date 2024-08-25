@@ -11,6 +11,7 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
+        player.anim.speed = player.stats.moveSpeed.GetValue() * 1.0f / player.stats.moveSpeed.BaseValue;
     }
 
     public override void Exit()
@@ -21,6 +22,7 @@ public class PlayerMoveState : PlayerGroundedState
     public override void Update()
     {
         base.Update();
+        player.anim.speed = 1;
         player.SetVelocity(xInput * player.stats.moveSpeed.GetValue(), player.rb.velocity.y);
         if (xInput == 0)
             player.stateMachine.ChangeState(player.idleState);

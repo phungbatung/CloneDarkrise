@@ -87,11 +87,29 @@ public class CharacterStats : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void Heal(int _Health, int _HealthPercent)
+    public virtual void Heal(int _health, int _healthPercentage)
     {
-        currentHealth += _Health;
-        currentHealth = currentHealth +  (int)Mathf.Floor(maxHealth.GetValue() * _HealthPercent * 1f / 100);
+        currentHealth += _health;
+        currentHealth = currentHealth +  (int)Mathf.Floor(maxHealth.GetValue() * _healthPercentage * 1f / 100);
         if (currentHealth >maxHealth.GetValue())
             currentHealth= maxHealth.GetValue();
+    }
+
+    public virtual void UsePotion(int _itemId)
+    {
+        ItemData item =  Inventory.Instance.itemDict[_itemId];
+        if (item.type != ItemType.Potion)
+            return;
+        if (item.properties.TryGetValue(Constant.HEALTH, out string _health))
+        {
+            currentHealth += int.Parse(_health);
+            if (currentHealth > maxHealth.GetValue())
+                currentHealth = maxHealth.GetValue();
+        }if (item.properties.TryGetValue(Constant.MANA, out string _mana))
+        {
+            currentMana += int.Parse(_mana);
+            if (currentMana > maxMana.GetValue())
+                currentMana = maxMana.GetValue();
+        }
     }
 }
