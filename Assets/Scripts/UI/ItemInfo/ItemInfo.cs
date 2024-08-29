@@ -66,6 +66,7 @@ public class ItemInfo : MonoBehaviour
     public void AssignPotionToSlot()
     {
         InputManager.Instance.potionSlot.AssignPotion(itemSlot.itemInventory.itemId);
+        gameObject.SetActive(false);
     }
     public void UsePotion()
     {

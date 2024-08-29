@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class WolfAnimationTrigger : MonoBehaviour
 {
-    private Wolf player;
+    private Wolf wolf;
 
     private void Awake()
     {
-        player = GetComponentInParent<Wolf>();
+        wolf = GetComponentInParent<Wolf>();
     }
     public void TriggerAnimation()
     {
-        player.stateMachine.currentState.TriggerCall();
+        wolf.stateMachine.currentState.TriggerCall();
     }
 
     public void CallStateEvent()
     {
-        player.stateMachine.currentState.StateEvent();
+        wolf.stateMachine.currentState.StateEvent();
     }
 }

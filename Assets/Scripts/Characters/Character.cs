@@ -19,10 +19,8 @@ public class Character : MonoBehaviour
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask wallLayer;
 
-    [Header("Attack info")]
-    [SerializeField] public Transform attackPoint;
-    [SerializeField] public float attackRadius;
-    [SerializeField] public LayerMask targetLayer;
+    
+    
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
@@ -80,9 +78,7 @@ public class Character : MonoBehaviour
     {
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + new Vector3(0, -groundCheckDistance, 0));
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + new Vector3(facingDir*wallCheckDistance, 0, 0));
-        //Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
-
     protected virtual void OnDied()
     {
 

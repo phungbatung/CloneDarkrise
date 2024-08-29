@@ -24,9 +24,9 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public bool isImmortal;
 
-    public Action OnHealthChanged;
-    public Action OnManaChanged;
-    public Action OnDied;
+    public Action OnHealthChanged { get; set; }
+    public Action OnManaChanged { get; set; }
+    public Action OnDied { get; set; }
     
 
     //To get Stat by key of item property quickly
@@ -44,6 +44,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
         getStat[Constant.MANA] = maxMana;
         getStat[Constant.MANA_REGEN] = manaRegen;
         getStat[Constant.MOVE_SPEED] = moveSpeed;
+
+        currentHealth = maxHealth.GetValue();
     }
     public virtual void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
     {
@@ -58,7 +60,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         int finalArmor = armor.GetValue() >  _armorPenetration ? armor.GetValue() - _armorPenetration : 0;
         finalDamage -= finalArmor;
 
-        currentHealth = currentHealth>finalDamage? (currentHealth-finalDamage) : 0;
+        HealthChange(-finalDamage);
         if (currentHealth <= 0 && OnDied!=null)
             OnDied();
     }
@@ -87,12 +89,18 @@ public class CharacterStats : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void Heal(int _health, int _healthPercentage)
+    public virtual void HealthChange(int _health = 0, int _healthPercentage = 0)
     {
         currentHealth += _health;
         currentHealth = currentHealth +  (int)Mathf.Floor(maxHealth.GetValue() * _healthPercentage * 1f / 100);
-        if (currentHealth >maxHealth.GetValue())
-            currentHealth= maxHealth.GetValue();
+        if (currentHealth > maxHealth.GetValue())
+            currentHealth = maxHealth.GetValue();
+        else if (currentHealth < 0)
+            currentHealth = 0;
+        if (OnHealthChanged != null)
+        {
+            OnHealthChanged();
+        }
     }
 
     public virtual void UsePotion(int _itemId)
@@ -105,7 +113,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
             currentHealth += int.Parse(_health);
             if (currentHealth > maxHealth.GetValue())
                 currentHealth = maxHealth.GetValue();
-        }if (item.properties.TryGetValue(Constant.MANA, out string _mana))
+        }
+        if (item.properties.TryGetValue(Constant.MANA, out string _mana))
         {
             currentMana += int.Parse(_mana);
             if (currentMana > maxMana.GetValue())

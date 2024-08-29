@@ -7,6 +7,7 @@ public class ShowFPS : MonoBehaviour
 {
     private TextMeshProUGUI tmp;
     private int targetFPS=60;
+    [SerializeField] private float showRate;
     private void Awake()
     {
         tmp = GetComponent<TextMeshProUGUI>();
@@ -16,7 +17,7 @@ public class ShowFPS : MonoBehaviour
     
     private IEnumerator UpdateFPS()
     {
-        WaitForSeconds second= new WaitForSeconds(1.0f);
+        WaitForSeconds second= new WaitForSeconds(1/showRate);
         while (true)
         {
             tmp.text = $"FPS: {Mathf.RoundToInt(1.0f/Time.deltaTime)}";

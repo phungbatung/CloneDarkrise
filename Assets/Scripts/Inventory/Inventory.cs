@@ -97,6 +97,8 @@ public class Inventory : MonoBehaviour
     #region Potion
     public void UsePotion(ItemSlot _itemSlot)
     {
+        if (itemDict[_itemSlot.itemInventory.itemId].type != ItemType.Potion)
+            return;
         PlayerManager.Instance.player.stats.UsePotion(_itemSlot.itemInventory.itemId);
         _itemSlot.RemoveItem();
     }

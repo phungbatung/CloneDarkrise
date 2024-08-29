@@ -14,6 +14,6 @@ public class HealWaveSkill : Skill
 
     public void Healing()
     {
-        player.stats.Heal(healthToRegen, healthPercentToRegen);
+        player.stats.HealthChange(healthToRegen, healthPercentToRegen);
     }    
 }

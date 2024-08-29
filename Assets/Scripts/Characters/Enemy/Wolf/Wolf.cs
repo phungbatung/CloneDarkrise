@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Wolf : Character
+public class Wolf : Enemy
 {
     public Player player;
     public float maxDistanceToPlayer;
