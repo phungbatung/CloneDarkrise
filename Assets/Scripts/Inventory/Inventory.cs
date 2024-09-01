@@ -65,6 +65,8 @@ public class Inventory : MonoBehaviour
     {
 
     }
+    
+
 
     #region Equipment
     public void EquipItem(ItemSlot _itemSlot)
@@ -109,6 +111,16 @@ public class Inventory : MonoBehaviour
     public int GetTotalAmount(int _itemId)
     {
         return inventorySlots.Where(i => i.itemInventory.itemId == _itemId).Sum(i => i.itemInventory.amount);
+    }
+    #endregion
+
+    #region Buff
+    public void UseBuff(ItemSlot _itemSlot)
+    {
+        if (itemDict[_itemSlot.itemInventory.itemId].type != ItemType.Buff)
+            return;
+        PlayerManager.Instance.player.stats.UseBuff(_itemSlot.itemInventory.itemId);
+        _itemSlot.RemoveItem();
     }
     #endregion
 

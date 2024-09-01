@@ -73,4 +73,9 @@ public class ItemInfo : MonoBehaviour
         Inventory.Instance.UsePotion(itemSlot);
         gameObject.SetActive(false);
     }
+    public void UseBuff()
+    {
+        Inventory.Instance.UseBuff(itemSlot);
+        gameObject.SetActive(false);
+    }
 }

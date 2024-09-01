@@ -1736,7 +1736,7 @@ MonoBehaviour:
     maxSize: 99
     properties:
       keys:
-      - Health
+      - Attack
       - CoolDown
       values:
       - 50
@@ -1751,7 +1751,7 @@ MonoBehaviour:
     maxSize: 99
     properties:
       keys:
-      - Health
+      - Attack
       - CoolDown
       values:
       - 150
@@ -1766,7 +1766,7 @@ MonoBehaviour:
     maxSize: 99
     properties:
       keys:
-      - Health
+      - Attack
       - CoolDown
       values:
       - 500
@@ -1781,7 +1781,7 @@ MonoBehaviour:
     maxSize: 99
     properties:
       keys:
-      - Mana
+      - Health
       - CoolDown
       values:
       - 500
@@ -1796,7 +1796,7 @@ MonoBehaviour:
     maxSize: 99
     properties:
       keys:
-      - Mana
+      - Health
       - CoolDown
       values:
       - 1500
@@ -1811,7 +1811,7 @@ MonoBehaviour:
     maxSize: 99
     properties:
       keys:
-      - Mana
+      - Health
       - CoolDown
       values:
       - 5000

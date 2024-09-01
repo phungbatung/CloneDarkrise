@@ -5,7 +5,7 @@ using UnityEngine;
 public class Constant
 {
     public const string DAMAGE = "Attack";
-    public const string ATTACK_SPEED="AttackSpeed";
+    public const string ATTACK_SPEED = "AttackSpeed";
     public const string ARMOR_PENETRATION = "ArmorPenetration";
     public const string CRITICAL_RATE = "CriticalRate";
     public const string CRITICAL_DAMAGE = "CriticalDamage";
@@ -19,9 +19,10 @@ public class Constant
     public const string MANA_REGEN = "ManaRegen";
     public const string MOVE_SPEED = "MoveSpeed";
 
-    public const string HP = "HP";
-    public const string MP = "MP";
     public const string COOLDOWN = "CoolDown";
+
+    public const string HEALTH_BUFF = "HealthBuff";
+    public const string DAMAGE_BUFF = "DamageBuff";
 
     public const string SKILL_POINT = "SkillPoint";
 

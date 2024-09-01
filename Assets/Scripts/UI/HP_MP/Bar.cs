@@ -23,6 +23,5 @@ public class Bar : MonoBehaviour
     {
         maxValue = PlayerManager.Instance.player.stats.maxHealth.GetValue();
         OnValueChange();
-        Debug.Log("log1");
     }    
 }

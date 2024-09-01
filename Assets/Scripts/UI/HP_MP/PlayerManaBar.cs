@@ -9,6 +9,6 @@ public class PlayerManaBar : Bar
         character = PlayerManager.Instance.player;
         character.stats.OnManaChanged += OnValueChange;
         character.stats.maxMana.modifierEvent += SetMaxValue;
-        OnValueChange();
+        SetMaxValue();
     }
 }

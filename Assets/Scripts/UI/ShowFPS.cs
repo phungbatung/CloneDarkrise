@@ -6,12 +6,12 @@ using UnityEngine;
 public class ShowFPS : MonoBehaviour
 {
     private TextMeshProUGUI tmp;
-    private int targetFPS=60;
+    //private int targetFPS=60;
     [SerializeField] private float showRate;
     private void Awake()
     {
         tmp = GetComponent<TextMeshProUGUI>();
-        Application.targetFrameRate = targetFPS;
+        //Application.targetFrameRate = targetFPS;
         StartCoroutine(UpdateFPS());
     }
     

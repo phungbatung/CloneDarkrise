@@ -6,11 +6,11 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Data/ItemDataBase")]
 public class ItemDatabase : ScriptableObject
 {
-    public List<ItemData> itemList = new List<ItemData>();
+    public List<ItemData> itemList;
   
     public void FillUpDatabase()
     {
-        Dictionary<int, ItemData> itemDict = new Dictionary<int, ItemData>();
+        Dictionary<int, ItemData> itemDict = new();
         itemList.Clear();
         FillUpGeneralData(itemDict); //fill common properties
         FillUpEquipmentProperties(itemDict);
@@ -28,7 +28,7 @@ public class ItemDatabase : ScriptableObject
     private void FillUpGeneralData(Dictionary<int, ItemData> itemDataDictionary)
     {
         string[] paths = { "Rare", "Epic", "Legend" };
-        List<Sprite> sprites = new List<Sprite>();
+        List<Sprite> sprites = new();
         foreach (var path in paths)
         {
             sprites.AddRange(Resources.LoadAll<Sprite>($"ItemDataBase\\ItemIcons\\{path}"));
@@ -36,24 +36,25 @@ public class ItemDatabase : ScriptableObject
 
         string itemsInfo = Resources.Load<TextAsset>("ItemDataBase\\ItemInfo").text;
         string[] listItemInfo = itemsInfo.Split(new char[] { '\n' });
-        ItemData item = new ItemData();
+        ItemData item = new();
         for (int i = 1; i < listItemInfo.Length - 1; i++)
         {
             string[] data = listItemInfo[i].Split(new char[] { ',' });
             if (data[0] != "")
             {
-                item = new ItemData();
-                item.id = int.Parse(data[0]);
-                item.type = (ItemType)(int.Parse(data[0]) / 100000);
-                item.quality = (ItemQuality)((int.Parse(data[0]) / 10000) % 10);
-                item.name = data[1];
-                item.icon = sprites.Single(s => s.name == data[2]);
-                item.level = int.Parse(data[3]);
-                item.description = data[4];
-                item.maxSize = int.Parse(data[5]);
+                item = new() 
+                { 
+                    id = int.Parse(data[0]),
+                    type = (ItemType)(int.Parse(data[0]) / 100000),
+                    quality = (ItemQuality)((int.Parse(data[0]) / 10000) % 10),
+                    name = data[1],
+                    icon = sprites.Single(s => s.name == data[2]),
+                    level = int.Parse(data[3]),
+                    description = data[4],
+                    maxSize = int.Parse(data[5]) 
+                };
                 itemList.Add(item);
                 itemDataDictionary[item.id] = item;
-                //Debug.Log($"{itemDataDictionary[item.id].id}");
             }
         }
     }
@@ -125,7 +126,7 @@ public class ItemDatabase : ScriptableObject
         string buffsData = Resources.Load<TextAsset>("ItemDataBase\\BuffData").text;
         string[] listBuffData = buffsData.Split(new char[] { '\n' });
         ItemData item;
-        string[] propertiesName = { "", Constant.HEALTH, Constant.MANA, Constant.COOLDOWN };
+        string[] propertiesName = { "", Constant.DAMAGE, Constant.HEALTH, Constant.COOLDOWN };
         for (int i = 1; i < listBuffData.Length; i++)
         {
             string[] data = listBuffData[i].Split(new char[] { ',', '\r' });

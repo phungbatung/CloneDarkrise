@@ -27,27 +27,46 @@ public class CharacterStats : MonoBehaviour, IDamageable
     public Action OnHealthChanged { get; set; }
     public Action OnManaChanged { get; set; }
     public Action OnDied { get; set; }
-    
 
     //To get Stat by key of item property quickly
-    protected Dictionary<string, Stat> getStat = new Dictionary<string, Stat>();
+    private Dictionary<string, Stat> getStatByName = new();
+
+    [SerializeField] private GameObject buffPrefab;
+    [SerializeField] private Transform buffHolder;
+
+    private Dictionary<int, Stat> getStatByBuffType = new();    //<buffType, Stat>
+    public Dictionary<int, StatBuff> buffDict = new();  //<buffType, StatBuff>
+
+
     private void Awake()
     {
-        getStat[Constant.DAMAGE] = damage;
-        getStat[Constant.ATTACK_SPEED] = attackSpeed;
-        getStat[Constant.ARMOR_PENETRATION] = armorPenetration;
-        getStat[Constant.CRITICAL_RATE] = criticalRate;
-        getStat[Constant.CRITICAL_DAMAGE] = criticalDamage;
-        getStat[Constant.HEALTH] = maxHealth;
-        getStat[Constant.HEALTH_REGEN] = healthRegen;
-        getStat[Constant.ARMOR] = armor;
-        getStat[Constant.MANA] = maxMana;
-        getStat[Constant.MANA_REGEN] = manaRegen;
-        getStat[Constant.MOVE_SPEED] = moveSpeed;
-
+        InitGetStatByNameDict();
+        InitGetStatByBuffTypeDict();
         currentHealth = maxHealth.GetValue();
     }
-    public virtual void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
+
+    private void InitGetStatByBuffTypeDict()
+    {
+        getStatByBuffType[1] = damage;
+        getStatByBuffType[2] = maxHealth;
+    }
+
+    private void InitGetStatByNameDict()
+    {
+        getStatByName[Constant.DAMAGE] = damage;
+        getStatByName[Constant.ATTACK_SPEED] = attackSpeed;
+        getStatByName[Constant.ARMOR_PENETRATION] = armorPenetration;
+        getStatByName[Constant.CRITICAL_RATE] = criticalRate;
+        getStatByName[Constant.CRITICAL_DAMAGE] = criticalDamage;
+        getStatByName[Constant.HEALTH] = maxHealth;
+        getStatByName[Constant.HEALTH_REGEN] = healthRegen;
+        getStatByName[Constant.ARMOR] = armor;
+        getStatByName[Constant.MANA] = maxMana;
+        getStatByName[Constant.MANA_REGEN] = manaRegen;
+        getStatByName[Constant.MOVE_SPEED] = moveSpeed;
+    }
+
+    public void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
     {
         if (isImmortal)
             return;
@@ -65,60 +84,91 @@ public class CharacterStats : MonoBehaviour, IDamageable
             OnDied();
     }
 
-    public virtual void DoDamage(IDamageable target)
+    public void DoDamage(IDamageable target)
     {
         target.TakeDamage(damage.GetValue(), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
     }
 
-    public virtual void AddModifier(Dictionary<string, string> _properties)
+    public void AddModifier(Dictionary<string, string> _properties)
     {
         foreach (KeyValuePair<string, string> property in _properties)
         {
-            string[] values = property.Value.Split(',');
-            foreach (string value in values)
-            getStat[property.Key].AddModifier(int.Parse(value));
-        }
-    }
-    public virtual void RemoveModifier(Dictionary<string, string> _properties)
-    {
-        foreach (KeyValuePair<string, string> property in _properties)
-        {
-            string[] values = property.Value.Split(',');
-            foreach (string value in values)
-                getStat[property.Key].RemoveModifier(int.Parse(value));
+            if (getStatByName.TryGetValue(property.Key, out Stat stat))
+            {
+                string[] values = property.Value.Split(',');
+                foreach (string value in values)
+                {
+                        stat.AddModifier(int.Parse(value));
+                }
+            }
         }
     }
 
-    public virtual void HealthChange(int _health = 0, int _healthPercentage = 0)
+    public void RemoveModifier(Dictionary<string, string> _properties)
+    {
+        foreach (KeyValuePair<string, string> property in _properties)
+        {
+            if (getStatByName.TryGetValue(property.Key, out Stat stat))
+            {
+                string[] values = property.Value.Split(',');
+                foreach (string value in values)
+                {
+                    stat.RemoveModifier(int.Parse(value));
+                }
+            }
+        }
+    }
+
+    public void HealthChange(int _health = 0, int _healthPercentage = 0)
     {
         currentHealth += _health;
-        currentHealth = currentHealth +  (int)Mathf.Floor(maxHealth.GetValue() * _healthPercentage * 1f / 100);
+        currentHealth += (int)Mathf.Floor(maxHealth.GetValue() * _healthPercentage * 1f / 100);
         if (currentHealth > maxHealth.GetValue())
             currentHealth = maxHealth.GetValue();
         else if (currentHealth < 0)
             currentHealth = 0;
-        if (OnHealthChanged != null)
-        {
-            OnHealthChanged();
-        }
+        OnHealthChanged?.Invoke();
+    }
+    
+    public virtual void ManaChange(int _mana = 0, int _manaPercentage = 0)
+    {
+        currentMana += _mana;
+        currentMana +=  (int)Mathf.Floor(maxHealth.GetValue() * _manaPercentage * 1f / 100);
+        if (currentMana > maxMana.GetValue())
+            currentMana = maxMana.GetValue();
+        else if (currentMana < 0)
+            currentHealth = 0;
+        OnManaChanged?.Invoke();
     }
 
-    public virtual void UsePotion(int _itemId)
+    public void UsePotion(int _itemId)
     {
         ItemData item =  Inventory.Instance.itemDict[_itemId];
         if (item.type != ItemType.Potion)
             return;
         if (item.properties.TryGetValue(Constant.HEALTH, out string _health))
         {
-            currentHealth += int.Parse(_health);
-            if (currentHealth > maxHealth.GetValue())
-                currentHealth = maxHealth.GetValue();
+            HealthChange(int.Parse(_health));
         }
         if (item.properties.TryGetValue(Constant.MANA, out string _mana))
         {
-            currentMana += int.Parse(_mana);
-            if (currentMana > maxMana.GetValue())
-                currentMana = maxMana.GetValue();
+            ManaChange(int.Parse(_mana));
         }
     }
+
+    public void UseBuff(int _itemId)
+    {
+        int buffType = GetBuffType(_itemId);
+        if (buffDict.TryGetValue(buffType, out StatBuff statBuff))
+            statBuff?.EndBuff();
+        GameObject buff = Instantiate(buffPrefab);
+        buff.transform.SetParent(buffHolder);
+        buffDict[buffType] = buff.GetComponent<StatBuff>();
+        buffDict[buffType].StartBuff(_itemId, buffType);
+    }
+    public int GetBuffType(int _itemId)
+    {
+        return (Inventory.Instance.itemDict[_itemId].id / 1000) % 10;
+    }
+
 }

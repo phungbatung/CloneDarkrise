@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BtnUseBuff : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Button useBuffButton;
+    private ItemInfo itemInfo;
+
+    private void Awake()
     {
-        
+        useBuffButton = GetComponent<Button>();
+        itemInfo = GetComponentInParent<ItemInfo>();
+        useBuffButton.onClick.AddListener(UseBuff);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UseBuff()
     {
-        
+        itemInfo.UseBuff();
     }
 }
