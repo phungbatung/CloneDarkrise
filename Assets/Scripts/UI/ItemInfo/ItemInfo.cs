@@ -10,9 +10,6 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private RectTransform content;
     [SerializeField] private float maxHeight;
 
-    [SerializeField] private BtnEquipItem equipButton;
-    [SerializeField] private BtnRemoveItem removeItem;
-
     private ItemSlot itemSlot;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
@@ -20,9 +17,11 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemQuality;
     [SerializeField] private TextMeshProUGUI itemLevel;
     [SerializeField] private TextMeshProUGUI itemDescription;
+
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+        gameObject.SetActive(false);
     }
     public void SetItemInfo(ItemSlot _itemSlot)
     {
@@ -45,14 +44,30 @@ public class ItemInfo : MonoBehaviour
                 }
             }
         }
+
         else
             description = $"{item.description}\n";
         itemDescription.text = description;
-        //float height = maxHeight;
-        //if (content.sizeDelta.y < height)
-        //    height = content.sizeDelta.y;
-        //rect.sizeDelta = new Vector2(content.sizeDelta.x, height);
+        RefreshContentSize();
+        
     }
+
+    private void RefreshContentSize()
+    {
+        IEnumerator Routine()
+        {
+            var csf = content.GetComponent<ContentSizeFitter>();
+            csf.verticalFit = ContentSizeFitter.FitMode.Unconstrained;
+            yield return null;
+            csf.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            yield return null;
+            float height = maxHeight;
+            if (content.sizeDelta.y < height)
+                height = content.sizeDelta.y;
+            rect.sizeDelta = new Vector2(rect.sizeDelta.x, height);
+        }
+        this.StartCoroutine(Routine());
+    }    
     public void EquipCurrentItem()
     {
         Inventory.Instance.EquipItem(itemSlot);

@@ -29,6 +29,6 @@ public class PlayerSlashState : CharacterState
     }
     public override void StateEvent()
     {
-        SkillManager.Instance.slash.AttackSlash();
+        SkillManager.Instance.slash.Attack();
     }
 }

@@ -3,19 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BtnUsePotion : MonoBehaviour
+public class BtnUsePotion : BtnBaseItemInfo
 {
-    private Button usePotionButton;
-    private ItemInfo itemInfo;
-
-    private void Awake()
-    {
-        usePotionButton = GetComponent<Button>();
-        itemInfo = GetComponentInParent<ItemInfo>();
-        usePotionButton.onClick.AddListener(UsePotion);
-    }
-
-    private void UsePotion()
+    protected override void PressEvent()
     {
         itemInfo.UsePotion();
     }

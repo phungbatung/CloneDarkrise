@@ -1,56 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Skill : MonoBehaviour
+public abstract class Skill : MonoBehaviour
 {
     protected Player player;
 
-    [SerializeField] protected Sprite skillIcon;
-    [SerializeField] protected float cooldown;
+    public SkillData skillData;
+    public int currentLevel = 0;
     protected float cooldownTimer;
     protected bool isCoolDownCompleted;
 
     protected bool isAssigned;
     protected SkillSlot slot;
-
-
+    protected virtual void Awake()
+    {
+        FillData();
+    }
     protected virtual void Start()
     {
         player = PlayerManager.Instance.player;
     }
+
     protected virtual void Update()
     {
         if (!isCoolDownCompleted)
         {
             cooldownTimer -= Time.deltaTime;
             if (isAssigned)
-                slot.DoCooldown(cooldownTimer, cooldown);
+                slot.DoCooldown(cooldownTimer, skillData.levelsData[currentLevel].coolDown);
             if (cooldownTimer <= 0)
                 isCoolDownCompleted = true;
         }
     }
+
     public virtual void Called()
     {
-        cooldownTimer = cooldown;
+        cooldownTimer = skillData.levelsData[currentLevel].coolDown;
         isCoolDownCompleted = false;
+        player.stats.ManaChange(-skillData.levelsData[currentLevel].manaCost);
     }
+
     public virtual bool CanBeUse()
     {
         return  isAssigned && slot.isPressed && cooldownTimer <= 0;
     }
+
     public virtual void AssignToSlot(SkillSlot _skillSlot)
     {
         isAssigned = true;
         slot = _skillSlot;
-        UpdateSprite();
-    }
-
-    protected virtual void UpdateSprite()
-    {
-        if (skillIcon != null)
-            slot.image.sprite = skillIcon;
+        slot.image.sprite = skillData.icon;
     }
 
     public virtual void UnassignSlot()
@@ -58,4 +56,35 @@ public class Skill : MonoBehaviour
         isAssigned = false;
         slot = null;
     }
+    public virtual void Upgrade()
+    {
+        int pointToUpgrade = (int)Mathf.Pow(5, currentLevel + 1);
+        if (currentLevel < skillData.levelsData.Count - 1 && pointToUpgrade < SkillManager.Instance.skillPoint)
+        {
+            SkillManager.Instance.skillPoint -= pointToUpgrade;
+            currentLevel++;
+        }
+    }
+
+    public virtual string GetUnlockedLevelDescription()
+    {
+        string desc = "";
+        for(int level=0; level<=currentLevel; level++)
+        {
+            desc += skillData.levelsData[level].GetLevelDescription();
+        }
+        return desc;
+    }
+    public virtual string GetLockedLevelDescription()
+    {
+        string desc = "";
+        for (int level = currentLevel+1; level < skillData.levelsData.Count; level++)
+        {
+            desc += skillData.levelsData[level].GetLevelDescription();
+        }
+        return desc;
+    }
+    public abstract string GetDescription();
+    public abstract void FillData();
+
 }

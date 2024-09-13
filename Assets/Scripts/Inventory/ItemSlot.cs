@@ -90,7 +90,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             return;
         if (itemInventory.itemId == -1)
             return;
-        UI_Manager.Instance.itemInfo.SetItemInfo(this);
+        Inventory.Instance.itemInfo.SetItemInfo(this);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

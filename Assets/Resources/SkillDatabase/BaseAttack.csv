@@ -1,0 +1,7 @@
+﻿Level,Cooldown,ManaCost,HitCombo,DamagePercentage,Description
+0,0,0,3,100,You swing your sword and deal damage to all enemies in front of you.
+1,0,0,3,110,Damage +10%
+2,0,0,3,120,Damage +10%
+3,0,0,3,130,Damage +10%
+4,0,0,3,140,Damage +10%
+5,0,0,3,150,Damage +10%

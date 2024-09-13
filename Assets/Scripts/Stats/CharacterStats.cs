@@ -84,9 +84,9 @@ public class CharacterStats : MonoBehaviour, IDamageable
             OnDied();
     }
 
-    public void DoDamage(IDamageable target)
+    public void DoDamage(IDamageable target, float damagePercentage = 100f)
     {
-        target.TakeDamage(damage.GetValue(), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
+        target.TakeDamage((int)(damage.GetValue() * (damagePercentage/100)), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
     }
 
     public void AddModifier(Dictionary<string, string> _properties)
@@ -137,7 +137,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         if (currentMana > maxMana.GetValue())
             currentMana = maxMana.GetValue();
         else if (currentMana < 0)
-            currentHealth = 0;
+            currentMana = 0;
         OnManaChanged?.Invoke();
     }
 

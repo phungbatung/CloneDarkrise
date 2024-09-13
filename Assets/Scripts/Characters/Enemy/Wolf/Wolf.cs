@@ -51,14 +51,19 @@ public class Wolf : Enemy
     {
         return Physics2D.Raycast(wallCheck.position, facingDir * Vector3.right, attackPoint.position.x + facingDir * attackRadius - wallCheck.position.x, enemyLayer);
     }
-    public void SetUpWolf(Player _player, Vector3 _position, float _lifeTime)
+    public void SetUpWolf(Player _player, Vector3 _position, WolfCallLevelData _wolfCallLevelData)
     {
         player = _player;
+        stats.maxHealth.AddModifier((int)(player.stats.maxHealth.GetValue() * _wolfCallLevelData.statPercentage/100f));
+        stats.damage.AddModifier((int)(player.stats.damage.GetValue() * _wolfCallLevelData.statPercentage/100f));
+        stats.moveSpeed.AddModifier((int)(player.stats.moveSpeed.GetValue() * Random.Range(60, 90)/100f));
+        stats.armor.AddModifier(player.stats.armor.GetValue());
+        stats.attackSpeed.AddModifier(player.stats.attackSpeed.GetValue());
+        stats.armorPenetration.AddModifier(player.stats.armorPenetration.GetValue());
         transform.position = _position;
-        lifeTime=_lifeTime;
+        lifeTime=_wolfCallLevelData.lifespan;
         if (player.facingDir == -1)
             Flip();
-        stats.moveSpeed.AddModifier(Random.Range(0, 3));
         Invoke("DestroyGO", lifeTime);
     }
 

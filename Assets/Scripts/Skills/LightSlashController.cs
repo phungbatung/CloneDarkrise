@@ -5,12 +5,14 @@ using UnityEngine;
 public class LightSlashController : MonoBehaviour
 {
     private Player player;
+    private LightCut lightCut;
     private float cutDir;
     private Vector2 size;
 
-    public void SetUpLightSlash(Player _player, Vector2 _size)
+    public void SetUpLightSlash(Player _player, Vector2 _size, LightCut _lightCut)
     {
         player = _player;
+        lightCut = _lightCut;
         transform.position = _player.transform.position;
         size = _size;
         cutDir = _player.facingDir;
@@ -23,13 +25,14 @@ public class LightSlashController : MonoBehaviour
     }
     public void Attack()
     {
+        LightCutLevelData lightCutLevelData = lightCut.skillData.levelsData[lightCut.currentLevel] as LightCutLevelData;
         Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + new Vector3(player.facingDir * size.x/2, 0, 0), size, 0);
         foreach (Collider2D collider in colliders)
         {
             IDamageable target = collider.GetComponent<IDamageable>();
             if (target != null)
             {
-                player.stats.DoDamage(target);
+                player.stats.DoDamage(target, lightCutLevelData.damagePercentage);
             }
         }
     }

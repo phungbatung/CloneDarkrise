@@ -20,6 +20,9 @@ public class Inventory : MonoBehaviour
 
     public Transform moveItem;
 
+    public ItemInfo itemInfo;
+
+    public ListItemToPick listItemToPick;
 
     private void Awake()
     {

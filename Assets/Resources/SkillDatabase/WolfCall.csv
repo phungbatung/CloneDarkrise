@@ -1,0 +1,7 @@
+﻿Level,Cooldown,ManaCost,StatPercentage,Quantity,Lifespan,Description
+0,25,20,70,2,10,"You summon 2 wolves which fight on your side for 15 seconds after what disappear. The wolf inherits most of your stats, except health and damage which is 70%. Wolves can disappear before specified time if their health droped to zero."
+1,25,20,85,2,10,Wolves health and damage + 15%.
+2,25,20,85,2,15,Wolves life span + 5s.
+3,25,20,100,2,15,Wolves damage and health + 15%.
+4,25,20,100,2,20,Wolves life span + 5s.
+5,25,20,100,3,20,Wolves amount +1.

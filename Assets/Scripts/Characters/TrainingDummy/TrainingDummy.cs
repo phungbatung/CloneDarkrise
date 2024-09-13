@@ -19,6 +19,7 @@ public class TrainingDummy : MonoBehaviour, IDamageable
     }
     public void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
     {
+        Debug.Log(_damage);
         anim.SetBool("hited", true);
         currentHealth -= 1;
         if (isImmortal)

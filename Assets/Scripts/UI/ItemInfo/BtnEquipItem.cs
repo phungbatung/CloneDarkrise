@@ -3,19 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BtnEquipItem : MonoBehaviour
+public class BtnEquipItem : BtnBaseItemInfo
 {
-    private Button equipButton;
-    private ItemInfo itemInfo;
-
-    private void Awake()
-    {
-        equipButton = GetComponent<Button>();
-        itemInfo = GetComponentInParent<ItemInfo>();
-        equipButton.onClick.AddListener(EquipItem);
-    }
-
-    private void EquipItem()
+    protected override void PressEvent()
     {
         itemInfo.EquipCurrentItem();
     }

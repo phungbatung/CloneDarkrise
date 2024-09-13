@@ -19,8 +19,12 @@ public class Character : MonoBehaviour
     [SerializeField] protected float wallCheckDistance;
     [SerializeField] protected LayerMask wallLayer;
 
-    
-    
+    [Header("Attack info")]
+    [SerializeField] public Transform attackPoint;
+    [SerializeField] public float attackRadius;
+    [SerializeField] public LayerMask targetLayer;
+
+
 
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
