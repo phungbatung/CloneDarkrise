@@ -23,11 +23,7 @@ public enum ItemQuality
 [System.Serializable]
 public class ItemData
 {
-    // id = abcddd
-    // a  : for ItemType
-    // b  : for ItemQuality
-    // c  : type of item of type a (Ex: if a is equipment then c is for equipment type)
-    // ddd: identity code
+    
     public int id;
     public string name;
     public Sprite icon;
@@ -38,13 +34,19 @@ public class ItemData
     public int maxSize;
     public SerializableDictionary<string, string> properties = new SerializableDictionary<string, string>();
 }
+// id = abcddd
+// a  : for ItemType
+// b  : for ItemQuality
+// c  : type of item of type a (Ex: if a is equipment then c is for equipment type)
+// ddd: identity code
+
 //Equipment type(c)
-//1 Sword
-//2 Shield
-//3 Gauntlet
-//4 Boots
-//5 ChestPlate
-//6 Pants
-//7 Helmet
-//8 Ring
+//0 Sword
+//1 Shield
+//2 Gauntlet
+//3 Boots
+//4 ChestPlate
+//5 Pants
+//6 Helmet
+//7 Ring
 

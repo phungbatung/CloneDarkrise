@@ -53,17 +53,17 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     private void InitGetStatByNameDict()
     {
-        getStatByName[Constant.DAMAGE] = damage;
-        getStatByName[Constant.ATTACK_SPEED] = attackSpeed;
-        getStatByName[Constant.ARMOR_PENETRATION] = armorPenetration;
-        getStatByName[Constant.CRITICAL_RATE] = criticalRate;
-        getStatByName[Constant.CRITICAL_DAMAGE] = criticalDamage;
-        getStatByName[Constant.HEALTH] = maxHealth;
-        getStatByName[Constant.HEALTH_REGEN] = healthRegen;
-        getStatByName[Constant.ARMOR] = armor;
-        getStatByName[Constant.MANA] = maxMana;
-        getStatByName[Constant.MANA_REGEN] = manaRegen;
-        getStatByName[Constant.MOVE_SPEED] = moveSpeed;
+        getStatByName[Item.DAMAGE] = damage;
+        getStatByName[Item.ATTACK_SPEED] = attackSpeed;
+        getStatByName[Item.ARMOR_PENETRATION] = armorPenetration;
+        getStatByName[Item.CRITICAL_RATE] = criticalRate;
+        getStatByName[Item.CRITICAL_DAMAGE] = criticalDamage;
+        getStatByName[Item.HEALTH] = maxHealth;
+        getStatByName[Item.HEALTH_REGEN] = healthRegen;
+        getStatByName[Item.ARMOR] = armor;
+        getStatByName[Item.MANA] = maxMana;
+        getStatByName[Item.MANA_REGEN] = manaRegen;
+        getStatByName[Item.MOVE_SPEED] = moveSpeed;
     }
 
     public void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
@@ -89,8 +89,13 @@ public class CharacterStats : MonoBehaviour, IDamageable
         target.TakeDamage((int)(damage.GetValue() * (damagePercentage/100)), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
     }
 
-    public void AddModifier(Dictionary<string, string> _properties)
+    public void AddModifier(Dictionary<string, string> _properties, int _itemId = -1)
     {
+        if (_itemId != -1)
+        {
+            string baseStat = Item.GetBaseStatOfEquipment(_itemId);
+            getStatByName[baseStat].AddModifier(int.Parse(Inventory.Instance.itemDict[_itemId].properties[baseStat]));
+        }
         foreach (KeyValuePair<string, string> property in _properties)
         {
             if (getStatByName.TryGetValue(property.Key, out Stat stat))
@@ -104,8 +109,13 @@ public class CharacterStats : MonoBehaviour, IDamageable
         }
     }
 
-    public void RemoveModifier(Dictionary<string, string> _properties)
+    public void RemoveModifier(Dictionary<string, string> _properties, int _itemId=-1)
     {
+        if (_itemId != -1)
+        {
+        string baseStat = Item.GetBaseStatOfEquipment(_itemId);
+        getStatByName[baseStat].RemoveModifier(int.Parse(Inventory.Instance.itemDict[_itemId].properties[baseStat]));
+        }
         foreach (KeyValuePair<string, string> property in _properties)
         {
             if (getStatByName.TryGetValue(property.Key, out Stat stat))
@@ -146,11 +156,11 @@ public class CharacterStats : MonoBehaviour, IDamageable
         ItemData item =  Inventory.Instance.itemDict[_itemId];
         if (item.type != ItemType.Potion)
             return;
-        if (item.properties.TryGetValue(Constant.HEALTH, out string _health))
+        if (item.properties.TryGetValue(Item.HEALTH, out string _health))
         {
             HealthChange(int.Parse(_health));
         }
-        if (item.properties.TryGetValue(Constant.MANA, out string _mana))
+        if (item.properties.TryGetValue(Item.MANA, out string _mana))
         {
             ManaChange(int.Parse(_mana));
         }

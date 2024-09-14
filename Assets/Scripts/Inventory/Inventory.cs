@@ -78,9 +78,9 @@ public class Inventory : MonoBehaviour
             return;
         ItemSlot slotToEquip = equipmentSlots[GetEquipmentTypeById(_itemSlot.itemInventory.itemId)];
         if (slotToEquip.itemInventory.itemId != -1)
-            PlayerManager.Instance.player.stats.RemoveModifier(slotToEquip.itemInventory.properties);
+            PlayerManager.Instance.player.stats.RemoveModifier(slotToEquip.itemInventory.properties, slotToEquip.itemInventory.itemId);
         ItemSlot.SwapItemSlot(_itemSlot, slotToEquip);
-        PlayerManager.Instance.player.stats.AddModifier(slotToEquip.itemInventory.properties);
+        PlayerManager.Instance.player.stats.AddModifier(slotToEquip.itemInventory.properties, slotToEquip.itemInventory.itemId);
     }
 
     public void UnequipItem(ItemSlot _itemSlot, int _indexToPutUnequipItem = -1)
@@ -92,7 +92,7 @@ public class Inventory : MonoBehaviour
             index = GetFirstEmptySlotInInventory();
         if (index == -1)
             return;
-        PlayerManager.Instance.player.stats.RemoveModifier(_itemSlot.itemInventory.properties);
+        PlayerManager.Instance.player.stats.RemoveModifier(_itemSlot.itemInventory.properties, _itemSlot.itemInventory.itemId);
         ItemSlot.SwapItemSlot(_itemSlot, inventorySlots[index]);
     }
 
@@ -125,6 +125,17 @@ public class Inventory : MonoBehaviour
         PlayerManager.Instance.player.stats.UseBuff(_itemSlot.itemInventory.itemId);
         _itemSlot.RemoveItem();
     }
+    #endregion
+
+    #region Skill book
+    public void UseSkillBook(ItemSlot _itemSlot)
+    {
+        if (itemDict[_itemSlot.itemInventory.itemId].type != ItemType.SkillBook)
+            return;
+        int point = int.Parse(itemDict[_itemSlot.itemInventory.itemId].properties[Item.SKILL_POINT]);
+        SkillManager.Instance.AddSkillPoint(point);
+        _itemSlot.RemoveItem();
+    }    
     #endregion
 
     #region Sorting inventory

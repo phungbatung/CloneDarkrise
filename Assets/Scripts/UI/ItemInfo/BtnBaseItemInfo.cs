@@ -7,6 +7,7 @@ public abstract class BtnBaseItemInfo : MonoBehaviour
 {
     protected Button button;
     protected ItemInfo itemInfo;
+    [SerializeField] List<ItemType> typeToActive;
 
     protected void Awake()
     {
@@ -16,4 +17,9 @@ public abstract class BtnBaseItemInfo : MonoBehaviour
     }
 
     protected abstract void PressEvent();
+
+    public bool CanBeActive(ItemType itemType)
+    {
+        return typeToActive.Contains(itemType);
+    }    
 }

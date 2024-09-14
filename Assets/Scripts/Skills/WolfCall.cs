@@ -65,8 +65,8 @@ public class WolfCall : Skill
         WolfCallLevelData currentLevelData = skillData.levelsData[currentLevel] as WolfCallLevelData;
         string desc = $"Damage: {currentLevelData.statPercentage * 1.0f / 100 * player.stats.damage.GetValue()}\n" +
                         $"Health: {currentLevelData.statPercentage * 1.0f / 100 * player.stats.maxHealth.GetValue()}\n" +
-                        $"Quantity: {currentLevelData.quantity}%\n" +
-                        $"Lifespan: {currentLevelData.lifespan}%\n" +
+                        $"Quantity: {currentLevelData.quantity}\n" +
+                        $"Lifespan: {currentLevelData.lifespan}\n" +
                         $"Cooldown: {currentLevelData.coolDown}\n" +
                         $"Mana cost: {currentLevelData.manaCost}";
         return desc;

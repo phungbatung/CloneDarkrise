@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemInfo : MonoBehaviour
 {
-    private RectTransform rect;
-    [SerializeField] private RectTransform content;
-    [SerializeField] private float maxHeight;
 
     private ItemSlot itemSlot;
     [SerializeField] private Image itemIcon;
@@ -18,10 +16,17 @@ public class ItemInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemLevel;
     [SerializeField] private TextMeshProUGUI itemDescription;
 
+    private RectTransform rect;
+    [SerializeField] private RectTransform content;
+    [SerializeField] private float maxHeight;
+
+    private List<BtnBaseItemInfo> buttonList;
+
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
         gameObject.SetActive(false);
+        buttonList = content.GetComponentsInChildren<BtnBaseItemInfo>().ToList();
     }
     public void SetItemInfo(ItemSlot _itemSlot)
     {
@@ -33,8 +38,11 @@ public class ItemInfo : MonoBehaviour
         itemType.text = item.type.ToString();
         itemQuality.text = item.quality.ToString();
         string description = "";
+        CheckForActiveButton(item);
         if (item.type == ItemType.Equipment)
         {
+            string baseStat = Item.GetBaseStatOfEquipment(item.id);
+            description += $"Base {baseStat}: {Inventory.Instance.itemDict[item.id].properties[baseStat]}\n";
             foreach (var property in _itemSlot.itemInventory.properties)
             {
                 string[] values = property.Value.Split(new char[] { ',' });
@@ -52,6 +60,18 @@ public class ItemInfo : MonoBehaviour
         
     }
 
+    private void CheckForActiveButton(ItemData item)
+    {
+        ItemType type = item.type;
+        foreach(var button in buttonList)
+        {
+            if (button.CanBeActive(type))
+                button.gameObject.SetActive(true);
+            else
+                button.gameObject.SetActive(false);
+        }    
+    }    
+
     private void RefreshContentSize()
     {
         IEnumerator Routine()
@@ -68,29 +88,40 @@ public class ItemInfo : MonoBehaviour
         }
         this.StartCoroutine(Routine());
     }    
+
     public void EquipCurrentItem()
     {
         Inventory.Instance.EquipItem(itemSlot);
         gameObject.SetActive(false);
     }
+
     public void RemoveItem()
     {
         itemSlot.RemoveAll();
         gameObject.SetActive(false);
     }
+
     public void AssignPotionToSlot()
     {
         InputManager.Instance.potionSlot.AssignPotion(itemSlot.itemInventory.itemId);
         gameObject.SetActive(false);
     }
+
     public void UsePotion()
     {
         Inventory.Instance.UsePotion(itemSlot);
         gameObject.SetActive(false);
     }
+
     public void UseBuff()
     {
         Inventory.Instance.UseBuff(itemSlot);
         gameObject.SetActive(false);
     }
+
+    public void UseSkillBook()
+    {
+        Inventory.Instance.UseSkillBook(itemSlot);
+        gameObject.SetActive(false);
+    }    
 }

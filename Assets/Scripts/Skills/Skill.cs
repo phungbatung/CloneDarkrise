@@ -56,15 +56,21 @@ public abstract class Skill : MonoBehaviour
         isAssigned = false;
         slot = null;
     }
+
+    public int GetPointToUpgradeNextLevel()
+    {
+        return (int)Mathf.Pow(5, currentLevel + 1);
+    }
     public virtual void Upgrade()
     {
-        int pointToUpgrade = (int)Mathf.Pow(5, currentLevel + 1);
-        if (currentLevel < skillData.levelsData.Count - 1 && pointToUpgrade < SkillManager.Instance.skillPoint)
+        int pointToUpgrade = GetPointToUpgradeNextLevel();
+        if (currentLevel < skillData.levelsData.Count - 1 && pointToUpgrade <= SkillManager.Instance.skillPoint)
         {
-            SkillManager.Instance.skillPoint -= pointToUpgrade;
+            SkillManager.Instance.RemoveSkillPoint(pointToUpgrade);
             currentLevel++;
         }
     }
+
 
     public virtual string GetUnlockedLevelDescription()
     {

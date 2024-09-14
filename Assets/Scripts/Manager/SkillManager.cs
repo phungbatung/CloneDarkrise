@@ -15,7 +15,8 @@ public class SkillManager : MonoBehaviour
     public LightCut lightCut { get; private set; }
     public WolfCall wolfCall { get; private set; }
 
-    public int skillPoint;
+    public int skillPoint { get; set; }
+    public SkillPointUI skillPointUI;
 
     public Transform listSkillParent;
     public GameObject skillUIPrefab;
@@ -60,5 +61,19 @@ public class SkillManager : MonoBehaviour
             skillUI.GetComponent<Skill_UI>().SetSkill(skill);
         }
         skillInfo.UpdateUI(skills[0]);
+    }
+
+    public void AddSkillPoint(int _point)
+    {
+        skillPoint += _point;
+        skillPointUI.UpdateUI(skillPoint);
+    }
+    public bool RemoveSkillPoint(int _point)
+    {
+        if (skillPoint < _point)
+            return false;
+        skillPoint -= _point;
+        skillPointUI.UpdateUI(skillPoint);
+        return true;
     }
 }

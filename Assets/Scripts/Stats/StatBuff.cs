@@ -29,7 +29,7 @@ public class StatBuff : MonoBehaviour
         itemId = _itemId;
         buffType = _buffType;
         PlayerManager.Instance.player.stats.AddModifier(Inventory.Instance.itemDict[itemId].properties);
-        buffTimer = float.Parse(Inventory.Instance.itemDict[itemId].properties[Constant.COOLDOWN]);
+        buffTimer = float.Parse(Inventory.Instance.itemDict[itemId].properties[Item.COOLDOWN]);
         buffIcon.sprite = Inventory.Instance.itemDict[itemId].icon;
     }
 

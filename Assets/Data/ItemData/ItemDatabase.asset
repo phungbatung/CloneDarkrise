@@ -1699,7 +1699,7 @@ MonoBehaviour:
       keys:
       - SkillPoint
       values:
-      - 5
+      - 1
   - id: 320002
     name: Skill book rank 2
     icon: {fileID: 141384448, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1712,7 +1712,7 @@ MonoBehaviour:
       keys:
       - SkillPoint
       values:
-      - 25
+      - 5
   - id: 330003
     name: Skill book rank 3
     icon: {fileID: 1629621418, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1725,7 +1725,7 @@ MonoBehaviour:
       keys:
       - SkillPoint
       values:
-      - 125
+      - 25
   - id: 411001
     name: Apple
     icon: {fileID: 43636790, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
