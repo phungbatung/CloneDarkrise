@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    private List<MenuOption> options;
+    private MenuOption optionParent;
+    private List<MenuOption> optionsChild;
     [SerializeField] private MenuOption defaulOption;
     private void Awake()
     {
+        optionParent = GetComponent<MenuOption>();
         GetComponentsInFirstDepthChildren();
     }
     private void Start()
@@ -16,18 +18,23 @@ public class Menu : MonoBehaviour
     }
     private void GetComponentsInFirstDepthChildren()
     {
-        options = new List<MenuOption>();
+        optionsChild = new List<MenuOption>();
         for (int i=0; i < transform.childCount; i++)
         {
             MenuOption option = transform.GetChild(i).GetComponent<MenuOption>();
             if (option != null)
-                options.Add(option);
+            {
+                optionsChild.Add(option);
+                option.SetMenu(this);
+            }
         }
 
     }
     public void SwitchTo(MenuOption option)
     {
-        foreach (var _option in options)
+        if (optionParent!=null)
+            optionParent.SwitchToThisOption();
+        foreach (var _option in optionsChild)
         {
             _option.gameObject.SetActive(false);
         }

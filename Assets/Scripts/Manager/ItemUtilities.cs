@@ -3,7 +3,19 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
-public class Item
+public enum EquipmentType
+{
+    Sword = 0,
+    Shield = 1,
+    Gauntlet = 2,
+    Boots = 3,
+    ChestPlate = 4,
+    Pants = 5,
+    Helmet = 6,
+    Ring = 7
+}
+
+public class ItemUtilities
 {
     public const string DAMAGE = "Attack";
     public const string ATTACK_SPEED = "AttackSpeed";
@@ -28,21 +40,16 @@ public class Item
 
     public const string SKILL_POINT = "SkillPoint";
 
-    public static int GetEquipmentTypeById(int _itemId)
+    public static EquipmentType GetEquipmentTypeById(int _itemId)
     {
-        return _itemId/1000%10;
+        return (EquipmentType)(_itemId/1000%10);
     }
 
     public static string GetBaseStatOfEquipment(int _itemId)
     {
-        int equipmentType = GetEquipmentTypeById(_itemId);
-        if (equipmentType == 0) return DAMAGE;
-        else if (equipmentType == 1) return ARMOR;
-        else if (equipmentType == 2) return ARMOR;
-        else if (equipmentType == 3) return MOVE_SPEED;
-        else if (equipmentType == 4) return ARMOR;
-        else if (equipmentType == 5) return ARMOR;
-        else if (equipmentType == 6) return ARMOR;
+        EquipmentType equipmentType = GetEquipmentTypeById(_itemId);
+        if (equipmentType == EquipmentType.Sword) return DAMAGE;
+        else if (equipmentType == EquipmentType.Boots) return MOVE_SPEED;
         else return ARMOR;
     }
 }

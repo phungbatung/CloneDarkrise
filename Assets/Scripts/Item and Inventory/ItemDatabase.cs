@@ -64,9 +64,9 @@ public class ItemDatabase : ScriptableObject
         string equipmentsData = Resources.Load<TextAsset>("ItemDataBase\\EquipmentData").text;
         string[] listEquipmentData = equipmentsData.Split(new char[] { '\n' });
         ItemData item;
-        string[] propertiesName = { "", Item.DAMAGE, Item.ATTACK_SPEED, Item.ARMOR_PENETRATION, 
-                                        Item.CRITICAL_RATE, Item.CRITICAL_DAMAGE, Item.HEALTH, Item.HEALTH_REGEN,
-                                        Item.ARMOR, Item.MANA, Item.MANA_REGEN, Item.MOVE_SPEED};
+        string[] propertiesName = { "", ItemUtilities.DAMAGE, ItemUtilities.ATTACK_SPEED, ItemUtilities.ARMOR_PENETRATION, 
+                                        ItemUtilities.CRITICAL_RATE, ItemUtilities.CRITICAL_DAMAGE, ItemUtilities.HEALTH, ItemUtilities.HEALTH_REGEN,
+                                        ItemUtilities.ARMOR, ItemUtilities.MANA, ItemUtilities.MANA_REGEN, ItemUtilities.MOVE_SPEED};
         for (int i = 1; i < listEquipmentData.Length; i++)
         {
             string[] data = listEquipmentData[i].Split(new char[] { ',', '\r' });
@@ -87,7 +87,7 @@ public class ItemDatabase : ScriptableObject
         string potionsData = Resources.Load<TextAsset>("ItemDataBase\\PotionData").text;
         string[] listPotionData = potionsData.Split(new char[] { '\n' });
         ItemData item;
-        string[] propertiesName = { "", Item.HEALTH, Item.MANA, Item.COOLDOWN};
+        string[] propertiesName = { "", ItemUtilities.HEALTH, ItemUtilities.MANA, ItemUtilities.COOLDOWN};
         for (int i=1; i<listPotionData.Length; i++)
         {
             string[] data = listPotionData[i].Split(new char[] { ',', '\r' });
@@ -116,7 +116,7 @@ public class ItemDatabase : ScriptableObject
             {
                 item = itemDataDictionary[int.Parse(data[0])];
                 if (data[1] != "0")
-                    item.properties[Item.SKILL_POINT] = data[1];
+                    item.properties[ItemUtilities.SKILL_POINT] = data[1];
             }
         }
     }
@@ -126,7 +126,7 @@ public class ItemDatabase : ScriptableObject
         string buffsData = Resources.Load<TextAsset>("ItemDataBase\\BuffData").text;
         string[] listBuffData = buffsData.Split(new char[] { '\n' });
         ItemData item;
-        string[] propertiesName = { "", Item.DAMAGE, Item.HEALTH, Item.COOLDOWN };
+        string[] propertiesName = { "", ItemUtilities.DAMAGE, ItemUtilities.HEALTH, ItemUtilities.COOLDOWN };
         for (int i = 1; i < listBuffData.Length; i++)
         {
             string[] data = listBuffData[i].Split(new char[] { ',', '\r' });
@@ -147,7 +147,7 @@ public class ItemDatabase : ScriptableObject
         string magicDustsData = Resources.Load<TextAsset>("ItemDataBase\\MagicDustData").text;
         string[] listMagicDustData = magicDustsData.Split(new char[] { '\n' });
         ItemData item;
-        string[] propertiesName = { "", Item.DAMAGE, Item.HEALTH };
+        string[] propertiesName = { "", ItemUtilities.DAMAGE, ItemUtilities.HEALTH };
         for (int i = 1; i < listMagicDustData.Length; i++)
         {
             string[] data = listMagicDustData[i].Split(new char[] { ',', '\r' });

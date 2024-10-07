@@ -9,11 +9,6 @@ using Unity.Mathematics;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    //public int itemId { get; set; }
-    //public int amount { get; set; }
-
-    //public Dictionary<string, string> properties;
-
     public ItemInventory itemInventory;
 
     [SerializeField] private Image itemImage;
@@ -21,11 +16,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     private void Awake()
     {
-        //itemId = -1;
-        //amount = 0;
-        //properties = new Dictionary<string, string>();
-        itemInventory = new ItemInventory();
-        UpdateUI();
+        
     }
     public void UpdateUI()
     {
@@ -38,16 +29,35 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         else
         {
             itemImage.color = new Color(1, 1, 1, 1);
-            itemImage.sprite = Inventory.Instance.itemDict[itemInventory.itemId].icon;
+            itemImage.sprite = ItemManager.Instance.itemDict[itemInventory.itemId].icon;
             if (itemInventory.amount <= 1)
                 amountText.text = "";
             else
                 amountText.text = itemInventory.amount.ToString();
         }
     }
-    public void AddItem(int _id, int _amount = 1, Dictionary<string, string> _properties = null)
+    public void UpdateUI(ItemInventory _itemInventory)
     {
-        itemInventory.AddItem(_id, _amount, _properties);
+        itemInventory = _itemInventory;
+        if (_itemInventory.IsEmpty())
+        {
+            itemImage.color = new Color(1, 1, 1, 0);
+            itemImage.sprite = null;
+            amountText.text = "";
+        }
+        else
+        {
+            itemImage.color = new Color(1, 1, 1, 1);
+            itemImage.sprite = ItemManager.Instance.itemDict[_itemInventory.itemId].icon;
+            if (_itemInventory.amount <= 1)
+                amountText.text = "";
+            else
+                amountText.text = _itemInventory.amount.ToString();
+        }
+    }
+    public void AddItem(int _id, int _amount = 1)
+    {
+        itemInventory.AddItem(_id, _amount);
         UpdateUI();
     }
     public void AddItem(int _id, Dictionary<string, string> _properties = null)
@@ -90,13 +100,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             return;
         if (itemInventory.itemId == -1)
             return;
-        Inventory.Instance.itemInfo.SetItemInfo(this);
+        ItemManager.Instance.itemInfo.SetItemInfo(itemInventory);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         itemImage.raycastTarget = false;
-        itemImage.transform.SetParent(Inventory.Instance.moveItem);
+        itemImage.transform.SetParent(ItemManager.Instance.moveItem);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -115,33 +125,33 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     public void OnDrop(PointerEventData eventData)
     {
         ItemSlot toDropSlot = eventData.pointerDrag.GetComponent<ItemSlot>();
-        Inventory inventory = Inventory.Instance;
+        ItemManager inventory = ItemManager.Instance;
 
         //Case: slot to drop is equipment slot
-        if (Inventory.Instance.equipmentSlots.Contains(this)) 
+        if (ItemManager.Instance.equipmentSlots.Contains(this)) 
         {
             //Two equipped item are not the same type
             if (inventory.equipmentSlots.Contains(toDropSlot))
                 return;
-            //Cannot drop none equipment to equipment slot
+            //Cannot drop non-equipment to equipment slot
             if (inventory.itemDict[toDropSlot.itemInventory.itemId].type != ItemType.Equipment)
                 return;
-            //Cannot drop equipment other than the equipment type of this equipment slot
+            //Cannot drop equipment of different type in this equipment slot
             if (inventory.GetEquipmentTypeById(toDropSlot.itemInventory.itemId) != inventory.equipmentSlots.IndexOf(this))
                 return;
             //Equip
-            inventory.EquipItem(toDropSlot);
+            inventory.EquipItem(toDropSlot.itemInventory);
             return;
         }
 
         //Case: slot to drop is inventory slot
         //Check if to drop slot is from equipment slot
-        if (Inventory.Instance.equipmentSlots.Contains(toDropSlot))
+        if (ItemManager.Instance.equipmentSlots.Contains(toDropSlot))
         {
             //if slot to drop is empty then move item from equipment slot to this slot
             if (itemInventory.itemId ==-1)
             {
-                inventory.UnequipItem(toDropSlot, inventory.inventorySlots.IndexOf(this));
+                inventory.UnequipItem(toDropSlot.itemInventory, itemInventory);
                 return;
             }
             //Cannot swap item from equipment slot to none equipment
@@ -151,7 +161,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             if (inventory.GetEquipmentTypeById(itemInventory.itemId) != inventory.GetEquipmentTypeById(toDropSlot.itemInventory.itemId))
                 return;
             //Equip this item if it is equipment of the same type
-            inventory.EquipItem(this);
+            inventory.EquipItem(itemInventory);
             return;
         }
         //Swap two item from inventory
@@ -160,7 +170,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public static int CompareByItemId(ItemSlot slot1, ItemSlot slot2)
     {
-        return ItemInventory.CompareByItemId(slot1.itemInventory, slot2.itemInventory);
+        return ItemInventory.CompareByItemType(slot1.itemInventory, slot2.itemInventory);
     }
     public static int CompareByItemQuality(ItemSlot slot1, ItemSlot slot2)
     {

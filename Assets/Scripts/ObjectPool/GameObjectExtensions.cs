@@ -22,4 +22,9 @@ public static class GameObjectExtensions
     {
         return PoolManager.Spawn(prefab, position, parent);
     }
+
+    public static void Despawn(this GameObject prefab)
+    {
+        PoolManager.Despawn(prefab);
+    }
 }

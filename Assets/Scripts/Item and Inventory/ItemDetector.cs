@@ -7,11 +7,11 @@ public class ItemDetector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<ItemObject>() != null)
-            Inventory.Instance.listItemToPick.Add(collision.GetComponent<ItemObject>());
+            ItemManager.Instance.listItemToPick.Add(collision.GetComponent<ItemObject>());
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<ItemObject>() != null)
-            Inventory.Instance.listItemToPick.Remove(collision.GetComponent<ItemObject>());
+            ItemManager.Instance.listItemToPick.Remove(collision.GetComponent<ItemObject>());
     }
 }

@@ -21,8 +21,8 @@ public class ItemToPick : MonoBehaviour, IPointerClickHandler
     public void SetUpUI(ItemObject _itemObject)
     {
         itemObject = _itemObject;
-        itemIcon.sprite = Inventory.Instance.itemDict[itemObject.itemId].icon;
-        itemName.text = Inventory.Instance.itemDict[itemObject.itemId].name;
+        itemIcon.sprite = ItemManager.Instance.itemDict[itemObject.itemId].icon;
+        itemName.text = ItemManager.Instance.itemDict[itemObject.itemId].name;
     }
     public void OnPointerClick(PointerEventData eventData)
     {

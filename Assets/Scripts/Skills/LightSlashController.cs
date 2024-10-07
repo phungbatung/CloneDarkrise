@@ -26,7 +26,7 @@ public class LightSlashController : MonoBehaviour
     public void Attack()
     {
         LightCutLevelData lightCutLevelData = lightCut.skillData.levelsData[lightCut.currentLevel] as LightCutLevelData;
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + new Vector3(player.facingDir * size.x/2, 0, 0), size, 0);
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position + new Vector3(player.facingDir * size.x/2, 0, 0), size, 0, player.targetLayer);
         foreach (Collider2D collider in colliders)
         {
             IDamageable target = collider.GetComponent<IDamageable>();

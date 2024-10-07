@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SwitchOptionButton : MonoBehaviour
 {
-    [SerializeField] private Menu menu;
     [SerializeField] private MenuOption option;
     private Button switchButton;
     private void Awake()
@@ -15,6 +14,6 @@ public class SwitchOptionButton : MonoBehaviour
     }
     private void SwitchOption()
     {
-        menu.SwitchTo(option);
+        option.SwitchToThisOption();
     }
 }

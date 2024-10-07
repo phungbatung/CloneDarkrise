@@ -10,9 +10,9 @@ public class PotionSlot : MonoBehaviour, IPointerDownHandler
 {
     public int itemId { get; private set; }
 
-    private float cooldown;
+    private float cooldown { get; set; }
     private float cooldownTimer;
-    private bool isCoolDownCompleted;
+    public bool isCoolDownCompleted { get; set; }
 
     [SerializeField] private Image image;
     [SerializeField] private TextMeshProUGUI textCoolDown;
@@ -20,9 +20,8 @@ public class PotionSlot : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         itemId = -1;
-        isCoolDownCompleted = false;
+        isCoolDownCompleted = true;
         cooldownTimer = 0;
-        
     }
 
     private void OnEnable()
@@ -50,25 +49,29 @@ public class PotionSlot : MonoBehaviour, IPointerDownHandler
     {
         if (isCoolDownCompleted && itemId != -1)
         {
-            List<ItemSlot> potionSlots = Inventory.Instance.GetItemSlotById(itemId);
+            List<ItemInventory> potionSlots = ItemManager.Instance.GetListItemInventoroyById(itemId);
             if (potionSlots.Count > 0)
-            Inventory.Instance.UsePotion(Inventory.Instance.GetItemSlotById(itemId)[0]);
-            UpdateUI();
+            {
+                ItemManager.Instance.UsePotion(potionSlots[0]);
+                UpdateUI();
+            }
         }
     }
 
     public void AssignPotion(int _itemId)
     {
         itemId = _itemId;
+        UpdateUI();
     }
 
     public void UpdateUI()
     {
         if (itemId != -1)
         {
-            ItemData itemData= Inventory.Instance.itemDict[itemId];
+            ItemData itemData= ItemManager.Instance.itemDict[itemId];
             image.sprite = itemData.icon;
-            amount.text = Inventory.Instance.GetTotalAmount(itemId).ToString();
+            amount.text = ItemManager.Instance.GetTotalAmount(itemId).ToString();
+            textCoolDown.text = cooldown<=0?"":cooldown.ToString();
         }
         else
         {
@@ -76,5 +79,12 @@ public class PotionSlot : MonoBehaviour, IPointerDownHandler
             amount.text = "";
         }    
     }
+
+    public void ApplyCoolDown(float _cooldown)
+    {
+        cooldown = _cooldown;
+        cooldownTimer = _cooldown;
+        isCoolDownCompleted = false;
+    }    
 
 }

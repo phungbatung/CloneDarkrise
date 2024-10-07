@@ -44,7 +44,6 @@ public class SkillInfo : MonoBehaviour
         lockedLevel.text = skill.GetLockedLevelDescription();
 
         RefreshContentSize();
-        Debug.Log("log");
 
     }
 

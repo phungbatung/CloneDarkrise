@@ -1611,7 +1611,7 @@ MonoBehaviour:
       - CoolDown
       values:
       - 300
-      - 300
+      - 15
   - id: 221001
     name: Health flask
     icon: {fileID: -287485094, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1626,7 +1626,7 @@ MonoBehaviour:
       - CoolDown
       values:
       - 600
-      - 300
+      - 15
   - id: 231001
     name: Health flask
     icon: {fileID: 845386048, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1641,7 +1641,7 @@ MonoBehaviour:
       - CoolDown
       values:
       - 1200
-      - 300
+      - 15
   - id: 212001
     name: Mana flask
     icon: {fileID: -519132589, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1656,7 +1656,7 @@ MonoBehaviour:
       - CoolDown
       values:
       - 50
-      - 300
+      - 15
   - id: 222001
     name: Mana flask
     icon: {fileID: 912340208, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1671,7 +1671,7 @@ MonoBehaviour:
       - CoolDown
       values:
       - 100
-      - 300
+      - 15
   - id: 232001
     name: Mana flask
     icon: {fileID: 1786522684, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1686,7 +1686,7 @@ MonoBehaviour:
       - CoolDown
       values:
       - 200
-      - 300
+      - 15
   - id: 310001
     name: Skill book rank 1
     icon: {fileID: -1879649195, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}

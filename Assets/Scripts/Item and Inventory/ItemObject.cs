@@ -20,7 +20,7 @@ public class ItemObject : MonoBehaviour
     public void SetUpItem(int _itemId, Vector3 _dropPosition)
     {
         itemId = _itemId;
-        ItemData itemData = Inventory.Instance.itemDict[_itemId];
+        ItemData itemData = ItemManager.Instance.itemDict[_itemId];
         if (itemData.type == ItemType.Equipment)
         {
             for (int i = 1; i <= itemData.quality.GetHashCode(); i++)
@@ -45,9 +45,9 @@ public class ItemObject : MonoBehaviour
     public void PickUpItem()
     {
         if (properties.Count == 0)
-            Inventory.Instance.AddItem(itemId);
+            ItemManager.Instance.AddItem(itemId);
         else
-            Inventory.Instance.AddItem(itemId, properties);
+            ItemManager.Instance.AddItem(itemId, properties);
         Destroy(gameObject);
     }
     //private void OnTriggerEnter2D(Collider2D collision)

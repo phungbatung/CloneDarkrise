@@ -17,7 +17,7 @@ public class HealWave : Skill
     public void Healing()
     {
         HealWaveLevelData healWaveLevelData = skillData.levelsData[currentLevel] as HealWaveLevelData;
-        player.stats.HealthChange( healWaveLevelData.healthToRegen, healWaveLevelData.healthPercentageToRegen);
+        player.stats.HealthIncrement( healWaveLevelData.healthToRegen, healWaveLevelData.healthPercentageToRegen);
     }
 
     public override void FillData()
