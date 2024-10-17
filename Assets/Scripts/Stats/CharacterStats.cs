@@ -31,25 +31,16 @@ public class CharacterStats : MonoBehaviour, IDamageable
     //To get Stat by key of item property quickly
     private Dictionary<string, Stat> getStatByName = new();
 
-    [SerializeField] private GameObject buffPrefab;
-    [SerializeField] private Transform buffHolder;
-
-    private Dictionary<int, Stat> getStatByBuffType = new();    //<buffType, Stat>
-    public Dictionary<int, StatBuff> buffDict = new();  //<buffType, StatBuff>
+    public BuffManager BuffManager { get; private set; }
 
 
     private void Awake()
     {
         InitGetStatByNameDict();
-        InitGetStatByBuffTypeDict();
         currentHealth = maxHealth.GetValue();
+        BuffManager = GetComponent<BuffManager>();
     }
 
-    private void InitGetStatByBuffTypeDict()
-    {
-        getStatByBuffType[1] = damage;
-        getStatByBuffType[2] = maxHealth;
-    }
 
     private void InitGetStatByNameDict()
     {
@@ -140,7 +131,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
         OnHealthChanged?.Invoke();
     }
     
-    public virtual void ManaChange(int _mana = 0, int _manaPercentage = 0)
+    public virtual void ManaIncreament(int _mana = 0, int _manaPercentage = 0)
     {
         currentMana += _mana;
         currentMana +=  (int)Mathf.Floor(maxHealth.GetValue() * _manaPercentage * 1f / 100);
@@ -162,23 +153,9 @@ public class CharacterStats : MonoBehaviour, IDamageable
         }
         if (item.properties.TryGetValue(ItemUtilities.MANA, out string _mana))
         {
-            ManaChange(int.Parse(_mana));
+            ManaIncreament(int.Parse(_mana));
         }
     }
 
-    public void UseBuff(int _itemId)
-    {
-        int buffType = GetBuffType(_itemId);
-        if (buffDict.TryGetValue(buffType, out StatBuff statBuff))
-            statBuff?.EndBuff();
-        GameObject buff = Instantiate(buffPrefab);
-        buff.transform.SetParent(buffHolder);
-        buffDict[buffType] = buff.GetComponent<StatBuff>();
-        buffDict[buffType].StartBuff(_itemId, buffType);
-    }
-    public int GetBuffType(int _itemId)
-    {
-        return (ItemManager.Instance.itemDict[_itemId].id / 1000) % 10;
-    }
 
 }

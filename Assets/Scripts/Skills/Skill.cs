@@ -36,7 +36,7 @@ public abstract class Skill : MonoBehaviour
     {
         cooldownTimer = skillData.levelsData[currentLevel].coolDown;
         isCoolDownCompleted = false;
-        player.stats.ManaChange(-skillData.levelsData[currentLevel].manaCost);
+        player.stats.ManaIncreament(-skillData.levelsData[currentLevel].manaCost);
     }
 
     public virtual bool CanBeUse()

@@ -14,7 +14,11 @@ public enum EquipmentType
     Helmet = 6,
     Ring = 7
 }
-
+public enum BuffType
+{
+    Offensive = 0,
+    Deffensive = 1
+}
 public class ItemUtilities
 {
     public const string DAMAGE = "Attack";
@@ -52,4 +56,10 @@ public class ItemUtilities
         else if (equipmentType == EquipmentType.Boots) return MOVE_SPEED;
         else return ARMOR;
     }
+
+    public static BuffType GetBuffTypeById(int _itemId)
+    {
+        return (BuffType)(_itemId / 1000 % 10);
+    }
+
 }

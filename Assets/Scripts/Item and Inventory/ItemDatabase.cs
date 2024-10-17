@@ -126,7 +126,7 @@ public class ItemDatabase : ScriptableObject
         string buffsData = Resources.Load<TextAsset>("ItemDataBase\\BuffData").text;
         string[] listBuffData = buffsData.Split(new char[] { '\n' });
         ItemData item;
-        string[] propertiesName = { "", ItemUtilities.DAMAGE, ItemUtilities.HEALTH, ItemUtilities.COOLDOWN };
+        string[] propertiesName = { "", ItemUtilities.DAMAGE, ItemUtilities.HEALTH, ItemUtilities.DURATION };
         for (int i = 1; i < listBuffData.Length; i++)
         {
             string[] data = listBuffData[i].Split(new char[] { ',', '\r' });

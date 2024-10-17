@@ -174,7 +174,7 @@ public class ItemManager : MonoBehaviour
     {
         if (itemDict[_item.itemId].type != ItemType.Buff)
             return;
-        PlayerManager.Instance.player.stats.UseBuff(_item.itemId);
+        PlayerManager.Instance.player.stats.BuffManager.StartBuff(_item.itemId);
         _item.RemoveItem();
     }
     #endregion
