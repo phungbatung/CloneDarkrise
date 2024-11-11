@@ -7,11 +7,12 @@ public class BuffManager : MonoBehaviour
     private CharacterStats characterStats;
 
 
-    [SerializeField] private GameObject buffPrefab;
-    [SerializeField] private Transform buffHolder;
+    [SerializeField] private GameObject buffViewPrefab;
+    [SerializeField] private GameObject buffPresenterPrefab;
+    public Transform buffHolder { get; set; }
 
-    private Dictionary<BuffType, BuffPresenter> buffDict = new();
-    private List<BuffPresenter> buffs = new();
+    private Dictionary<BuffType, BuffModel> buffDict = new();
+    private List<BuffModel> buffs = new();
     private void Awake()
     {
         characterStats = GetComponent<CharacterStats>();
@@ -19,43 +20,38 @@ public class BuffManager : MonoBehaviour
 
     private void Update()
     {
-        foreach (BuffPresenter buff in buffs)
+        foreach (BuffModel buff in buffs)
         {
-            buff.ExecuteCountDown(Time.deltaTime);
+            buff.Countdown(Time.deltaTime);
         }
     }
-    public void StartBuff(int id)
+    public void StartBuff(int id, float duration = 0)
     {
-        EndBuff(id);   
+        EndBuffOfTheSameType(id);   
         ItemData item = ItemManager.Instance.itemDict[id];
-        float buffDuration = float.Parse(item.properties[ItemUtilities.DURATION]);
-        characterStats.AddModifier(item.properties);
-        GameObject buffView = Instantiate(buffPrefab);
+        float buffDuration = duration > 0 ? duration : float.Parse(item.properties[ItemUtilities.DURATION]);
+        BuffModel buff = new BuffModel(characterStats, id, buffDuration);
+
+        GameObject BuffViewInstance = Instantiate(buffViewPrefab);
+        BuffView buffView = BuffViewInstance.GetComponent<BuffView>();
         buffView.transform.SetParent(buffHolder);
-        BuffPresenter buffPresenter = new BuffPresenter(this, buffView.GetComponent<BuffView>(), id, buffDuration);
-        buffDict[ItemUtilities.GetBuffTypeById(id)] = buffPresenter;
-        buffs.Add(buffPresenter);
+
+        GameObject buffPresenterInstance = Instantiate(buffPresenterPrefab);
+        BuffPresenter buffPresenter = buffPresenterInstance.GetComponent<BuffPresenter>();
+        buffPresenter.Setup(buff, buffView);
+
+        buffDict[ItemUtilities.GetBuffTypeById(id)] = buff;
+        buffs.Add(buff);
+
+        buff.EndBuffArgEvent += EndBuffOfTheSameType;
+        buff.StartBuff();
     }
-    public void StartBuff(int id, float duration)
+    public void EndBuffOfTheSameType(int id)
     {
-        EndBuff(id);
-        ItemData item = ItemManager.Instance.itemDict[id];
-        float buffDuration = duration;
-        characterStats.AddModifier(item.properties);
-        GameObject buffView = Instantiate(buffPrefab);
-        buffView.transform.SetParent(buffHolder);
-        BuffPresenter buffPresenter = new BuffPresenter(this, buffView.GetComponent<BuffView>(), id, buffDuration);
-        buffDict[ItemUtilities.GetBuffTypeById(id)] = buffPresenter;
-        buffs.Add(buffPresenter);
-    }
-    public void EndBuff(int id)
-    {
-        if (buffDict.TryGetValue(ItemUtilities.GetBuffTypeById(id), out BuffPresenter buffPresenter))
+        if (buffDict.TryGetValue(ItemUtilities.GetBuffTypeById(id), out BuffModel buff))
         {
-            ItemData item = ItemManager.Instance.itemDict[buffPresenter.buffModel.itemId];
-            characterStats.RemoveModifier(item.properties);
-            buffPresenter.EndBuff();
-            buffs.Remove(buffPresenter);
+            buff.EndBuff();
+            buffs.Remove(buff);
             buffDict.Remove(ItemUtilities.GetBuffTypeById(id));
         }    
 

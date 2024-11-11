@@ -100,7 +100,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             return;
         if (itemInventory.itemId == -1)
             return;
-        ItemManager.Instance.itemInfo.SetItemInfo(itemInventory);
+        ItemManager.Instance.itemInfo.SetItemInfo(this);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -128,16 +128,16 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         ItemManager inventory = ItemManager.Instance;
 
         //Case: slot to drop is equipment slot
-        if (ItemManager.Instance.equipmentSlots.Contains(this)) 
+        if (ItemManager.Instance.equipedItems.Contains(itemInventory)) 
         {
             //Two equipped item are not the same type
-            if (inventory.equipmentSlots.Contains(toDropSlot))
+            if (inventory.equipedItems.Contains(toDropSlot.itemInventory))
                 return;
             //Cannot drop non-equipment to equipment slot
             if (inventory.itemDict[toDropSlot.itemInventory.itemId].type != ItemType.Equipment)
                 return;
             //Cannot drop equipment of different type in this equipment slot
-            if (inventory.GetEquipmentTypeById(toDropSlot.itemInventory.itemId) != inventory.equipmentSlots.IndexOf(this))
+            if (inventory.GetEquipmentTypeById(toDropSlot.itemInventory.itemId) != inventory.equipedItems.IndexOf(itemInventory))
                 return;
             //Equip
             inventory.EquipItem(toDropSlot.itemInventory);
@@ -146,7 +146,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
         //Case: slot to drop is inventory slot
         //Check if to drop slot is from equipment slot
-        if (ItemManager.Instance.equipmentSlots.Contains(toDropSlot))
+        if (ItemManager.Instance.equipedItems.Contains(toDropSlot.itemInventory))
         {
             //if slot to drop is empty then move item from equipment slot to this slot
             if (itemInventory.itemId ==-1)

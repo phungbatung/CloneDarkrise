@@ -1,19 +1,23 @@
+using System;
 using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
     protected Player player;
 
-    public SkillData skillData;
-    public int currentLevel = 0;
-    protected float cooldownTimer;
+    public SkillData skillData { get; set; }
+    public int currentLevel { get; protected set;}
+    public  float cooldownTimer {  get; protected set; }
     protected bool isCoolDownCompleted;
+    public Action coolDownEvent;
 
-    protected bool isAssigned;
-    protected SkillSlot slot;
+    public bool isPressed;
+
     protected virtual void Awake()
     {
+        skillData = new SkillData();
         FillData();
+        currentLevel = 0;
     }
     protected virtual void Start()
     {
@@ -25,8 +29,7 @@ public abstract class Skill : MonoBehaviour
         if (!isCoolDownCompleted)
         {
             cooldownTimer -= Time.deltaTime;
-            if (isAssigned)
-                slot.DoCooldown(cooldownTimer, skillData.levelsData[currentLevel].coolDown);
+            coolDownEvent?.Invoke();
             if (cooldownTimer <= 0)
                 isCoolDownCompleted = true;
         }
@@ -41,20 +44,7 @@ public abstract class Skill : MonoBehaviour
 
     public virtual bool CanBeUse()
     {
-        return  isAssigned && slot.isPressed && cooldownTimer <= 0;
-    }
-
-    public virtual void AssignToSlot(SkillSlot _skillSlot)
-    {
-        isAssigned = true;
-        slot = _skillSlot;
-        slot.image.sprite = skillData.icon;
-    }
-
-    public virtual void UnassignSlot()
-    {
-        isAssigned = false;
-        slot = null;
+        return  isPressed && cooldownTimer <= 0;
     }
 
     public int GetPointToUpgradeNextLevel()

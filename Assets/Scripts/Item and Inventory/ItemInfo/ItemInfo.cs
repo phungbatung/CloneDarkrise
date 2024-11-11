@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ItemInfo : MonoBehaviour
 {
 
-    private ItemInventory item;
+    private ItemSlot itemSlot;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemType;
@@ -28,11 +28,11 @@ public class ItemInfo : MonoBehaviour
         gameObject.SetActive(false);
         buttonList = content.GetComponentsInChildren<BtnBaseItemInfo>().ToList();
     }
-    public void SetItemInfo(ItemInventory _item)
+    public void SetItemInfo(ItemSlot _itemSlot)
     {
         gameObject.SetActive(true);
-        this.item = _item;
-        ItemData item = ItemManager.Instance.itemDict[_item.itemId];
+        itemSlot = _itemSlot;
+        ItemData item = ItemManager.Instance.itemDict[_itemSlot.itemInventory.itemId];
         SetBaseInfo(item);
         SetPropertiesInfo(item);
         CheckForActiveButton(item);
@@ -55,7 +55,7 @@ public class ItemInfo : MonoBehaviour
         {
             string baseStat = ItemUtilities.GetBaseStatOfEquipment(item.id);
             description += $"Base {baseStat}: {ItemManager.Instance.itemDict[item.id].properties[baseStat]}\n";
-            foreach (var property in this.item.equipmentProperties.properties)
+            foreach (var property in itemSlot.itemInventory.equipmentProperties.properties)
             {
                 string[] values = property.Value.Split(new char[] { ',' });
                 foreach (var value in values)
@@ -104,37 +104,37 @@ public class ItemInfo : MonoBehaviour
 
     public void EquipCurrentItem()
     {
-        ItemManager.Instance.EquipItem(item);
+        ItemManager.Instance.EquipItem(itemSlot.itemInventory);
         gameObject.SetActive(false);
     }
 
     public void RemoveItem()
     {
-        item.RemoveAll();
+        itemSlot.RemoveAll();
         gameObject.SetActive(false);
     }
 
     public void AssignPotionToSlot()
     {
-        InputManager.Instance.potionSlot.AssignPotion(item.itemId);
+        InputManager.Instance.potionSlot.AssignPotion(itemSlot.itemInventory.itemId);
         gameObject.SetActive(false);
     }
 
     public void UsePotion()
     {
-        ItemManager.Instance.UsePotion(item);
+        ItemManager.Instance.UsePotion(itemSlot.itemInventory);
         gameObject.SetActive(false);
     }
 
     public void UseBuff()
     {
-        ItemManager.Instance.UseBuff(item);
+        ItemManager.Instance.UseBuff(itemSlot.itemInventory);
         gameObject.SetActive(false);
     }
 
     public void UseSkillBook()
     {
-        ItemManager.Instance.UseSkillBook(item);
+        ItemManager.Instance.UseSkillBook(itemSlot.itemInventory);
         gameObject.SetActive(false);
     }    
 }

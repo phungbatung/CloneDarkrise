@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Character
 {
+    public Detector detector;
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
     public PlayerJumpState jumpState { get; private set; }
@@ -18,6 +19,8 @@ public class Player : Character
     protected override void Awake()
     {
         base.Awake();
+        detector = GetComponentInChildren<Detector>();
+
         idleState = new PlayerIdleState(this, stateMachine, "idle");
         moveState = new PlayerMoveState(this, stateMachine, "move");
         jumpState = new PlayerJumpState(this, stateMachine, "jump");

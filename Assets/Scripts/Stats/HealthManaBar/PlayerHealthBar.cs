@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PlayerHealthBar : Bar
 {
+    public override void OnValueChange()
+    {
+        currentValue = character.stats.currentHealth;
+        barImage.fillAmount = currentValue / maxValue;
+    }
+
     private void Start()
     {
         character = PlayerManager.Instance.player;

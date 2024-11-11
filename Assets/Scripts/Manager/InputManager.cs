@@ -21,7 +21,7 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        skillSlots = skillSlotParent.GetComponentsInChildren<SkillSlot>().ToList();
+        //skillSlots = skillSlotParent.GetComponentsInChildren<SkillSlot>().ToList();
         if (Instance == null)
             Instance = this;
         else

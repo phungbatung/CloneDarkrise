@@ -18,10 +18,8 @@ public class ItemManager : MonoBehaviour
     public InventoryUI inventoryUI;
     
     //Equipment
-    public Transform equipmentSlotsParent;
     public List<ItemInventory> equipedItems { get; set; }
     public int equipmentSize = 8;
-    public List<ItemSlot> equipmentSlots { get; set; }
 
 
     public PotionSlot potionSlot;
@@ -30,7 +28,6 @@ public class ItemManager : MonoBehaviour
 
     public ItemInfo itemInfo;
 
-    public ListItemToPick listItemToPick;
 
     private void Awake()
     {

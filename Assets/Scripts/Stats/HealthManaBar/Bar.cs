@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Bar : MonoBehaviour
+public abstract class Bar : MonoBehaviour
 {
     protected Character character;
-    protected Image healthBar;
+    protected Image barImage;
     protected float maxValue;
     protected float currentValue;
     protected virtual void Awake()
     {
-        healthBar = GetComponent<Image>();
+        barImage = GetComponent<Image>();
     }
-    
-    public virtual void OnValueChange()
-    {
-        currentValue = character.stats.currentHealth;
-        healthBar.fillAmount = currentValue/maxValue;
-    }
+
+    public abstract void OnValueChange();
     public virtual void SetMaxValue()
     {
         maxValue = PlayerManager.Instance.player.stats.maxHealth.GetValue();

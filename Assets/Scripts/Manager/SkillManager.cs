@@ -1,7 +1,5 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -16,6 +14,10 @@ public class SkillManager : MonoBehaviour
     public WolfCall wolfCall { get; private set; }
 
     public int skillPoint { get; set; }
+
+    public Skill[] assignedSkills;
+    public Action assignEvent;
+
     public SkillPointUI skillPointUI;
 
     public Transform listSkillParent;
@@ -34,20 +36,23 @@ public class SkillManager : MonoBehaviour
         healWave = GetComponent<HealWave>();
         lightCut = GetComponent<LightCut>();
         wolfCall = GetComponent<WolfCall>();
+
+        assignedSkills = new Skill[6];
+        DefaulAssignSlot();
     }
     private void Start()
     {
-        DefaulAssignSlot();
-        GenerateSkillUI();
+        //GenerateSkillUI();
     }
     public void DefaulAssignSlot()
     {
-        dash.AssignToSlot(InputManager.Instance.skillSlots[0]);
-        baseAttack.AssignToSlot(InputManager.Instance.skillSlots[1]);
-        slash.AssignToSlot(InputManager.Instance.skillSlots[2]);
-        healWave.AssignToSlot(InputManager.Instance.skillSlots[3]);
-        lightCut.AssignToSlot(InputManager.Instance.skillSlots[4]);
-        wolfCall.AssignToSlot(InputManager.Instance.skillSlots[5]);
+        AssignSkillToSlot(dash, 0);
+        AssignSkillToSlot(baseAttack, 1);
+        AssignSkillToSlot(slash, 2);
+        AssignSkillToSlot(healWave, 3);
+        AssignSkillToSlot(lightCut, 4);
+        AssignSkillToSlot(wolfCall, 5);
+        
     }
 
     public void GenerateSkillUI()
@@ -60,7 +65,7 @@ public class SkillManager : MonoBehaviour
             skillUI.transform.SetParent(listSkillParent);
             skillUI.GetComponent<Skill_UI>().SetSkill(skill);
         }
-        skillInfo.UpdateUI(skills[0]);
+        //skillInfo.UpdateUI(skills[0]);
     }
 
     public void AddSkillPoint(int _point)
@@ -75,5 +80,12 @@ public class SkillManager : MonoBehaviour
         skillPoint -= _point;
         skillPointUI.UpdateUI(skillPoint);
         return true;
+    }
+
+
+    public void AssignSkillToSlot(Skill _skill, int _slotIndex)
+    {
+        assignedSkills[_slotIndex] = _skill;
+        assignEvent?.Invoke();
     }
 }

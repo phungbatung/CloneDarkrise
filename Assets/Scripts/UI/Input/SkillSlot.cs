@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
 {
+    private Skill skill;
     public Image image;
     private TextMeshProUGUI textCoolDown;
     public bool isPressed { get; set; }
@@ -16,16 +17,18 @@ public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        isPressed = true;
+        skill.isPressed = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        isPressed = false;
+        skill.isPressed = false;
     }
 
-    public void DoCooldown(float _cooldownTimer, float _coolDown)
+    public void DoCooldown()
     {
+        float  _cooldownTimer = skill.cooldownTimer;
+        float _coolDown = skill.skillData.levelsData[skill.currentLevel].coolDown;
         if (_cooldownTimer <= 0)
         {
             image.fillAmount = 1;
@@ -34,5 +37,17 @@ public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
         }
         image.fillAmount = (_coolDown - _cooldownTimer)/_coolDown;
         textCoolDown.text = ((int)_cooldownTimer).ToString();
+    }
+
+    public void AssignSkill(Skill _skill)
+    {
+        if (skill!=null)
+        {
+            skill.coolDownEvent -= DoCooldown;
+        }
+
+        skill = _skill;
+        image.sprite = skill.skillData.icon;
+        skill.coolDownEvent += DoCooldown;
     }
 }

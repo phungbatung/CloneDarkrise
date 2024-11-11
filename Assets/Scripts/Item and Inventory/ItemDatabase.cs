@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+# if UNITY_EDITOR
 using UnityEditor;
+# endif
 
 [CreateAssetMenu(fileName = "ItemDatabase", menuName = "Data/ItemDataBase")]
 public class ItemDatabase : ScriptableObject
@@ -11,20 +13,24 @@ public class ItemDatabase : ScriptableObject
     public void FillUpDatabase()
     {
         Dictionary<int, ItemData> itemDict = new();
-        itemList.Clear();
+        itemList.Clear(); 
         FillUpGeneralData(itemDict); //fill common properties
         FillUpEquipmentProperties(itemDict);
         FillUpPotionProperties(itemDict);
         FillUpSkillBookProperties(itemDict);
         FillUpBuffProperties(itemDict);
         FillUpMagicDustProperties(itemDict);
+#if UNITY_EDITOR
         SaveAsset(this);
+#endif
     }
+#if UNITY_EDITOR
     void SaveAsset(Object @object)
     {
         EditorUtility.SetDirty(@object);
         AssetDatabase.SaveAssets();
     }
+#endif
     private void FillUpGeneralData(Dictionary<int, ItemData> itemDataDictionary)
     {
         string[] paths = { "Rare", "Epic", "Legend" };

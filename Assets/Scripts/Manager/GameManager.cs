@@ -1,11 +1,29 @@
+using BlitzyUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+
+    public static readonly BlitzyUI.Screen.Id fpsScreen = new BlitzyUI.Screen.Id("FPS", "FPS");
+    public static readonly BlitzyUI.Screen.Id hudScreen = new BlitzyUI.Screen.Id("HUD", "HUD");
+    public static readonly BlitzyUI.Screen.Id inventoryScreen = new BlitzyUI.Screen.Id("Inventory", "Inventory");
+    public static readonly BlitzyUI.Screen.Id statsScreen = new BlitzyUI.Screen.Id("Stats", "Stats");
+    public static readonly BlitzyUI.Screen.Id skillsScreen = new BlitzyUI.Screen.Id("Skills", "Skills");
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
     void Start()
     {
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        UnityEngine.Screen.orientation = ScreenOrientation.LandscapeLeft;
+        UIManager.Instance.QueuePush(fpsScreen, null, null, null);
+        UIManager.Instance.QueuePush(hudScreen, null, null, null);
     }
 }
