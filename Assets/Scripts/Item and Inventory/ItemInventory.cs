@@ -68,9 +68,23 @@ public class ItemInventory
     }
     public static void SwapValue(ItemInventory item1, ItemInventory item2)
     {
+        if(item1 == null)
+        {
+            Debug.Log("item1 is null");
+        }
+        if (item2 == null)
+        {
+            Debug.Log("item2 is null");
+        }
         (item1.itemId, item2.itemId) = (item2.itemId, item1.itemId);
         (item1.amount, item2.amount) = (item1.amount, item2.amount);
         (item1.equipmentProperties, item2.equipmentProperties) = (item2.equipmentProperties, item1.equipmentProperties);
+    }
+    public void Clone(ItemInventory _itemInventory)
+    {
+        itemId = _itemInventory.itemId;
+        amount = _itemInventory.amount;
+        equipmentProperties = _itemInventory.equipmentProperties;
     }
     public static int CompareByItemType(ItemInventory itemInventory1, ItemInventory itemInventory2)
     {

@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using System;
 using Unity.Mathematics;
+using BlitzyUI;
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -100,13 +101,19 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             return;
         if (itemInventory.itemId == -1)
             return;
-        ItemManager.Instance.itemInfo.SetItemInfo(this);
+        BlitzyUI.Screen.Data data = new BlitzyUI.Screen.Data();
+        data.Add("ItemInventory", itemInventory);
+        UIManager.Instance.QueuePush(GameManager.itemInfoScreen, data, null, null);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         itemImage.raycastTarget = false;
-        itemImage.transform.SetParent(ItemManager.Instance.moveItem);
+        Transform tempParent = GetComponentInParent<BlitzyUI.Screen>().transform;
+        if (tempParent == null)    
+            Debug.LogError("The screen parent of this item slot is not found!");
+        itemImage.transform.SetParent(tempParent);
+        itemImage.transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)

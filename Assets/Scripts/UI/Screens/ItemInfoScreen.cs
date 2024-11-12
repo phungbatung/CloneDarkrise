@@ -5,10 +5,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemInfo : MonoBehaviour
+public class ItemInfoScreen : BlitzyUI.Screen
 {
+    private ItemInventory itemInventory;
 
-    private ItemSlot itemSlot;
+
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI itemType;
@@ -24,15 +25,13 @@ public class ItemInfo : MonoBehaviour
 
     private void Awake()
     {
-        rect = GetComponent<RectTransform>();
-        gameObject.SetActive(false);
-        buttonList = content.GetComponentsInChildren<BtnBaseItemInfo>().ToList();
+        
     }
-    public void SetItemInfo(ItemSlot _itemSlot)
+    public void SetItemInfo(ItemInventory _itemInventory)
     {
         gameObject.SetActive(true);
-        itemSlot = _itemSlot;
-        ItemData item = ItemManager.Instance.itemDict[_itemSlot.itemInventory.itemId];
+        itemInventory = _itemInventory;
+        ItemData item = ItemManager.Instance.itemDict[_itemInventory.itemId];
         SetBaseInfo(item);
         SetPropertiesInfo(item);
         CheckForActiveButton(item);
@@ -55,7 +54,7 @@ public class ItemInfo : MonoBehaviour
         {
             string baseStat = ItemUtilities.GetBaseStatOfEquipment(item.id);
             description += $"Base {baseStat}: {ItemManager.Instance.itemDict[item.id].properties[baseStat]}\n";
-            foreach (var property in itemSlot.itemInventory.equipmentProperties.properties)
+            foreach (var property in itemInventory.equipmentProperties.properties)
             {
                 string[] values = property.Value.Split(new char[] { ',' });
                 foreach (var value in values)
@@ -104,37 +103,64 @@ public class ItemInfo : MonoBehaviour
 
     public void EquipCurrentItem()
     {
-        ItemManager.Instance.EquipItem(itemSlot.itemInventory);
-        gameObject.SetActive(false);
+        ItemManager.Instance.EquipItem(itemInventory);
+        BlitzyUI.UIManager.Instance.QueuePop(null);
     }
 
     public void RemoveItem()
     {
-        itemSlot.RemoveAll();
-        gameObject.SetActive(false);
+        itemInventory.RemoveAll();
+        BlitzyUI.UIManager.Instance.QueuePop(null);
     }
 
     public void AssignPotionToSlot()
     {
-        InputManager.Instance.potionSlot.AssignPotion(itemSlot.itemInventory.itemId);
-        gameObject.SetActive(false);
+        InputManager.Instance.potionSlot.AssignPotion(itemInventory.itemId);
+        BlitzyUI.UIManager.Instance.QueuePop(null);
     }
 
     public void UsePotion()
     {
-        ItemManager.Instance.UsePotion(itemSlot.itemInventory);
-        gameObject.SetActive(false);
+        ItemManager.Instance.UsePotion(itemInventory);
+        BlitzyUI.UIManager.Instance.QueuePop(null);
     }
 
     public void UseBuff()
     {
-        ItemManager.Instance.UseBuff(itemSlot.itemInventory);
-        gameObject.SetActive(false);
+        ItemManager.Instance.UseBuff(itemInventory);
+        BlitzyUI.UIManager.Instance.QueuePop(null);
     }
 
     public void UseSkillBook()
     {
-        ItemManager.Instance.UseSkillBook(itemSlot.itemInventory);
-        gameObject.SetActive(false);
-    }    
+        ItemManager.Instance.UseSkillBook(itemInventory);
+        BlitzyUI.UIManager.Instance.QueuePop(null);
+    }
+
+    public override void OnSetup()
+    {
+        rect = GetComponent<RectTransform>();
+        buttonList = content.GetComponentsInChildren<BtnBaseItemInfo>().ToList();
+    }
+
+    public override void OnPush(Data data)
+    {
+        SetItemInfo(data.Get<ItemInventory>("ItemInventory"));
+        PushFinished();
+    }
+
+    public override void OnPop()
+    {
+        PopFinished();
+    }
+
+    public override void OnFocus()
+    {
+
+    }
+
+    public override void OnFocusLost()
+    {
+
+    }
 }

@@ -3219,8 +3219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepCached: 1
-  overrideManagedSorting: 0
-  overrideSortValue: 0
+  overrideManagedSorting: 1
+  overrideSortValue: 10
   buffHolder: {fileID: 7421594375947625747}
 --- !u!1 &7998643645766473029
 GameObject:

@@ -12,16 +12,7 @@ public class EquipmentUI : MonoBehaviour
         itemSlots = GetComponentsInChildren<ItemSlot>();
     }
 
-    int i = 0;
-    private void OnEnable()
-    {
-        Debug.Log($"{i++}");
-        Debug.Log($"{(equipedItem != null)}");
-        //if (equipedItem != null)
-        //    UpdateInventoryUI();
-    }
-
-    private void UpdateInventoryUI()
+    public void UpdateItemSlot()
     {
         for (int i = 0; i < itemSlots.Length; i++) 
         {

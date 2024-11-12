@@ -9,10 +9,12 @@ public class HUDScreen : BlitzyUI.Screen
 
     public override void OnFocus()
     {
+
     }
 
     public override void OnFocusLost()
     {
+
     }
 
     public override void OnPop()

@@ -36,15 +36,8 @@ public class InventoryUI : MonoBehaviour
         leftButton.onClick.AddListener(LeftButtonClick);
         rightAnim = rightButton.GetComponent<Animator>();
         leftAnim = leftButton.GetComponent<Animator>();
-
         sortButton.onClick.AddListener(Sort);
         InitDropdown();
-    }
-    private void OnEnable()
-    {
-        currentPage = 1;
-        if(inventoryItem!=null)
-            UpdateInventoryUI();
     }
 
     private void InitDropdown()
@@ -56,7 +49,6 @@ public class InventoryUI : MonoBehaviour
         }
         sortDropdown.onValueChanged.AddListener(delegate { SelectSortOption(); });
     }
-
 
     private void SetUpButton()
     {
@@ -83,7 +75,8 @@ public class InventoryUI : MonoBehaviour
         rightAnim.SetBool("active", isRightButtonActive);
         leftAnim.SetBool("active", isLeftButtonActive);
     }
-    private void UpdateInventoryUI()
+
+    public void UpdateItemSlot()
     {
         int slotCount = currentPage != getTotalPage()?slotsPerPage:(getInventorySize() - 24*(currentPage-1));
 
@@ -101,42 +94,43 @@ public class InventoryUI : MonoBehaviour
         pageCountTMP.text = $"{currentPage}/{getTotalPage()}";
         SetUpButton();
     }
+
     private void RightButtonClick()
     {
         if (!isRightButtonActive)
             return;
         currentPage++;
-        UpdateInventoryUI();
+        UpdateItemSlot();
     }
+
     private void LeftButtonClick()
     {
         if (!isLeftButtonActive)
             return;
         currentPage--;
-        UpdateInventoryUI();
+        UpdateItemSlot();
     }
+
     private int getInventorySize() => ItemManager.Instance.inventorySize;
+
     private int getTotalPage() => Mathf.CeilToInt(ItemManager.Instance.inventorySize * 1.0f / 24);
 
     private void Sort()
     {
         if (sortOptionIndex == 0)
-            SortByItemType();
+            ItemManager.Instance.SortItemByItemType();
         else if (sortOptionIndex == 1)
-            SortByItemQuality();
-        UpdateInventoryUI();
+            ItemManager.Instance.SortItemByItemQuality();
+        UpdateItemSlot();
     }
-    private void SortByItemType()
-    {
-        ItemManager.Instance.SortItemByItemType();
-    }
-    private void SortByItemQuality()
-    {
-        ItemManager.Instance.SortItemByItemQuality();
-    }
+
     private void SelectSortOption()
     {
         sortOptionIndex = sortDropdown.value;
     }
 
+    public void SwitchToFirstPage()
+    {
+        currentPage = 1;
+    }    
 }

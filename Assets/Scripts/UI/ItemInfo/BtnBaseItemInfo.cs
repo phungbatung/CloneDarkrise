@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public abstract class BtnBaseItemInfo : MonoBehaviour
 {
     protected Button button;
-    protected ItemInfo itemInfo;
+    protected ItemInfoScreen itemInfo;
     [SerializeField] List<ItemType> typeToActive;
 
     protected void Awake()
     {
         button = GetComponent<Button>();
-        itemInfo = GetComponentInParent<ItemInfo>();
+        itemInfo = GetComponentInParent<ItemInfoScreen>();
         button.onClick.AddListener(PressEvent);
     }
 

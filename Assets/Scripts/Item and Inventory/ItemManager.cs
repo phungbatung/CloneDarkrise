@@ -26,7 +26,7 @@ public class ItemManager : MonoBehaviour
 
     public Transform moveItem;
 
-    public ItemInfo itemInfo;
+    public ItemInfoScreen itemInfo;
 
 
     private void Awake()
@@ -73,8 +73,8 @@ public class ItemManager : MonoBehaviour
         if (firstEmptySlot!= null)
         {
             firstEmptySlot.AddItem(_itemId, properties);
-            if (_itemId == InputManager.Instance.potionSlot.itemId)
-                InputManager.Instance.potionSlot.UpdateUI();
+            //if (_itemId == InputManager.Instance.potionSlot.itemId)
+            //    InputManager.Instance.potionSlot.UpdateUI();
             return;
         }
 
@@ -110,16 +110,17 @@ public class ItemManager : MonoBehaviour
         if (itemDict[_itemToEquip.itemId].type != ItemType.Equipment)
             return;
         ItemInventory _itemToUnequip = null;
-        foreach(ItemInventory _equipment in equipedItems)
-        {
-            if (ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId) == ItemUtilities.GetEquipmentTypeById(_equipment.itemId))
-            {
-                _itemToUnequip = _equipment;
-                break;
-            }
-        }
+        //foreach(ItemInventory _equipment in equipedItems)
+        //{
+        //    if (ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId) == ItemUtilities.GetEquipmentTypeById(_equipment.itemId))
+        //    {
+        //        _itemToUnequip = _equipment;
+        //        break;
+        //    }
+        //}
+        _itemToUnequip = equipedItems[(int)ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId)];
         PlayerManager.Instance.player.stats.AddModifier(_itemToEquip.equipmentProperties.properties, _itemToEquip.itemId);
-        if (_itemToUnequip != null)
+        if (!_itemToUnequip.IsEmpty())
             PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.properties, _itemToUnequip.itemId);
         ItemInventory.SwapValue(_itemToEquip, _itemToUnequip);
     }
