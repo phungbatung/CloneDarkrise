@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class StatsUI : MonoBehaviour
+public class StatsScreen : BlitzyUI.Screen
 {
     [SerializeField] private TextMeshProUGUI damage;
     [SerializeField] private TextMeshProUGUI attackSpeed;
@@ -19,12 +19,29 @@ public class StatsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI manaRegen;
     [SerializeField] private TextMeshProUGUI moveSpeed;
 
-
-    private void OnEnable()
+    public override void OnFocus()
     {
-        if (PlayerManager.Instance != null)
-            UpdateStatsUI();
+        UpdateStatsUI();
     }
+
+    public override void OnFocusLost()
+    {
+    }
+
+    public override void OnPop()
+    {
+        PopFinished();
+    }
+
+    public override void OnPush(Data data)
+    {
+        PushFinished();
+    }
+
+    public override void OnSetup()
+    {
+    }
+
     public void UpdateStatsUI()
     {
         CharacterStats stats = PlayerManager.Instance.player.stats;

@@ -1062,7 +1062,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   maxMana:
-    baseValue: 0
+    baseValue: 100
     modifiers: 
   manaRegen:
     baseValue: 0
@@ -1622,11 +1622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 59f4006a6d1e76d40ad379132748aff0, type: 2}
   inventorySize: 48
-  inventoryUI: {fileID: 0}
   equipmentSize: 8
   potionSlot: {fileID: 0}
-  moveItem: {fileID: 0}
-  itemInfo: {fileID: 0}
 --- !u!1 &1692319190
 GameObject:
   m_ObjectHideFlags: 0

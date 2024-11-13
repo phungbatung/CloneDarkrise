@@ -38,6 +38,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
     {
         InitGetStatByNameDict();
         currentHealth = maxHealth.GetValue();
+        currentMana = maxMana.GetValue();
         BuffManager = GetComponent<BuffManager>();
     }
 
