@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public static SkillManager Instance;
+    public static SkillManager Instance { get; private set; }
 
     public Dash dash { get; private set; }
     public BaseAttack baseAttack { get; private set; }
@@ -14,15 +14,11 @@ public class SkillManager : MonoBehaviour
     public WolfCall wolfCall { get; private set; }
 
     public int skillPoint { get; set; }
+    public Action OnSkillPointChange { get; set; }
 
-    public Skill[] assignedSkills;
-    public Action assignEvent;
+    public Skill[] assignedSkills { get; private set; }
+    public Action assignEvent { get; set; }
 
-    public SkillPointUI skillPointUI;
-
-    public Transform listSkillParent;
-    public GameObject skillUIPrefab;
-    public SkillInfo skillInfo;
     private void Awake()
     {
         if (Instance == null)
@@ -55,30 +51,19 @@ public class SkillManager : MonoBehaviour
         
     }
 
-    public void GenerateSkillUI()
-    {
-        Skill[] skills = GetComponents<Skill>();
-        GameObject skillUI;
-        foreach (Skill skill in skills)
-        {
-            skillUI = Instantiate(skillUIPrefab);
-            skillUI.transform.SetParent(listSkillParent);
-            skillUI.GetComponent<Skill_UI>().SetSkill(skill);
-        }
-        //skillInfo.UpdateUI(skills[0]);
-    }
-
     public void AddSkillPoint(int _point)
     {
         skillPoint += _point;
-        skillPointUI.UpdateUI(skillPoint);
+        OnSkillPointChange?.Invoke();
+        Debug.Log(skillPoint);
     }
     public bool RemoveSkillPoint(int _point)
     {
         if (skillPoint < _point)
             return false;
         skillPoint -= _point;
-        skillPointUI.UpdateUI(skillPoint);
+        OnSkillPointChange?.Invoke();
+        Debug.Log(skillPoint);
         return true;
     }
 

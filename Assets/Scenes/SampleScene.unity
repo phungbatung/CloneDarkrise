@@ -764,11 +764,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c97649d7b1cbb4ab4dcb04b1c1b140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignedSkills: []
-  skillPointUI: {fileID: 0}
-  listSkillParent: {fileID: 0}
-  skillUIPrefab: {fileID: 3641889840179547271, guid: 38b3c011d71f8ed4b85be3df9278897f, type: 3}
-  skillInfo: {fileID: 0}
 --- !u!114 &659301335
 MonoBehaviour:
   m_ObjectHideFlags: 0

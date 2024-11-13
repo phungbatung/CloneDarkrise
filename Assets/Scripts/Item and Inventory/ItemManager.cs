@@ -15,18 +15,13 @@ public class ItemManager : MonoBehaviour
     //Inventory
     public int inventorySize = 48;
     public List<ItemInventory> inventoryItems { get; set; }
-    public InventoryUI inventoryUI;
     
     //Equipment
-    public List<ItemInventory> equipedItems { get; set; }
     public int equipmentSize = 8;
+    public List<ItemInventory> equipedItems { get; set; }
 
 
     public PotionSlot potionSlot;
-
-    public Transform moveItem;
-
-    public ItemInfoScreen itemInfo;
 
 
     private void Awake()

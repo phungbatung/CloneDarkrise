@@ -8,15 +8,17 @@ public class Skill_UI : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Image icon;
     private Skill skill;
+    private SkillInfo skillInfo;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        SkillManager.Instance.skillInfo.UpdateUI(skill);
+        skillInfo.UpdateUI(skill);
     }
 
-    public void SetSkill(Skill _skill)
+    public void SetSkill(Skill _skill, SkillInfo _skillInfo)
     {
         skill = _skill;
+        skillInfo = _skillInfo;
         icon.sprite = skill.skillData.icon;
     }
 }
