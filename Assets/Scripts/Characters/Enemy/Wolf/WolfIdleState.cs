@@ -13,7 +13,6 @@ public class WolfIdleState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("idle");
     }
 
     public override void Exit()

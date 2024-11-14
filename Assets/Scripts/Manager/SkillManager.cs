@@ -34,13 +34,10 @@ public class SkillManager : MonoBehaviour
         wolfCall = GetComponent<WolfCall>();
 
         assignedSkills = new Skill[6];
-        DefaulAssignSlot();
+        DefaulAssignmentSlot();
     }
-    private void Start()
-    {
-        //GenerateSkillUI();
-    }
-    public void DefaulAssignSlot()
+
+    public void DefaulAssignmentSlot()
     {
         AssignSkillToSlot(dash, 0);
         AssignSkillToSlot(baseAttack, 1);

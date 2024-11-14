@@ -13,7 +13,6 @@ public class WolfAttackState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("attack");
     }
 
     public override void Exit()

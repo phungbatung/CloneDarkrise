@@ -14,7 +14,6 @@ public class WolfBattleState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("battle");
     }
 
     public override void Exit()
