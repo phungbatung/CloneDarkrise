@@ -29,7 +29,7 @@ public class ItemInventory
 
         if (_properties != null)
         {
-            equipmentProperties = new(_properties);
+            equipmentProperties = new(ItemUtilities.GetBaseProperties(_id) ,_properties);
         }
         amount++;
     }
@@ -54,9 +54,9 @@ public class ItemInventory
     {
         return itemId == -1;
     }
-    public bool CanBeAdded(int _addAmount = 1)
+    public bool CanBeAdded(int _itemId, int _addAmount = 1)
     {
-        return amount + _addAmount <= ItemManager.Instance.itemDict[itemId].maxSize;
+        return itemId == _itemId && amount + _addAmount <= ItemManager.Instance.itemDict[itemId].maxSize;
     }
 
 

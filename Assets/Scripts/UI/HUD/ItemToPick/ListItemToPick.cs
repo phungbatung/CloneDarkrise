@@ -8,17 +8,6 @@ public class ListItemToPick : MonoBehaviour
     [SerializeField] private GameObject itemToPickPrefab;
     [SerializeField] private Transform itemToPickParent;
 
-    private void Start()
-    {
-        PlayerManager.Instance.player.detector.onZoneItem += Add;
-        PlayerManager.Instance.player.detector.outZoneItem += Remove;
-    }
-
-    private void OnDestroy()
-    {
-        PlayerManager.Instance.player.detector.onZoneItem -= Add;
-        PlayerManager.Instance.player.detector.outZoneItem -= Remove;
-    }
     public void Add(ItemObject _itemObject)
     {
         GameObject itemToPickGO = Instantiate(itemToPickPrefab);

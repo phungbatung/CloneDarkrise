@@ -7,29 +7,29 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    private ItemSlot[] itemSlots;
+    public ItemSlot[] itemSlots { get; private set; }
     public List<ItemInventory> inventoryItem => ItemManager.Instance.inventoryItems;
-    private int currentPage;
-    private int slotsPerPage =>itemSlots.Length;
+    protected int currentPage;
+    protected int slotsPerPage =>itemSlots.Length;
 
     [SerializeField] private Button rightButton;
     [SerializeField] private Button leftButton;
-    private bool isRightButtonActive;
-    private bool isLeftButtonActive;
-    private Animator rightAnim;
-    private Animator leftAnim;
-    [SerializeField] private TextMeshProUGUI pageCountTMP;
+    protected bool isRightButtonActive;
+    protected bool isLeftButtonActive;
+    protected Animator rightAnim;
+    protected Animator leftAnim;
+    [SerializeField] protected TextMeshProUGUI pageCountTMP;
 
 
-    [SerializeField] private Button sortButton;
-    [SerializeField] private TMP_Dropdown sortDropdown;
+    [SerializeField] protected Button sortButton;
+    [SerializeField] protected TMP_Dropdown sortDropdown;
 
-    [SerializeField] private List<string> sortOptionList;
-    private int sortOptionIndex;
+    [SerializeField] protected List<string> sortOptionList;
+    protected int sortOptionIndex;
 
 
 
-    private void Awake()
+    protected void Awake()
     {
         itemSlots = GetComponentsInChildren<ItemSlot>();
         rightButton.onClick.AddListener(RightButtonClick);
@@ -40,7 +40,7 @@ public class InventoryUI : MonoBehaviour
         InitDropdown();
     }
 
-    private void InitDropdown()
+    protected virtual void InitDropdown()
     {
         foreach (var sortOption in sortOptionList)
         {
@@ -50,7 +50,7 @@ public class InventoryUI : MonoBehaviour
         sortDropdown.onValueChanged.AddListener(delegate { SelectSortOption(); });
     }
 
-    private void SetUpButton()
+    protected virtual void SetUpButton()
     {
         if (currentPage == 1)
         {
@@ -76,7 +76,7 @@ public class InventoryUI : MonoBehaviour
         leftAnim.SetBool("active", isLeftButtonActive);
     }
 
-    public void UpdateItemSlot()
+    public virtual void UpdateItemSlot()
     {
         int slotCount = currentPage != getTotalPage()?slotsPerPage:(getInventorySize() - 24*(currentPage-1));
 
@@ -95,7 +95,7 @@ public class InventoryUI : MonoBehaviour
         SetUpButton();
     }
 
-    private void RightButtonClick()
+    protected virtual void RightButtonClick()
     {
         if (!isRightButtonActive)
             return;
@@ -103,7 +103,7 @@ public class InventoryUI : MonoBehaviour
         UpdateItemSlot();
     }
 
-    private void LeftButtonClick()
+    protected virtual void LeftButtonClick()
     {
         if (!isLeftButtonActive)
             return;
@@ -111,11 +111,11 @@ public class InventoryUI : MonoBehaviour
         UpdateItemSlot();
     }
 
-    private int getInventorySize() => ItemManager.Instance.inventorySize;
+    protected int getInventorySize() => ItemManager.Instance.inventorySize;
 
-    private int getTotalPage() => Mathf.CeilToInt(ItemManager.Instance.inventorySize * 1.0f / 24);
+    protected int getTotalPage() => Mathf.CeilToInt(ItemManager.Instance.inventorySize * 1.0f / 24);
 
-    private void Sort()
+    protected virtual void Sort()
     {
         if (sortOptionIndex == 0)
             ItemManager.Instance.SortItemByItemType();
@@ -124,12 +124,12 @@ public class InventoryUI : MonoBehaviour
         UpdateItemSlot();
     }
 
-    private void SelectSortOption()
+    protected virtual void SelectSortOption()
     {
         sortOptionIndex = sortDropdown.value;
     }
 
-    public void SwitchToFirstPage()
+    public virtual void SwitchToFirstPage()
     {
         currentPage = 1;
     }    

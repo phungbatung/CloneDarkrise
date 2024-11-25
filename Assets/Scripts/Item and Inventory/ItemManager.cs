@@ -15,7 +15,7 @@ public class ItemManager : MonoBehaviour
     //Inventory
     public int inventorySize = 48;
     public List<ItemInventory> inventoryItems { get; set; }
-    
+    public Action OnInventoryItemsChange;
     //Equipment
     public int equipmentSize = 8;
     public List<ItemInventory> equipedItems { get; set; }
@@ -54,11 +54,12 @@ public class ItemManager : MonoBehaviour
         ItemInventory firstEmptySlot = null;
         foreach (ItemInventory itemInventory in inventoryItems)
         {
-            if (_itemId == itemInventory.itemId && itemInventory.CanBeAdded())
+            if (itemInventory.CanBeAdded(_itemId))
             {
                 itemInventory.AddItem(_itemId, properties);
-                if (_itemId == InputManager.Instance.potionSlot.itemId)
-                    InputManager.Instance.potionSlot.UpdateUI();
+                OnInventoryItemsChange?.Invoke();
+                //if (_itemId == InputManager.Instance.potionSlot.itemId)
+                //    InputManager.Instance.potionSlot.UpdateUI();
                 return;
             }
             if (itemInventory.IsEmpty() && firstEmptySlot == null)
@@ -68,6 +69,7 @@ public class ItemManager : MonoBehaviour
         if (firstEmptySlot!= null)
         {
             firstEmptySlot.AddItem(_itemId, properties);
+            OnInventoryItemsChange?.Invoke();
             //if (_itemId == InputManager.Instance.potionSlot.itemId)
             //    InputManager.Instance.potionSlot.UpdateUI();
             return;
@@ -76,9 +78,23 @@ public class ItemManager : MonoBehaviour
         Debug.Log("Inventory is full.");
     }
 
-    public void RemoveItem()
+    public bool CanBeAdded(int _itemId)
     {
+        foreach (ItemInventory itemInventory in inventoryItems)
+        {
+            if (itemInventory.CanBeAdded(_itemId) || itemInventory.IsEmpty())
+            {
+                return true;
+            }    
+        }
+        return false;
+    }    
+
+    public void RemoveItem(ItemInventory itemInventory)
+    {
+        itemInventory.RemoveItem();
     }
+    
     public List<ItemInventory> GetListItemInventoroyById(int _itemId)
     {
         return inventoryItems.Where(itemInventory => itemInventory.itemId == _itemId).ToList();
@@ -114,9 +130,9 @@ public class ItemManager : MonoBehaviour
         //    }
         //}
         _itemToUnequip = equipedItems[(int)ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId)];
-        PlayerManager.Instance.player.stats.AddModifier(_itemToEquip.equipmentProperties.properties, _itemToEquip.itemId);
+        PlayerManager.Instance.player.stats.AddModifier(_itemToEquip.equipmentProperties.GetProperties());
         if (!_itemToUnequip.IsEmpty())
-            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.properties, _itemToUnequip.itemId);
+            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.GetProperties());
         ItemInventory.SwapValue(_itemToEquip, _itemToUnequip);
     }
 
@@ -139,7 +155,7 @@ public class ItemManager : MonoBehaviour
         }
         if (_slotToGiveBack != null)
         {
-            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.properties, _itemToUnequip.itemId);
+            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.GetProperties());
             ItemInventory.SwapValue(_itemToUnequip, _slotToGiveBack);
         }
         else
@@ -204,7 +220,6 @@ public class ItemManager : MonoBehaviour
             int pi = Partition(listItemSlot, low, high, Compare);
             QuickSort(listItemSlot, low, pi - 1, Compare);
             QuickSort(listItemSlot, pi + 1, high, Compare);
-
         }
     }
 

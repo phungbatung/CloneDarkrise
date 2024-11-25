@@ -62,4 +62,12 @@ public class ItemUtilities
         return (BuffType)(_itemId / 1000 % 10);
     }
 
+    public static Dictionary<string, string> GetBaseProperties(int _itemId)
+    {
+        Dictionary<string, string> dict = new();
+        ItemData item = ItemManager.Instance.itemDict[_itemId];
+        string baseProperties = GetBaseStatOfEquipment(_itemId);
+        dict.Add(baseProperties, item.properties[baseProperties]);
+        return dict;
+    }
 }

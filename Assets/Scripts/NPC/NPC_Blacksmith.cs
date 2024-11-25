@@ -1,18 +1,12 @@
+using BlitzyUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Blacksmith : MonoBehaviour
+public class NPC_Blacksmith : NPC
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void InteractAction()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UIManager.Instance.QueuePush(GameManager.gemInsertionScreen, null);
     }
 }

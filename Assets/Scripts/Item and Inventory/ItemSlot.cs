@@ -15,10 +15,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI amountText;
 
-    private void Awake()
-    {
-        
-    }
+    public Action alternativeClickAction;
     public void UpdateUI()
     {
         if (itemInventory.itemId == -1)
@@ -56,33 +53,23 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 amountText.text = _itemInventory.amount.ToString();
         }
     }
-    public void AddItem(int _id, int _amount = 1)
+
+    public void SetBlur(bool isBlur)
     {
-        itemInventory.AddItem(_id, _amount);
-        UpdateUI();
-    }
-    public void AddItem(int _id, Dictionary<string, string> _properties = null)
-    {
-        itemInventory.AddItem(_id, _properties);
-        UpdateUI();
-    }
-    public void RemoveItem(int _amount=1)
-    {
-        itemInventory.RemoveItem(_amount);
-        UpdateUI();
-    }
-    public void RemoveAll()
-    {
-        itemInventory.RemoveAll();
-        UpdateUI();
-    }
+        if (isBlur)
+        {
+            float blurValue = 130f / 255f;
+            itemImage.color = new Color(blurValue, blurValue, blurValue);
+        }
+        else
+        {
+            itemImage.color = new Color(1, 1, 1);
+        }    
+    }    
+
     public bool IsEmpty()
     {
         return itemInventory.IsEmpty();
-    }
-    public bool CanBeAdded(int _addAmount = 1)
-    {
-        return itemInventory.CanBeAdded(_addAmount);
     }
 
     public static void SwapItemSlot(ItemSlot slot1, ItemSlot slot2)
@@ -101,6 +88,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             return;
         if (itemInventory.itemId == -1)
             return;
+        if (alternativeClickAction != null)
+        {
+            alternativeClickAction();
+            return;
+        }
         BlitzyUI.Screen.Data data = new BlitzyUI.Screen.Data();
         data.Add("ItemInventory", itemInventory);
         UIManager.Instance.QueuePush(GameManager.itemInfoScreen, data, null, null);
@@ -129,7 +121,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         rectTransform.anchoredPosition = Vector3.zero;
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public virtual void OnDrop(PointerEventData eventData)
     {
         ItemSlot toDropSlot = eventData.pointerDrag.GetComponent<ItemSlot>();
         ItemManager inventory = ItemManager.Instance;

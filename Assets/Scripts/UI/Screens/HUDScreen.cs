@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HUDScreen : BlitzyUI.Screen
@@ -7,14 +8,22 @@ public class HUDScreen : BlitzyUI.Screen
     [SerializeField] private Transform buffHolder;
     private SkillSlot[] skillSlots;
 
+    private ListItemToPick listItemToPick;
+    private NPC_Interaction npcInteraction;
     public override void OnFocus()
     {
-
+        PlayerManager.Instance.player.detector.inZoneItem += listItemToPick.Add;
+        PlayerManager.Instance.player.detector.outZoneItem += listItemToPick.Remove;
+        PlayerManager.Instance.player.detector.inZoneNPC += npcInteraction.Add;
+        PlayerManager.Instance.player.detector.outZoneNPC += npcInteraction.Remove;
     }
 
     public override void OnFocusLost()
     {
-
+        PlayerManager.Instance.player.detector.inZoneItem -= listItemToPick.Add;
+        PlayerManager.Instance.player.detector.outZoneItem -= listItemToPick.Remove;
+        PlayerManager.Instance.player.detector.inZoneNPC -= npcInteraction.Add;
+        PlayerManager.Instance.player.detector.outZoneNPC -= npcInteraction.Remove;
     }
 
     public override void OnPop()
@@ -34,6 +43,8 @@ public class HUDScreen : BlitzyUI.Screen
         skillSlots = GetComponentsInChildren<SkillSlot>();
         SetupSkillSlots();
         SkillManager.Instance.assignEvent += SetupSkillSlots;
+        listItemToPick = GetComponentInChildren<ListItemToPick>();
+        npcInteraction = GetComponentInChildren<NPC_Interaction>();
     }
 
     public void SetupSkillSlots()

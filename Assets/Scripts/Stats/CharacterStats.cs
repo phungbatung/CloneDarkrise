@@ -81,13 +81,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
         target.TakeDamage((int)(damage.GetValue() * (damagePercentage/100)), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
     }
 
-    public void AddModifier(Dictionary<string, string> _properties, int _itemId = -1)
+    public void AddModifier(Dictionary<string, string> _properties)
     {
-        if (_itemId != -1)
-        {
-            string baseStat = ItemUtilities.GetBaseStatOfEquipment(_itemId);
-            getStatByName[baseStat].AddModifier(int.Parse(ItemManager.Instance.itemDict[_itemId].properties[baseStat]));
-        }
         foreach (KeyValuePair<string, string> property in _properties)
         {
             if (getStatByName.TryGetValue(property.Key, out Stat stat))
@@ -98,16 +93,15 @@ public class CharacterStats : MonoBehaviour, IDamageable
                         stat.AddModifier(int.Parse(value));
                 }
             }
+            else
+            {
+                Debug.LogError($"Does not contain stat name: {property.Key}");
+            }
         }
     }
 
-    public void RemoveModifier(Dictionary<string, string> _properties, int _itemId=-1)
+    public void RemoveModifier(Dictionary<string, string> _properties)
     {
-        if (_itemId != -1)
-        {
-        string baseStat = ItemUtilities.GetBaseStatOfEquipment(_itemId);
-        getStatByName[baseStat].RemoveModifier(int.Parse(ItemManager.Instance.itemDict[_itemId].properties[baseStat]));
-        }
         foreach (KeyValuePair<string, string> property in _properties)
         {
             if (getStatByName.TryGetValue(property.Key, out Stat stat))
@@ -117,6 +111,10 @@ public class CharacterStats : MonoBehaviour, IDamageable
                 {
                     stat.RemoveModifier(int.Parse(value));
                 }
+            }
+            else
+            {
+                Debug.LogError($"Does not contain stat name: {property.Key}");
             }
         }
     }
