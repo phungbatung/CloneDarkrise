@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GemInsertionScreen : BlitzyUI.Screen
 {
-    [SerializeField] private GemInsertionInventoryUI inventoryUI;
+    [SerializeField] private EquipmentWorkInventoryUI inventoryUI;
     [SerializeField] private EquipmentForGemWorkSlot equipmentSlot;
     [SerializeField] private GemsSlot gemsSlot;
     [SerializeField] private TextMeshProUGUI guideText;
@@ -40,7 +40,7 @@ public class GemInsertionScreen : BlitzyUI.Screen
 
     public void EquipmentSlotOnDropAction(ItemInventory _itemInventory)
     {
-        inventoryUI.SetItemToWorkOnGem(_itemInventory);
+        inventoryUI.SetItemToWorkOnGem(_itemInventory, EquipmentSlotOnPoiterDownAction);
         guideText.gameObject.SetActive(false);
         gemsSlot.gameObject.SetActive(true);
         gemsSlot.SetupGemsSlot(_itemInventory);
@@ -48,6 +48,7 @@ public class GemInsertionScreen : BlitzyUI.Screen
     
     public void EquipmentSlotOnPoiterDownAction()
     {
+        equipmentSlot.SetEmtyItem();
         inventoryUI.RemoveOnWorkItem();
         guideText.gameObject.SetActive(true);
         gemsSlot.gameObject.SetActive(false);

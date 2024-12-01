@@ -6,11 +6,15 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
     public Player player;
+
+    public Currency Currency { get; private set; }
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
         else
             Destroy(gameObject);
+        Currency = new Currency();
     }
 }

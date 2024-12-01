@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +8,11 @@ public class EquipmentProperties
 {
     public Dictionary<string, string> baseProperties { get; private set; }
     public Dictionary<string, string> properties {  get; private set; }
-    public int gemSlotsLimit { get; private set; } = 3;
+    private int gemSlotsLimit { get; set; } = 3;
     public int unlockedGemsSlot { get; private set; }
     public int[] gems { get; private set; }
     public int enhanceLevel { get; private set; }
+    private int maxEnhanceLevel { get; } = 20;
 
     public EquipmentProperties(Dictionary<string, string> _baseProperties, Dictionary<string, string> _properties)
     {
@@ -22,6 +25,7 @@ public class EquipmentProperties
             gems[i] = -1;
         }
     }
+
     public void UnlockGemSlot()
     {
         if (unlockedGemsSlot >= gemSlotsLimit)
@@ -29,6 +33,7 @@ public class EquipmentProperties
 
         unlockedGemsSlot += 1;
     }
+
     public bool TryPutGemToSlot(int slotIndex, ItemInventory item)
     {
         if (slotIndex>=unlockedGemsSlot || item.itemId == -1 || ItemManager.Instance.itemDict[item.itemId].type != ItemType.MagicDust)
@@ -37,6 +42,7 @@ public class EquipmentProperties
         item.RemoveItem();
         return true;
     }
+
     public bool TryRemoveGemFromSlot(int slotIndex)
     {
         if (ItemManager.Instance.CanBeAdded(gems[slotIndex]))
@@ -57,11 +63,11 @@ public class EquipmentProperties
         {
             if (_properties.ContainsKey(kvp.Key))
             {
-                _properties[kvp.Key] += $",{kvp.Value}";
+                _properties[kvp.Key] += $",{(int)(float.Parse(kvp.Value) * GetEnhanceValue())}";
             }
             else
             {
-                _properties[kvp.Key] = kvp.Value;
+                _properties[kvp.Key] = ((int)(float.Parse(kvp.Value) * GetEnhanceValue())).ToString();
             }
         }
         //add properties
@@ -69,11 +75,11 @@ public class EquipmentProperties
         {
             if (_properties.ContainsKey(kvp.Key))
             {
-                _properties[kvp.Key] += $",{kvp.Value}";
+                _properties[kvp.Key] += $",{(int)(float.Parse(kvp.Value) * GetEnhanceValue())}";
             }
             else
             {
-                _properties[kvp.Key] = kvp.Value;
+                _properties[kvp.Key] = ((int)(float.Parse(kvp.Value) * GetEnhanceValue())).ToString();
             }
         }
         //add gem properties
@@ -96,4 +102,39 @@ public class EquipmentProperties
         }
         return _properties;
     }
+
+    public void Upgrade()
+    {
+        if (enhanceLevel >=maxEnhanceLevel)
+        {
+            return;
+        }
+        enhanceLevel++;
+    }
+
+    public bool IsMaxEnhanceLevel() => enhanceLevel >= maxEnhanceLevel;
+
+    public void Downgrade()
+    {
+        if (enhanceLevel <=0)
+        {
+            return;
+        }
+        enhanceLevel--;
+    }
+
+    public float GetEnhanceValue() => Mathf.Pow(1.05f, enhanceLevel);
+
+    public float GetEnhanceValueAtLevel(int _level) => Mathf.Pow(1.05f, _level);
+
+    public string GetPropertyAtCurrentLevel(string _property)
+    {
+        return ((int)(float.Parse(properties[_property]) * GetEnhanceValue())).ToString();
+    }
+
+    public string GetPropertyAtNextLevel(string _property)
+    {
+        return ((int)(float.Parse(properties[_property]) * GetEnhanceValueAtLevel(enhanceLevel+1))).ToString();
+    }
+
 }

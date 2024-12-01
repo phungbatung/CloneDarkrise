@@ -91,6 +91,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (alternativeClickAction != null)
         {
             alternativeClickAction();
+            alternativeClickAction = null;
             return;
         }
         BlitzyUI.Screen.Data data = new BlitzyUI.Screen.Data();

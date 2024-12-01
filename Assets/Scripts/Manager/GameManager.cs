@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public static readonly BlitzyUI.Screen.Id assignSkillsScreen = new BlitzyUI.Screen.Id("AssignSkill", "AssignSkill");
     public static readonly BlitzyUI.Screen.Id statsScreen = new BlitzyUI.Screen.Id("Stats", "Stats");
     public static readonly BlitzyUI.Screen.Id gemInsertionScreen = new BlitzyUI.Screen.Id("GemInsertion", "GemInsertion");
+    public static readonly BlitzyUI.Screen.Id upgradeEquipmentScreen = new BlitzyUI.Screen.Id("UpgradeEquipment", "UpgradeEquipment");
 
     private void Awake()
     {

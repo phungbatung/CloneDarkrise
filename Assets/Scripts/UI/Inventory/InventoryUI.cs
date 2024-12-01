@@ -24,7 +24,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] protected Button sortButton;
     [SerializeField] protected TMP_Dropdown sortDropdown;
 
-    [SerializeField] protected List<string> sortOptionList;
+    protected List<string> sortOptionList;
     protected int sortOptionIndex;
 
 
@@ -42,6 +42,9 @@ public class InventoryUI : MonoBehaviour
 
     protected virtual void InitDropdown()
     {
+        sortOptionList = new List<string>();
+        sortOptionList.Add("Sort by item type");
+        sortOptionList.Add("Sort by item quality");
         foreach (var sortOption in sortOptionList)
         {
             var option = new TMP_Dropdown.OptionData(sortOption);
