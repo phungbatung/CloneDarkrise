@@ -33,7 +33,7 @@ public class GemsSlot : MonoBehaviour
             }
             else if (i == itemInventory.equipmentProperties.unlockedGemsSlot)
             {
-                gemsSlot[i].SetLocked();
+                gemsSlot[i].SetLocked(itemInventory.equipmentProperties.GetUnlockGemSlotPrice().Value);
                 gemsSlot[i].gameObject.SetActive(true);
             }
             else
@@ -45,7 +45,7 @@ public class GemsSlot : MonoBehaviour
     }
     public void UnlockGemSlot()
     {
-        itemInventory.equipmentProperties.UnlockGemSlot();
+        itemInventory.equipmentProperties.TryUnlockGemSlot();
         SetupGemsSlot(itemInventory);
     }
     public void PutGemToSlot(int _slotIndex, ItemSlot itemSlot)

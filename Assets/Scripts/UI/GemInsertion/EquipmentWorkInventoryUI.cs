@@ -41,9 +41,19 @@ public class EquipmentWorkInventoryUI : InventoryUI
         slot.SetBlur(true);
         slot.alternativeClickAction = itemSlotPoiterClickEvent;
     }
-
+    public void UpdateOnWorkItemSlot()
+    {
+        ItemSlot slot = itemSlots.FirstOrDefault(o => o.itemInventory == onWorkItem);
+        if (slot != null)
+        {
+            slot.UpdateUI();
+            slot.SetBlur(true);
+        }
+    }
     public void RemoveOnWorkItem()
     {
+        if (onWorkItem == null)
+            return;
         ItemSlot slot = itemSlots.First(o => o.itemInventory == onWorkItem);
         slot.SetBlur(false);
         slot.alternativeClickAction = null;

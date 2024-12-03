@@ -1353,7 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepCached: 1
   overrideManagedSorting: 1
-  overrideSortValue: 30
+  overrideSortValue: 5000
   itemIcon: {fileID: 2466614020533040529}
   itemName: {fileID: 4642449324575158623}
   itemType: {fileID: 6006597140937067788}

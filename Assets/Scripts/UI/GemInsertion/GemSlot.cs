@@ -17,15 +17,15 @@ public class GemSlot : MonoBehaviour, IDropHandler, IPointerDownHandler
 
     [Header("Locked sprite")]
     [SerializeField] private Sprite lockedSprite;
-    private string lockedMessage = "Unlock for 0 gold";
+    private string lockedMessage { get; } = "Unlock for 0 gold";
 
     public Action<int, ItemSlot> OnDropEvent { get; set; }
     public Action<int> PointerDownEvent { get; set; }
 
-    public void SetLocked()
+    public void SetLocked(int _price)
     {
         itemIcon.sprite = lockedSprite;
-        itemProperties.text = lockedMessage;
+        itemProperties.text = $"Unlock for {_price} gold";
     }
     public void SetProperties(int gemId)
     {

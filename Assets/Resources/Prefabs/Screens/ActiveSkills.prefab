@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepCached: 0
   overrideManagedSorting: 1
-  overrideSortValue: 30
+  overrideSortValue: 1000
   skillUIPrefab: {fileID: 3641889840179547271, guid: 38b3c011d71f8ed4b85be3df9278897f, type: 3}
   skillUIParent: {fileID: 8824267976223000023}
   skillPoint: {fileID: 1871561550794922771}

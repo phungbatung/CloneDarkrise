@@ -10,6 +10,7 @@ public class UpgradeEquipmentScreen : BlitzyUI.Screen
     [SerializeField] private EquipmentToUpgradeSlot equipmentSlot;
     [SerializeField] private TextMeshProUGUI propertiesStatus;
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private TextMeshProUGUI priceTMP;
     private string guideText { get;  } = "Drag and drop your equipment hear to upgrade";
     private string maxEnhanceLevelText { get; } = "Your equipment is max enhancement level, try to put another equipment in to upgrade";
 
@@ -72,17 +73,22 @@ public class UpgradeEquipmentScreen : BlitzyUI.Screen
             upgradeButton.gameObject.SetActive(false);
             return;
         }
-        propertiesStatus.text = "";
-        foreach (var kvp in itemInventory.equipmentProperties.properties)
-        {
-            propertiesStatus.text += $"{kvp.Key}: {itemInventory.equipmentProperties.GetPropertyAtCurrentLevel(kvp.Key)}->{itemInventory.equipmentProperties.GetPropertyAtNextLevel(kvp.Key)}\n";
-        }
+        propertiesStatus.text = itemInventory.equipmentProperties.GetPropertiesChangeWhenUpgrade();
+        priceTMP.text = itemInventory.equipmentProperties.GetUpgradePrice().Value.ToString();
         upgradeButton.gameObject.SetActive(true);
     }    
 
     private void UpgradeButtonAction()
     {
-        itemInventory.equipmentProperties.Upgrade();
-        SetupPropertiesText();
+        if(itemInventory.equipmentProperties.TryUpgrade())
+        {
+            inventoryUI.UpdateOnWorkItemSlot();
+            equipmentSlot.SetItem(itemInventory);
+            SetupPropertiesText();
+        }
+        else
+        {
+            Debug.Log("You don't have enough money to upgrade this item");
+        }
     }
 }

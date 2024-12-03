@@ -14,15 +14,17 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI amountText;
+    [SerializeField] private TextMeshProUGUI enhanceLevel;
 
     public Action alternativeClickAction;
     public void UpdateUI()
     {
-        if (itemInventory.itemId == -1)
+        if (itemInventory.IsEmpty())
         {
             itemImage.color = new Color(1, 1, 1, 0);
             itemImage.sprite = null;
             amountText.text = "";
+            enhanceLevel.text = "";
         }
         else
         {
@@ -32,6 +34,14 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 amountText.text = "";
             else
                 amountText.text = itemInventory.amount.ToString();
+            if (ItemManager.Instance.itemDict[itemInventory.itemId].type == ItemType.Equipment)
+            {
+                enhanceLevel.text = itemInventory.equipmentProperties.enhanceLevel < 1 ? "" : $"+{itemInventory.equipmentProperties.enhanceLevel}";
+            }
+            else
+            {
+                enhanceLevel.text = "";
+            }
         }
     }
     public void UpdateUI(ItemInventory _itemInventory)
@@ -42,6 +52,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
             itemImage.color = new Color(1, 1, 1, 0);
             itemImage.sprite = null;
             amountText.text = "";
+            enhanceLevel.text = "";
         }
         else
         {
@@ -51,6 +62,15 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 amountText.text = "";
             else
                 amountText.text = _itemInventory.amount.ToString();
+
+            if(ItemManager.Instance.itemDict[_itemInventory.itemId].type == ItemType.Equipment)
+            {
+                enhanceLevel.text = itemInventory.equipmentProperties.enhanceLevel < 1 ? "" : $"+{itemInventory.equipmentProperties.enhanceLevel}";
+            }
+            else
+            {
+                enhanceLevel.text = "";
+            }
         }
     }
 
@@ -111,6 +131,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (itemInventory.IsEmpty())
+            return;
         itemImage.transform.position += (Vector3)eventData.delta;
     }
 
@@ -126,7 +148,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         ItemSlot toDropSlot = eventData.pointerDrag.GetComponent<ItemSlot>();
         ItemManager inventory = ItemManager.Instance;
-
+        if (toDropSlot.itemInventory.IsEmpty())
+            return;
         //Case: slot to drop is equipment slot
         if (ItemManager.Instance.equipedItems.Contains(itemInventory)) 
         {
@@ -141,6 +164,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 return;
             //Equip
             inventory.EquipItem(toDropSlot.itemInventory);
+            toDropSlot.UpdateUI();
+            UpdateUI();
             return;
         }
 
@@ -149,9 +174,11 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         if (ItemManager.Instance.equipedItems.Contains(toDropSlot.itemInventory))
         {
             //if slot to drop is empty then move item from equipment slot to this slot
-            if (itemInventory.itemId ==-1)
+            if (itemInventory.IsEmpty())
             {
                 inventory.UnequipItem(toDropSlot.itemInventory, itemInventory);
+                toDropSlot.UpdateUI();
+                UpdateUI();
                 return;
             }
             //Cannot swap item from equipment slot to none equipment
@@ -162,6 +189,8 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
                 return;
             //Equip this item if it is equipment of the same type
             inventory.EquipItem(itemInventory);
+            toDropSlot.UpdateUI();
+            UpdateUI();
             return;
         }
         //Swap two item from inventory

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class EquipmentToUpgradeSlot : MonoBehaviour, IDropHandler, IPointerDownHandler
 {
     [SerializeField] private Image icon;
+    [SerializeField] private TextMeshProUGUI enhanceLevel;
     [SerializeField] private TextMeshProUGUI equipmentName;
     [SerializeField] private TextMeshProUGUI level;
 
@@ -20,7 +21,7 @@ public class EquipmentToUpgradeSlot : MonoBehaviour, IDropHandler, IPointerDownH
         ItemData itemData = ItemManager.Instance.itemDict[slot.itemInventory.itemId];
         if (itemData.type != ItemType.Equipment)
             return;
-        SetItem(itemData);
+        SetItem(slot.itemInventory);
         OnDropAction?.Invoke(slot.itemInventory);
     }
 
@@ -37,9 +38,11 @@ public class EquipmentToUpgradeSlot : MonoBehaviour, IDropHandler, IPointerDownH
         equipmentName.text = "";
         level.text = "";
     }
-    public void SetItem(ItemData itemData)
+    public void SetItem(ItemInventory _itemInventory)
     {
+        ItemData itemData = ItemManager.Instance.itemDict[_itemInventory.itemId];
         icon.sprite = itemData.icon;
+        enhanceLevel.text = _itemInventory.equipmentProperties.enhanceLevel < 1 ? "" : $"+{_itemInventory.equipmentProperties.enhanceLevel}";
         icon.color = new Color(1, 1, 1, 1);
         equipmentName.text = itemData.name;
         level.text = $"Lv: {itemData.level}";

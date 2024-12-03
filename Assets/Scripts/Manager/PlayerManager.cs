@@ -15,6 +15,6 @@ public class PlayerManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        Currency = new Currency();
+        Currency = new Currency(1000000000, 1000000000);
     }
 }

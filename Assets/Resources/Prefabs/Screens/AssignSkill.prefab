@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepCached: 0
   overrideManagedSorting: 1
-  overrideSortValue: 40
+  overrideSortValue: 1001
   slotToAssignPrefab: {fileID: 5879553178587148201, guid: a6f5c2fa8fdf89a4e8229b71a2a90eee, type: 3}
   slotsToAssignParent: {fileID: 4503795071767101969}
 --- !u!1 &3983529093210750440

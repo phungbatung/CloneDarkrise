@@ -130,9 +130,9 @@ public class ItemManager : MonoBehaviour
         //    }
         //}
         _itemToUnequip = equipedItems[(int)ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId)];
-        PlayerManager.Instance.player.stats.AddModifier(_itemToEquip.equipmentProperties.GetProperties());
+        PlayerManager.Instance.player.stats.AddModifier(_itemToEquip.equipmentProperties.GetAllProperties());
         if (!_itemToUnequip.IsEmpty())
-            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.GetProperties());
+            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.GetAllProperties());
         ItemInventory.SwapValue(_itemToEquip, _itemToUnequip);
     }
 
@@ -155,7 +155,7 @@ public class ItemManager : MonoBehaviour
         }
         if (_slotToGiveBack != null)
         {
-            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.GetProperties());
+            PlayerManager.Instance.player.stats.RemoveModifier(_itemToUnequip.equipmentProperties.GetAllProperties());
             ItemInventory.SwapValue(_itemToUnequip, _slotToGiveBack);
         }
         else

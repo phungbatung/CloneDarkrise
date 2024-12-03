@@ -26,7 +26,7 @@ public class Currency
         Diamond = 0;
     }
 
-    public void AddCurrency(int _currency, CurrencyType _type)
+    public void AddCurrency(CurrencyType _type, int _currency)
     {
         if (_currency <= 0)
             return;
@@ -43,7 +43,7 @@ public class Currency
         } 
     }
 
-    public bool TrySubtractCurrency(int _currency, CurrencyType _type)
+    public bool TrySubtractCurrency(CurrencyType _type, int _currency)
     {
         if(_currency < 0)
         {
@@ -53,7 +53,7 @@ public class Currency
 
         if(_type == CurrencyType.Gold)
         {
-            if(_currency < Gold)
+            if(_currency > Gold)
                 return false;
             Gold -= _currency;
             OnGoldChange?.Invoke();
@@ -61,7 +61,7 @@ public class Currency
         }
         else
         {
-            if (_currency < Diamond)
+            if (_currency > Diamond)
                 return false;
             Diamond -= _currency;
             OnDiamondChange?.Invoke();
@@ -69,4 +69,22 @@ public class Currency
         }
     }
 
+    public bool TrySubtractCurrency(KeyValuePair<CurrencyType, int> kvp)
+    {
+        return(TrySubtractCurrency(kvp.Key, kvp.Value));
+    }
+
+    public bool IsHaveEnoughMoney(CurrencyType _type, int _currency)
+    {
+        if(_type == CurrencyType.Gold && _currency < Gold)
+            return true;
+        if (_type == CurrencyType.Diamond && _currency < Diamond)
+            return true;
+        return false;
+    }
+
+    public bool IsHaveEnoughMoney(KeyValuePair<CurrencyType, int> kvp)
+    {
+        return IsHaveEnoughMoney(kvp.Key, kvp.Value);
+    }
 }

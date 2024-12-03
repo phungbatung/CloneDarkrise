@@ -40,6 +40,7 @@ public class GemInsertionScreen : BlitzyUI.Screen
 
     public void EquipmentSlotOnDropAction(ItemInventory _itemInventory)
     {
+        inventoryUI.RemoveOnWorkItem();
         inventoryUI.SetItemToWorkOnGem(_itemInventory, EquipmentSlotOnPoiterDownAction);
         guideText.gameObject.SetActive(false);
         gemsSlot.gameObject.SetActive(true);
