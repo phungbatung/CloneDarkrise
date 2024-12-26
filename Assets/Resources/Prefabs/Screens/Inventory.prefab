@@ -1420,7 +1420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepCached: 1
   overrideManagedSorting: 1
-  overrideSortValue: 1000
+  overrideSortValue: 100
 --- !u!1 &4095029230812761533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,8 +1775,8 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 1
+  m_StartCorner: 2
+  m_StartAxis: 0
   m_CellSize: {x: 120, y: 120}
   m_Spacing: {x: 360, y: 20}
   m_Constraint: 1
@@ -3840,6 +3840,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1545818445, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (4)
@@ -4350,6 +4354,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1007040816, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (5)
@@ -4656,6 +4664,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1707559920, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (2)
@@ -4860,6 +4872,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1150544724, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (3)
@@ -5472,6 +5488,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 884294924, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot
@@ -5574,6 +5594,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1216910171, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (6)
@@ -5880,6 +5904,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -857628614, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (1)
@@ -6594,6 +6622,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8521317463261120792}
     m_Modifications:
+    - target: {fileID: 1571591398473825447, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1919193047, guid: 75ac7a74c44024e468486bcb079a0333, type: 3}
     - target: {fileID: 4635059034713772175, guid: 822c422cf5542254ebcaefacd31a2657, type: 3}
       propertyPath: m_Name
       value: ItemSlot (7)
