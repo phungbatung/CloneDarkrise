@@ -28,12 +28,13 @@ public class HUDScreen : BlitzyUI.Screen
 
     public override void OnPop()
     {
+        SkillManager.Instance.assignEvent -= SetupSkillSlots;
         PopFinished();
     }
 
     public override void OnPush(Data data)
     {
-
+        SkillManager.Instance.assignEvent += SetupSkillSlots;
         PushFinished();
     }
 
@@ -42,7 +43,7 @@ public class HUDScreen : BlitzyUI.Screen
         PlayerManager.Instance.player.stats.BuffManager.buffHolder = buffHolder;
         skillSlots = GetComponentsInChildren<SkillSlot>();
         SetupSkillSlots();
-        SkillManager.Instance.assignEvent += SetupSkillSlots;
+        
         listItemToPick = GetComponentInChildren<ListItemToPick>();
         npcInteraction = GetComponentInChildren<NPC_Interaction>();
     }

@@ -32,29 +32,27 @@ public class ItemInfoScreen : BlitzyUI.Screen
         gameObject.SetActive(true);
         itemInventory = _itemInventory;
         ItemData item = ItemManager.Instance.itemDict[_itemInventory.itemId];
-        SetBaseInfo(item);
-        SetPropertiesInfo(item);
-        CheckForActiveButton(item);
-        RefreshContentSize();
-
-    }
-
-    private void SetBaseInfo(ItemData item)
-    {
+        //Base info
         itemIcon.sprite = item.icon;
         itemName.text = item.name;
         itemType.text = item.type.ToString();
         itemQuality.text = item.quality.ToString();
-    }
-
-    private void SetPropertiesInfo(ItemData item)
-    {
+        //Properties, description
         string description = "";
         if (item.type == ItemType.Equipment)
         {
             string baseStat = ItemUtilities.GetBaseStatOfEquipment(item.id);
-            description += $"Base {baseStat}: {ItemManager.Instance.itemDict[item.id].properties[baseStat]}\n";
-            foreach (var property in itemInventory.equipmentProperties.properties)
+            Dictionary<string, string> _properties = itemInventory.equipmentProperties.GetBaseProperties();
+            foreach (var property in _properties)
+            {
+                string[] values = property.Value.Split(new char[] { ',' });
+                foreach (var value in values)
+                {
+                    description += $"Base {property.Key}: +{value}\n";
+                }
+            }
+            _properties = itemInventory.equipmentProperties.GetProperties();
+            foreach (var property in _properties)
             {
                 string[] values = property.Value.Split(new char[] { ',' });
                 foreach (var value in values)
@@ -62,14 +60,78 @@ public class ItemInfoScreen : BlitzyUI.Screen
                     description += $"{property.Key} +{value}\n";
                 }
             }
+            for(int i=0; i<itemInventory.equipmentProperties.unlockedGemsSlot; i++)
+            {
+                if(itemInventory.equipmentProperties.gems[i] != -1)
+                {
+                    ItemData gem = ItemManager.Instance.itemDict[itemInventory.equipmentProperties.gems[i]];
+                    description = gem.name +"\n";
+                    foreach (var _property in gem.properties)
+                    {
+                        description = $"+{_property.Value} {_property.Key}\n";
+                    }
+                }
+            }   
         }
         else if (item.type == ItemType.Potion)
         {
-            
+            description += $"Instantly restores ";
+            foreach(var _property in item.properties)
+            {
+                if (_property.Key == ItemUtilities.COOLDOWN)
+                    continue;
+                if(!description.EndsWith(' '))
+                {
+                    description += ",";
+                }
+                description += $"{_property.Value} {_property.Key}";
+            }
+            description += $"\nCooldown: {item.properties[ItemUtilities.COOLDOWN]}s\n";
+            description += $"Level required: {item.level}\n";
+        }
+        else if (item.type == ItemType.Buff)
+        {
+            description += $"Effect:\n";
+            foreach (var _property in item.properties)
+            {
+                if (_property.Key == ItemUtilities.DURATION)
+                    continue;
+                description += $"+{_property.Value} {_property.Key}\n";
+            }
+            description += $"Duration: {item.properties[ItemUtilities.DURATION]}s\n";
+            description += $"\n{item.description}\n";
+        }
+        else if (item.type == ItemType.SkillBook)
+        {
+            description += $"Effect: Active skill points +{item.properties[ItemUtilities.SKILL_POINT]}\n";
+            description += $"\n{item.description}\n";
+        }
+        else if (item.type == ItemType.MagicDust)
+        {
+            description += $"Effect:\n";
+            foreach (var _property in item.properties)
+            {
+                description += $"+{_property.Value} {_property.Key}\n";
+            }
+            description += $"\n{item.description}\n";
         }
         else
             description = $"{item.description}\n";
         itemDescription.text = description;
+        //
+        CheckForActiveButton(item);
+        RefreshContentSize();
+
+    }
+
+    private void SetBaseInfo(ItemData item)
+    {
+        
+    }
+
+    private void SetPropertiesInfo(ItemData item)
+    {
+        
     }
 
     private void CheckForActiveButton(ItemData item)

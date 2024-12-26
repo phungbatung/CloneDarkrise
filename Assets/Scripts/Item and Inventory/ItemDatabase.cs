@@ -57,7 +57,8 @@ public class ItemDatabase : ScriptableObject
                     icon = sprites.Single(s => s.name == data[2]),
                     level = int.Parse(data[3]),
                     description = data[4],
-                    maxSize = int.Parse(data[5]) 
+                    maxSize = int.Parse(data[5]),
+                    sellPrice = int.Parse(data[6]),
                 };
                 itemList.Add(item);
                 itemDataDictionary[item.id] = item;

@@ -69,5 +69,6 @@ public class SkillManager : MonoBehaviour
     {
         assignedSkills[_slotIndex] = _skill;
         assignEvent?.Invoke();
+  
     }
 }

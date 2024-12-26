@@ -33,7 +33,7 @@ public class EquipmentProperties
             gems[i] = -1;
         }
     }
-    //Include all properties
+    //Include all properties, use to apply to stats
     public Dictionary<string, string> GetAllProperties()
     {
         Dictionary<string, string> _properties = GetEquipmentProperties();
@@ -45,6 +45,7 @@ public class EquipmentProperties
             ItemData item = ItemManager.Instance.itemDict[gems[i]];
             foreach (KeyValuePair<string, string> kvp in item.properties)
             {
+                
                 if (_properties.ContainsKey(kvp.Key))
                 {
                     _properties[kvp.Key] += $",{kvp.Value}";
@@ -64,28 +65,99 @@ public class EquipmentProperties
         //add base properties
         foreach (KeyValuePair<string, string> kvp in baseProperties)
         {
-            if (_properties.ContainsKey(kvp.Key))
+            string[] values = kvp.Value.Split(',');
+            foreach (string value in values)
             {
-                _properties[kvp.Key] += $",{(int)(float.Parse(kvp.Value) * GetEnhanceValue())}";
-            }
-            else
-            {
-                _properties[kvp.Key] = ((int)(float.Parse(kvp.Value) * GetEnhanceValue())).ToString();
+                if (_properties.ContainsKey(kvp.Key))
+                {
+                    _properties[kvp.Key] += $",{(int)(float.Parse(value) * GetEnhanceValue())}";
+                }
+                else
+                {
+                    _properties[kvp.Key] = ((int)(float.Parse(value) * GetEnhanceValue())).ToString();
+                }
             }
         }
         //add properties
         foreach (KeyValuePair<string, string> kvp in properties)
         {
-            if (_properties.ContainsKey(kvp.Key))
+            string[] values = kvp.Value.Split(',');
+            foreach (string value in values)
             {
-                _properties[kvp.Key] += $",{(int)(float.Parse(kvp.Value) * GetEnhanceValue())}";
-            }
-            else
-            {
-                _properties[kvp.Key] = ((int)(float.Parse(kvp.Value) * GetEnhanceValue())).ToString();
+                if (_properties.ContainsKey(kvp.Key))
+                {
+                    _properties[kvp.Key] += $",{(int)(float.Parse(value) * GetEnhanceValue())}";
+                }
+                else
+                {
+                    _properties[kvp.Key] = ((int)(float.Parse(value) * GetEnhanceValue())).ToString();
+                }
             }
         }
 
+        return _properties;
+    }
+    public Dictionary<string, string> GetBaseProperties()
+    {
+        Dictionary<string, string> _properties = new();
+        foreach (KeyValuePair<string, string> kvp in baseProperties)
+        {
+            string[] values = kvp.Value.Split(',');
+            foreach (string value in values)
+            {
+                if (_properties.ContainsKey(kvp.Key))
+                {
+                    _properties[kvp.Key] += $",{(int)(float.Parse(value) * GetEnhanceValue())}";
+                }
+                else
+                {
+                    _properties[kvp.Key] = ((int)(float.Parse(value) * GetEnhanceValue())).ToString();
+                }
+            }
+        }
+        return _properties;
+    }
+    public Dictionary<string, string> GetProperties()
+    {
+        Dictionary<string, string> _properties = new();
+        foreach (KeyValuePair<string, string> kvp in properties)
+        {
+            string[] values = kvp.Value.Split(',');
+            foreach (string value in values)
+            {
+                if (_properties.ContainsKey(kvp.Key))
+                {
+                    _properties[kvp.Key] += $",{(int)(float.Parse(value) * GetEnhanceValue())}";
+                }
+                else
+                {
+                    _properties[kvp.Key] = ((int)(float.Parse(value) * GetEnhanceValue())).ToString();
+                }
+            }
+        }
+        return _properties;
+    }
+    //Include gem properties
+    public Dictionary<string, string> GetGemsProperties()
+    {
+        Dictionary<string, string> _properties = new();
+        for (int i = 0; i < unlockedGemsSlot; i++)
+        {
+            if (gems[i] == -1)
+                continue;
+            ItemData item = ItemManager.Instance.itemDict[gems[i]];
+            foreach (KeyValuePair<string, string> kvp in item.properties)
+            {
+                if (_properties.ContainsKey(kvp.Key))
+                {
+                    _properties[kvp.Key] += $",{kvp.Value}";
+                }
+                else
+                {
+                    _properties[kvp.Key] = kvp.Value;
+                }
+            }
+        }
         return _properties;
     }
 

@@ -32,6 +32,7 @@ public class ItemData
     public ItemQuality quality;
     public string description;
     public int maxSize;
+    public int sellPrice;
     public SerializableDictionary<string, string> properties = new SerializableDictionary<string, string>();
 }
 // id = abcddd

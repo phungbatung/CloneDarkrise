@@ -15,9 +15,7 @@ public class SlotToAssign : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         SkillManager.Instance.AssignSkillToSlot(skillToAssign, slotIndex);
-        Debug.Log("log1");
         UIManager.Instance.QueuePop();
-        Debug.Log("log2");
     }
 
     public void SetSkill(Skill _skill, Skill _skillToAssign, int _slotIndex)
