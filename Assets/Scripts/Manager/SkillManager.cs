@@ -6,6 +6,7 @@ public class SkillManager : MonoBehaviour
 {
     public static SkillManager Instance { get; private set; }
 
+    public Potion potion { get; private set; }
     public Dash dash { get; private set; }
     public BaseAttack baseAttack { get; private set; }
     public Slash slash { get; private set; }
@@ -25,7 +26,7 @@ public class SkillManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        
+        potion = GetComponent<Potion>();
         dash = GetComponent<Dash>();
         baseAttack = GetComponent<BaseAttack>();
         slash = GetComponent<Slash>();

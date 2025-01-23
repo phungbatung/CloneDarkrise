@@ -172,9 +172,11 @@ public class ItemManager : MonoBehaviour
     {
         if (itemDict[_item.itemId].type != ItemType.Potion)
             return;
-        PlayerManager.Instance.player.stats.UsePotion(_item.itemId);
-        potionSlot.ApplyCoolDown(float.Parse(itemDict[_item.itemId].properties[ItemUtilities.COOLDOWN]));
-        _item.RemoveItem();
+        SkillManager.Instance.potion.TryConsumePotion(_item);
+    }
+    public void AssignPotion(ItemInventory _item)
+    {
+        SkillManager.Instance.potion.AssignPotion(_item);
     }
     #endregion
 

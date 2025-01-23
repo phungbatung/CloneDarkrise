@@ -3,15 +3,13 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    protected Player player;
-
+    protected Player player { get; set; }
     public SkillData skillData { get; set; }
     public int currentLevel { get; protected set;}
     public  float cooldownTimer {  get; protected set; }
-    protected bool isCoolDownCompleted;
-    public Action coolDownEvent;
-
-    public bool isPressed;
+    protected bool isCooldownCompleted { get; set; }
+    public Action cooldownEvent { get; set; }
+    public bool isPressed { get; set; }
 
     protected virtual void Awake()
     {
@@ -26,19 +24,19 @@ public abstract class Skill : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (!isCoolDownCompleted)
+        if (!isCooldownCompleted)
         {
             cooldownTimer -= Time.deltaTime;
-            coolDownEvent?.Invoke();
+            cooldownEvent?.Invoke();
             if (cooldownTimer <= 0)
-                isCoolDownCompleted = true;
+                isCooldownCompleted = true;
         }
     }
 
     public virtual void Called()
     {
         cooldownTimer = skillData.levelsData[currentLevel].coolDown;
-        isCoolDownCompleted = false;
+        isCooldownCompleted = false;
         player.stats.ManaIncreament(-skillData.levelsData[currentLevel].manaCost);
     }
 

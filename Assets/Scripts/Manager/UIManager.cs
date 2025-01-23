@@ -141,7 +141,7 @@ namespace BlitzyUI
             push.prefabName = prefab;
             push.callback = callback;
 
-            Debug.Log(prefab);
+            //Debug.Log(prefab);
 
             _queue.Enqueue(push);
 

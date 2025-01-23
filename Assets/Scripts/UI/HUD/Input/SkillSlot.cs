@@ -28,14 +28,14 @@ public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
     public void DoCooldown()
     {
         float  _cooldownTimer = skill.cooldownTimer;
-        float _coolDown = skill.skillData.levelsData[skill.currentLevel].coolDown;
+        float _cooldown = skill.skillData.levelsData[skill.currentLevel].coolDown;
         if (_cooldownTimer <= 0)
         {
             image.fillAmount = 1;
             textCoolDown.text = "";
             return;
         }
-        image.fillAmount = (_coolDown - _cooldownTimer)/_coolDown;
+        image.fillAmount = (_cooldown - _cooldownTimer)/_cooldown;
         textCoolDown.text = ((int)_cooldownTimer).ToString();
     }
 
@@ -43,11 +43,11 @@ public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
     {
         if (skill!=null)
         {
-            skill.coolDownEvent -= DoCooldown;
+            skill.cooldownEvent -= DoCooldown;
         }
 
         skill = _skill;
         image.sprite = skill.skillData.icon;
-        skill.coolDownEvent += DoCooldown;
+        skill.cooldownEvent += DoCooldown;
     }
 }

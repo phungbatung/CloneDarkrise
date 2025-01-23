@@ -177,7 +177,7 @@ public class ItemInfoScreen : BlitzyUI.Screen
 
     public void AssignPotionToSlot()
     {
-        InputManager.Instance.potionSlot.AssignPotion(itemInventory.itemId);
+        ItemManager.Instance.AssignPotion(itemInventory);
         BlitzyUI.UIManager.Instance.QueuePop(null);
     }
 

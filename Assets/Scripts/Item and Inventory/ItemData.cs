@@ -34,6 +34,42 @@ public class ItemData
     public int maxSize;
     public int sellPrice;
     public SerializableDictionary<string, string> properties = new SerializableDictionary<string, string>();
+
+    public T GetProperty<T>(string key)
+    {
+        if (properties.TryGetValue(key, out string value))
+        {
+            try
+            {
+                return (T)Convert.ChangeType(value, typeof(T)); 
+            }
+            catch (Exception)
+            {
+                throw new InvalidOperationException($"Cannot change type '{value}' to {typeof(T)}");
+            }
+        }
+        throw new KeyNotFoundException($"Key '{key}' not found in dictionary.");
+    }
+
+    public bool TryGetProperty<T>(string key, out T value)
+    {
+        if (properties.TryGetValue(key, out string strValue))
+        {
+            try
+            {
+                value = (T)Convert.ChangeType(strValue, typeof(T));
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        value = default;
+        return false;
+    }    
 }
 // id = abcddd
 // a  : for ItemType
