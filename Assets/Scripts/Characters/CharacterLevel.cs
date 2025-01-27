@@ -9,10 +9,13 @@ public class CharacterLevel : MonoBehaviour
     private int exp { get; set; }
     private int expToNextLevel { get; set; }
     private const float EXP_MULTIPLIER = 1.5f;
-    public Action OnLevelUp;
+
+    public Action OnGainExp { get; set; }
+    public Action OnLevelUp { get; set; }
     public void GainExp(int _exp)
     {
         exp += _exp;
+        OnGainExp?.Invoke();
         while (exp >= expToNextLevel)
         {
             LevelUp();
