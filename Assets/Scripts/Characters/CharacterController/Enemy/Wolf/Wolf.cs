@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Wolf : Enemy
 {
-    public Player player;
-    public float maxDistanceToPlayer;
     public LayerMask enemyLayer;
     private float lifeTime;
     public WolfIdleState idleState { get; private set; }
@@ -43,10 +41,7 @@ public class Wolf : Enemy
         return  Physics2D.Linecast(transform.position - new Vector3(3, 0, 0), transform.position + new Vector3(3, 0, 0), enemyLayer);
     }
 
-    public float HorizontalDistanceToPlayer()
-    {
-        return Mathf.Abs(transform.position.x - player.transform.position.x);
-    }
+    
     public bool IsEnemyInAttackRange()
     {
         return Physics2D.Raycast(wallCheck.position, facingDir * Vector3.right, attackPoint.position.x + facingDir * attackRadius - wallCheck.position.x, enemyLayer);

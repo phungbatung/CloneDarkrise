@@ -23,7 +23,7 @@ public class WolfFallState : CharacterState
     public override void Update()
     {
         base.Update();
-        if (wolf.IsWallDetected() || wolf.HorizontalDistanceToPlayer() < wolf.maxDistanceToPlayer)
+        if (wolf.IsWallDetected() || wolf.HorizontalDistanceToPlayer() < wolf.maxDistanceXToPlayer)
             wolf.SetVelocity(0, wolf.rb.velocity.y);
         else
             wolf.SetVelocity(wolf.facingDir * wolf.stats.moveSpeed.GetValue(), wolf.rb.velocity.y);

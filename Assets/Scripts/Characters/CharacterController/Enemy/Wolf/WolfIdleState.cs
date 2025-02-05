@@ -26,7 +26,7 @@ public class WolfIdleState : CharacterState
         wolf.SetZeroVelocity();
         if (!wolf.IsGrounded())
             stateMachine.ChangeState(wolf.fallState);
-        if (wolf.HorizontalDistanceToPlayer() > wolf.maxDistanceToPlayer)
+        if (wolf.HorizontalDistanceToPlayer() > wolf.maxDistanceXToPlayer)
             stateMachine.ChangeState(wolf.moveState);
         if (wolf.IsDetectEnenmy())
             stateMachine.ChangeState(wolf.battleState);

@@ -30,7 +30,7 @@ public class WolfMoveState : CharacterState
             wolf.Flip();
         if (wolf.IsWallDetected())
             stateMachine.ChangeState(wolf.jumpState);
-        if (wolf.HorizontalDistanceToPlayer() <= wolf.maxDistanceToPlayer)
+        if (wolf.HorizontalDistanceToPlayer() <= wolf.maxDistanceXToPlayer)
             stateMachine.ChangeState(wolf.idleState);
         if (wolf.IsDetectEnenmy())
             stateMachine.ChangeState(wolf.battleState);

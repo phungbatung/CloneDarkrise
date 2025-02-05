@@ -43,7 +43,7 @@ public class Character : MonoBehaviour
     }
     protected virtual void Start()
     {
-        stats.OnDied = OnDied;
+        stats.OnCharacterDie = OnDied;
     }
 
     // Update is called once per frame

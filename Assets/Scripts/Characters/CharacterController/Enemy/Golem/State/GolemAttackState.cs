@@ -13,6 +13,8 @@ public class GolemAttackState : CharacterState
     public override void Enter()
     {
         base.Enter();
+        golem.SetZeroVelocity();
+        Debug.Log("attack");
     }
 
     public override void Exit()
@@ -23,6 +25,8 @@ public class GolemAttackState : CharacterState
     public override void Update()
     {
         base.Update();
+        if (triggerCalled)
+            stateMachine.ChangeState(golem.idleState);
     }
 
     public override void StateEvent()
@@ -31,10 +35,11 @@ public class GolemAttackState : CharacterState
         foreach (Collider2D collider in colliders)
         {
             IDamageable target = collider.GetComponent<IDamageable>();
-            if (target != null)
+            if (target != null || target == golem.stats as IDamageable)
             {
-                golem.stats.DoDamage(target);
+                continue;
             }
+            golem.stats.DoDamage(target);
         }
     }
 

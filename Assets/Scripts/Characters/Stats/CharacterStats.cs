@@ -26,7 +26,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public Action OnHealthChanged { get; set; }
     public Action OnManaChanged { get; set; }
-    public Action OnDied { get; set; }
+    public Action OnCharacterDie { get; set; }
 
     //To get Stat by key of item property quickly
     private Dictionary<string, Stat> getStatByName = new();
@@ -72,8 +72,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
         finalDamage -= finalArmor;
 
         HealthIncrement(-finalDamage);
-        if (currentHealth <= 0 && OnDied!=null)
-            OnDied();
+        if (currentHealth <= 0)
+            OnCharacterDie?.Invoke();
     }
 
     public void DoDamage(IDamageable target, float damagePercentage = 100f)
