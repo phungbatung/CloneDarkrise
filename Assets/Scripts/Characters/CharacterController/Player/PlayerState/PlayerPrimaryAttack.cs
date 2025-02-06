@@ -25,7 +25,6 @@ public class PlayerPrimaryAttack : CharacterState
 
     public override void Enter()
     {
-        base.Enter();
         xInput = 0;
         player.SetZeroVelocity();
         if (player.IsGrounded())
@@ -54,7 +53,6 @@ public class PlayerPrimaryAttack : CharacterState
 
     public override void Exit()
     {
-        base.Exit();
         player.anim.speed = 1;
         if (player.IsGrounded())
             groundLastTimeAttack = Time.time;
@@ -64,7 +62,6 @@ public class PlayerPrimaryAttack : CharacterState
 
     public override void Update()
     {
-        base.Update();
         player.SetZeroVelocity();
         if (triggerCalled)
             if (player.IsGrounded())

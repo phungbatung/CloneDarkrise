@@ -24,9 +24,11 @@ public class Enemy : Character
     {
         base.OnDrawGizmos();
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
-        Gizmos.DrawLine(groundAheadCheck.position, groundAheadCheck.position + new Vector3(0, -groundCheckDistance, 0));
+        if(groundAheadCheck != null ) 
+            Gizmos.DrawLine(groundAheadCheck.position, groundAheadCheck.position + new Vector3(0, -groundCheckDistance, 0));
         Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(playerCheck.position, playerCheck.position + new Vector3(facingDir * playerCheckDistance, 0, 0));
+        if(playerCheck != null )
+            Gizmos.DrawLine(playerCheck.position, playerCheck.position + new Vector3(facingDir * playerCheckDistance, 0, 0));
     }
 
     public bool IsPlayerInChaseRange()

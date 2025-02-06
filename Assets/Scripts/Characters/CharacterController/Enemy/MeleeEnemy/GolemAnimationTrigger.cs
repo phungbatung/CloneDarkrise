@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GolemAnimationTrigger : MonoBehaviour
 {
-    private Golem golem;
+    private MeleeEnemy golem;
 
     private void Awake()
     {
-        golem = GetComponentInParent<Golem>();
+        golem = GetComponentInParent<MeleeEnemy>();
     }
     public void TriggerAnimation()
     {
