@@ -34,7 +34,12 @@ public class MeleeEnemyChaseState : CharacterState
             stateMachine.ChangeState(enemy.attackState);
             return;
         }
-        if (enemy.IsWallDetected()|| !enemy.IsGroundAhead())
+        if (enemy.IsWallDetected())
+        {
+            stateMachine.ChangeState(enemy.jumpState);
+            return;
+        }
+        if(!enemy.IsGroundAhead()&&enemy.RawVerticalDistanceToPlayer()<0)
         {
             stateMachine.ChangeState(enemy.jumpState);
             return;
