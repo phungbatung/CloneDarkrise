@@ -14,11 +14,6 @@ public class InputManager : MonoBehaviour
     public bool isUpButtonPress { get; set; }
     public float verticalInput { get; set; }
 
-    [SerializeField] private Transform skillSlotParent;
-    public List<SkillSlot> skillSlots;
-
-    public PotionSlot potionSlot;
-
     private void Awake()
     {
         //skillSlots = skillSlotParent.GetComponentsInChildren<SkillSlot>().ToList();

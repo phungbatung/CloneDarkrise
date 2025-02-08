@@ -32,4 +32,8 @@ public class PlayerHealingState : CharacterState
     {
         SkillManager.Instance.healWave.Healing();
     }
+    public override void PlaySFX()
+    {
+        AudioManager.Instance.PlaySFX(18);
+    }
 }

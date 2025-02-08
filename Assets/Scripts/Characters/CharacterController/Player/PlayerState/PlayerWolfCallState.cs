@@ -31,5 +31,8 @@ public class PlayerWolfCallState : CharacterState
     {
         SkillManager.Instance.wolfCall.WolfsCall();
     }
-
+    public override void PlaySFX()
+    {
+        AudioManager.Instance.PlaySFX(29);
+    }
 }

@@ -14,7 +14,6 @@ public class MeleeEnemyAttackState : CharacterState
     {
         base.Enter();
         enemy.SetZeroVelocity();
-        Debug.Log("attack");
     }
 
     public override void Exit()

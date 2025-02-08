@@ -21,6 +21,7 @@ public class CharacterState
     public virtual void Enter()
     {
         character.anim.SetBool(animBoolName, true);
+        Debug.Log(this.GetType().Name);
     }
 
     public virtual void Exit() 
@@ -37,6 +38,10 @@ public class CharacterState
 
     public virtual void TriggerCall() => triggerCalled = true;
     public virtual void StateEvent()
+    {
+
+    }
+    public virtual void PlaySFX()
     {
 
     }

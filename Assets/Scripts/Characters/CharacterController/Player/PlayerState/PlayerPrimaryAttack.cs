@@ -25,6 +25,7 @@ public class PlayerPrimaryAttack : CharacterState
 
     public override void Enter()
     {
+        base.Enter();
         xInput = 0;
         player.SetZeroVelocity();
         if (player.IsGrounded())
@@ -49,10 +50,12 @@ public class PlayerPrimaryAttack : CharacterState
             airComboCounter++; 
         }
         player.anim.speed = player.stats.attackSpeed.GetValue() * 1.0f / player.stats.attackSpeed.BaseValue;
+
     }
 
     public override void Exit()
     {
+        base .Exit();
         player.anim.speed = 1;
         if (player.IsGrounded())
             groundLastTimeAttack = Time.time;
@@ -62,6 +65,7 @@ public class PlayerPrimaryAttack : CharacterState
 
     public override void Update()
     {
+        base.Update();
         player.SetZeroVelocity();
         if (triggerCalled)
             if (player.IsGrounded())
@@ -77,5 +81,9 @@ public class PlayerPrimaryAttack : CharacterState
         else
             SkillManager.Instance.baseAttack.Attack(airComboCounter-1);
             
+    }
+    public override void PlaySFX()
+    {
+        AudioManager.Instance.PlaySFX(2);
     }
 }

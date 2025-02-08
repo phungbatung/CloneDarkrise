@@ -31,4 +31,8 @@ public class PlayerSlashState : CharacterState
     {
         SkillManager.Instance.slash.Attack();
     }
+    public override void PlaySFX()
+    {
+        AudioManager.Instance.PlaySFX(39);
+    }
 }

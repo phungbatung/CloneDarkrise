@@ -14,10 +14,12 @@ public class BaseAttack : Skill
     public override void Called()
     {
         player.stateMachine.ChangeState(player.attackState);
+
     }
 
     public void Attack(int comboIndex)
     {
+        
         BaseAttackLevelData baseAttackData = skillData.levelsData[currentLevel] as BaseAttackLevelData;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.transform.position + player.facingDir * (Vector3)attackPoint[comboIndex], attackRadius[comboIndex], player.targetLayer);
         foreach (Collider2D collider in colliders)

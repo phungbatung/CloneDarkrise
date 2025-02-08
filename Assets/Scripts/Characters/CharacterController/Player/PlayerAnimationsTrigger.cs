@@ -19,4 +19,9 @@ public class PlayerAnimationsTrigger : MonoBehaviour
     {
         player.stateMachine.currentState.StateEvent();
     }
+
+    public void PlaySFX()
+    {
+        player.stateMachine.currentState.PlaySFX();
+    }
 }

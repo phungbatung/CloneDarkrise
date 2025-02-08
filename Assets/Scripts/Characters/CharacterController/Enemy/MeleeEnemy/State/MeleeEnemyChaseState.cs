@@ -13,7 +13,6 @@ public class MeleeEnemyChaseState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("chase");
     }
 
     public override void Exit()

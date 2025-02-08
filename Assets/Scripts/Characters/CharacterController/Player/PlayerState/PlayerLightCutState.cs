@@ -32,4 +32,9 @@ public class PlayerLightCutState : CharacterState
     {
         SkillManager.Instance.lightCut.Cut();
     }
+
+    public override void PlaySFX()
+    {
+        AudioManager.Instance.PlaySFX(20);
+    }
 }
