@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UnityEngine.Screen.orientation = ScreenOrientation.LandscapeLeft;
+        Application.targetFrameRate = 120;
+        QualitySettings.vSyncCount = 0;
         UIManager.Instance.QueuePush(fpsScreen, null, null, null);
         UIManager.Instance.QueuePush(hudScreen, null, null, null);
     }

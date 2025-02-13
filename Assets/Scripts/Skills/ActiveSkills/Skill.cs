@@ -42,7 +42,7 @@ public abstract class Skill : MonoBehaviour
 
     public virtual bool CanBeUse()
     {
-        return  isPressed && cooldownTimer <= 0;
+        return  isPressed && cooldownTimer <= 0 && player.stats.currentMana >= skillData.levelsData[currentLevel].manaCost;
     }
 
     public int GetPointToUpgradeNextLevel()
