@@ -47,6 +47,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 120001
     name: Wooden sword
     icon: {fileID: 664935969, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -81,6 +126,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 130001
     name: Wooden sword
     icon: {fileID: 1407668916, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -115,6 +205,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 110002
     name: Iron sword
     icon: {fileID: -469375745, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -149,6 +284,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 120002
     name: Iron sword
     icon: {fileID: 2067794519, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -183,6 +363,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 130002
     name: Iron sword
     icon: {fileID: -2100445558, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -217,6 +442,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 111001
     name: Wooden shield
     icon: {fileID: 129716259, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -251,6 +521,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 121001
     name: Wooden shield
     icon: {fileID: 1144936285, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -285,6 +600,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 131001
     name: Wooden shield
     icon: {fileID: -976650181, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -319,6 +679,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 111002
     name: Iron shield
     icon: {fileID: 62196301, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -353,6 +758,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 121002
     name: Iron shield
     icon: {fileID: 596800514, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -387,6 +837,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 131002
     name: Iron shield
     icon: {fileID: -1240032733, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -421,6 +916,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 112001
     name: Leather gauntlet
     icon: {fileID: -1003383938, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -455,6 +995,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 122001
     name: Leather gauntlet
     icon: {fileID: -861412668, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -489,6 +1074,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 132001
     name: Leather gauntlet
     icon: {fileID: 2132896822, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -523,6 +1153,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 112002
     name: Iron gauntlet
     icon: {fileID: 665594913, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -557,6 +1232,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 122002
     name: Iron gauntlet
     icon: {fileID: -853115715, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -591,6 +1311,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 132002
     name: Iron gauntlet
     icon: {fileID: -291419356, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -625,6 +1390,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 113001
     name: Leather boots
     icon: {fileID: -1908731272, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -659,6 +1469,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 123001
     name: Leather boots
     icon: {fileID: 823650173, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -693,6 +1548,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 133001
     name: Leather boots
     icon: {fileID: 1934327133, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -727,6 +1627,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 113002
     name: Iron boots
     icon: {fileID: -885064185, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -761,6 +1706,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 123002
     name: Iron boots
     icon: {fileID: -93218536, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -795,6 +1785,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 133002
     name: Iron boots
     icon: {fileID: 1960359432, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -829,6 +1864,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 114001
     name: Leather chestplate
     icon: {fileID: -1183799550, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -863,6 +1943,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 124001
     name: Leather chestplate
     icon: {fileID: 1724928255, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -897,6 +2022,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 134001
     name: Leather chestplate
     icon: {fileID: -647379937, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -931,6 +2101,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 114002
     name: Iron chestplate
     icon: {fileID: -533646718, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -965,6 +2180,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 124002
     name: Iron chestplate
     icon: {fileID: 1548243101, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -999,6 +2259,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 134002
     name: Iron chestplate
     icon: {fileID: 1758748048, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1033,6 +2338,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 115001
     name: Leather pants
     icon: {fileID: 257684570, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1067,6 +2417,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 125001
     name: Leather pants
     icon: {fileID: -1470041946, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1101,6 +2496,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 135001
     name: Leather pants
     icon: {fileID: 1388162471, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1135,6 +2575,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 115002
     name: Fabric pants
     icon: {fileID: -538220125, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1169,6 +2654,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 125002
     name: Fabric pants
     icon: {fileID: 603703264, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1203,6 +2733,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 135002
     name: Fabric pants
     icon: {fileID: -1336740714, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1237,6 +2812,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 116001
     name: Leather helmet
     icon: {fileID: 1200858779, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1271,6 +2891,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 126001
     name: Leather helmet
     icon: {fileID: 1312302007, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1305,6 +2970,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 136001
     name: Leather helmet
     icon: {fileID: 1727724725, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1339,6 +3049,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 116002
     name: Iron helmet
     icon: {fileID: 921952505, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1373,6 +3128,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 126002
     name: Iron helmet
     icon: {fileID: -784216183, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1407,6 +3207,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 136002
     name: Iron helmet
     icon: {fileID: 919533521, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1441,6 +3286,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 117001
     name: Gold ring
     icon: {fileID: 919855721, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1475,6 +3365,51 @@ MonoBehaviour:
       - 10
       - 5
       - 1
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 127001
     name: Gold ring
     icon: {fileID: -1363998936, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1509,6 +3444,51 @@ MonoBehaviour:
       - 20
       - 7
       - 2
+      dictList:
+      - Key: Attack
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 2
+        index: 0
+        isKeyDuplicated: 0
   - id: 137001
     name: Gold ring
     icon: {fileID: 426708809, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1543,6 +3523,51 @@ MonoBehaviour:
       - 30
       - 9
       - 3
+      dictList:
+      - Key: Attack
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 7
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 3
+        index: 0
+        isKeyDuplicated: 0
   - id: 117002
     name: Diamond ring
     icon: {fileID: 76700248, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1577,6 +3602,51 @@ MonoBehaviour:
       - 40
       - 11
       - 4
+      dictList:
+      - Key: Attack
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 8
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 400
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 20
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 40
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 11
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 4
+        index: 0
+        isKeyDuplicated: 0
   - id: 127002
     name: Diamond ring
     icon: {fileID: -136212527, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1611,6 +3681,51 @@ MonoBehaviour:
       - 50
       - 13
       - 5
+      dictList:
+      - Key: Attack
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 9
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 800
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 80
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 13
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 137002
     name: Diamond ring
     icon: {fileID: -146122985, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1645,6 +3760,51 @@ MonoBehaviour:
       - 60
       - 15
       - 6
+      dictList:
+      - Key: Attack
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: AttackSpeed
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ArmorPenetration
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalRate
+        Value: 10
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CriticalDamage
+        Value: 70
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Health
+        Value: 1600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: HealthRegen
+        Value: 30
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Armor
+        Value: 160
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Mana
+        Value: 60
+        index: 0
+        isKeyDuplicated: 0
+      - Key: ManaRegen
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
+      - Key: MoveSpeed
+        Value: 6
+        index: 0
+        isKeyDuplicated: 0
   - id: 211001
     name: Health flask
     icon: {fileID: -601850719, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1661,6 +3821,15 @@ MonoBehaviour:
       values:
       - 300
       - 15
+      dictList:
+      - Key: Health
+        Value: 300
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CoolDown
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 221001
     name: Health flask
     icon: {fileID: -287485094, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1677,6 +3846,15 @@ MonoBehaviour:
       values:
       - 600
       - 15
+      dictList:
+      - Key: Health
+        Value: 600
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CoolDown
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 231001
     name: Health flask
     icon: {fileID: 845386048, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1693,6 +3871,15 @@ MonoBehaviour:
       values:
       - 1200
       - 15
+      dictList:
+      - Key: Health
+        Value: 1200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CoolDown
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 212001
     name: Mana flask
     icon: {fileID: -519132589, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1709,6 +3896,15 @@ MonoBehaviour:
       values:
       - 50
       - 15
+      dictList:
+      - Key: Mana
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CoolDown
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 222001
     name: Mana flask
     icon: {fileID: 912340208, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1725,6 +3921,15 @@ MonoBehaviour:
       values:
       - 100
       - 15
+      dictList:
+      - Key: Mana
+        Value: 100
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CoolDown
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 232001
     name: Mana flask
     icon: {fileID: 1786522684, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1741,6 +3946,15 @@ MonoBehaviour:
       values:
       - 200
       - 15
+      dictList:
+      - Key: Mana
+        Value: 200
+        index: 0
+        isKeyDuplicated: 0
+      - Key: CoolDown
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 310001
     name: Skill book rank 1
     icon: {fileID: -1879649195, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1756,6 +3970,11 @@ MonoBehaviour:
       - SkillPoint
       values:
       - 1
+      dictList:
+      - Key: SkillPoint
+        Value: 1
+        index: 0
+        isKeyDuplicated: 0
   - id: 320002
     name: Skill book rank 2
     icon: {fileID: 141384448, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1771,6 +3990,11 @@ MonoBehaviour:
       - SkillPoint
       values:
       - 5
+      dictList:
+      - Key: SkillPoint
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 330003
     name: Skill book rank 3
     icon: {fileID: 1629621418, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1786,6 +4010,11 @@ MonoBehaviour:
       - SkillPoint
       values:
       - 25
+      dictList:
+      - Key: SkillPoint
+        Value: 25
+        index: 0
+        isKeyDuplicated: 0
   - id: 411001
     name: Apple
     icon: {fileID: 43636790, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1802,6 +4031,15 @@ MonoBehaviour:
       values:
       - 50
       - 300
+      dictList:
+      - Key: Attack
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Duration
+        Value: 300
+        index: 0
+        isKeyDuplicated: 0
   - id: 421001
     name: Apple
     icon: {fileID: 1103465712, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1818,6 +4056,15 @@ MonoBehaviour:
       values:
       - 150
       - 600
+      dictList:
+      - Key: Attack
+        Value: 150
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Duration
+        Value: 600
+        index: 0
+        isKeyDuplicated: 0
   - id: 431001
     name: Apple
     icon: {fileID: -909118808, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1834,6 +4081,15 @@ MonoBehaviour:
       values:
       - 500
       - 900
+      dictList:
+      - Key: Attack
+        Value: 500
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Duration
+        Value: 900
+        index: 0
+        isKeyDuplicated: 0
   - id: 412001
     name: Strawberry
     icon: {fileID: 1035512259, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1850,6 +4106,15 @@ MonoBehaviour:
       values:
       - 500
       - 300
+      dictList:
+      - Key: Health
+        Value: 500
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Duration
+        Value: 300
+        index: 0
+        isKeyDuplicated: 0
   - id: 422001
     name: Strawberry
     icon: {fileID: 1579955822, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1866,6 +4131,15 @@ MonoBehaviour:
       values:
       - 1500
       - 600
+      dictList:
+      - Key: Health
+        Value: 1500
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Duration
+        Value: 600
+        index: 0
+        isKeyDuplicated: 0
   - id: 432001
     name: Strawberry
     icon: {fileID: 1974020937, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1882,6 +4156,15 @@ MonoBehaviour:
       values:
       - 5000
       - 900
+      dictList:
+      - Key: Health
+        Value: 5000
+        index: 0
+        isKeyDuplicated: 0
+      - Key: Duration
+        Value: 900
+        index: 0
+        isKeyDuplicated: 0
   - id: 511001
     name: Attack dust
     icon: {fileID: 704783535, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1896,6 +4179,11 @@ MonoBehaviour:
       - Attack
       values:
       - 5
+      dictList:
+      - Key: Attack
+        Value: 5
+        index: 0
+        isKeyDuplicated: 0
   - id: 521001
     name: Attack dust
     icon: {fileID: 1229465797, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1910,6 +4198,11 @@ MonoBehaviour:
       - Attack
       values:
       - 15
+      dictList:
+      - Key: Attack
+        Value: 15
+        index: 0
+        isKeyDuplicated: 0
   - id: 531001
     name: Attack dust
     icon: {fileID: 1235236881, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1924,6 +4217,11 @@ MonoBehaviour:
       - Attack
       values:
       - 45
+      dictList:
+      - Key: Attack
+        Value: 45
+        index: 0
+        isKeyDuplicated: 0
   - id: 512001
     name: Health dust
     icon: {fileID: -1556961822, guid: 0c592e22e30c331409ebbbaa3715df65, type: 3}
@@ -1938,6 +4236,11 @@ MonoBehaviour:
       - Health
       values:
       - 50
+      dictList:
+      - Key: Health
+        Value: 50
+        index: 0
+        isKeyDuplicated: 0
   - id: 522001
     name: Health dust
     icon: {fileID: -1282821877, guid: c079d8924da78ba44bdd43688efc0d75, type: 3}
@@ -1952,6 +4255,11 @@ MonoBehaviour:
       - Health
       values:
       - 150
+      dictList:
+      - Key: Health
+        Value: 150
+        index: 0
+        isKeyDuplicated: 0
   - id: 532001
     name: Health dust
     icon: {fileID: 627101242, guid: 3d5b6cf80b01a9d438ab993171926776, type: 3}
@@ -1966,3 +4274,8 @@ MonoBehaviour:
       - Health
       values:
       - 340
+      dictList:
+      - Key: Health
+        Value: 340
+        index: 0
+        isKeyDuplicated: 0
