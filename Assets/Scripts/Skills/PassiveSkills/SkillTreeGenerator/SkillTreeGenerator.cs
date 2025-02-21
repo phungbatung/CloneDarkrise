@@ -16,12 +16,13 @@ public class SkillTreeGenerator : MonoBehaviour
     public int amountOfNodesBetweenTwoNodes;
     public SkillNodeTemplate nodeToSpawn;
     public SkillNodeTemplate.SymmetricalType type;
-
-    [Header("List nodes")]
-    public List<SkillNodeTemplate> listNodes;
+    [Header("Base data")]
+    public SkillTreeBaseData data;
     [Header("Export info")]
     public List<SkillNodeTemplate> resultListNode;
     public string fileName;
+    [Header("List nodes")]
+    public List<SkillNodeTemplate> listNodes;
 
 
     [ContextMenu("GetRootListNode")]
@@ -311,6 +312,7 @@ public class SkillTreeGenerator : MonoBehaviour
     
     public void ExportData()
     {
+        AllocateId();
         Debug.Log("Start export");
         SkillTree skillTree = new SkillTree();
         string dirPath = Path.Combine(Application.dataPath, "Resources/SkillTreeData");
@@ -318,12 +320,12 @@ public class SkillTreeGenerator : MonoBehaviour
         for(int i=0; i<resultListNode.Count; i++)
         {
             SkillNodeTemplate node = resultListNode[i];
-            Debug.Log(i);
             if (node.id != i)
             {
                 Debug.Log("khasc id me roi, fix bug di");
             }
-            skillTree.skillNodes.Add(new SkillNode(node.id, node.transform.position, node.GetProperties(), node.GetAllNeighbor(), false));
+
+            skillTree.skillNodes.Add(node.GetNode(data));
         }
 
         foreach(var node in skillTree.skillNodes)
@@ -339,6 +341,7 @@ public class SkillTreeGenerator : MonoBehaviour
                 }
             }
         }
+        Debug.Log(skillTree);
         dataHandler.Save(skillTree);
         Debug.Log("Done!");
     }

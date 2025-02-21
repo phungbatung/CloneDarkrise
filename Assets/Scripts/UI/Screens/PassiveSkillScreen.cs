@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PassiveSkillScreen : BlitzyUI.Screen
 {
+    private UI_SkillTree skillTreeUI;
     public override void OnFocus()
     {
         
@@ -22,10 +23,12 @@ public class PassiveSkillScreen : BlitzyUI.Screen
     public override void OnPush(Data data)
     {
         PushFinished();
+        SkillTree skillTree = data.Get<SkillTree>("SkillTree");
+        skillTreeUI.SetupData(skillTree);
     }
 
     public override void OnSetup()
     {
-
+        skillTreeUI = GetComponentInChildren<UI_SkillTree>();
     }
 }

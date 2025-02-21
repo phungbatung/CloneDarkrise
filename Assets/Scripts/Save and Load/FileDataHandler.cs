@@ -22,6 +22,7 @@ public class FileDataHandler
 
     public void Save(object _data)
     {
+        Debug.Log(_data is SkillTree);
         string fullPath = Path.Combine(dataDirPath, dataFileName);
 
         try
@@ -37,6 +38,7 @@ public class FileDataHandler
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
+                    Debug.Log(dataToStore.Length);
                     writer.Write(dataToStore);
                 }
             }

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0f431afcb966343bd0e706d4b9fba7, type: 3}
+  m_Name: SkillTreeBaseData
+  m_EditorClassIdentifier: 
+  data:
+    dictList:
+    - Key: Attack
+      Value:
+        index: 0
+        baseValue: 2
+        description: '*stat values increase with your level'
+        icon: {fileID: 501270902, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: AttackSpeed
+      Value:
+        index: 1
+        baseValue: 1
+        description: '*stat values increase with your level'
+        icon: {fileID: 1380066171, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: ArmorPenetration
+      Value:
+        index: 2
+        baseValue: 2
+        description: '*stat values increase with your level'
+        icon: {fileID: -948887695, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: CriticalRate
+      Value:
+        index: 3
+        baseValue: 1
+        description: '*stat values increase with your level'
+        icon: {fileID: -2016789094, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: CriticalDamage
+      Value:
+        index: 4
+        baseValue: 2
+        description: '*stat values increase with your level'
+        icon: {fileID: 1903008358, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: Health
+      Value:
+        index: 5
+        baseValue: 20
+        description: '*stat values increase with your level'
+        icon: {fileID: -918117386, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: HealthRegen
+      Value:
+        index: 6
+        baseValue: 1
+        description: '*stat values increase with your level'
+        icon: {fileID: 686960903, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: Armor
+      Value:
+        index: 7
+        baseValue: 2
+        description: '*stat values increase with your level'
+        icon: {fileID: 886172741, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: Mana
+      Value:
+        index: 8
+        baseValue: 10
+        description: '*stat values increase with your level'
+        icon: {fileID: -1586598659, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: ManaRegen
+      Value:
+        index: 9
+        baseValue: 1
+        description: '*stat values increase with your level'
+        icon: {fileID: 193954804, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+    - Key: MoveSpeed
+      Value:
+        index: 10
+        baseValue: 1
+        description: '*stat values increase with your level'
+        icon: {fileID: 1699603606, guid: 577d162715049cc43a17b7d2a2bf480b, type: 3}
+  frameBorder:
+  - {fileID: 21300000, guid: 04ef9a921613b924796232665a3b0da0, type: 3}
+  - {fileID: 21300000, guid: 5c476adc2ad02cc458e1a8b020694067, type: 3}
+  - {fileID: 21300000, guid: a92ad0e5f073be94facabc007354f6e0, type: 3}
