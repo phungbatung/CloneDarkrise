@@ -17,7 +17,6 @@ public class PassiveSkillsButton : MonoBehaviour
         BlitzyUI.Screen.Data data = new();
         TextAsset txt = Resources.Load<TextAsset>("SkillTreeData/TestSkillTreeData");
 
-        Debug.Log(txt == null);
         SkillTree skillTree = JsonUtility.FromJson<SkillTree>(txt.text);
         data.Add("SkillTree", skillTree);
         BlitzyUI.UIManager.Instance.QueuePush(GameManager.passiveSkillsScreen, data);

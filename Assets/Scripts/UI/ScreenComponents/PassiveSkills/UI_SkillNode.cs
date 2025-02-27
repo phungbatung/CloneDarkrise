@@ -16,7 +16,7 @@ public class UI_SkillNode : MonoBehaviour, IPointerClickHandler
     {
         skillNode = _skillNode;
         transform.SetParent(parent);
-        transform.position = skillNode.position;
+        transform.localPosition = skillNode.position;
 
 
         frame.sprite = data.frameBorder[skillNode.powerLevel];

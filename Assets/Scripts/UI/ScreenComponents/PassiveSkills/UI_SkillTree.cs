@@ -17,6 +17,7 @@ public class UI_SkillTree : MonoBehaviour
         skillTree = _skillTree;
         GenerateUISkillTree();
     }
+
     public void GenerateUISkillTree()
     {
         GenerateNode();

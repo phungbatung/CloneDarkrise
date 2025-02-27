@@ -120,7 +120,7 @@ public class SkillNodeTemplate : MonoBehaviour
         {
             description = data.description;
         }
-        SkillNode node = new(id, transform.position, nodeName, description, data.index, (int)multiplier, GetProperties(), GetAllNeighbor(), unlocked);
+        SkillNode node = new(id, transform.localPosition, nodeName, description, data.index, (int)multiplier, GetProperties(), GetAllNeighbor(), unlocked);
         frame.sprite = stBaseData.frameBorder[(int)multiplier];
         icon.sprite = data.icon;
         return node;

@@ -17,7 +17,9 @@ public class SkillTreeBaseData : ScriptableObject
         {
             data[temp] = new (data.Count);
         }
+#if UNITY_EDITOR
         SaveAsset(this);
+#endif
     }
 #if UNITY_EDITOR
     void SaveAsset(UnityEngine.Object @object)

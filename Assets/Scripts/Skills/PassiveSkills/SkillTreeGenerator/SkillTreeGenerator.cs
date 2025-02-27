@@ -1,11 +1,7 @@
-using JetBrains.Annotations;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.XR;
 
 
 public class SkillTreeGenerator : MonoBehaviour
@@ -35,7 +31,7 @@ public class SkillTreeGenerator : MonoBehaviour
     {
         listNodes = GetComponentsInChildren<SkillNodeTemplate>().ToList();
         ClearCloneNode();
-        for(int i = 0; i < listNodes.Count; i++)
+        for (int i = 0; i < listNodes.Count; i++)
         {
             SkillNodeTemplate curNode = listNodes[i];
             if (!curNode.isCloned && curNode.symmetricalType == SkillNodeTemplate.SymmetricalType.X)
@@ -91,14 +87,14 @@ public class SkillTreeGenerator : MonoBehaviour
         }
     }
     [ContextMenu("GetListNode2")]
-    public void GetListNode2() 
+    public void GetListNode2()
     {
         Debug.Log("start");
         listNodes = GetComponentsInChildren<SkillNodeTemplate>().ToList();
-        int[] count=new int[5];
-        foreach(SkillNodeTemplate node in listNodes)
+        int[] count = new int[5];
+        foreach (SkillNodeTemplate node in listNodes)
         {
-            if(node.symmetricalType==SkillNodeTemplate.SymmetricalType.None)
+            if (node.symmetricalType == SkillNodeTemplate.SymmetricalType.None)
             {
                 count[1]++;
             }
@@ -112,7 +108,7 @@ public class SkillTreeGenerator : MonoBehaviour
             }
         }
         Debug.Log($"1:{count[1]}, 2:{count[2]}, 4:{count[4]} ");
-        Debug.Log($"total: {count[1] + count[2]*2 + count[4]*4 }");
+        Debug.Log($"total: {count[1] + count[2] * 2 + count[4] * 4}");
         List<SkillNodeTemplate> list = new()
         {
             listNodes[0]
@@ -162,7 +158,7 @@ public class SkillTreeGenerator : MonoBehaviour
     }
     public List<SkillNodeTemplate> GetListPeerNode(SkillNodeTemplate node)
     {
-        if(node.symmetricalType == SkillNodeTemplate.SymmetricalType.X)
+        if (node.symmetricalType == SkillNodeTemplate.SymmetricalType.X)
         {
             return new List<SkillNodeTemplate> { GenerateSymmetricalX(node) };
         }
@@ -179,12 +175,12 @@ public class SkillTreeGenerator : MonoBehaviour
             return GenerateSymmetricalQuad(node);
         }
         return new List<SkillNodeTemplate>();
-    }    
+    }
 
     [ContextMenu("ClearCloneNode")]
     public void ClearCloneNode()
     {
-        for ( int i=0; i< listNodes.Count; i++)
+        for (int i = 0; i < listNodes.Count; i++)
         {
             SkillNodeTemplate node = listNodes[i];
             if (node.isCloned)
@@ -194,28 +190,28 @@ public class SkillTreeGenerator : MonoBehaviour
                 i--;
             }
         }
-    }    
+    }
 
     [ContextMenu("GenerateNode")]
     public void GenerateNode()
     {
-        Vector3 dir=(desPos.position-rootPos.position).normalized;
-        float distanceBetweenTwoNodes = Vector3.Distance(desPos.position, rootPos.position)/(amountOfNodesBetweenTwoNodes+1);
-        for(int i=1; i <=amountOfNodesBetweenTwoNodes; i++)
+        Vector3 dir = (desPos.position - rootPos.position).normalized;
+        float distanceBetweenTwoNodes = Vector3.Distance(desPos.position, rootPos.position) / (amountOfNodesBetweenTwoNodes + 1);
+        for (int i = 1; i <= amountOfNodesBetweenTwoNodes; i++)
         {
             SkillNodeTemplate newNode = Instantiate(nodeToSpawn);
             newNode.isCloned = false;
             newNode.transform.SetParent(transform);
             newNode.symmetricalType = type;
-            newNode.transform.position = rootPos.position + i*distanceBetweenTwoNodes * dir;
-        }    
+            newNode.transform.position = rootPos.position + i * distanceBetweenTwoNodes * dir;
+        }
     }
 
     public void DeepGenerate(SkillNodeTemplate node, List<SkillNodeTemplate> peerNodes, List<SkillNodeTemplate> list)
     {
         Debug.Log("log count");
         int amountOfNeighbor = node.neighbors.Count;
-        for (int i=0; i<amountOfNeighbor; i++)
+        for (int i = 0; i < amountOfNeighbor; i++)
         {
             SkillNodeTemplate neighbor = node.neighbors[i];
             if (list.Contains(neighbor) || !listNodes.Contains(neighbor))
@@ -223,9 +219,9 @@ public class SkillTreeGenerator : MonoBehaviour
                 continue;
             }
             List<SkillNodeTemplate> peerNeighborNodes = GetListPeerNode(neighbor);
-            if(node.symmetricalType==SkillNodeTemplate.SymmetricalType.None)
+            if (node.symmetricalType == SkillNodeTemplate.SymmetricalType.None)
             {
-                foreach(var _node in peerNeighborNodes)
+                foreach (var _node in peerNeighborNodes)
                 {
                     node.neighbors.Add(_node);
                 }
@@ -254,11 +250,11 @@ public class SkillTreeGenerator : MonoBehaviour
             }
             else
             {
-                if(peerNeighborNodes.Count==1)
+                if (peerNeighborNodes.Count == 1)
                 {
                     peerNodes[0].neighbors.Add(peerNeighborNodes[0]);
                 }
-                else if(peerNeighborNodes.Count==3)
+                else if (peerNeighborNodes.Count == 3)
                 {
                     if (node.symmetricalType == SkillNodeTemplate.SymmetricalType.X)
                     {
@@ -284,14 +280,14 @@ public class SkillTreeGenerator : MonoBehaviour
     {
         listNodes = GetComponentsInChildren<SkillNodeTemplate>().ToList();
         SkillNodeTemplate firstNode = listNodes[0];
-        Queue<SkillNodeTemplate> queue= new Queue<SkillNodeTemplate>();
+        Queue<SkillNodeTemplate> queue = new Queue<SkillNodeTemplate>();
         resultListNode = new();
         queue.Enqueue(firstNode);
         int id = 0;
-        while(queue.Count>0)
+        while (queue.Count > 0)
         {
             SkillNodeTemplate node = queue.Dequeue();
-            if(resultListNode.Contains(node))
+            if (resultListNode.Contains(node))
             {
                 continue;
             }
@@ -302,14 +298,14 @@ public class SkillTreeGenerator : MonoBehaviour
             Debug.Log(id);
             node.id = id;
             id++;
-            foreach(var _node in node.neighbors)
+            foreach (var _node in node.neighbors)
             {
                 queue.Enqueue(_node);
             }
         }
-    }    
-    [ContextMenu("ExportData")]    
-    
+    }
+    [ContextMenu("ExportData")]
+
     public void ExportData()
     {
         AllocateId();
@@ -317,7 +313,7 @@ public class SkillTreeGenerator : MonoBehaviour
         SkillTree skillTree = new SkillTree();
         string dirPath = Path.Combine(Application.dataPath, "Resources/SkillTreeData");
         FileDataHandler dataHandler = new FileDataHandler(dirPath, fileName);
-        for(int i=0; i<resultListNode.Count; i++)
+        for (int i = 0; i < resultListNode.Count; i++)
         {
             SkillNodeTemplate node = resultListNode[i];
             if (node.id != i)
@@ -328,13 +324,13 @@ public class SkillTreeGenerator : MonoBehaviour
             skillTree.skillNodes.Add(node.GetNode(data));
         }
 
-        foreach(var node in skillTree.skillNodes)
+        foreach (var node in skillTree.skillNodes)
         {
             List<SkillNode> neighbors = skillTree.GetNeighborsOf(node);
-            foreach(var neighbor in neighbors)
+            foreach (var neighbor in neighbors)
             {
-                
-                if(!neighbor.neighbors.Contains(node.id))
+
+                if (!neighbor.neighbors.Contains(node.id))
                 {
                     neighbor.neighbors.Add(node.id);
                     neighbor.neighbors.Sort();
@@ -345,7 +341,7 @@ public class SkillTreeGenerator : MonoBehaviour
         dataHandler.Save(skillTree);
         Debug.Log("Done!");
     }
-    [ContextMenu("ImportData")]    
+    [ContextMenu("ImportData")]
     public void ImportData()
     {
         string dirPath = Path.Combine(Application.dataPath, "Resources/SkillTreeData");
@@ -363,7 +359,7 @@ public class SkillTreeGenerator : MonoBehaviour
             {
                 listNodes[i].neighbors.Add(listNodes[temp]);
             }
-            
+
         }
     }
     public void CreateNode(SkillNode skillNode)
