@@ -21,7 +21,7 @@ public class CharacterState
     public virtual void Enter()
     {
         character.anim.SetBool(animBoolName, true);
-        Debug.Log(this.GetType().Name);
+        //Debug.Log(this.GetType().Name);
     }
 
     public virtual void Exit() 
