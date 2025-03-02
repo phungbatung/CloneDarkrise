@@ -304,8 +304,6 @@ MonoBehaviour:
   currentHealth: 0
   currentMana: 0
   isImmortal: 0
-  buffPrefab: {fileID: 0}
-  buffHolder: {fileID: 0}
 --- !u!114 &3218403745780052678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,8 +335,14 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
-  player: {fileID: 0}
-  maxDistanceToPlayer: 3
+  playerCheck: {fileID: 0}
+  playerCheckDistance: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxDistanceXToPlayer: 5
+  maxDistanceYToPlayer: 0
+  groundAheadCheck: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
