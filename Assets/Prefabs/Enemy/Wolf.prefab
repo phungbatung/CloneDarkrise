@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2009804075
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -670872476, guid: 81f8a573e72107c4baa3bc687bb4d537, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -131,8 +131,8 @@ GameObject:
   - component: {fileID: 7484664833730156014}
   - component: {fileID: 4811966914340983566}
   - component: {fileID: 8722882886530722414}
-  - component: {fileID: 186093830033891941}
   - component: {fileID: 3218403745780052678}
+  - component: {fileID: 186093830033891941}
   m_Layer: 6
   m_Name: Wolf
   m_TagString: Untagged
@@ -256,6 +256,48 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
+--- !u!114 &3218403745780052678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3289905884271434341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf068c41a8a515f4abcf62e59eb633d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingDir: 1
+  jumpForce: 12
+  dashSpeed: 0
+  dashDuration: 0
+  groundCheck: {fileID: 1341569826804313884}
+  groundCheckDistance: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  wallCheck: {fileID: 2642484744930706214}
+  wallCheckDistance: -0.3
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 768
+  attackPoint: {fileID: 5882463822473576015}
+  attackRadius: 0.6
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  playerCheck: {fileID: 0}
+  playerCheckDistance: 0
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  maxDistanceXToPlayer: 5
+  maxDistanceYToPlayer: 0
+  groundAheadCheck: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &186093830033891941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,48 +346,6 @@ MonoBehaviour:
   currentHealth: 0
   currentMana: 0
   isImmortal: 0
---- !u!114 &3218403745780052678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3289905884271434341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf068c41a8a515f4abcf62e59eb633d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  facingDir: 1
-  jumpForce: 12
-  dashSpeed: 0
-  dashDuration: 0
-  groundCheck: {fileID: 1341569826804313884}
-  groundCheckDistance: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  wallCheck: {fileID: 2642484744930706214}
-  wallCheckDistance: -0.3
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 768
-  attackPoint: {fileID: 5882463822473576015}
-  attackRadius: 0.6
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  playerCheck: {fileID: 0}
-  playerCheckDistance: 0
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  maxDistanceXToPlayer: 5
-  maxDistanceYToPlayer: 0
-  groundAheadCheck: {fileID: 0}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &7449711487966496940
 GameObject:
   m_ObjectHideFlags: 0

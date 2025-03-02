@@ -14,6 +14,7 @@ public class MeleeEnemyIdleState : CharacterState
     {
         base.Enter();
         enemy.SetZeroVelocity();
+        Debug.Log("idle");
     }
 
     public override void Exit()

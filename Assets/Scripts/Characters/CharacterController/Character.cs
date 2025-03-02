@@ -58,7 +58,7 @@ public class Character : MonoBehaviour
     }
     public virtual bool IsWallDetected()
     {
-        return Physics2D.Raycast(wallCheck.position, facingDir * Vector2.right, wallCheckDistance, wallLayer);
+        return Physics2D.Raycast(wallCheck.position, facingDir * Vector2.right, wallCheckDistance, groundLayer);
     }
 
     public virtual void Flip()

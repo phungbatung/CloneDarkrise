@@ -14,6 +14,7 @@ public class MeleeEnemyJumpState : CharacterState
     {
         base.Enter();
         enemy.SetVelocity(enemy.facingDir * enemy.stats.moveSpeed.GetValue()*1.5f, enemy.jumpForce);
+        Debug.Log("jump");
     }
 
     public override void Exit()
@@ -26,5 +27,6 @@ public class MeleeEnemyJumpState : CharacterState
         base.Update();
         if (enemy.IsGrounded())
             stateMachine.ChangeState(enemy.idleState);
+        enemy.SetVelocity(enemy.facingDir * enemy.stats.moveSpeed.GetValue() * 1.5f, enemy.rb.velocity.y);
     }
 }
