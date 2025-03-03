@@ -34,16 +34,16 @@ public class MeleeEnemyChaseState : CharacterState
             stateMachine.ChangeState(enemy.attackState);
             return;
         }
-        if (enemy.IsWallDetected())
+        if (enemy.IsWallDetected()&&enemy.IsGrounded())
         {
-            stateMachine.ChangeState(enemy.jumpState);
             Debug.Log("log1");
+            stateMachine.ChangeState(enemy.jumpState);
             return;
         }
-        if(!enemy.IsGroundAhead())
+        if(!enemy.IsGroundedAhead() && enemy.RawVerticalDistanceToPlayer() >= 0 && enemy.IsGrounded())
         {
+            Debug.Log($"log2, {enemy.RawVerticalDistanceToPlayer()}");
             stateMachine.ChangeState(enemy.jumpState);
-            Debug.Log("log2");
             return;
         }
         float dir = enemy.player.transform.position.x > enemy.transform.position.x ? 1 : -1;

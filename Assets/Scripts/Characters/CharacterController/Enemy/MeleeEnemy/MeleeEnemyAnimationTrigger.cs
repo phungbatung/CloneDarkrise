@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GolemAnimationTrigger : MonoBehaviour
+public class MeleeEnemyAnimationTrigger : MonoBehaviour
 {
     private MeleeEnemy golem;
 

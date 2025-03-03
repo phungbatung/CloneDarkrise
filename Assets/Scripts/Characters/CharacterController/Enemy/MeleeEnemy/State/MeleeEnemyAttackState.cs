@@ -14,6 +14,8 @@ public class MeleeEnemyAttackState : CharacterState
     {
         base.Enter();
         enemy.SetZeroVelocity();
+        if (enemy.facingDir * enemy.RawHorizontalDistanceToPlayer() < 0)
+            enemy.Flip();
         Debug.Log("attack");
     }
 
@@ -25,6 +27,7 @@ public class MeleeEnemyAttackState : CharacterState
     public override void Update()
     {
         base.Update();
+        enemy.SetVelocity(0, enemy.rb.velocity.y);
         if (triggerCalled)
             stateMachine.ChangeState(enemy.idleState);
     }

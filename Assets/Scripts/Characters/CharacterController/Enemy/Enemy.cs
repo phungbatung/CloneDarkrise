@@ -36,7 +36,7 @@ public class Enemy : Character
         return Physics2D.Raycast(playerCheck.position, Vector2.right, playerCheckDistance, playerLayer);
     }
 
-    public RaycastHit2D IsGroundAhead()
+    public RaycastHit2D IsGroundedAhead()
     {
         return Physics2D.Raycast(groundAheadCheck.position, Vector2.down, groundCheckDistance, groundLayer);
     }
@@ -47,7 +47,7 @@ public class Enemy : Character
 
     public float RawHorizontalDistanceToPlayer()
     {
-        return transform.position.x - player.transform.position.x;
+        return player.transform.position.x - transform.position.x;
     }
     public float HorizontalDistanceToPlayer()
     {
@@ -55,7 +55,7 @@ public class Enemy : Character
     }
     public float RawVerticalDistanceToPlayer()
     {
-        return transform.position.y - player.transform.position.y;
+        return player.transform.position.y - transform.position.y;
     }
     public float VerticalDistanceToPlayer()
     {
