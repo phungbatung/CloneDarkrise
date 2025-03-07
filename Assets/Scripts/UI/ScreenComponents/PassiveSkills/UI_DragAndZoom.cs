@@ -31,8 +31,6 @@ public class UI_DragAndZoom : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         {
             isDragging = true;
             isZooming = false;
-            Debug.Log("pointer");
-            UI_Logger.instance.SetLog($"Touch count: {Input.touchCount}, Drag: {isDragging}, Zoom: {isZooming}");
         }
         else if (Input.touchCount == 2)
         {
@@ -40,14 +38,12 @@ public class UI_DragAndZoom : MonoBehaviour, IPointerDownHandler, IPointerUpHand
             isZooming = true;
 
             originTouchDistance = Vector3.Distance(Input.GetTouch(0).position, Input.GetTouch(1).position);
-            UI_Logger.instance.SetLog($"Touch count: {Input.touchCount}, Drag: {isDragging}, Zoom: {isZooming}");
         }
     }
 
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        UI_Logger.instance.SetLog($"Touch count: {Input.touchCount}, Drag: {isDragging}, Zoom: {isZooming}");
         isDragging = false;
         isZooming = false;
     }

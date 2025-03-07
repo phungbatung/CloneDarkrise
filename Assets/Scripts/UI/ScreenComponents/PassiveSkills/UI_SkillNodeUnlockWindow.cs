@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class UI_SkillNodeUnlockWindow : MonoBehaviour
 {
-    [SerializeField] private UI_SkillTree skillTreeUI;
     private SkillNode skillNode;
+    [SerializeField] private UI_SkillTree skillTreeUI;
     [SerializeField] private Image frame;
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI SkillNodeName;
@@ -40,7 +40,7 @@ public class UI_SkillNodeUnlockWindow : MonoBehaviour
         {
             frame.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
-        UnlockButton.gameObject.SetActive(!skillNode.unlocked);
+        UnlockButton.gameObject.SetActive(PassiveSkills.Instance.skillTree.CanBeUnlock(skillNode));
         gameObject.SetActive(true);
         RefreshContentSize();
     }

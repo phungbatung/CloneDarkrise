@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : Character
 {
-    public SkillTree skillTree;
     public Detector detector;
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
@@ -40,4 +39,5 @@ public class Player : Character
         base.Update();
         stateMachine.currentState.Update();
     }
+
 }

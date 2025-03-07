@@ -13,6 +13,11 @@ public class SkillTree
         skillNodes = new List<SkillNode>();
         skillPoint = 0;
     }
+    public SkillTree(List<SkillNode> _skillNodes, int _skillPoint)
+    {
+        skillNodes = _skillNodes;
+        skillPoint = _skillPoint;
+    }
 
     public List<SkillNode> GetNeighborsOf(SkillNode node)
     {
@@ -26,7 +31,7 @@ public class SkillTree
     
     public bool CanBeUnlock(SkillNode node)
     {
-        if(skillPoint <=0)
+        if(skillPoint <=0 && node.unlocked)
             return false;
         List<SkillNode> neighbors = GetNeighborsOf(node);
         foreach (var neighbor in neighbors)
@@ -44,6 +49,8 @@ public class SkillTree
         if (!CanBeUnlock(node))
             return;
         node.unlocked = true;
+        skillPoint--;
+        PlayerManager.Instance.player.stats.AddModifier(node.properties);
     }
 
 }

@@ -13,6 +13,8 @@ public class UI_SkillTreeEdge : UI_LineRenderer
     }    
     public void SetColor(bool activeStatus)
     {
+        Debug.Log(activeStatus);
         lineColor = activeStatus ? Colors[1] : Colors[0];
+        SetVerticesDirty();
     }
 }

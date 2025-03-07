@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_SkillTree : MonoBehaviour
@@ -10,12 +11,16 @@ public class UI_SkillTree : MonoBehaviour
     [SerializeField] private Transform nodeParents;
     [SerializeField] private UI_SkillTreeEdge lineRendererPrefab;
     [SerializeField] private Transform lineParents;
+    [SerializeField] private TextMeshProUGUI skillPoint;
     private SkillTree skillTree;
     private Dictionary<SkillNode, UI_SkillNode> skillNodesUI;
+
+
     public void SetupData(SkillTree _skillTree)
     {
         skillTree = _skillTree;
         GenerateUISkillTree();
+        skillPoint.text = skillTree.skillPoint.ToString();
     }
 
     public void GenerateUISkillTree()
@@ -81,11 +86,15 @@ public class UI_SkillTree : MonoBehaviour
 
     public void UnlockNode(SkillNode node)
     {
-        node.Unlock();
+        Debug.Log("unlock");
+        skillTree.Unlock(node);
         UI_SkillNode nodeUI = skillNodesUI[node];
+        nodeUI.SetActivationUI();
         foreach(var kvp in nodeUI.lineToNeighbors)
         {
+            Debug.Log(kvp.Key.skillNode.unlocked);
             kvp.Value.SetColor(kvp.Key.skillNode.unlocked);
         }
+        skillPoint.text = skillTree.skillPoint.ToString();
     }
 }

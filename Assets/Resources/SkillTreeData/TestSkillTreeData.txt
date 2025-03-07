@@ -22,7 +22,7 @@
                 1,
                 2
             ],
-            "unlocked": false
+            "unlocked": true
         },
         {
             "id": 1,
@@ -5965,5 +5965,5 @@
             "unlocked": false
         }
     ],
-    "skillPoint": 0
+    "skillPoint": 3
 }

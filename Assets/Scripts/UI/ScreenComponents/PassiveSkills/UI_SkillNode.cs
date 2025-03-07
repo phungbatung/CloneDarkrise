@@ -34,11 +34,12 @@ public class UI_SkillNode : MonoBehaviour, IPointerClickHandler
             transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }    
         
-        SetActivationUI(skillNode.unlocked);
+        SetActivationUI();
     }
 
-    private void SetActivationUI(bool isActive)
+    public void SetActivationUI()
     {
+        bool isActive = skillNode.unlocked;
         float value = isActive? 1.0f : (75f/256f);
         frame.color = new Color(value, value, value);
         icon.color = new Color(value, value, value);
