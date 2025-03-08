@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    [Header("Movement")]
     public float facingDir;
+    public float moveSpeed;
     public float jumpForce;
 
     public float dashSpeed;

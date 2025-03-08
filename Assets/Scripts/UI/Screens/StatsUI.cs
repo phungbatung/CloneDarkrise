@@ -55,6 +55,6 @@ public class StatsScreen : BlitzyUI.Screen
         armor.text = stats.armor.GetValue().ToString();
         maxMana.text = stats.maxMana.GetValue().ToString();
         manaRegen.text = stats.manaRegen.GetValue().ToString() + "/s";
-        moveSpeed.text = stats.moveSpeed.GetValue().ToString();
+        moveSpeed.text = (stats.moveSpeed.GetValue()+100).ToString() + "%";
     }
 }

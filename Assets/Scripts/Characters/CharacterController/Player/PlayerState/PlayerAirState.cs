@@ -24,7 +24,7 @@ public class PlayerAirState : CharacterState
     {
         base.Update();
         player.anim.SetFloat("yVelocity", player.rb.velocity.y);
-        player.SetVelocity(xInput * player.stats.moveSpeed.GetValue(), player.rb.velocity.y);
+        player.SetVelocity(xInput * player.moveSpeed * (100f + player.stats.moveSpeed.GetValue())/100f, player.rb.velocity.y);
         if (SkillManager.Instance.dash.CanBeUse())
             SkillManager.Instance.dash.Called();
         if (SkillManager.Instance.baseAttack.CanBeUse())

@@ -47,6 +47,6 @@ public class MeleeEnemyChaseState : CharacterState
             return;
         }
         float dir = enemy.player.transform.position.x > enemy.transform.position.x ? 1 : -1;
-        enemy.SetVelocity( dir * enemy.stats.moveSpeed.GetValue(), enemy.rb.velocity.y);
+        enemy.SetVelocity( dir * enemy.moveSpeed , enemy.rb.velocity.y);
     }
 }

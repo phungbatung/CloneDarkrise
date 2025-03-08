@@ -28,7 +28,7 @@ public class WolfJumpState : CharacterState
         if (wolf.IsWallDetected() || wolf.HorizontalDistanceToPlayer() < wolf.maxDistanceXToPlayer)
             wolf.SetVelocity(0, wolf.rb.velocity.y);
         else
-            wolf.SetVelocity(wolf.facingDir * wolf.stats.moveSpeed.GetValue(), wolf.rb.velocity.y);
+            wolf.SetVelocity(wolf.facingDir * wolf.moveSpeed, wolf.rb.velocity.y);
         if (triggerCalled)
             stateMachine.ChangeState(wolf.fallState);
         if (wolf.IsDetectEnenmy())

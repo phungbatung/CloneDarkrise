@@ -26,7 +26,7 @@ public class WolfFallState : CharacterState
         if (wolf.IsWallDetected() || wolf.HorizontalDistanceToPlayer() < wolf.maxDistanceXToPlayer)
             wolf.SetVelocity(0, wolf.rb.velocity.y);
         else
-            wolf.SetVelocity(wolf.facingDir * wolf.stats.moveSpeed.GetValue(), wolf.rb.velocity.y);
+            wolf.SetVelocity(wolf.facingDir * wolf.moveSpeed, wolf.rb.velocity.y);
         if (wolf.IsGrounded())
             stateMachine.ChangeState(wolf.idleState);
     }

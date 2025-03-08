@@ -34,6 +34,6 @@ public class WolfBattleState : CharacterState
             stateMachine.ChangeState(wolf.attackState);
             return;
         }
-        wolf.SetVelocity(wolf.facingDir * wolf.stats.moveSpeed.GetValue(), 0);
+        wolf.SetVelocity(wolf.facingDir * wolf.moveSpeed, 0);
     }
 }
