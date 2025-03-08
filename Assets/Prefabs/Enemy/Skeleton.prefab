@@ -254,8 +254,9 @@ GameObject:
   - component: {fileID: 5827280450563933920}
   - component: {fileID: 1987758281373545531}
   - component: {fileID: 3540626602157315040}
-  - component: {fileID: 233767525625889699}
   - component: {fileID: 6005624710715844546}
+  - component: {fileID: 2818288173837464755}
+  - component: {fileID: 3771280747619831506}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -346,7 +347,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &233767525625889699
+--- !u!114 &6005624710715844546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -355,11 +356,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 6663393506443212519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5df2d9669a971a4b966d3cd790a547d, type: 3}
+  m_Script: {fileID: 11500000, guid: 61a718bcb920b874ebbcb608c3d2828f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  facingDir: 1
+  moveSpeed: 3
+  jumpForce: 13
+  dashSpeed: 0
+  dashDuration: 0
+  groundCheck: {fileID: 1824354958900278606}
+  groundCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  wallCheck: {fileID: 5932394387234095101}
+  wallCheckDistance: 0.2
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  attackPoint: {fileID: 2066568430525386102}
+  attackRadius: 1.1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  playerCheck: {fileID: 6038445242635911622}
+  playerCheckDistance: 1.63
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  maxDistanceXToPlayer: 116.9
+  maxDistanceYToPlayer: 5
+  groundAheadCheck: {fileID: 4881041556816232211}
+--- !u!114 &2818288173837464755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663393506443212519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6812ca1f8a8162459ad10a50128c62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    baseValue: 10
+    baseValue: 0
     modifiers: 
   attackSpeed:
     baseValue: 0
@@ -389,12 +430,13 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   moveSpeed:
-    baseValue: 3
+    baseValue: 0
     modifiers: 
   currentHealth: 0
   currentMana: 0
   isImmortal: 0
---- !u!114 &6005624710715844546
+  baseData: {fileID: 11400000, guid: c19c49773cd810b4db31acdc2ad04348, type: 2}
+--- !u!114 &3771280747619831506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,36 +445,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6663393506443212519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61a718bcb920b874ebbcb608c3d2828f, type: 3}
+  m_Script: {fileID: 11500000, guid: 73b85f1ce9e85cc4183793d68546e852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  facingDir: 1
-  jumpForce: 13
-  dashSpeed: 0
-  dashDuration: 0
-  groundCheck: {fileID: 1824354958900278606}
-  groundCheckDistance: 0.1
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  wallCheck: {fileID: 5932394387234095101}
-  wallCheckDistance: 0.2
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  attackPoint: {fileID: 2066568430525386102}
-  attackRadius: 1.1
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  playerCheck: {fileID: 6038445242635911622}
-  playerCheckDistance: 1.63
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  maxDistanceXToPlayer: 116.9
-  maxDistanceYToPlayer: 5
-  groundAheadCheck: {fileID: 4881041556816232211}
+  level: 10
 --- !u!1 &8894637650898946583
 GameObject:
   m_ObjectHideFlags: 0

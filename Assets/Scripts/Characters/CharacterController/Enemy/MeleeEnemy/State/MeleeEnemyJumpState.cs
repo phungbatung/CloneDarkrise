@@ -14,6 +14,7 @@ public class MeleeEnemyJumpState : CharacterState
     {
         base.Enter();
         float dir = enemy.player.transform.position.x > enemy.transform.position.x ? 1 : -1;
+        Debug.Log($"dir:{dir}, moveSpeed: {enemy.moveSpeed}");
         enemy.SetVelocity(dir * enemy.moveSpeed*1.5f, enemy.jumpForce);
         Debug.Log("jump");
     }
@@ -26,7 +27,7 @@ public class MeleeEnemyJumpState : CharacterState
     public override void Update()
     {
         base.Update();
-        enemy.SetVelocity(enemy.facingDir * enemy.stats.moveSpeed.GetValue() * 1.5f, enemy.rb.velocity.y);
+        enemy.SetVelocity(enemy.facingDir * enemy.moveSpeed * 1.5f, enemy.rb.velocity.y);
         if (enemy.IsGrounded())
             stateMachine.ChangeState(enemy.idleState);
     }

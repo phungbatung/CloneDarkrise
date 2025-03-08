@@ -255,7 +255,8 @@ GameObject:
   - component: {fileID: 5937951111600248639}
   - component: {fileID: 2266065044595815553}
   - component: {fileID: 2955327885417578145}
-  - component: {fileID: 2555283074588979754}
+  - component: {fileID: 3636806125927512215}
+  - component: {fileID: 5450385515620533805}
   m_Layer: 7
   m_Name: Golem
   m_TagString: Untagged
@@ -359,6 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingDir: 1
+  moveSpeed: 3
   jumpForce: 13
   dashSpeed: 0
   dashDuration: 0
@@ -382,10 +384,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  maxDistanceXToPlayer: 15
+  maxDistanceXToPlayer: 116.9
   maxDistanceYToPlayer: 5
   groundAheadCheck: {fileID: 4846570882792094303}
---- !u!114 &2555283074588979754
+--- !u!114 &3636806125927512215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,11 +396,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6171655939227794809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5df2d9669a971a4b966d3cd790a547d, type: 3}
+  m_Script: {fileID: 11500000, guid: e6812ca1f8a8162459ad10a50128c62f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage:
-    baseValue: 10
+    baseValue: 0
     modifiers: 
   attackSpeed:
     baseValue: 0
@@ -428,11 +430,25 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   moveSpeed:
-    baseValue: 3
+    baseValue: 0
     modifiers: 
   currentHealth: 0
   currentMana: 0
   isImmortal: 0
+  baseData: {fileID: 11400000, guid: 5203c9de71807c944805e45146edae9a, type: 2}
+--- !u!114 &5450385515620533805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6171655939227794809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b85f1ce9e85cc4183793d68546e852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 10
 --- !u!1 &6869514503975064428
 GameObject:
   m_ObjectHideFlags: 0

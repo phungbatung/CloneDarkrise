@@ -38,7 +38,7 @@ public class MeleeEnemyAttackState : CharacterState
         foreach (Collider2D collider in colliders)
         {
             IDamageable target = collider.GetComponent<IDamageable>();
-            if (target != null || target == enemy.stats as IDamageable)
+            if (target == null)
             {
                 continue;
             }
