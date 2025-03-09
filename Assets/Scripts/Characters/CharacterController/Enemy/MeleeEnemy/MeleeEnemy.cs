@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
-    public MeleeEnemyIdleState idleState { get; private set; }
-    public MeleeEnemyChaseState chaseState { get; private set; }
-    public MeleeEnemyJumpState jumpState { get; private set; }
-    public MeleeEnemyAttackState attackState { get; private set; }
-    public MeleeEnemyDeathState deathState { get; private set; }
+    
 
     protected override void Awake()
     {
@@ -25,5 +21,23 @@ public class MeleeEnemy : Enemy
     {
         base.Update();
         stateMachine.currentState.Update();
+    }
+
+    public RaycastHit2D IsPlayerInAttackRange()
+    {
+        return Physics2D.Raycast(playerCheck.position, Vector2.right, playerCheckDistance, playerLayer);
+    }
+    public override void Attack()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, targetLayer);
+        foreach (Collider2D collider in colliders)
+        {
+            IDamageable target = collider.GetComponent<IDamageable>();
+            if (target == null)
+            {
+                continue;
+            }
+            stats.DoDamage(target);
+        }
     }
 }

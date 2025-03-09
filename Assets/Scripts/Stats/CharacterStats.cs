@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStats : MonoBehaviour, IDamageable
+public class CharacterStats : MonoBehaviour, IDamageable, IAttacker
 {
     public Stat damage;
     public Stat attackSpeed;
@@ -58,28 +58,6 @@ public class CharacterStats : MonoBehaviour, IDamageable
         getStatByName[ItemUtilities.MOVE_SPEED] = moveSpeed;
     }
 
-    public void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
-    {
-        if (isImmortal)
-            return;
-        int finalDamage=_damage;
-        //calculate critical
-        bool critical = UnityEngine.Random.Range(0, 100) <= _critRate;
-        if (critical)
-            finalDamage = (int)(finalDamage * (float)(_critDamage)/100);
-        //apply armor
-        int finalArmor = armor.GetValue() >  _armorPenetration ? armor.GetValue() - _armorPenetration : 0;
-        finalDamage -= finalArmor;
-
-        HealthIncrement(-finalDamage);
-        if (currentHealth <= 0)
-            OnCharacterDie?.Invoke();
-    }
-
-    public void DoDamage(IDamageable target, float damagePercentage = 100f)
-    {
-        target.TakeDamage((int)(damage.GetValue() * (damagePercentage/100)), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
-    }
 
     public void AddModifier(Dictionary<string, string> _properties)
     {
@@ -119,6 +97,36 @@ public class CharacterStats : MonoBehaviour, IDamageable
         }
     }
 
+
+    public void TakeDamage(int _damage = 0, int _critRate = 0, int _critDamage = 0, int _armorPenetration = 0)
+    {
+        if (isImmortal)
+            return;
+        int finalDamage=_damage;
+        //calculate critical
+        bool critical = UnityEngine.Random.Range(0, 100) <= _critRate;
+        if (critical)
+            finalDamage = (int)(finalDamage * (float)(_critDamage)/100);
+        //apply armor
+        int finalArmor = armor.GetValue() >  _armorPenetration ? armor.GetValue() - _armorPenetration : 0;
+        finalDamage -= finalArmor;
+
+        HealthIncrement(-finalDamage);
+        if (currentHealth <= 0)
+            OnCharacterDie?.Invoke();
+    }
+
+    public void DoDamage(IDamageable target, float damagePercentage = 100f)
+    {
+        target.TakeDamage((int)(damage.GetValue() * (damagePercentage/100)), criticalRate.GetValue(), criticalDamage.GetValue(), armorPenetration.GetValue());
+    }
+
+    public void OnAttackDealt(IDamageable target)
+    {
+
+    }    
+
+
     public void HealthIncrement(int _health = 0, int _healthPercentage = 0)
     {
         currentHealth += _health;
@@ -140,21 +148,4 @@ public class CharacterStats : MonoBehaviour, IDamageable
             currentMana = 0;
         OnManaChanged?.Invoke();
     }
-
-    public void UsePotion(int _itemId)
-    {
-        ItemData item =  ItemManager.Instance.itemDict[_itemId];
-        if (item.type != ItemType.Potion)
-            return;
-        if (item.properties.TryGetValue(ItemUtilities.HEALTH, out string _health))
-        {
-            HealthIncrement(int.Parse(_health));
-        }
-        if (item.properties.TryGetValue(ItemUtilities.MANA, out string _mana))
-        {
-            ManaIncreament(int.Parse(_mana));
-        }
-    }
-
-
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemyAnimationTrigger : MonoBehaviour
+public class RangedEnemyAnimationTrigger : MonoBehaviour
 {
-    private MeleeEnemy enemy;
+    private RangedEnemy enemy;
 
     private void Awake()
     {
-        enemy = GetComponentInParent<MeleeEnemy>();
+        enemy = GetComponentInParent<RangedEnemy>();
     }
     public void TriggerAnimation()
     {

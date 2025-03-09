@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
     }
     protected virtual void Start()
     {
-        stats.OnCharacterDie = OnDied;
+        stats.OnCharacterDie = Die;
     }
 
     // Update is called once per frame
@@ -85,7 +85,7 @@ public class Character : MonoBehaviour
         Gizmos.DrawLine(groundCheck.position, groundCheck.position + new Vector3(0, -groundCheckDistance, 0));
         Gizmos.DrawLine(wallCheck.position, wallCheck.position + new Vector3(facingDir*wallCheckDistance, 0, 0));
     }
-    protected virtual void OnDied()
+    protected virtual void Die()
     {
 
     }    

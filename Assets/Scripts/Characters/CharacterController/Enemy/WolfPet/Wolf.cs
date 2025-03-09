@@ -7,12 +7,12 @@ public class Wolf : Enemy
 {
     public LayerMask enemyLayer;
     private float lifeTime;
-    public WolfIdleState idleState { get; private set; }
+    //public WolfIdleState idleState { get; private set; }
+    //public WolfJumpState jumpState { get; private set; }
+    //public WolfAttackState attackState { get; private set; }
     public WolfMoveState moveState { get; private set; }
-    public WolfJumpState jumpState { get; private set; }
     public WolfFallState fallState { get; private set; }
     public WolfBattleState battleState { get; private set; }
-    public WolfAttackState attackState { get; private set; }
 
     protected override void Awake()
     {
