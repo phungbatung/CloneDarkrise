@@ -25,14 +25,17 @@ public class RangedEnemy : Enemy
 
     public RaycastHit2D IsPlayerInAttackRange()
     {
-        Vector2 dir = player.transform.position - transform.position;
+        Vector2 dir = player.transform.position - playerCheck.position;
         RaycastHit2D playerDetected = Physics2D.Raycast(playerCheck.position, dir, playerCheckDistance, playerLayer);
-        RaycastHit2D wallDetected = Physics2D.Raycast(wallCheck.position, dir, playerCheckDistance, groundLayer);
+        RaycastHit2D wallDetected = Physics2D.Raycast(playerCheck.position, dir, playerCheckDistance, groundLayer);
 
         if (wallDetected)
         {
             if (wallDetected.distance < playerDetected.distance)
+            {
+                Debug.Log($"wall: {wallDetected.distance}, player: {playerDetected.distance}");
                 return default;
+            }
         }
 
         return playerDetected;
@@ -43,4 +46,11 @@ public class RangedEnemy : Enemy
         return Instantiate(projectile);
     }
     public void SetCanBeChase() => canBeChase = true;
+
+    protected override void OnDrawGizmos()
+    {
+        base.OnDrawGizmos();
+        if (player!=null) 
+            Gizmos.DrawLine(playerCheck.position, player.transform.position);
+    }
 }

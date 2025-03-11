@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour
     public void DestroyThisProjectile()
     {
         OnProjectileHit?.Invoke();
-        Debug.Log($"Projectile name \"{gameObject.name}\" was destroyed");
+        //Debug.Log($"Projectile name \"{gameObject.name}\" was destroyed");
         Destroy(gameObject);
     }    
 

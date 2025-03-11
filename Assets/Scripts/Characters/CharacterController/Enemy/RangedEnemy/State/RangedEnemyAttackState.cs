@@ -14,7 +14,8 @@ public class RangedEnemyAttackState : CharacterState
     {
         base.Enter();
         enemy.SetZeroVelocity();
-        Debug.Log("attack");
+        if (enemy.facingDir * enemy.RawHorizontalDistanceToPlayer() < 0)
+            enemy.Flip();
     }
 
     public override void Exit()
@@ -33,7 +34,7 @@ public class RangedEnemyAttackState : CharacterState
     public override void StateEvent()
     {
         Projectile projectile = enemy.CreateProjectile();
-        Vector2 flyDir = enemy.player.transform.position - enemy.transform.position;
+        Vector2 flyDir = enemy.player.transform.position - enemy.playerCheck.position;
         projectile.SetupProjectile(enemy.stats, enemy.targetLayer, enemy.playerCheck.position, 
                                     flyDir, enemy.playerCheckDistance, enemy.SetCanBeChase);
         enemy.canBeChase = false;

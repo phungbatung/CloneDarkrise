@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RangedEnemyChaseState : CharacterState
 {
-    private float yCheckOffset = 6f;
+    private float yCheckOffset = 0f;
     private RangedEnemy enemy;
     public RangedEnemyChaseState(Character _character, StateMachine _stateMachine, string _animBoolName) : base(_character, _stateMachine, _animBoolName)
     {
@@ -14,7 +14,6 @@ public class RangedEnemyChaseState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("chase");
     }
 
     public override void Exit()
@@ -37,17 +36,16 @@ public class RangedEnemyChaseState : CharacterState
         }
         if (enemy.IsWallDetected() && enemy.IsGrounded())
         {
-            Debug.Log("log1");
             stateMachine.ChangeState(enemy.jumpState);
             return;
         }
         if (!enemy.IsGroundedAhead() && enemy.RawVerticalDistanceToPlayer() >= yCheckOffset && enemy.IsGrounded())
         {
-            Debug.Log($"log2, {enemy.RawVerticalDistanceToPlayer()}");
             stateMachine.ChangeState(enemy.jumpState);
             return;
         }
         float dir = enemy.player.transform.position.x > enemy.transform.position.x ? 1 : -1;
         enemy.SetVelocity(dir * enemy.moveSpeed, enemy.rb.velocity.y);
+        Debug.Log("log");
     }
 }
