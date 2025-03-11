@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LeaperEnemyJumpState : CharacterState
+{
+    private LeaperEnemy enemy;
+    public LeaperEnemyJumpState(Character _character, StateMachine _stateMachine, string _animBoolName) : base(_character, _stateMachine, _animBoolName)
+    {
+        enemy = _character as LeaperEnemy;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        float dir = enemy.player.transform.position.x > enemy.transform.position.x ? 1 : -1;
+        Debug.Log($"dir:{dir}, moveSpeed: {enemy.moveSpeed}");
+        enemy.SetVelocity(dir * enemy.moveSpeed*1.5f, enemy.jumpForce);
+        Debug.Log("jump");
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        enemy.SetVelocity(enemy.facingDir * enemy.moveSpeed * 1.5f, enemy.rb.velocity.y);
+        if (enemy.IsGrounded())
+            stateMachine.ChangeState(enemy.idleState);
+    }
+}
