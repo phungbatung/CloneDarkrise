@@ -1,0 +1,7 @@
+﻿Level,Cooldown,ManaCost,Description
+0,5,5,You dash forward at high speed and become invulnerable during this time.
+1,4.5,5,Cooldown  -0.5s.
+2,4,5,Cooldown  -0.5s.
+3,3.5,5,Cooldown  -0.5s.
+4,3,5,Cooldown  -0.5s.
+5,2,5,Cooldown  -1s.

@@ -1,7 +1,0 @@
-﻿Level,Cooldown,ManaCost,HealthToRegen,HealthPercentageToRegen,CastSpeed,Description
-0,30,30,50,5,100,Heal your health.
-1,30,30,100,10,110,Health to regen increase by 50. Health percentage to regen increase by 5%
-2,30,30,150,15,120,Health to regen increase by 50. Health percentage to regen increase by 5%
-3,30,30,200,20,130,Health to regen increase by 50. Health percentage to regen increase by 5%
-4,30,30,250,25,140,Health to regen increase by 50. Health percentage to regen increase by 5%
-5,30,30,300,30,150,Health to regen increase by 50. Health percentage to regen increase by 5%

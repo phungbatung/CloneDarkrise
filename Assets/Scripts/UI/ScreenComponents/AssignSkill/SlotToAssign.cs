@@ -23,6 +23,6 @@ public class SlotToAssign : MonoBehaviour, IPointerClickHandler
         skill = _skill;
         skillToAssign = _skillToAssign;
         slotIndex = _slotIndex;
-        skillIcon.sprite = skill.skillData.icon;
+        skillIcon.sprite = skill.SkillData.icon;
     }
 }

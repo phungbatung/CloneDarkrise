@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b238847b012c2de4c9211e6e4239b168, type: 3}
+  m_Name: WolfCall
+  m_EditorClassIdentifier: 
+  id: 5
+  icon: {fileID: 21300000, guid: eed44235dcbd621438f7c0c4f05e2356, type: 3}
+  skillName: WolfCall
+  levelsData:
+  - properties:
+      dictList:
+      - Key: Level
+        Value: 0
+      - Key: Cooldown
+        Value: 25
+      - Key: ManaCost
+        Value: 20
+      - Key: StatPercentage
+        Value: 70
+      - Key: Quantity
+        Value: 2
+      - Key: Lifespan
+        Value: 10
+      - Key: Description
+        Value: You summon 2 wolves which fight on your side for 15 seconds after
+          what disappear. The wolf inherits most of your stats except health and
+          damage which is 70%. Wolves can disappear before specified time if their
+          health droped to zero.
+  - properties:
+      dictList:
+      - Key: Level
+        Value: 1
+      - Key: Cooldown
+        Value: 25
+      - Key: ManaCost
+        Value: 20
+      - Key: StatPercentage
+        Value: 85
+      - Key: Quantity
+        Value: 2
+      - Key: Lifespan
+        Value: 10
+      - Key: Description
+        Value: Wolves health and damage + 15%.
+  - properties:
+      dictList:
+      - Key: Level
+        Value: 2
+      - Key: Cooldown
+        Value: 25
+      - Key: ManaCost
+        Value: 20
+      - Key: StatPercentage
+        Value: 85
+      - Key: Quantity
+        Value: 2
+      - Key: Lifespan
+        Value: 15
+      - Key: Description
+        Value: Wolves life span + 5s.
+  - properties:
+      dictList:
+      - Key: Level
+        Value: 3
+      - Key: Cooldown
+        Value: 25
+      - Key: ManaCost
+        Value: 20
+      - Key: StatPercentage
+        Value: 100
+      - Key: Quantity
+        Value: 2
+      - Key: Lifespan
+        Value: 15
+      - Key: Description
+        Value: Wolves damage and health + 15%.
+  - properties:
+      dictList:
+      - Key: Level
+        Value: 4
+      - Key: Cooldown
+        Value: 25
+      - Key: ManaCost
+        Value: 20
+      - Key: StatPercentage
+        Value: 100
+      - Key: Quantity
+        Value: 2
+      - Key: Lifespan
+        Value: 20
+      - Key: Description
+        Value: Wolves life span + 5s.
+  - properties:
+      dictList:
+      - Key: Level
+        Value: 5
+      - Key: Cooldown
+        Value: 25
+      - Key: ManaCost
+        Value: 20
+      - Key: StatPercentage
+        Value: 100
+      - Key: Quantity
+        Value: 3
+      - Key: Lifespan
+        Value: 20
+      - Key: Description
+        Value: Wolves amount +1.

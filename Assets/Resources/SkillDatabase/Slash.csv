@@ -1,7 +1,0 @@
-﻿Level,Cooldown,ManaCost,DamagePercentage,CastSpeed,Description
-0,5,10,200,100,Slash
-1,5,10,250,110,Increase damage by 50%. Cast speed by 10%
-2,5,10,300,120,Increase damage by 50%. Cast speed by 10%
-3,5,10,350,130,Increase damage by 50%. Cast speed by 10%
-4,5,10,400,140,Increase damage by 50%. Cast speed by 10%
-5,5,10,500,150,Increase damage by 50%. Cast speed by 10%

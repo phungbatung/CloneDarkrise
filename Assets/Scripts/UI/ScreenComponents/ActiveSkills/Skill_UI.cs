@@ -19,6 +19,6 @@ public class Skill_UI : MonoBehaviour, IPointerDownHandler
     {
         skill = _skill;
         skillInfo = _skillInfo;
-        icon.sprite = skill.skillData.icon;
+        icon.sprite = skill.SkillData.icon;
     }
 }

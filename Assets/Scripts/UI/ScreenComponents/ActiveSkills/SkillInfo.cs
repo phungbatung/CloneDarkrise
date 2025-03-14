@@ -38,8 +38,8 @@ public class SkillInfo : MonoBehaviour
     public void UpdateUI(Skill _skill)
     {
         skill = _skill;
-        icon.sprite = skill.skillData.icon;
-        skillName.text = skill.skillData.skillName;
+        icon.sprite = skill.SkillData.icon;
+        skillName.text = skill.SkillData.skillName;
         level.text = $"LV: {skill.currentLevel}";
         skillPoint.text = skill.GetPointToUpgradeNextLevel().ToString();
         description.text = skill.GetDescription();

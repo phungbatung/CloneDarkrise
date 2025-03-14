@@ -46,17 +46,18 @@ public class Wolf : Enemy
     {
         return Physics2D.Raycast(wallCheck.position, facingDir * Vector3.right, attackPoint.position.x + facingDir * attackRadius - wallCheck.position.x, enemyLayer);
     }
-    public void SetUpWolf(Player _player, Vector3 _position, WolfCallLevelData _wolfCallLevelData)
+    public void SetUpWolf(Player _player, Vector3 _position, SkillLevelData _wolfCallLevelData)
     {
         player = _player;
-        stats.maxHealth.AddModifier((int)(player.stats.maxHealth.GetValue() * _wolfCallLevelData.statPercentage/100f));
-        stats.damage.AddModifier((int)(player.stats.damage.GetValue() * _wolfCallLevelData.statPercentage/100f));
+        int statPercentage = _wolfCallLevelData.GetProperty<int>(SkillLevelData.Key.STAT_PERCENTAGE);
+        stats.maxHealth.AddModifier((int)(player.stats.maxHealth.GetValue() * statPercentage / 100f));
+        stats.damage.AddModifier((int)(player.stats.damage.GetValue() * statPercentage/100f));
         stats.moveSpeed.AddModifier((int)( player.moveSpeed * (100f +player.stats.moveSpeed.GetValue())/100f * Random.Range(60, 90)/100f));
         stats.armor.AddModifier(player.stats.armor.GetValue());
         stats.attackSpeed.AddModifier(player.stats.attackSpeed.GetValue());
         stats.armorPenetration.AddModifier(player.stats.armorPenetration.GetValue());
         transform.position = _position;
-        lifeTime=_wolfCallLevelData.lifespan;
+        lifeTime=_wolfCallLevelData.GetProperty<int>(SkillLevelData.Key.LIFESPAN);
         if (player.facingDir == -1)
             Flip();
         Invoke("DestroyGO", lifeTime);

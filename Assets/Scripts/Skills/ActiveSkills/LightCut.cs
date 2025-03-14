@@ -37,38 +37,38 @@ public class LightCut : Skill
         lightSlash?.GetComponent<LightSlashController>()?.SetUpLightSlash(player, slashSize, this);
     }
 
-    public override void FillData()
-    {
-        skillData = new();
-        string fileName = "LightCut";
-        skillData.skillName = fileName;
-        skillData.icon = Resources.Load<Sprite>($"SkillDatabase\\Skill_Icon\\{fileName}");
-        string data = Resources.Load<TextAsset>($"SkillDatabase\\{fileName}").text;
-        string[] rows = data.Split('\n');
-        LightCutLevelData levelData;
-        for (int i = 1; i < rows.Length; i++)
-        {
-            levelData = new();
-            string[] cells = rows[i].Split(",");
-            if (int.TryParse(cells[0], out levelData.level))
-            {
-                levelData.coolDown = float.Parse(cells[1]);
-                levelData.manaCost = int.Parse(cells[2]);
-                levelData.damagePercentage = int.Parse(cells[3]);
-                levelData.castSpeed = int.Parse(cells[4]);
-                levelData.description = cells[5];
-                skillData.levelsData.Add(levelData);
-            }
-        }
-    }
+    //public override void FillData()
+    //{
+    //    skillData = new();
+    //    string fileName = "LightCut";
+    //    skillData.skillName = fileName;
+    //    skillData.icon = Resources.Load<Sprite>($"SkillDatabase\\Skill_Icon\\{fileName}");
+    //    string data = Resources.Load<TextAsset>($"SkillDatabase\\{fileName}").text;
+    //    string[] rows = data.Split('\n');
+    //    LightCutLevelData levelData;
+    //    for (int i = 1; i < rows.Length; i++)
+    //    {
+    //        levelData = new();
+    //        string[] cells = rows[i].Split(",");
+    //        if (int.TryParse(cells[0], out levelData.level))
+    //        {
+    //            levelData.coolDown = float.Parse(cells[1]);
+    //            levelData.manaCost = int.Parse(cells[2]);
+    //            levelData.damagePercentage = int.Parse(cells[3]);
+    //            levelData.castSpeed = int.Parse(cells[4]);
+    //            levelData.description = cells[5];
+    //            skillData.levelsData.Add(levelData);
+    //        }
+    //    }
+    //}
 
     public override string GetDescription()
     {
-        LightCutLevelData currentLevelData = skillData.levelsData[currentLevel] as LightCutLevelData;
-        string desc = $"Damage: {currentLevelData.damagePercentage * 1.0f / 100 * player.stats.damage.GetValue()}\n" +
-                        $"Cast speed: {currentLevelData.castSpeed}%\n" +
-                        $"Cooldown: {currentLevelData.coolDown}\n" +
-                        $"Mana cost: {currentLevelData.manaCost}";
+        SkillLevelData currentLevelData = SkillData.levelsData[currentLevel];
+        string desc = $"Damage: {currentLevelData.GetProperty<int>(SkillLevelData.Key.DAMAGE_PERCENTAGE) * 1.0f / 100 * player.stats.damage.GetValue()}\n" +
+                        $"Cast speed: {currentLevelData.GetProperty<string>(SkillLevelData.Key.CAST_SPEED)}%\n" +
+                        $"Cooldown: {currentLevelData.GetProperty<string>(SkillLevelData.Key.COOLDOWN)}\n" +
+                        $"Mana cost: {currentLevelData.GetProperty<string>(SkillLevelData.Key.COOLDOWN)}";
         return desc;
     }
 }

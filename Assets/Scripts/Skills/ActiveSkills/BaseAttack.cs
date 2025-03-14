@@ -20,48 +20,48 @@ public class BaseAttack : Skill
     public void Attack(int comboIndex)
     {
         
-        BaseAttackLevelData baseAttackData = skillData.levelsData[currentLevel] as BaseAttackLevelData;
+        SkillLevelData baseAttackData = SkillData.levelsData[currentLevel];
         Collider2D[] colliders = Physics2D.OverlapCircleAll(player.transform.position + player.facingDir * (Vector3)attackPoint[comboIndex], attackRadius[comboIndex], player.targetLayer);
         foreach (Collider2D collider in colliders)
         {
             IDamageable target = collider.GetComponent<IDamageable>();
             if (target != null)
             {
-                player.stats.DoDamage(target, baseAttackData.damagePercentage * 1.0f);
+                player.stats.DoDamage(target, baseAttackData.GetProperty<int>(SkillLevelData.Key.DAMAGE_PERCENTAGE) * 1.0f);
             }
         }
     }
 
-    public override void FillData()
-    {
-        string fileName = "BaseAttack";
-        skillData.skillName = fileName;
-        skillData.icon = Resources.Load<Sprite>($"SkillDatabase\\Skill_Icon\\{fileName}");
-        string data = Resources.Load<TextAsset>($"SkillDatabase\\{fileName}").text;
-        string[] rows = data.Split('\n');
-        BaseAttackLevelData levelData;
-        for (int i = 1; i < rows.Length; i++)
-        {
-            levelData = new();
-            string[] cells = rows[i].Split(",");
-            if (int.TryParse(cells[0], out levelData.level))
-            {
-                levelData.coolDown = float.Parse(cells[1]);
-                levelData.manaCost = int.Parse(cells[2]);
-                levelData.hitCombo = int.Parse(cells[3]);
-                levelData.damagePercentage = int.Parse(cells[4]);
-                levelData.description = cells[5];
-                skillData.levelsData.Add(levelData);
-            }
-        }
-    }
+    //public override void FillData()
+    //{
+    //    string fileName = "BaseAttack";
+    //    skillData.skillName = fileName;
+    //    skillData.icon = Resources.Load<Sprite>($"SkillDatabase\\Skill_Icon\\{fileName}");
+    //    string data = Resources.Load<TextAsset>($"SkillDatabase\\{fileName}").text;
+    //    string[] rows = data.Split('\n');
+    //    BaseAttackLevelData levelData;
+    //    for (int i = 1; i < rows.Length; i++)
+    //    {
+    //        levelData = new();
+    //        string[] cells = rows[i].Split(",");
+    //        if (int.TryParse(cells[0], out levelData.level))
+    //        {
+    //            levelData.coolDown = float.Parse(cells[1]);
+    //            levelData.manaCost = int.Parse(cells[2]);
+    //            levelData.hitCombo = int.Parse(cells[3]);
+    //            levelData.damagePercentage = int.Parse(cells[4]);
+    //            levelData.description = cells[5];
+    //            skillData.levelsData.Add(levelData);
+    //        }
+    //    }
+    //}
 
     public override string GetDescription()
     {
-        BaseAttackLevelData currentLevelData = skillData.levelsData[currentLevel] as BaseAttackLevelData;
-        string desc = $"Damage: {currentLevelData.damagePercentage*1.0f/100 * player.stats.damage.GetValue()}\n" +
-                        $"Cooldown: {currentLevelData.coolDown}\n" +
-                        $"Mana cost: {currentLevelData.manaCost}";
+        SkillLevelData currentLevelData = SkillData.levelsData[currentLevel];
+        string desc = $"Damage: {currentLevelData.GetProperty<int>(SkillLevelData.Key.DAMAGE_PERCENTAGE) * 1.0f/100 * player.stats.damage.GetValue()}\n" +
+                        $"Cooldown: {currentLevelData.GetProperty<string>(SkillLevelData.Key.COOLDOWN)}\n" +
+                        $"Mana cost: {currentLevelData.GetProperty<string>(SkillLevelData.Key.MANA_COST)}";
         return desc;
     }
 }

@@ -28,7 +28,7 @@ public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
     public void DoCooldown()
     {
         float  _cooldownTimer = skill.cooldownTimer;
-        float _cooldown = skill.skillData.levelsData[skill.currentLevel].coolDown;
+        float _cooldown = skill.SkillData.levelsData[skill.currentLevel].GetProperty<float>(SkillLevelData.Key.COOLDOWN);
         if (_cooldownTimer <= 0)
         {
             image.fillAmount = 1;
@@ -47,7 +47,7 @@ public class SkillSlot : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
         }
 
         skill = _skill;
-        image.sprite = skill.skillData.icon;
+        image.sprite = skill.SkillData.icon;
         skill.cooldownEvent += DoCooldown;
     }
 }

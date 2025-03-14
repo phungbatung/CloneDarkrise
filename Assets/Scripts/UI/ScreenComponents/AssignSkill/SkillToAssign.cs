@@ -9,6 +9,6 @@ public class SkillToAssign : MonoBehaviour
 
     public void SetSkillIcon(Skill skill)
     {
-        skillIcon.sprite = skill.skillData.icon;
+        skillIcon.sprite = skill.SkillData.icon;
     }
 }

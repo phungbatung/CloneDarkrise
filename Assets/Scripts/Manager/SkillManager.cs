@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SkillManager : MonoBehaviour
@@ -72,4 +73,55 @@ public class SkillManager : MonoBehaviour
         assignEvent?.Invoke();
   
     }
+
+#if UNITY_EDITOR
+    [ContextMenu("Create skill database")]
+    public void CreateSkillDatabase()
+    {
+        string dataPath = "SkillData/Data";
+        string iconPath = "SkillData/Icon";
+        TextAsset[] listText = Resources.LoadAll<TextAsset>(dataPath);
+        Sprite[] listIcon = Resources.LoadAll<Sprite>(iconPath);
+        Debug.Log(listText.Length + " " + listIcon.Length);
+        SkillData skillData;
+        for (int i = 0; i < listText.Length; i++)
+        {
+            Debug.Log(i);
+            skillData = CreateSkillData(i, listText[i].name, listIcon[i], listText[i].text);
+            AssetDatabase.CreateAsset(skillData, $"Assets/Data/SkillData/{skillData.skillName}.asset");
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+    }
+
+    public SkillData CreateSkillData(int id, string name, Sprite icon, string levelsData)
+    {
+        SkillData skillData = ScriptableObject.CreateInstance<SkillData>(); ;
+        skillData.id = id;
+        skillData.skillName = name;
+        skillData.icon = icon;
+        string[] lines = levelsData.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+        string[] keys = lines[0].Split(',');
+        for (int i = 1; i < lines.Length; i++)
+        {
+            SkillLevelData levelData = new SkillLevelData();
+            string[] values = lines[i].Split(",");
+            if (values.Length != keys.Length)
+                continue;
+            for (int j = 0; j < values.Length; j++)
+            {
+                levelData.properties.Add(keys[j], values[j]);
+            }
+            skillData.levelsData.Add(levelData);
+        }
+        return skillData;
+    }
+
+
+    void SaveAsset(UnityEngine.Object @object)
+    {
+        EditorUtility.SetDirty(@object);
+        AssetDatabase.SaveAssets();
+    }
+#endif
 }

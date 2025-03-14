@@ -1,0 +1,7 @@
+﻿Level,Cooldown,ManaCost,DamagePercentage,CastSpeed,Description
+0,10,15,150,100,Light cut.
+1,10,15,180,110,Increase damage by 30%. Cast speed by 10%
+2,10,15,210,120,Increase damage by 30%. Cast speed by 10%
+3,10,15,240,130,Increase damage by 30%. Cast speed by 10%
+4,10,15,270,140,Increase damage by 30%. Cast speed by 10%
+5,10,15,300,150,Increase damage by 30%. Cast speed by 10%
