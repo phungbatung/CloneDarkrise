@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 14034474}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.81779, y: 4.5652328, z: -10.198298}
+  m_LocalPosition: {x: 49.587788, y: 1.705233, z: -10.198298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3005,6 +3005,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &490541512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 490541513}
+  - component: {fileID: 490541514}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &490541513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490541512}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2044299532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &490541514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490541512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55aa5f70226ce4947a53acfd0a5e4c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: darkrise.txt
+  encryptData: 0
 --- !u!1 &506775975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3228,7 +3274,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.81779, y: 4.5652328, z: -10.198298}
+  m_LocalPosition: {x: 49.587788, y: 1.705233, z: -10.198298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18090,6 +18136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8748ff76088dc840ad55669fb9aae49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: f8fe7d8649cc0fd43a264ad03f9fafca, type: 2}
 --- !u!114 &659301336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18102,6 +18149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9bf7e02826c564db5f8b0462a4bc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: 3641dd853ad261d47a9d1ab2164bdfb1, type: 2}
   attackPoint: {x: 1.5, y: -0.73}
   attackRadius: 5
 --- !u!114 &659301337
@@ -18116,6 +18164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b87d17c636343347b29944487180ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: 2040ed1b9993ed04a8d1eadf6d611d47, type: 2}
   attackPoint:
   - {x: 1.3, y: 0}
   - {x: 1.3, y: 0}
@@ -18136,6 +18185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ad340cd4311d644a62e90109c77636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: 4881356a07874704c8a9dc67192b7da1, type: 2}
   lightPrefabs: {fileID: 5059364692951229675, guid: bf16cb88e942f054da60db4abef682e7, type: 3}
   maxDistance: 5
   wallLayer:
@@ -18154,6 +18204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2951394d900dfb84882305afc3db030a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: f8f8f8a6950e1e04ca7845f909179d8d, type: 2}
   wolfPrefab: {fileID: 3289905884271434341, guid: a4958dda3a0302e46a9fe3c880128f1d, type: 3}
   spawnPosition: {x: -1.2, y: -1, z: 0}
 --- !u!114 &659301340
@@ -18168,6 +18219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 596f0987ea96e174cb7646bbfcfda31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillData: {fileID: 11400000, guid: f760f08ca9aa67f4f8e83e3c0b0c84c6, type: 2}
 --- !u!114 &659301341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18820,7 +18872,7 @@ Transform:
   m_GameObject: {fileID: 723956782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.57, y: 3.33, z: 0}
+  m_LocalPosition: {x: 39.34, y: 0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19433,6 +19485,63 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &796372007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1532666621148624448, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_Name
+      value: TrainingDummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.521248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.60092974
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534678943411043357, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f626b41d1c7ad514092c945e2fb1157e, type: 3}
 --- !u!1 &857544226
 GameObject:
   m_ObjectHideFlags: 0
@@ -22511,7 +22620,6 @@ MonoBehaviour:
   itemDatabase: {fileID: 11400000, guid: 59f4006a6d1e76d40ad379132748aff0, type: 2}
   inventorySize: 48
   equipmentSize: 8
-  potionSlot: {fileID: 0}
 --- !u!1 &1483377261
 GameObject:
   m_ObjectHideFlags: 0
@@ -25383,6 +25491,7 @@ Transform:
   - {fileID: 1357766370}
   - {fileID: 857544227}
   - {fileID: 766262327}
+  - {fileID: 490541513}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2069221495
@@ -25784,6 +25893,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 8210573715577770682, guid: 7b4efb23626e4d044afe2499e77cc257, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8884877041794859118, guid: 7b4efb23626e4d044afe2499e77cc257, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.6
@@ -26032,3 +26145,4 @@ SceneRoots:
   - {fileID: 5806066556938672263}
   - {fileID: 2069221495}
   - {fileID: 1622243416652465347}
+  - {fileID: 796372007}

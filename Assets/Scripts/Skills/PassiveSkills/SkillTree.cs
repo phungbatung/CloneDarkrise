@@ -50,7 +50,16 @@ public class SkillTree
             return;
         node.unlocked = true;
         skillPoint--;
+        ApplyStat(node);
+    }
+
+    public void ApplyStat(SkillNode node)
+    {
         PlayerManager.Instance.player.stats.AddModifier(node.properties);
+    }
+    public void RemoveStat(SkillNode node)
+    {
+        PlayerManager.Instance.player.stats.RemoveModifier(node.properties);
     }
 
 }

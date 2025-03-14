@@ -6,7 +6,7 @@ public abstract class Skill : MonoBehaviour
     protected Player player { get; set; }
     [SerializeField] private SkillData skillData;
     public SkillData SkillData { get { return skillData; } }
-    public int currentLevel { get; protected set;}
+    public int currentLevel { get; set;}
     public  float cooldownTimer {  get; protected set; }
     protected bool isCooldownCompleted { get; set; }
     public Action cooldownEvent { get; set; }

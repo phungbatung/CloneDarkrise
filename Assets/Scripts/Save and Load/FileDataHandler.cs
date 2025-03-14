@@ -22,9 +22,8 @@ public class FileDataHandler
 
     public void Save(object _data)
     {
-        Debug.Log(_data is SkillTree);
         string fullPath = Path.Combine(dataDirPath, dataFileName);
-
+        Debug.Log(fullPath);
         try
         {
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));

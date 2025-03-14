@@ -6,9 +6,9 @@ using UnityEngine;
 [Serializable]
 public class ItemInventory
 {
-    public int itemId { get; set; }
-    public int amount { get; set; }
-    public EquipmentProperties equipmentProperties { get; set; }
+    public int itemId;
+    public int amount;
+    public EquipmentProperties equipmentProperties;
 
 
     public ItemInventory()
@@ -77,7 +77,7 @@ public class ItemInventory
             Debug.Log("item2 is null");
         }
         (item1.itemId, item2.itemId) = (item2.itemId, item1.itemId);
-        (item1.amount, item2.amount) = (item1.amount, item2.amount);
+        (item1.amount, item2.amount) = (item2.amount, item1.amount);
         (item1.equipmentProperties, item2.equipmentProperties) = (item2.equipmentProperties, item1.equipmentProperties);
     }
     public void Clone(ItemInventory _itemInventory)

@@ -12,9 +12,8 @@ public enum CurrencyType
 public class Currency
 {
     public int Gold { get; set; }
-    public Action OnGoldChange { get; set; }
     public int Diamond { get; set; }
-    public Action OnDiamondChange { get; set; }
+    public Action OnCurrencyChange { get; set; }
     public Currency(int gold, int diamond)
     {
         Gold = gold;
@@ -34,15 +33,19 @@ public class Currency
         if(_type == CurrencyType.Gold)
         {
             Gold += _currency;
-            OnGoldChange?.Invoke();
         }
         else
         {
             Diamond += _currency;
-            OnDiamondChange?.Invoke();
-        } 
+        }
+        OnCurrencyChange?.Invoke();
     }
-
+    public void AddCurrency(int _gold, int _diamond)
+    {
+        Gold += _gold;
+        Diamond += _diamond;
+        OnCurrencyChange?.Invoke();
+    }
     public bool TrySubtractCurrency(CurrencyType _type, int _currency)
     {
         if(_currency < 0)
@@ -56,7 +59,7 @@ public class Currency
             if(_currency > Gold)
                 return false;
             Gold -= _currency;
-            OnGoldChange?.Invoke();
+            OnCurrencyChange?.Invoke();
             return true;
         }
         else
@@ -64,7 +67,7 @@ public class Currency
             if (_currency > Diamond)
                 return false;
             Diamond -= _currency;
-            OnDiamondChange?.Invoke();
+            OnCurrencyChange?.Invoke();
             return true;
         }
     }

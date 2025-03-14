@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, ISaveManager
 {
     public static PlayerManager Instance;
     public Player player;
 
-    public Currency Currency { get; private set; }
 
     private void Awake()
     {
@@ -15,6 +14,14 @@ public class PlayerManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        Currency = new Currency(1000000000, 1000000000);
+    }
+    public void LoadData(GameData gameData)
+    {
+        
+    }
+
+    public void SaveData(ref GameData gameData)
+    {
+        
     }
 }

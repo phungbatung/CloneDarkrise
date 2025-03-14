@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : MonoBehaviour, ISaveManager
 {
     public static SkillManager Instance { get; private set; }
 
@@ -123,5 +124,35 @@ public class SkillManager : MonoBehaviour
         EditorUtility.SetDirty(@object);
         AssetDatabase.SaveAssets();
     }
+
 #endif
+    public void SaveData(ref GameData gameData)
+    {
+        List<Skill> skills = GetComponents<Skill>().ToList();
+        SerializableDictionary<int, int> skillDataSave = new SerializableDictionary<int, int>();
+        foreach (var skill in skills)
+        {
+            skillDataSave.Add(skill.SkillData.id, skill.currentLevel);
+        }
+
+        ActiveSkillData dataSave = new ActiveSkillData(skillPoint, skillDataSave);
+        gameData.ActiveSkillData = dataSave;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        List<Skill> skills = GetComponents<Skill>().ToList();
+        ActiveSkillData dataLoad = gameData.ActiveSkillData;
+        skillPoint = dataLoad.skillPoint;
+        foreach (var kvp in dataLoad.skillData)
+        {
+            foreach (var skill in skills)
+            {
+                if(skill.SkillData.id == kvp.Key)
+                {
+                    skill.currentLevel = kvp.Value;
+                }
+            }
+        }
+    }
 }

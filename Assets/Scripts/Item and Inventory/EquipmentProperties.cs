@@ -168,7 +168,7 @@ public class EquipmentProperties
         {
             return false;
         }
-        if (PlayerManager.Instance.Currency.TrySubtractCurrency(GetUpgradePrice()))
+        if (ItemManager.Instance.Currency.TrySubtractCurrency(GetUpgradePrice()))
         {
             enhanceLevel++;
             return true;
@@ -226,7 +226,7 @@ public class EquipmentProperties
     {
         if (unlockedGemsSlot >= gemSlotsLimit)
             return false;
-        if (PlayerManager.Instance.Currency.TrySubtractCurrency(GetUnlockGemSlotPrice()))
+        if (ItemManager.Instance.Currency.TrySubtractCurrency(GetUnlockGemSlotPrice()))
         {
             unlockedGemsSlot += 1;
             return true;

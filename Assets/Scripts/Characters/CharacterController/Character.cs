@@ -32,6 +32,7 @@ public class Character : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public CapsuleCollider2D cd { get; private set; }
     public CharacterStats stats { get; private set; }
+    public CharacterLevel levels { get; private set; }
     public StateMachine stateMachine { get; private set; }
     protected virtual void Awake()
     {
@@ -42,6 +43,7 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cd = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<CharacterStats>();
+        levels = GetComponent<CharacterLevel>();
     }
     protected virtual void Start()
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : MonoBehaviour, ISaveManager
 {
     public static ItemManager Instance;
 
@@ -13,15 +13,14 @@ public class ItemManager : MonoBehaviour
     public Dictionary<int, ItemData> itemDict = new Dictionary<int, ItemData>();
 
     //Inventory
-    public int inventorySize = 48;
+    public int inventorySize { get; private set; }
     public List<ItemInventory> inventoryItems { get; set; }
-    public Action OnInventoryItemsChange;
+    public Action OnInventoryItemsChange { get; set; }
+
     //Equipment
     public int equipmentSize = 8;
     public List<ItemInventory> equipedItems { get; set; }
-
-
-    public PotionSlot potionSlot;
+    public Currency Currency { get; private set; }
 
 
     private void Awake()
@@ -31,7 +30,7 @@ public class ItemManager : MonoBehaviour
         else
             Destroy(gameObject);
 
-        InitialInventory();
+        //InitialInventory();
         GenerateItemDataDictionary();
     }
 
@@ -77,6 +76,10 @@ public class ItemManager : MonoBehaviour
 
         Debug.Log("Inventory is full.");
     }
+    public void AddItem(ItemInventory item, int index)
+    {
+        inventoryItems[index] = item;
+    }    
 
     public bool CanBeAdded(int _itemId)
     {
@@ -118,17 +121,12 @@ public class ItemManager : MonoBehaviour
     #region Equipment
     public void EquipItem(ItemInventory _itemToEquip)
     {
+        if (_itemToEquip == null || _itemToEquip.IsEmpty())
+            return;
         if (itemDict[_itemToEquip.itemId].type != ItemType.Equipment)
             return;
+
         ItemInventory _itemToUnequip = null;
-        //foreach(ItemInventory _equipment in equipedItems)
-        //{
-        //    if (ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId) == ItemUtilities.GetEquipmentTypeById(_equipment.itemId))
-        //    {
-        //        _itemToUnequip = _equipment;
-        //        break;
-        //    }
-        //}
         _itemToUnequip = equipedItems[(int)ItemUtilities.GetEquipmentTypeById(_itemToEquip.itemId)];
         PlayerManager.Instance.player.stats.AddModifier(_itemToEquip.equipmentProperties.GetAllProperties());
         if (!_itemToUnequip.IsEmpty())
@@ -257,6 +255,30 @@ public class ItemManager : MonoBehaviour
     {
         itemDatabase.FillUpDatabase();
     }
+
     #endregion
+    public void SaveData(ref GameData gameData)
+    {
+        InventoryData inventorySave = new InventoryData(inventorySize, Currency.Gold, Currency.Diamond, inventoryItems, equipedItems);
+        gameData.InventoryData = inventorySave;
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        InventoryData inventoryLoad = gameData.InventoryData;
+        inventorySize = inventoryLoad.inventorySize;
+        inventoryItems = inventoryLoad.inventoryItems;
+        equipedItems = new();
+        for(int i=0; i< equipmentSize; i++)
+        {
+            equipedItems.Add(new ItemInventory());
+        }
+        foreach (var item in inventoryLoad.equipedItems)
+        {
+            EquipItem(item);
+        }
+        Currency = new();
+        Currency.AddCurrency(inventoryLoad.gold, inventoryLoad.diamond);
+    }
 
 }

@@ -14,7 +14,6 @@ public class WolfJumpState : CharacterState
     {
         base.Enter();
         wolf.rb.velocity = new Vector2(0, wolf.jumpForce);
-        Debug.Log("log");
     }
 
     public override void Exit()

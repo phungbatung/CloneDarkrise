@@ -40,6 +40,6 @@ public class AddItemButton : MonoBehaviour
             return;
         int index = Random.Range(0, items.Count);
         GameObject itemGameObject = Instantiate(itemObjectPrefab);
-        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(items[index].id, Vector2.zero);
+        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(items[index].id, PlayerManager.Instance.player.transform.position + new Vector3(0, 3f, 0));
     }    
 }
