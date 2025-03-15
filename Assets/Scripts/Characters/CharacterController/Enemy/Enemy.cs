@@ -16,12 +16,20 @@ public class Enemy : Character
 
     public Transform groundAheadCheck;
 
+    public ItemDroper itemDroper { get; protected set; }
+
     #region State
     public CharacterState idleState { get; protected set; }
     public CharacterState chaseState { get; protected set; }
     public CharacterState jumpState { get; protected set; }
     public CharacterState attackState { get; protected set; }
     public CharacterState deathState { get; protected set; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        itemDroper = GetComponentInChildren<ItemDroper>();
+    }
     #endregion
     protected override void Start()
     {
@@ -70,6 +78,17 @@ public class Enemy : Character
     public virtual void Attack()
     {
 
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        stateMachine.ChangeState(deathState);
+    }
+
+    public void Despawn()
+    {
+        Destroy(gameObject);
     }    
 
     protected override void OnDrawGizmos()

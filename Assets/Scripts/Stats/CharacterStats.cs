@@ -148,4 +148,9 @@ public class CharacterStats : MonoBehaviour, IDamageable, IAttacker
             currentMana = 0;
         OnManaChanged?.Invoke();
     }
+
+    public void Revive()
+    {
+        HealthIncrement(0, 100);
+    }    
 }

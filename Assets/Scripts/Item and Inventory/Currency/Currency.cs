@@ -40,6 +40,10 @@ public class Currency
         }
         OnCurrencyChange?.Invoke();
     }
+    public void AddCurrency(KeyValuePair<CurrencyType, int> kvp)
+    {
+        AddCurrency(kvp.Key, kvp.Value);
+    }
     public void AddCurrency(int _gold, int _diamond)
     {
         Gold += _gold;

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AddItemButton : MonoBehaviour
+public class SpawnItemButton : MonoBehaviour
 {
     private Button btn;
     public GameObject itemObjectPrefab;
