@@ -256,14 +256,14 @@ GameObject:
   - component: {fileID: 2266065044595815553}
   - component: {fileID: 2955327885417578145}
   - component: {fileID: 3636806125927512215}
-  - component: {fileID: 5450385515620533805}
+  - component: {fileID: 1485002411169694397}
   m_Layer: 7
   m_Name: Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4380692576781657061
 Transform:
   m_ObjectHideFlags: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
-  maxDistanceXToPlayer: 116.9
+  maxDistanceXToPlayer: 100
   maxDistanceYToPlayer: 5
   groundAheadCheck: {fileID: 4846570882792094303}
 --- !u!114 &3636806125927512215
@@ -436,7 +436,7 @@ MonoBehaviour:
   currentMana: 0
   isImmortal: 0
   baseData: {fileID: 11400000, guid: 5203c9de71807c944805e45146edae9a, type: 2}
---- !u!114 &5450385515620533805
+--- !u!114 &1485002411169694397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,10 +445,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6171655939227794809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b85f1ce9e85cc4183793d68546e852, type: 3}
+  m_Script: {fileID: 11500000, guid: f7e225eaba0b8684db3ef20776615753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 10
+  level: 0
 --- !u!1 &6869514503975064428
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,42 +5,64 @@ using UnityEngine;
 
 public class CharacterLevel : MonoBehaviour
 {
-    public int level;
-    private int exp { get; set; }
-    private int expToNextLevel { get; set; }
+    public int Level { get; protected set; }
+    public int Exp { get; protected set; }
+    public int ExpToNextLevel { get; protected set; }
+
+    private const int BASE_EXP_TO_NEXT_LEVEL = 100;
+
     private const float EXP_MULTIPLIER = 1.5f;
 
-    public Action OnGainExp { get; set; }
-    public Action OnLevelUp { get; set; }
-    public void GainExp(int _exp)
+    public Action<int, int, int> OnGainExp { get; set; }
+    public Action<int> OnLevelUp { get; set; }
+
+    protected virtual void Awake()
     {
-        exp += _exp;
-        OnGainExp?.Invoke();
-        while (exp >= expToNextLevel)
+        
+    }
+
+
+    public void GainExp(int _expGain)
+    {
+        Exp += _expGain;
+        while (Exp >= ExpToNextLevel)
         {
             LevelUp();
         }
+        OnGainExp?.Invoke(_expGain, Exp, ExpToNextLevel);
     }
-
     private void LevelUp()
     {
-        exp -= expToNextLevel;
-        level++;
-        expToNextLevel = Mathf.RoundToInt(expToNextLevel * EXP_MULTIPLIER);
-        OnLevelUp?.Invoke();
+        Exp -= ExpToNextLevel;
+        Level++;
+        UpdateExpToNextLevel();
+        OnLevelUp?.Invoke(Level);
     }
 
+    private void UpdateExpToNextLevel()
+    {
+        ExpToNextLevel = (int)(BASE_EXP_TO_NEXT_LEVEL * Mathf.Pow(EXP_MULTIPLIER, Level));
+    }    
     public void LevelUpTo(int targetLevel)
     {
-        if (targetLevel <= level)
+        if (targetLevel <= Level)
         {
             return;
         }
 
-        while (level < targetLevel)
+        while (Level < targetLevel)
         {
-            exp += expToNextLevel;
+            Exp += ExpToNextLevel;
             LevelUp();
         }
     }
+
+    public void SetLevel(int _level, int _exp)
+    {
+        Level = _level;
+        Exp = _exp;
+        UpdateExpToNextLevel();
+        OnLevelUp?.Invoke(Level);
+        OnGainExp?.Invoke(_exp, Exp, ExpToNextLevel);
+    }    
 }

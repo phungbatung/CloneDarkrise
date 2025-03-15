@@ -15,7 +15,7 @@ public class EnemyStats : CharacterStats
     public void ApplyLevelGrowth()
     {
         CharacterLevel characterLevel = GetComponent<CharacterLevel>();
-        int level = characterLevel!=null? characterLevel.level : 0;
+        int level = characterLevel!=null? characterLevel.Level : 0;
         float growthValue = Mathf.Pow(growthRate, level);
 
         damage.AddModifier((int)(baseData.damage * growthValue));
