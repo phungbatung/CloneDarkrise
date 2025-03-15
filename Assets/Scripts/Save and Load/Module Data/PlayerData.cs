@@ -14,4 +14,9 @@ public class PlayerData
         level = 1;
         exp = 0;
     }
+    public PlayerData(int _level, int _exp)
+    {
+        level = _level;
+        exp = _exp;
+    }
 }
