@@ -26,7 +26,7 @@ public class PassiveSkills : MonoBehaviour, ISaveManager
 
     public void SaveData(ref GameData gameData)
     {
-        PassiveSkillData dataSave = new PassiveSkillData(skillTree);
+        PassiveSkillSaveData dataSave = new PassiveSkillSaveData(skillTree);
         gameData.PassiveSkillData = dataSave;
     }
 

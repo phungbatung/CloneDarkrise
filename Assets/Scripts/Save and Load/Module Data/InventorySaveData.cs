@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class InventoryData 
+public class InventorySaveData 
 {
     public int gold;
     public int diamond;
@@ -13,7 +13,7 @@ public class InventoryData
     public int equipmentSize;
     public List<ItemInventory> equipedItems;
     
-    public InventoryData() 
+    public InventorySaveData() 
     {
         // For NewGame
         gold = 100000;
@@ -24,7 +24,7 @@ public class InventoryData
             inventoryItems.Add(new ItemInventory());
         equipedItems = new List<ItemInventory>();
     }
-    public InventoryData(int _inventorySize, int _gold, int _diamond, List<ItemInventory> _inventoryItems, List<ItemInventory> _equipedItems) 
+    public InventorySaveData(int _inventorySize, int _gold, int _diamond, List<ItemInventory> _inventoryItems, List<ItemInventory> _equipedItems) 
     { 
         inventorySize = _inventorySize;
         gold = _gold;

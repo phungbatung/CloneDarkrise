@@ -135,14 +135,14 @@ public class SkillManager : MonoBehaviour, ISaveManager
             skillDataSave.Add(skill.SkillData.id, skill.currentLevel);
         }
 
-        ActiveSkillData dataSave = new ActiveSkillData(skillPoint, skillDataSave);
+        ActiveSkillSaveData dataSave = new ActiveSkillSaveData(skillPoint, skillDataSave);
         gameData.ActiveSkillData = dataSave;
     }
 
     public void LoadData(GameData gameData)
     {
         List<Skill> skills = GetComponents<Skill>().ToList();
-        ActiveSkillData dataLoad = gameData.ActiveSkillData;
+        ActiveSkillSaveData dataLoad = gameData.ActiveSkillData;
         skillPoint = dataLoad.skillPoint;
         foreach (var kvp in dataLoad.skillData)
         {

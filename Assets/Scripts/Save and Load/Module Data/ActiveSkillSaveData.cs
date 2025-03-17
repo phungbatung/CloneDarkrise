@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class ActiveSkillData 
+public class ActiveSkillSaveData 
 {
     public int skillPoint;
     public SerializableDictionary<int , int> skillData; //<id, level>
-    public ActiveSkillData(int _skillPoint, SerializableDictionary<int, int> _skillData)
+    public ActiveSkillSaveData(int _skillPoint, SerializableDictionary<int, int> _skillData)
     {
         skillPoint = _skillPoint;
         skillData = _skillData;
     }
 
-    public ActiveSkillData()
+    public ActiveSkillSaveData()
     {
         skillPoint = 0;
         skillData = new();

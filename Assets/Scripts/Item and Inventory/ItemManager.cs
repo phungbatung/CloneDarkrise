@@ -259,13 +259,13 @@ public class ItemManager : MonoBehaviour, ISaveManager
     #endregion
     public void SaveData(ref GameData gameData)
     {
-        InventoryData inventorySave = new InventoryData(inventorySize, Currency.Gold, Currency.Diamond, inventoryItems, equipedItems);
+        InventorySaveData inventorySave = new InventorySaveData(inventorySize, Currency.Gold, Currency.Diamond, inventoryItems, equipedItems);
         gameData.InventoryData = inventorySave;
     }
 
     public void LoadData(GameData gameData)
     {
-        InventoryData inventoryLoad = gameData.InventoryData;
+        InventorySaveData inventoryLoad = gameData.InventoryData;
         inventorySize = inventoryLoad.inventorySize;
         inventoryItems = inventoryLoad.inventoryItems;
         equipedItems = new();

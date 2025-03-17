@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class PassiveSkillData 
+public class PassiveSkillSaveData 
 {
     public SkillTree skillTree;
 
-    public PassiveSkillData()
+    public PassiveSkillSaveData()
     {
          
     }
-    public PassiveSkillData(SkillTree _skillTree)
+    public PassiveSkillSaveData(SkillTree _skillTree)
     {
         skillTree = _skillTree;
     }

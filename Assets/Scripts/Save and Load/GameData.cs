@@ -6,12 +6,12 @@ using UnityEngine;
 [Serializable]
 public class GameData 
 {
-    public PlayerData PlayerData;
-    public SettingData SettingData;
-    public ActiveSkillData ActiveSkillData;
-    public PassiveSkillData PassiveSkillData;
-    public InventoryData InventoryData;
-    public BuffData BuffData;
+    public PlayerSaveData PlayerData;
+    public SettingSaveData SettingData;
+    public ActiveSkillSaveData ActiveSkillData;
+    public PassiveSkillSaveData PassiveSkillData;
+    public InventorySaveData InventoryData;
+    public BuffSaveData BuffData;
     public GameData() 
     {
         
