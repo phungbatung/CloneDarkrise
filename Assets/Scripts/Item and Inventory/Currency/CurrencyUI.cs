@@ -27,7 +27,8 @@ public class CurrencyUI : MonoBehaviour
 
     public void UnsubEvent()
     {
-        ItemManager.Instance.Currency.OnCurrencyChange += SetCurrency;
+        if (ItemManager.Instance != null)
+            ItemManager.Instance.Currency.OnCurrencyChange -= SetCurrency;
     }    
     public void SetCurrency()
     {

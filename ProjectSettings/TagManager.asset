@@ -53,9 +53,12 @@ TagManager:
   - name: Skill
     uniqueID: 439455513
     locked: 0
-  - name: Player
-    uniqueID: 4031254635
+  - name: NPC
+    uniqueID: 1954934797
     locked: 0
   - name: Item
     uniqueID: 1541321085
+    locked: 0
+  - name: Player
+    uniqueID: 4031254635
     locked: 0

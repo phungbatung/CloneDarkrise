@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC_Warrior : InteractableObject
+public class TeleportTower : InteractableObject
 {
     public override void InteractAction()
     {
-        throw new System.NotImplementedException();
+        //Call world map screen
     }
 }

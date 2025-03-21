@@ -4048,7 +4048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7e0e15cd3fde4884852c09691eca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interact_NPC_Button: {fileID: 6010134402631038483, guid: 0545c739b56283d4f93086704f3800de, type: 3}
+  interactButton: {fileID: 6010134402631038483, guid: 0545c739b56283d4f93086704f3800de, type: 3}
 --- !u!1001 &8674060212546668074
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,8 +9,8 @@ public class Detector : MonoBehaviour
     public ItemDetectEvent inZoneItem { get; set; }
     public ItemDetectEvent outZoneItem { get; set; }
 
-    public Action<NPC> inZoneNPC { get; set; }
-    public Action<NPC> outZoneNPC { get; set; }
+    public Action<InteractableObject> inZoneNPC { get; set; }
+    public Action<InteractableObject> outZoneNPC { get; set; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +18,7 @@ public class Detector : MonoBehaviour
         if (itemObject != null)
             inZoneItem?.Invoke(itemObject);
 
-        NPC npc = collision.GetComponent<NPC>();
+        InteractableObject npc = collision.GetComponent<InteractableObject>();
         if (npc != null)
             inZoneNPC?.Invoke(npc);
     }
@@ -27,7 +27,7 @@ public class Detector : MonoBehaviour
         ItemObject itemObject = collision.GetComponent<ItemObject>();
         if (itemObject != null)
             outZoneItem?.Invoke(itemObject);
-        NPC npc = collision.GetComponent<NPC>();
+        InteractableObject npc = collision.GetComponent<InteractableObject>();
         if (npc != null)
             outZoneNPC?.Invoke(npc);
     }

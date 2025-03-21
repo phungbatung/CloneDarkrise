@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class NPC_InteractButton : MonoBehaviour, IPointerClickHandler
+public class InteractButton : MonoBehaviour, IPointerClickHandler
 {
-    private NPC npc;
+    private InteractableObject npc;
     public void OnPointerClick(PointerEventData eventData)
     {
         npc.InteractAction(); 
     }
-    public void SetNPC(NPC _npc)
+    public void SetInteractableObject(InteractableObject _npc)
     {
         npc = _npc;
     }

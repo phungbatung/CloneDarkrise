@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class NPC_Interaction : MonoBehaviour
 {
-    [SerializeField] private GameObject interact_NPC_Button;
-    private Dictionary<NPC, NPC_InteractButton> interactButtons;
+    [SerializeField] private GameObject interactButton;
+    private Dictionary<InteractableObject, InteractButton> interactButtons;
     private void Awake()
     {
         interactButtons = new();
     }
-    public void Add(NPC _npc)
+    public void Add(InteractableObject _obj)
     {
-        NPC_InteractButton button = Instantiate(interact_NPC_Button, transform).GetComponent<NPC_InteractButton>();
-        button.SetNPC( _npc );
-        interactButtons[_npc] = button;
+        InteractButton button = Instantiate(interactButton, transform).GetComponent<InteractButton>();
+        button.SetInteractableObject( _obj );
+        interactButtons[_obj] = button;
     }
 
-    public void Remove(NPC _npc)
+    public void Remove(InteractableObject _obj)
     {
-        Destroy(interactButtons[_npc].gameObject);
-        interactButtons.Remove(_npc);
+        Destroy(interactButtons[_obj].gameObject);
+        interactButtons.Remove(_obj);
     }
 }

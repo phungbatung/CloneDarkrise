@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
-        Physics2D.callbacksOnDisable = false;
+        //Physics2D.callbacksOnDisable = false;
     }
     void Start()
     {
