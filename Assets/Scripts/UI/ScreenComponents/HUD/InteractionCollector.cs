@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,20 +18,27 @@ public class InteractionCollector : MonoBehaviour
         interactButtons[_obj] = button;
     }
 
-    private void Update()
-    {
-        foreach(var kvp in interactButtons)
-        {
-            if(kvp.Value == null )
-                interactButtons.Remove( kvp.Key );
-        }
-    }
+    //private void Update()
+    //{
+    //    foreach (var kvp in interactButtons)
+    //    {
+    //        if (kvp.Key == null)
+    //            Remove(kvp.Key);
+    //    }
+    //}
 
     public void Remove(InteractableObject _obj)
     {
-        if (_obj == null || interactButtons[_obj] == null)
-            return;
-        Destroy(interactButtons[_obj].gameObject);
-        interactButtons.Remove(_obj);
+        try
+        {
+            if (!interactButtons.ContainsKey(_obj))
+                return;
+            Destroy(interactButtons[_obj].gameObject);
+            interactButtons.Remove(_obj);
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
     }
 }

@@ -5,5 +5,11 @@ using UnityEngine;
 
 public abstract class InteractableObject : MonoBehaviour
 {
-    public abstract void InteractAction(); 
+    public abstract void InteractAction();
+
+    private void OnDestroy()
+    {
+        PlayerManager.Instance.player.detector.outZoneNPC(this);
+    }
+
 }

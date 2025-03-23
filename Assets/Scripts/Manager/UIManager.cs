@@ -84,7 +84,7 @@ namespace BlitzyUI
                 Instance = this;
             }
 
-            Debug.Log("[UIManager] Version: " + Version);
+            //Debug.Log("[UIManager] Version: " + Version);
 
             _rootCanvasScalar = rootCanvas.GetComponent<CanvasScaler>();
             if (_rootCanvasScalar == null)
