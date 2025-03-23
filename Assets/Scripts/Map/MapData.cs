@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapData : MonoBehaviour
+public class MapData
 {
     public MapInfo MapInfo { get; private set; }
     private bool unlocked { get; set; }

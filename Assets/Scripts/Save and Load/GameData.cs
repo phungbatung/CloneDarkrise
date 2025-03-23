@@ -12,6 +12,7 @@ public class GameData
     public PassiveSkillSaveData PassiveSkillData;
     public InventorySaveData InventoryData;
     public BuffSaveData BuffData;
+    public MapSaveData MapData;
     public GameData() 
     {
         
@@ -27,5 +28,6 @@ public class GameData
         PassiveSkillData = new(skillTree);
         InventoryData = new();
         BuffData = new();
+        MapData = new();
     }
 }

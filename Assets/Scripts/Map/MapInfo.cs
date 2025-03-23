@@ -7,6 +7,7 @@ using static BlitzyUI.Screen;
 public class MapInfo : ScriptableObject
 {
     public string Id;
+    public string Name;
     public bool IsSafetyZone;
 
     public GameObject MapPrefab;

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5cc3098590267d44af1309e0735a371, type: 3}
-  m_Name: Map3
+  m_Name: 001
   m_EditorClassIdentifier: 
-  Id: Map3
+  Id: 001
+  Name: Map1
   IsSafetyZone: 0
-  MapPrefab: {fileID: 1254274425133831655, guid: b4dd97cf4f642cc479ff81a3e8a23fe5, type: 3}
+  MapPrefab: {fileID: 1104933099017436138, guid: 988d6f486ca22af49bcba0f00f5b9307, type: 3}

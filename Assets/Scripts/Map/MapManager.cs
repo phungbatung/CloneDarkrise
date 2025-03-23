@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour, ISaveManager
 {
 
     public static MapManager Instance { get; private set; }
-    public SerializableDictionary<string, MapData> MapsData { get; private set; }
+    public Dictionary<string, MapData> MapsData { get; private set; }
     private CurrentMap currentMap;
     [SerializeField] private MapInfo respawnMap;
 
@@ -22,7 +23,6 @@ public class MapManager : MonoBehaviour, ISaveManager
 
     private void Start()
     {
-        Respawn();
         
     }
     public void InitMapsData()
@@ -42,7 +42,10 @@ public class MapManager : MonoBehaviour, ISaveManager
 
         currentMap = new CurrentMap(destinationInfo, destinationMap);
 
-        if(destinationInfo.IsSafetyZone)
+        if (!MapsData[destinationInfo.Id].IsUnlocked())
+            MapsData[destinationInfo.Id].Unlock();
+
+        if (destinationInfo.IsSafetyZone)
         {
             respawnMap = destinationInfo;
         }    
@@ -55,6 +58,14 @@ public class MapManager : MonoBehaviour, ISaveManager
         destinationMap.JoinMapByPortal(currentMap.MapInfo);
 
         currentMap = new CurrentMap(destinationInfo, destinationMap);
+
+        if (!MapsData[destinationInfo.Id].IsUnlocked())
+            MapsData[destinationInfo.Id].Unlock();
+
+        if (destinationInfo.IsSafetyZone)
+        {
+            respawnMap = destinationInfo;
+        }
     }
     
     public Map CreateMap(MapInfo mapInfo)
@@ -81,11 +92,32 @@ public class MapManager : MonoBehaviour, ISaveManager
 
     public void SaveData(ref GameData gameData)
     {
-
+        List<MapData> mapsData = MapsData.Values.ToList();
+        MapSaveData saveData = new MapSaveData(mapsData);
+        gameData.MapData = saveData;
     }
 
     public void LoadData(GameData gameData)
     {
+        MapSaveData loadData = gameData.MapData;
 
+        string path = "Map";
+
+        List<MapInfo> mapsInfo = Resources.LoadAll<MapInfo>(path).ToList();
+        MapsData = new();
+
+        foreach(var mapData in loadData.MapsData)
+        {
+            MapsData[mapData.Id] = new MapData( mapsInfo.Find(o => o.Id == mapData.Id) , mapData.unlocked);
+        }
+
+        foreach(var mapInfo in mapsInfo)
+        {
+            if(!MapsData.ContainsKey(mapInfo.Id))
+            {
+                MapsData[mapInfo.Id] = new MapData(mapInfo, false);
+            }
+        }
+        Respawn();
     }
 }

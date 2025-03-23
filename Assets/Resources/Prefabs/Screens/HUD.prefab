@@ -3985,7 +3985,7 @@ GameObject:
   - component: {fileID: 763127403007858809}
   - component: {fileID: 8403945368863114609}
   m_Layer: 5
-  m_Name: NPC_Interaction
+  m_Name: InteractionCollector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4048,7 +4048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7e0e15cd3fde4884852c09691eca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactButton: {fileID: 6010134402631038483, guid: 0545c739b56283d4f93086704f3800de, type: 3}
+  interactButtonPrefab: {fileID: 6010134402631038483, guid: 0545c739b56283d4f93086704f3800de, type: 3}
 --- !u!1001 &8674060212546668074
 PrefabInstance:
   m_ObjectHideFlags: 0

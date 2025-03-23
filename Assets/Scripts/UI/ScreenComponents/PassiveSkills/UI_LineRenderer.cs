@@ -29,4 +29,13 @@ public class UI_LineRenderer : MaskableGraphic
         vh.AddTriangle(0, 1, 2);
         vh.AddTriangle(0, 2, 3);
     }
+
+    public void SetupLine(Vector2 startPoint, Vector2 endPoint, float _lineWidth, Color _lineColor)
+    {
+        point1 = startPoint;
+        point2 = endPoint;
+        lineWidth = _lineWidth;
+        lineColor = _lineColor;
+        SetVerticesDirty();
+    }
 }

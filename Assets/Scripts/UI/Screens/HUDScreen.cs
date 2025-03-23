@@ -9,7 +9,7 @@ public class HUDScreen : BlitzyUI.Screen
     private SkillSlot[] skillSlots;
 
     private ListItemToPick listItemToPick;
-    private NPC_Interaction npcInteraction;
+    private InteractionCollector npcInteraction;
     public override void OnFocus()
     {
         PlayerManager.Instance.player.detector.inZoneItem += listItemToPick.Add;
@@ -45,7 +45,7 @@ public class HUDScreen : BlitzyUI.Screen
         SetupSkillSlots();
         
         listItemToPick = GetComponentInChildren<ListItemToPick>();
-        npcInteraction = GetComponentInChildren<NPC_Interaction>();
+        npcInteraction = GetComponentInChildren<InteractionCollector>();
     }
 
     public void SetupSkillSlots()
