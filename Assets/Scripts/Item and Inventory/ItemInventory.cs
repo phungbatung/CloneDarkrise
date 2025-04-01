@@ -16,6 +16,14 @@ public class ItemInventory
         itemId = -1;
         amount = 0;
     }
+
+    public ItemInventory(int _itemId, int _amount, EquipmentProperties _equipmentProperties)
+    {
+        itemId = _itemId;
+        amount = _amount;
+        equipmentProperties = _equipmentProperties;
+    }
+
     public void AddItem(int _id, int _amount = 1)
     {
         if (itemId == -1)

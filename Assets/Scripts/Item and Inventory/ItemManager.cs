@@ -267,7 +267,7 @@ public class ItemManager : MonoBehaviour, ISaveManager
     {
         InventorySaveData inventoryLoad = gameData.InventoryData;
         inventorySize = inventoryLoad.inventorySize;
-        inventoryItems = inventoryLoad.inventoryItems;
+        inventoryItems = inventoryLoad.inventoryItems.Select(item => (ItemInventory)item).ToList();
         equipedItems = new();
         for(int i=0; i< equipmentSize; i++)
         {

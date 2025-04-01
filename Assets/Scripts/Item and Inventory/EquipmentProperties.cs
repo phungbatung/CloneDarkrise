@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+[Serializable]
 public class EquipmentProperties
 {
     public Dictionary<string, string> baseProperties { get; private set; }
@@ -33,6 +34,26 @@ public class EquipmentProperties
             gems[i] = -1;
         }
     }
+
+    public EquipmentProperties(SerializableDictionary<string, string> _baseProperties, 
+        SerializableDictionary<string, string> _properties, int _unlockedGemsSlot, int[] _gems, int _enhanceLevel)
+    {
+        baseProperties = new();
+        foreach (var kvp in _baseProperties)
+        {
+            this.baseProperties[kvp.Key] = kvp.Value;
+        }
+        properties = new();
+        foreach (var kvp in _properties)
+        {
+            this.properties[kvp.Key] = kvp.Value;
+        }
+        unlockedGemsSlot = _unlockedGemsSlot;
+        gems = _gems;
+        enhanceLevel = _enhanceLevel;
+    }
+
+
     //Include all properties, use to apply to stats
     public Dictionary<string, string> GetAllProperties()
     {

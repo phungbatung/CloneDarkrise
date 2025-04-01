@@ -21,6 +21,7 @@ public class EquipmentWorkInventoryUI : InventoryUI
         }
         for (int i = 0; i < slotCount; i++)
         {
+            Debug.Log((currentPage - 1) * 24 + i);
             itemSlots[i].UpdateUI(inventoryItem[(currentPage - 1) * 24 + i]);
             itemSlots[i].alternativeClickAction = null;
             if (onWorkItem != null && itemSlots[i].itemInventory == onWorkItem)
@@ -52,7 +53,7 @@ public class EquipmentWorkInventoryUI : InventoryUI
     }
     public void RemoveOnWorkItem()
     {
-        if (onWorkItem == null)
+        if (onWorkItem == null || onWorkItem.IsEmpty())
             return;
         ItemSlot slot = itemSlots.First(o => o.itemInventory == onWorkItem);
         slot.SetBlur(false);
