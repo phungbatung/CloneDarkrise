@@ -1066,7 +1066,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 264.04498, y: -25}
-  m_SizeDelta: {x: 165.03, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5315184104530477057
 CanvasRenderer:
@@ -3070,7 +3070,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 90.765, y: -25}
-  m_SizeDelta: {x: 181.53, y: 50}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1925515930433602863
 CanvasRenderer:
@@ -3467,6 +3467,9 @@ MonoBehaviour:
   pageCountTMP: {fileID: 122178160349084645}
   sortButton: {fileID: 8709547675811733523}
   sortDropdown: {fileID: 4656834568397972569}
+  onWorkItem:
+    itemId: -1
+    amount: 0
 --- !u!1 &8902534699871065392
 GameObject:
   m_ObjectHideFlags: 0

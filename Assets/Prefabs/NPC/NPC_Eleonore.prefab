@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3291557617516783448}
   - component: {fileID: 1766649697855770453}
   - component: {fileID: 135351267465838913}
-  - component: {fileID: 196136223701181438}
+  - component: {fileID: 4148289345740443202}
   m_Layer: 10
   m_Name: NPC_Eleonore
   m_TagString: Untagged
@@ -171,7 +171,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &196136223701181438
+--- !u!114 &4148289345740443202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,6 +180,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6412093412676065762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae26a3a0fefc6ec4f918beff1055c8ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c5ad15113d1d4040b1ef6e7e6e7e80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcDisplayName: Eleonore
+  listOptions:
+  - displayName: Insert Gem
+    screenName: GemInsertion

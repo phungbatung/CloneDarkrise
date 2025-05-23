@@ -15,4 +15,4 @@ MonoBehaviour:
   Id: 000
   Name: Map0
   IsSafetyZone: 0
-  MapPrefab: {fileID: 1407854784407178505, guid: 4be2b343dc3412547872f942d59d3089, type: 3}
+  MapPrefab: {fileID: 1625339724585082901, guid: c8aa84feff9fa3448ab7d1950589239c, type: 3}

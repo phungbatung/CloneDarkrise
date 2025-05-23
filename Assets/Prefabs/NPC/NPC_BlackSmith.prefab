@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 622993171257374687}
   - component: {fileID: 3492597242667679883}
   - component: {fileID: 3078170593055270302}
-  - component: {fileID: 288428559733690156}
+  - component: {fileID: 8085888324199814349}
   m_Layer: 10
   m_Name: NPC_BlackSmith
   m_TagString: Untagged
@@ -171,7 +171,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &288428559733690156
+--- !u!114 &8085888324199814349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,6 +180,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7815917345929372178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b704bf1ae668e043aa425ad0bbd599f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c5ad15113d1d4040b1ef6e7e6e7e80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcDisplayName: BlackSmith
+  listOptions:
+  - displayName: Upgrade Equipment
+    screenName: UpgradeEquipment

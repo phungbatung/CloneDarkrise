@@ -58,6 +58,7 @@ public class Wolf : Enemy
         stats.armorPenetration.AddModifier(player.stats.armorPenetration.GetValue());
         transform.position = _position;
         lifeTime=_wolfCallLevelData.GetProperty<int>(SkillLevelData.Key.LIFESPAN);
+        moveSpeed = player.moveSpeed;
         if (player.facingDir == -1)
             Flip();
         Invoke("DestroyGO", lifeTime);
