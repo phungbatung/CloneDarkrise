@@ -65,7 +65,6 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
 
             if(ItemManager.Instance.itemDict[_itemInventory.itemId].type == ItemType.Equipment)
             {
-                Debug.Log($"{itemInventory!=null}, {itemInventory.equipmentProperties != null}");
                 enhanceLevel.text = itemInventory.equipmentProperties.enhanceLevel < 1 ? "" : $"+{itemInventory.equipmentProperties.enhanceLevel}";
             }
             else

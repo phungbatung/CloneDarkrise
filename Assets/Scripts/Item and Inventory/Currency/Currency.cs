@@ -83,9 +83,9 @@ public class Currency
 
     public bool IsHaveEnoughMoney(CurrencyType _type, int _currency)
     {
-        if(_type == CurrencyType.Gold && _currency < Gold)
+        if(_type == CurrencyType.Gold && _currency <= Gold)
             return true;
-        if (_type == CurrencyType.Diamond && _currency < Diamond)
+        if (_type == CurrencyType.Diamond && _currency <= Diamond)
             return true;
         return false;
     }

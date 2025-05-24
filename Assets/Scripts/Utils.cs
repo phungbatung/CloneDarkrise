@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Utils
 {
+    private static string resourcePath = "Utils/";
     public static string ConvertToKMB(int num)
     {
         if (num > 999999999 || num < -999999999)
@@ -18,8 +19,9 @@ public class Utils
             return num.ToString("0,,.#M", CultureInfo.InvariantCulture);
         }
         else
-            if (num > 999 || num < -999)
+            if (num > 9999 || num < -9999)
         {
+            Debug.Log("k");
             return num.ToString("0,.#K", CultureInfo.InvariantCulture);
         }
         else
@@ -27,4 +29,12 @@ public class Utils
             return num.ToString(CultureInfo.InvariantCulture);
         }
     }
+
+    public static CurrencyIcon GetCurrencyIcon()
+    {
+        string path = resourcePath + "CurrencyIcon";
+        return Resources.Load<CurrencyIcon>(path);
+    }
+
+
 }

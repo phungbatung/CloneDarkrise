@@ -76,9 +76,64 @@ public class ItemManager : MonoBehaviour, ISaveManager
 
         Debug.Log("Inventory is full.");
     }
-    public void AddItem(ItemInventory item, int index)
+    public bool TryAddItem(int _itemId, Dictionary<string, string> properties = null)
     {
-        inventoryItems[index] = item;
+        ItemInventory firstEmptySlot = null;
+        foreach (ItemInventory itemInventory in inventoryItems)
+        {
+            if (itemInventory.CanBeAdded(_itemId))
+            {
+                itemInventory.AddItem(_itemId, properties);
+                OnInventoryItemsChange?.Invoke();
+                return true;
+            }
+            if (itemInventory.IsEmpty() && firstEmptySlot == null)
+                firstEmptySlot = itemInventory;
+        }
+
+        if (firstEmptySlot != null)
+        {
+            firstEmptySlot.AddItem(_itemId, properties);
+            OnInventoryItemsChange?.Invoke();
+            return true;
+        }
+
+        Debug.Log("Inventory is full.");
+        return false;
+
+    }    
+    public bool TryAddItem(ItemInventory _item)
+    {
+        ItemInventory firstEmptySlot = null;
+        foreach (ItemInventory itemInventory in inventoryItems)
+        {
+            if (itemInventory.CanBeAdded(_item.itemId, _item.amount))
+            {
+                itemInventory.AddItem(_item.itemId, _item.amount);
+                OnInventoryItemsChange?.Invoke();
+                return true;
+            }
+            if (itemInventory.IsEmpty() && firstEmptySlot == null)
+                firstEmptySlot = itemInventory;
+        }
+
+        if (firstEmptySlot != null)
+        {
+            firstEmptySlot.Clone(_item);
+            OnInventoryItemsChange?.Invoke();
+            return true;
+        }
+        Debug.Log("Inventory is full.");
+        return false;
+    }
+    public bool TryAddItem(ItemInventory item, int index)
+    {
+        if (inventoryItems[index].IsEmpty())
+        {
+            inventoryItems[index] = item;
+            return true;
+        }
+        return false;
     }    
 
     public bool CanBeAdded(int _itemId)
@@ -97,27 +152,56 @@ public class ItemManager : MonoBehaviour, ISaveManager
     {
         itemInventory.RemoveItem();
     }
-    
-    public List<ItemInventory> GetListItemInventoroyById(int _itemId)
+
+
+    public List<ItemData> GetAllItemOfType(ItemType type)
     {
-        return inventoryItems.Where(itemInventory => itemInventory.itemId == _itemId).ToList();
-    }
-    public int GetTotalAmount(int _itemId)
-    {
-        return inventoryItems.Where(itemInventory => itemInventory.itemId == _itemId).Sum(i => i.amount);
-    }
-    public ItemInventory GetFirstEmptySlotInInventory()
-    {
-        for (int i = 0; i < inventoryItems.Count; i++)
-        {
-            if (inventoryItems[i].IsEmpty())
-            {
-                return inventoryItems[i];
-            }
-        }
-        return null;
+        return itemDatabase.itemList.Where(item => item.type == type).ToList();
     }
 
+    public List<ItemData> GetAllItemOfType(ItemType[] types)
+    {
+        var typeSet = new HashSet<ItemType>(types);
+        return itemDatabase.itemList
+                          .Where(item => typeSet.Contains(item.type))
+                          .ToList();
+    }
+
+    public List<ItemData> GetAllItemOfType(List<ItemType> types)
+    {
+        var typeSet = new HashSet<ItemType>(types);
+        return itemDatabase.itemList
+                          .Where(item => typeSet.Contains(item.type))
+                          .ToList();
+    }
+
+    public ItemInventory BuildInventoryItem(ItemData itemData)
+    {
+        ItemInventory _itemInventory = new ItemInventory();
+        if (itemData.type == ItemType.Equipment)
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            for (int i = 1; i <= itemData.quality.GetHashCode(); i++)
+            {
+                int idx = UnityEngine.Random.Range(0, itemData.properties.Count);
+                var kvp = itemData.properties.ElementAt(idx);
+                if (properties.ContainsKey(kvp.Key))
+                {
+                    properties[kvp.Key] += $",{(int)UnityEngine.Random.Range(float.Parse(kvp.Value) * .7f, float.Parse(kvp.Value) * 1.3f)}";
+                }
+                else
+                {
+                    properties[kvp.Key] = ((int)UnityEngine.Random.Range(float.Parse(kvp.Value) * .7f, float.Parse(kvp.Value) * 1.3f)).ToString();
+                }
+            }
+            _itemInventory.AddItem(itemData.id, properties);
+        }
+        else
+        {
+            _itemInventory.AddItem(itemData.id, 1);
+        }    
+        return _itemInventory;
+    }    
     #region Equipment
     public void EquipItem(ItemInventory _itemToEquip)
     {

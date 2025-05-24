@@ -40,18 +40,6 @@ public class CurrencyUI : MonoBehaviour
 
     public string GetMoney(int m)
     {
-        if (m < 1000)
-        {
-            return m + "";
-        }
-        if (m < 1000000)
-        {
-            return $"{m / 1000} K";
-        }
-        if (m < 1000000000)
-        {
-            return $"{m / 1000000} M";
-        }
-        return $"{m / 1000000000} B";
+        return Utils.ConvertToKMB(m);
     }    
 }
