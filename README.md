@@ -1,4 +1,3 @@
-# Darkrise
 # Giới thiệu Dự án
 
 Đây là một dự án chưa hoàn thiện, được clone từ game gốc: [Darkrise trên Google Play](https://play.google.com/store/apps/details?id=com.Roika.Darkrise).
@@ -77,7 +76,14 @@ Chỉ số (stat) được chia thành ba nhóm:
 
 ---
 
-### 6. Hệ thống NPC
+### 6. Hệ thống Map
+
+- Người chơi sử dụng **cổng dịch chuyển** để teleport đến một map mới.
+- Khi đã di chuyển đến một map, người chơi có thể **dịch chuyển trực tiếp** đến đó sau này bằng **tháp dịch chuyển** (teleport tower).
+
+---
+
+### 7. Hệ thống NPC
 
 - **ShopPotion:** Mua potion.
 - **UpgradeEquipment:** Nâng cấp trang bị.
@@ -85,7 +91,7 @@ Chỉ số (stat) được chia thành ba nhóm:
 
 ---
 
-### 7. Hệ thống UI
+### 8. Hệ thống UI
 
 - Mỗi hệ thống sẽ có một hoặc nhiều giao diện UI tương ứng.
 - Các UI được xây dựng theo cơ chế **LIFO (Stack)**:
