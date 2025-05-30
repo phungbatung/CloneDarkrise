@@ -15,7 +15,7 @@ public class PassiveSkills : MonoBehaviour, ISaveManager
             Instance = this;
         else
             Destroy(gameObject);
-        InitSkillTree();
+        //InitSkillTree();
     }
 
     public void InitSkillTree()
@@ -39,6 +39,7 @@ public class PassiveSkills : MonoBehaviour, ISaveManager
             {
                 skillTree.ApplyStat(node);
             }    
-        }    
+        }
+        PlayerManager.Instance.player.levels.OnLevelUp += skillTree.AddSkillPoint;
     }
 }

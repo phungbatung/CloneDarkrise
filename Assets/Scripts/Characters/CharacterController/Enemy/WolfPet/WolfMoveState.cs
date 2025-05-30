@@ -23,7 +23,7 @@ public class WolfMoveState : CharacterState
     public override void Update()
     {
         base.Update();
-        wolf.SetVelocity( wolf.facingDir * wolf.moveSpeed, 0);
+        wolf.SetVelocity( wolf.facingDir * wolf.moveSpeed, wolf.rb.velocity.y);
 
         if (wolf.facingDir * (wolf.transform.position.x - wolf.player.transform.position.x) > 0)
             wolf.Flip();

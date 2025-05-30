@@ -11,6 +11,11 @@ public class PlayerManaBar : Bar
         barImage.fillAmount = currentValue / maxValue;
     }
 
+    public override void SetMaxValue()
+    {
+        maxValue = PlayerManager.Instance.player.stats.maxMana.GetValue();
+        base.SetMaxValue();
+    }
     private void Start()
     {
         character = PlayerManager.Instance.player;

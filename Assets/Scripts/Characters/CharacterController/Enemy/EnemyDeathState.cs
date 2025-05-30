@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyDeathState : CharacterState
@@ -18,6 +19,7 @@ public class EnemyDeathState : CharacterState
         enemyBase.itemDroper.Drop();
         destroyCooldownActivated = false;
         enemyBase.stats.isImmortal = true;
+        
     }
 
     public override void Exit()
@@ -31,9 +33,11 @@ public class EnemyDeathState : CharacterState
     {
         base.Update();
 
-        if (destroyCooldownActivated && stateTimer<=0)
+        if (destroyCooldownActivated)
         {
-            enemyBase.Despawn();
+            stateTimer -= Time.deltaTime;
+            if(stateTimer <= 0) 
+                enemyBase.Despawn();
         }
         if (triggerCalled)
         {
@@ -42,6 +46,11 @@ public class EnemyDeathState : CharacterState
             destroyCooldownActivated = true;
         }  
         
+    }
+
+    private void DestroyGO()
+    {
+        Object.Destroy(enemyBase.gameObject);
     }
 
 

@@ -10,6 +10,11 @@ public class PlayerHealthBar : Bar
         barImage.fillAmount = currentValue / maxValue;
     }
 
+    public override void SetMaxValue()
+    {
+        maxValue = PlayerManager.Instance.player.stats.maxHealth.GetValue();
+        base.SetMaxValue();
+    }
     private void Start()
     {
         character = PlayerManager.Instance.player;

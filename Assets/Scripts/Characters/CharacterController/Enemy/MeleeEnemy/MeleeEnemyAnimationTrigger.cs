@@ -12,7 +12,7 @@ public class MeleeEnemyAnimationTrigger : MonoBehaviour
     }
     public void TriggerAnimation()
     {
-        enemy.stateMachine.currentState.TriggerCall();
+        enemy?.stateMachine.currentState.TriggerCall();
     }
 
     public void CallStateEvent()

@@ -26,7 +26,8 @@ public class SpawnItemButton : MonoBehaviour
     {
         int index = Random.Range(0, ItemManager.Instance.itemDatabase.itemList.Count);
         GameObject itemGameObject = Instantiate(itemObjectPrefab);
-        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(ItemManager.Instance.itemDatabase.itemList[index].id, Vector2.zero);
+        itemGameObject.GetComponent<ItemObject>()?.SetUpItem(ItemManager.Instance.itemDatabase.itemList[index].id, 
+                                                    PlayerManager.Instance.player.transform.position + new Vector3(0, 3, 0));
     }
     public void SpawnRandomOfType()
     {

@@ -21,6 +21,10 @@ public class Detector : MonoBehaviour
         InteractableObject npc = collision.GetComponent<InteractableObject>();
         if (npc != null)
             inZoneNPC?.Invoke(npc);
+        
+        CurrencyObject currencyObject = collision.GetComponent<CurrencyObject>();
+        if(currencyObject != null)
+            currencyObject.PickUp();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -28,7 +28,10 @@ public class SkillTree
         }    
         return neighbors;
     }  
-    
+    public void AddSkillPoint()
+    {
+        skillPoint++;
+    }
     public bool CanBeUnlock(SkillNode node)
     {
         if(skillPoint <=0 && node.unlocked)

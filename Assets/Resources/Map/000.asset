@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 000
   m_EditorClassIdentifier: 
   Id: 000
-  Name: Map0
-  IsSafetyZone: 0
+  Name: Village
+  IsSafetyZone: 1
   MapPrefab: {fileID: 1625339724585082901, guid: c8aa84feff9fa3448ab7d1950589239c, type: 3}

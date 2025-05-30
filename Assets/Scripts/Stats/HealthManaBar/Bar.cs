@@ -17,7 +17,6 @@ public abstract class Bar : MonoBehaviour
     public abstract void OnValueChange();
     public virtual void SetMaxValue()
     {
-        maxValue = PlayerManager.Instance.player.stats.maxHealth.GetValue();
         OnValueChange();
     }    
 }

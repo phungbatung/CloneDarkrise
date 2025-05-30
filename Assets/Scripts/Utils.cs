@@ -21,7 +21,6 @@ public class Utils
         else
             if (num > 9999 || num < -9999)
         {
-            Debug.Log("k");
             return num.ToString("0,.#K", CultureInfo.InvariantCulture);
         }
         else

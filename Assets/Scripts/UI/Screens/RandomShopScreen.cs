@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopPotionScreen : BlitzyUI.Screen
+public class RandomShopScreen : BlitzyUI.Screen
 {
     [SerializeField] private Transform listItemParent;
     [SerializeField] private UI_ItemShop itemShopTemplate;
@@ -26,12 +26,14 @@ public class ShopPotionScreen : BlitzyUI.Screen
         for (int i = 0; i < listItemParent.childCount; i++)
             Destroy(listItemParent.GetChild(i).gameObject);
 
-        List<ItemData> itemsData = ItemManager.Instance.GetAllItemOfType(ItemType.Potion);
+        List<ItemData> itemsData = ItemManager.Instance.GetAllItemOfType(new ItemType[] { ItemType.Equipment, 
+                                    ItemType.Buff, ItemType.MagicDust, ItemType.Material, ItemType.SkillBook });
+
         ItemShop itemShop;
         foreach (ItemData item in itemsData)
         {
             ItemInventory itemInventory = ItemManager.Instance.BuildInventoryItem(item);
-            KeyValuePair<CurrencyType, int> price = new KeyValuePair<CurrencyType, int>(CurrencyType.Gold, item.sellPrice*2);
+            KeyValuePair<CurrencyType, int> price = new KeyValuePair<CurrencyType, int>(CurrencyType.Gold, item.sellPrice * 2);
             itemShop = new ItemShop(itemInventory, price);
             Instantiate(itemShopTemplate, listItemParent).SetItem(itemShop);
         }

@@ -60,15 +60,16 @@ public class ItemInfoScreen : BlitzyUI.Screen
                     description += $"{property.Key} +{value}\n";
                 }
             }
-            for(int i=0; i<itemInventory.equipmentProperties.unlockedGemsSlot; i++)
+            description += "\n";
+            for (int i=0; i<itemInventory.equipmentProperties.unlockedGemsSlot; i++)
             {
                 if(itemInventory.equipmentProperties.gems[i] != -1)
                 {
                     ItemData gem = ItemManager.Instance.itemDict[itemInventory.equipmentProperties.gems[i]];
-                    description = gem.name +"\n";
+                    description += gem.name +"\n";
                     foreach (var _property in gem.properties)
                     {
-                        description = $"+{_property.Value} {_property.Key}\n";
+                        description += $"+{_property.Value} {_property.Key}\n";
                     }
                 }
             }   

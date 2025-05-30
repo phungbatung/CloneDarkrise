@@ -14,6 +14,7 @@ public class CharacterLevel : MonoBehaviour
     private const float EXP_MULTIPLIER = 1.5f;
 
     public Action<int> OnGainExp { get; set; }
+    public Action OnLevelUp { get; set; }
     public Action<CharacterLevel> OnLevelUpdate { get; set; }
 
     protected virtual void Awake()
@@ -31,12 +32,15 @@ public class CharacterLevel : MonoBehaviour
         }
         OnGainExp?.Invoke(_expGain);
     }
-    private void LevelUp()
+    public void LevelUp()
     {
         Exp -= ExpToNextLevel;
+        Exp = Exp > 0 ? Exp : 0;
         Level++;
         UpdateExpToNextLevel();
+        OnLevelUp?.Invoke();
         OnLevelUpdate?.Invoke(this);
+
     }
 
     private void UpdateExpToNextLevel()
