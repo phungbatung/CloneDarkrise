@@ -46,7 +46,7 @@ public class LeaperEnemyAttackState : CharacterState
         float v0 = enemy.jumpForce;
         float g = -enemy.rb.gravityScale * Physics2D.gravity.y;
         float t = v0 / g + Mathf.Sqrt(2 * (v0 * v0 / (2 * g) - enemy.RawVerticalDistanceToPlayer()) / g); //Physic formular
-        float xVelocity = (enemy.player.transform.position.x - enemy.transform.position.x) / t;
+        float xVelocity = t != 0?(enemy.player.transform.position.x - enemy.transform.position.x) / t : enemy.moveSpeed * 1.5f;
         enemy.SetVelocity(xVelocity, enemy.jumpForce);
         
     }
