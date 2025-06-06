@@ -14,9 +14,7 @@ public class MeleeEnemyJumpState : CharacterState
     {
         base.Enter();
         float dir = enemy.player.transform.position.x > enemy.transform.position.x ? 1 : -1;
-        Debug.Log($"dir:{dir}, moveSpeed: {enemy.moveSpeed}");
         enemy.SetVelocity(dir * enemy.moveSpeed*1.5f, enemy.jumpForce);
-        Debug.Log("jump");
     }
 
     public override void Exit()

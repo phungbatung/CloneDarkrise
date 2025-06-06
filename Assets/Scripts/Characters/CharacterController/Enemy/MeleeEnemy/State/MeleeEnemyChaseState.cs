@@ -13,7 +13,6 @@ public class MeleeEnemyChaseState : CharacterState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("chase");
     }
 
     public override void Exit()
@@ -36,13 +35,11 @@ public class MeleeEnemyChaseState : CharacterState
         }
         if (enemy.IsWallDetected()&&enemy.IsGrounded())
         {
-            Debug.Log("log1");
             stateMachine.ChangeState(enemy.jumpState);
             return;
         }
         if(!enemy.IsGroundedAhead() && enemy.RawVerticalDistanceToPlayer() >= 0 && enemy.IsGrounded())
         {
-            Debug.Log($"log2, {enemy.RawVerticalDistanceToPlayer()}");
             stateMachine.ChangeState(enemy.jumpState);
             return;
         }

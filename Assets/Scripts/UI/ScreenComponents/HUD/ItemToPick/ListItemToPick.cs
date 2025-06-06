@@ -20,7 +20,7 @@ public class ListItemToPick : MonoBehaviour
     }
     public void Remove(ItemObject _itemObject)
     {
-        if(_itemObject == null) 
+        if(_itemObject == null || !listItemToPick.ContainsKey(_itemObject) )
             return;
         Destroy(listItemToPick[_itemObject].gameObject);
         listItemToPick.Remove(_itemObject);

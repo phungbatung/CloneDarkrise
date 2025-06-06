@@ -17,7 +17,6 @@ public class MeleeEnemyAttackState : CharacterState
         enemy.SetZeroVelocity();
         if (enemy.facingDir * enemy.RawHorizontalDistanceToPlayer() < 0)
             enemy.Flip();
-        Debug.Log("attack");
     }
 
     public override void Exit()

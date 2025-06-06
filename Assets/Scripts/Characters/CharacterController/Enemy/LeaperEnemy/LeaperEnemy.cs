@@ -21,7 +21,6 @@ public class LeaperEnemy : Enemy
     protected override void Start()
     {
         base.Start();
-        Debug.Log(Physics2D.gravity);
         float t = - jumpForce / (rb.gravityScale * Physics2D.gravity.y);
         maxJumpHeight = jumpForce * t + 0.5f * (rb.gravityScale * Physics2D.gravity.y) * t * t;
     }

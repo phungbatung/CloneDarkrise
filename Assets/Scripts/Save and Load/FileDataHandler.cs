@@ -37,7 +37,6 @@ public class FileDataHandler
             {
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
-                    Debug.Log(dataToStore.Length);
                     writer.Write(dataToStore);
                 }
             }

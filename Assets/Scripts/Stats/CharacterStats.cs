@@ -24,12 +24,13 @@ public class CharacterStats : MonoBehaviour, IDamageable, IAttacker
 
     public bool isImmortal;
 
+    //To get Stat by key of item property quickly
+    private Dictionary<string, Stat> getStatByName = new();
+
     public Action OnHealthChanged { get; set; }
     public Action OnManaChanged { get; set; }
     public Action OnCharacterDie { get; set; }
 
-    //To get Stat by key of item property quickly
-    private Dictionary<string, Stat> getStatByName = new();
 
     public BuffManager BuffManager { get; private set; }
 
@@ -152,5 +153,6 @@ public class CharacterStats : MonoBehaviour, IDamageable, IAttacker
     public void Revive()
     {
         HealthIncrement(0, 100);
+        ManaIncreament(0, 100);
     }    
 }

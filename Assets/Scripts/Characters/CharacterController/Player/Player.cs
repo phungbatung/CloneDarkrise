@@ -1,3 +1,4 @@
+using BlitzyUI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,4 +41,16 @@ public class Player : Character
         stateMachine.currentState.Update();
     }
 
+    protected override void Die()
+    {
+        UIManager.Instance.QueuePush(GameManager.revivePopup, null);
+        Time.timeScale = 0f;
+    }
+    
+    public void Revive()
+    {
+        stats.Revive();
+        stateMachine.ChangeState(idleState);
+        Time.timeScale = 1f;
+    }    
 }

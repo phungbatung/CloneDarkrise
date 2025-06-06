@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
 
     public static readonly BlitzyUI.Screen.Id fpsScreen = new BlitzyUI.Screen.Id("FPS", "FPS");
     public static readonly BlitzyUI.Screen.Id hudScreen = new BlitzyUI.Screen.Id("HUD", "HUD");
@@ -19,11 +19,13 @@ public class GameManager : MonoBehaviour
     public static readonly BlitzyUI.Screen.Id upgradeEquipmentScreen = new BlitzyUI.Screen.Id("UpgradeEquipment", "UpgradeEquipment");
     public static readonly BlitzyUI.Screen.Id worldMapScreen = new BlitzyUI.Screen.Id("WorldMap", "WorldMap");
     public static readonly BlitzyUI.Screen.Id npcOptionSelectorScreen = new BlitzyUI.Screen.Id("NPC_OptionSelectorScreen", "NPC_OptionSelectorScreen");
+    public static readonly BlitzyUI.Screen.Id revivePopup = new BlitzyUI.Screen.Id("RevivePopup", "RevivePopup");
+
 
     private void Awake()
     {
-        if (instance == null)
-            instance = this;
+        if (Instance == null)
+            Instance = this;
         else
             Destroy(gameObject);
         //Physics2D.callbacksOnDisable = false;

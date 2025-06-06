@@ -19,6 +19,7 @@ public class EnemyDeathState : CharacterState
         enemyBase.itemDroper.Drop();
         destroyCooldownActivated = false;
         enemyBase.stats.isImmortal = true;
+        enemyBase.SetZeroVelocity();
         
     }
 

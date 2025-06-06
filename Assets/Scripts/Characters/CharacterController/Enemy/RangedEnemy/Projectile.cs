@@ -55,9 +55,9 @@ public class Projectile : MonoBehaviour
             if(target != null)
             {
                 attacker.DoDamage(target);
+                DestroyThisProjectile();
             }
         }
-        DestroyThisProjectile();
     }
 
     public void DestroyThisProjectile()

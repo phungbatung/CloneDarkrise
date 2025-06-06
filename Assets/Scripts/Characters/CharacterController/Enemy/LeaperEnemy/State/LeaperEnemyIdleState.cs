@@ -14,7 +14,6 @@ public class LeaperEnemyIdleState : CharacterState
     {
         base.Enter();
         enemy.SetZeroVelocity();
-        Debug.Log("idle");
     }
 
     public override void Exit()

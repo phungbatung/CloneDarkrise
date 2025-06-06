@@ -28,7 +28,7 @@ public class CurrencyObject : MonoBehaviour
     public void PickUp()
     {
         ItemManager.Instance.Currency.AddCurrency(currency);
-        Destroy(gameObject);
+        gameObject.Despawn();
     }    
 
     

@@ -18,27 +18,13 @@ public class InteractionCollector : MonoBehaviour
         interactButtons[_obj] = button;
     }
 
-    //private void Update()
-    //{
-    //    foreach (var kvp in interactButtons)
-    //    {
-    //        if (kvp.Key == null)
-    //            Remove(kvp.Key);
-    //    }
-    //}
 
     public void Remove(InteractableObject _obj)
     {
-        try
-        {
-            if (!interactButtons.ContainsKey(_obj))
-                return;
-            Destroy(interactButtons[_obj].gameObject);
-            interactButtons.Remove(_obj);
-        }
-        catch (Exception e)
-        {
-            Debug.LogException(e);
-        }
+        if (_obj == null || !interactButtons.ContainsKey(_obj))
+            return;
+        Destroy(interactButtons[_obj].gameObject);
+        interactButtons.Remove(_obj);
     }
+
 }

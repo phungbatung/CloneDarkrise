@@ -7,9 +7,9 @@ public abstract class InteractableObject : MonoBehaviour
 {
     public abstract void InteractAction();
 
-    private void OnDestroy()
-    {
-        PlayerManager.Instance.player.detector.outZoneNPC(this);
-    }
+    //private void OnDisable()
+    //{
+    //    PlayerManager.Instance?.player?.detector?.outZoneNPC(this);
+    //}
 
 }

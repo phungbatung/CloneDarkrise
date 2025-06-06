@@ -22,7 +22,6 @@ public class LeaperEnemyAttackState : CharacterState
         enemy.SetZeroVelocity();
         isOutOfTheGround = false;
         enemy.DoJumpToPlayer();
-        Debug.Log("attack");
     }
 
     public override void Exit()
@@ -35,7 +34,6 @@ public class LeaperEnemyAttackState : CharacterState
         base.Update();
         if (isOutOfTheGround && enemy.IsGrounded())
         {
-            Debug.Log("do attack");
             enemy.Attack();
             stateMachine.ChangeState(enemy.idleState);
         }
