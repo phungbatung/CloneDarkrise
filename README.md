@@ -25,31 +25,44 @@ Chỉ số (stat) được chia thành ba nhóm:
   - `manaRegen`
   - `moveSpeed`
 
+![Player Stats](Images/PlayerStats.png)
+
 ---
 
 ### 2. Hệ thống Item
+![Inventory](Images/Inventory.png)
 
 - **Equipment:**
   - Bao gồm 8 loại nhỏ (weapon, shield, boots, gauntlets, ...).
   - Mỗi trang bị khi rơi ra sẽ nhận được chỉ số (stat) ngẫu nhiên với giá trị trong khoảng **70%-130%** chỉ số gốc.
   - Trang bị phẩm chất càng cao thì nhận được càng nhiều dòng chỉ số.
+  
+  ![Equipment](Images/Equipment.png)
 
 - **SkillBook:**
   - Sử dụng để nhận điểm kỹ năng.
   - Giá trị điểm kỹ năng tùy thuộc vào phẩm chất của item.
 
+  ![SkillBook](Images/SkillBook.png)
+
 - **MagicDust:**
   - Dùng để khảm vào equipment nhằm tăng chỉ số cho nhân vật.
   - Tương tự như Gem trong một số game khác (dùng MagicDust để thay thế do thiếu asset).
+
+  ![MagicDust](Images/MagicDust.png)
 
 - **Potion:**
   - Bình hồi phục (health hoặc mana).
   - Có thể sử dụng trong Inventory hoặc gán vào slot để tiện sử dụng.
   - Có thời gian hồi chiêu.
 
+  ![Potion](Images/Potion.png)
+
 - **Buff:**
   - Dùng để tăng chỉ số tạm thời.
   - **Lưu ý:** Chức năng này hiện đang bị lỗi do quá trình chuyển đổi hệ thống UI.
+
+  ![Buff](Images/Buff.png)
 
 ---
 
@@ -57,6 +70,9 @@ Chỉ số (stat) được chia thành ba nhóm:
 
 - Sử dụng điểm kỹ năng (nhận được từ SkillBook) để nâng cấp kỹ năng.
 - Có thể gán kỹ năng mong muốn ra màn hình chính để sử dụng.
+
+![Active Skill](Images/ActiveSkill.png)
+![Assign Skill](Images/AssignSkill.png)
 
 ---
 
@@ -74,6 +90,8 @@ Chỉ số (stat) được chia thành ba nhóm:
 - Chỉ có thể mở các node liền kề với các node đã được mở.
 - **Hiện tại:** Chỉ có node tăng stat, chưa có node kỹ năng (sẽ được bổ sung sau).
 
+![Passive Skill](Images/PassiveSkill.png)
+
 ---
 
 ### 6. Hệ thống Map
@@ -81,13 +99,23 @@ Chỉ số (stat) được chia thành ba nhóm:
 - Người chơi sử dụng **cổng dịch chuyển** để teleport đến một map mới.
 - Khi đã di chuyển đến một map, người chơi có thể **dịch chuyển trực tiếp** đến đó sau này bằng **tháp dịch chuyển** (teleport tower).
 
+![World Map](Images/WorldMap.png)
+
 ---
 
 ### 7. Hệ thống NPC
 
-- **ShopPotion:** Mua potion.
-- **UpgradeEquipment:** Nâng cấp trang bị.
-- **GemInsertion:** Đục lỗ và gắn gem.
+- **ShopPotion:** Mua potion.  
+  ![Potion Shop](Images/PotionShop.png)
+
+- **UpgradeEquipment:** Nâng cấp trang bị.  
+  ![Upgrade Equipment](Images/UpgradeEquipment.png)
+
+- **GemInsertion:** Đục lỗ và gắn gem.  
+  ![Gem Insetion](Images/GemInsetion.png)
+
+- **NPC Option Selection:** Menu lựa chọn NPC.  
+  ![NPC Option](Images/NPC_OptionSelection.png)
 
 ---
 
@@ -97,3 +125,6 @@ Chỉ số (stat) được chia thành ba nhóm:
 - Các UI được xây dựng theo cơ chế **LIFO (Stack)**:
   - Mỗi khi mở một màn hình mới, UI sẽ được `Push` chồng lên UI hiện tại.
   - Khi tắt UI, màn hình sẽ được `Pop` để hiển thị lại UI bên dưới trong Stack.
+
+![HUD](Images/HUD.png)
+
