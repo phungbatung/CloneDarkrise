@@ -74,7 +74,7 @@ public class CharacterStats : MonoBehaviour, IDamageable, IAttacker
             }
             else
             {
-                Debug.LogError($"Does not contain stat name: {property.Key}");
+                Debug.Log($"'{property.Key}' is not a valid stat and will be ignored.");
             }
         }
     }
